@@ -17,4 +17,39 @@ author "Pablo_1610"
 version '0.1'
 repository 'https://github.com/PABLO-1610/flashland'
 
-lua54 'yes'
+shared_scripts {
+    -- Infos
+    "config.lua",
+    -- Enum
+    "src/class/enum/*.lua",
+    -- Objects
+    "src/class/type/shared/*.lua",
+    -- Init
+    "src/core/shared/main.lua",
+    -- Modules
+    "src/components/**/shared/*.lua",
+    -- Addons
+    "src/addons/**/shared/*.lua"
+}
+
+client_scripts {
+    -- Objects
+    "src/class/type/client/*.lua",
+    -- Init
+    "src/core/client/main.lua",
+    -- Modules
+    "src/components/**/client/*.lua",
+    -- Addons
+    "src/addons/**/client/*.lua"
+}
+
+server_scripts {
+    -- Objects
+    "src/class/type/server/*.lua",
+    -- Init
+    "src/core/server/main.lua",
+    -- Modules
+    "src/components/**/server/*.lua",
+    -- Addons
+    "src/addons/**/server/*.lua"
+}
