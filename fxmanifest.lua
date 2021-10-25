@@ -17,6 +17,30 @@ author "Pablo_1610"
 version '0.1'
 repository 'https://github.com/PABLO-1610/flashland'
 
+--[[
+    Vendors
+--]]
+
+server_scripts {
+    "src/vendors/MySQL/mysql-async.js"
+}
+
+client_scripts {
+    "src/vendors/RageUI/RMenu.lua",
+    "src/vendors/RageUI/menu/RageUI.lua",
+    "src/vendors/RageUI/menu/Menu.lua",
+    "src/vendors/RageUI/menu/MenuController.lua",
+    "src/vendors/RageUI/components/*.lua",
+    "src/vendors/RageUI/menu/elements/*.lua",
+    "src/vendors/RageUI/menu/items/*.lua",
+    "src/vendors/RageUI/menu/panels/*.lua",
+    "src/vendors/RageUI/menu/windows/*.lua",
+}
+
+--[[
+    FlashLand
+--]]
+
 shared_scripts {
     -- Infos
     "config.lua",
