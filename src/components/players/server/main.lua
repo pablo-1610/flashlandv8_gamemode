@@ -12,3 +12,4 @@
 ---@class _FlashServer_Players
 _FlashServer_Players = {}
 
+_FlashLand.log("Chargement du composant: ^3players")
