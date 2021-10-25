@@ -8,3 +8,12 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author Pablo_1610
+
+_Config = {
+    prefix = "[^1FlashLand^7]",
+    --[[
+        DEV
+        PROD
+    --]]
+    environment = "DEV"
+}
