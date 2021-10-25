@@ -22,4 +22,11 @@ end
 CreateThread(function()
     _FlashLand.log("Demarrage du client...")
     _FlashLand.toInternal("loaded")
+    while (true) do
+        Wait(1)
+        if (NetworkIsPlayerActive(PlayerId())) then
+            _FlashLand.toInternal("joined")
+            break
+        end
+    end
 end)

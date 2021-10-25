@@ -60,6 +60,7 @@ client_scripts {
     -- Objects
     "src/class/type/client/*.lua",
     -- Init
+    "src/core/client/utils/*.lua",
     "src/core/client/main.lua",
     -- Modules
     "src/components/**/client/*.lua",

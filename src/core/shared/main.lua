@@ -81,6 +81,10 @@ _FlashLand.onReceiveWithoutNet = function(event, handler)
     AddEventHandler(event, handler)
 end
 
+_FlashLand.hash = function(string)
+    return GetHashKey(string)
+end
+
 _FlashLand.format = function(string)
     return ("FL_%s"):format(GetHashKey(string))
 end

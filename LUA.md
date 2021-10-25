@@ -1,7 +1,3 @@
-# Flash Land System
-
-Organisation d'un code Lua:
-
 1. Copyrights
 2. Auteur
 3. Déclarations globales
@@ -11,4 +7,3 @@ Organisation d'un code Lua:
 7. Events
 8. Thread
 9. Code implémenté directement
-
