@@ -65,7 +65,9 @@ client_scripts {
     -- Modules
     "src/components/**/client/*.lua",
     -- Addons
-    "src/addons/**/client/*.lua"
+    "src/addons/**/client/*.lua",
+    -- Dev
+    "src/dev/client.lua"
 }
 
 server_scripts {
