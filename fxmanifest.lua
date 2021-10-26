@@ -41,6 +41,12 @@ client_scripts {
     FlashLand
 --]]
 
+loadscreen "src/web/loading/index.html"
+
+files {
+    "src/web/resources/img/flash.png"
+}
+
 shared_scripts {
     -- Infos
     "config.lua",
@@ -74,6 +80,7 @@ server_scripts {
     -- Objects
     "src/class/type/server/*.lua",
     -- Init
+    "src/core/server/utils/*.lua",
     "src/core/server/main.lua",
     -- Modules
     "src/components/**/server/*.lua",

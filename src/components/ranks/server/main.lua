@@ -14,6 +14,21 @@ _FlashServer_Ranks = {}
 
 local list = {}
 
+local function getLowestRank()
+    ---@param rank _Rank
+    ---@type _Rank
+    local lowest
+    for rankId, rank in pairs(list) do
+        if (lowest == nil) then
+            lowest = rank
+        end
+        if (rank.weight > lowest.weight) then
+            lowest = rank
+        end
+    end
+    return lowest
+end
+
 _FlashServer_Ranks.exists = function(rankId)
     return (list[rankId] ~= nil)
 end
@@ -27,6 +42,10 @@ _FlashServer_Ranks.get = function(rankId)
         return nil
     end
     return (list[rankId])
+end
+
+_FlashServer_Ranks.getOrLowest = function(rankId)
+    return (_FlashServer_Ranks.get(rankId) or getLowestRank())
 end
 
 _FlashLand.onReceiveWithoutNet("loaded", function()

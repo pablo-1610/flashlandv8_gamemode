@@ -9,14 +9,17 @@
 --]]
 ---@author Pablo_1610
 
+gameType = _FlashEnum_GAMETYPE.RP
+gameState = _FlashENUM_GAMESTATE.WAITING
+
 _FlashLand.toServer = function(event, ...)
-    TriggerServerEvent(FlashLand.format(event), ...)
-    _FlashLand.log(("Envoie d'un event au serveur: %s"):format(event))
+    TriggerServerEvent(_FlashLand.format(event), ...)
+    _FlashLand.log(("Envoie d'un event au serveur: ^1%s"):format(event))
 end
 
 _FlashLand.toServerExposed = function(event, ...)
     TriggerServerEvent(event, ...)
-    _FlashLand.log(("Envoie d'un event (^1Exposé^7) au serveur: %s"):format(event))
+    _FlashLand.log(("Envoie d'un event (^1Exposé^7) au serveur: ^1%s"):format(event))
 end
 
 CreateThread(function()
