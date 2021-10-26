@@ -10,17 +10,13 @@
 ---@author Pablo_1610
 
 _FlashLand.onReceiveWithoutNet("loaded", function()
-    _FlashClient_Utils.screen_reveal(0)
+    _FlashClient_Utils.screen_fade(0)
     _FlashClient_Utils.loading_show("FlashLand charge votre personnage", 4)
     CreateThread(function()
-        Wait(1000)
-        print("Chargement")
-        _FlashClient_Utils.memory_loadDict("flashland")
-        print("Super")
-        print("LE N")
         while (gameState == _FlashENUM_GAMESTATE.WAITING) do
-            DrawSprite("flashland", "logo_transparent", 0.5, 0.5,0.3, 0.5, 0.0, 255, 255, 255, 255)
-            Wait(0)
+            Wait(50)
         end
+        _FlashClient_Utils.screen_reveal(3500)
+        _FlashClient_Utils.loading_hide()
     end)
 end)
