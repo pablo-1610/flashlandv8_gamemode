@@ -25,6 +25,9 @@ _FlashClient_Utils.ped_spawn = function(model, spawn)
     RemoveAllPedWeapons(ped)
     ClearPlayerWantedLevel(PlayerId())
     local time = GetGameTimer()
+    while (not (HasCollisionLoadedAroundEntity(ped)) and (GetGameTimer() - time) < 5000) do
+        Wait(0)
+    end
     ShutdownLoadingScreen()
     ShutdownLoadingScreenNui()
     _FlashClient_Utils.ped_freeze(PlayerId(), false)
