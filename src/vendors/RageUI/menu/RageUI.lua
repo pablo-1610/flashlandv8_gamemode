@@ -12,7 +12,7 @@
 --- @see RageUI
 ---
 
-print("^4RageUI - https://github.com/iTexZoz/RageUI - OpenSource Advanced UI Api^0")
+print(("%s Crédits: ^4MySQL ^7et ^4RageUI"):format(_Config.prefix))
 
 function math.round(num, numDecimalPlaces)
     return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))

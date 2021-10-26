@@ -17,6 +17,13 @@ _FlashClient_Utils.memory_load = function(model)
     end
 end
 
+_FlashClient_Utils.memory_loadDict = function(dict)
+    RequestStreamedTextureDict(dict)
+    while (not (HasStreamedTextureDictLoaded(dict))) do
+        Wait(1)
+    end
+end
+
 _FlashClient_Utils.memory_unload = function(model)
     model = GetHashKey(model)
     SetModelAsNoLongerNeeded(model)

@@ -9,8 +9,9 @@
 --]]
 ---@author Pablo_1610
 
-fx_version 'cerulean'
-games { 'gta5' };
+--resource_type 'gametype' { name = 'flashland' }
+fx_version 'adamant'
+game 'gta5'
 
 description "Main system of Flash Land RP"
 author "Pablo_1610"
