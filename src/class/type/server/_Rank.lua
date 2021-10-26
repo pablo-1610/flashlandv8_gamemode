@@ -40,7 +40,7 @@ function _Rank:addPermission(permission)
     table.insert(self.permissions, permission)
 end
 
-function _Ranks:addPermissions(permissions)
+function _Rank:addPermissions(permissions)
     for _, permission in pairs(permissions) do
         self:addPermissions(permission)
     end
