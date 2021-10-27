@@ -30,5 +30,5 @@ _FlashClient_Utils.menu_color_greenIfTrue = function(value)
 end
 
 _FlashClient_Utils.menu_label_selectOrSelected = function(value)
-    return (value and "~y~Sélectionné" or "~o~Sélectionner ~s~→")
+    return (value and "~g~Sélectionné" or "~o~Sélectionner ~s~→")
 end

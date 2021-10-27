@@ -16,14 +16,33 @@ _ConfigClient = {
 
         defaultOutFits = {
             {
-                label = "Urbain",
+                label = "Décontracté",
                 values = {
                     [0] = {
-                        ["mask_1"] = 40,
-                        ["mask_2"] = 1
+                        ["tshirt_1"] = 15,
+                        ["tshirt_2"] = 0,
+                        ["torso_1"] = 9,
+                        ["torso_2"] = 0,
+                        ["arms"] = 0,
+                        ["pants_1"] = 6,
+                        ["pants_2"] = 0,
+                        ["shoes_1"] = 5,
+                        ["shoes_2"] = 0,
+                    },
+
+                    [1] = {
+                        ["tshirt_1"] = 15,
+                        ["tshirt_2"] = 0,
+                        ["torso_1"] = 0,
+                        ["torso_2"] = 0,
+                        ["arms"] = 0,
+                        ["pants_1"] = 7,
+                        ["pants_2"] = 1,
+                        ["shoes_1"] = 5,
+                        ["shoes_2"] = 0,
                     }
                 }
-            }
+            },
         }
     },
 

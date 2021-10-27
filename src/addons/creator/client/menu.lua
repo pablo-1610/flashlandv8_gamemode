@@ -54,10 +54,11 @@ local function createMenus()
         end
         ClearPedProp(PlayerPedId(), 1)
     end
-    return ({ main, identity, character, character_sex, character_component, character_component_variation })
+    local character_outfit = RageUI.CreateSubMenu(character, title, desc, nil, nil, "root_cause", "black_red")
+    return ({ main, identity, character, character_sex, character_component, character_component_variation, character_outfit })
 end
 
-local function applySex(currentSex, sexId)
+local function applySex(currentSex, sexId, selectedOutfit)
     if (currentSex == sexId) then
         return
     end
@@ -73,17 +74,21 @@ local function applySex(currentSex, sexId)
         end
     end
     _FlashClient_SkinChanger.setCharacterValueWithoutChange("sex", sexId)
+    _FlashClient_SkinChanger.applySkin(_ConfigClient.Creator.defaultOutFits[selectedOutfit].values[sexId])
     _FlashClient_Utils.ped_scenario(PlayerPedId(), "WORLD_HUMAN_GUARD_STAND_CLUBHOUSE", false)
+    ClearPedProp(PlayerPedId(), 1)
 end
 
 _FlashLand.onReceive("creator:initMenu", function()
     _FlashClient_Menu.tryOpenMenu(function()
-        local selectedComponent, selectedComponentMax, selectedComponentData = 0, 0, {}
+        local selectedComponent, selectedComponentMax, selectedComponentData, selectedOutfit = 0, 0, {}, 1
         local menus = createMenus()
         _FlashClient_SkinChanger.setAllToDefault()
         for _, component in pairs(_ConfigClient.Skin) do
             builder.skin[component.id] = _FlashClient_SkinChanger.getCharacter()[component.id]
         end
+        builder.skin["sex"] = 0
+        _FlashClient_SkinChanger.applySkin(_ConfigClient.Creator.defaultOutFits[selectedOutfit].values[0])
         RageUI.Visible(menus[1], true)
         CreateThread(function()
             while (true) do
@@ -139,6 +144,7 @@ _FlashLand.onReceive("creator:initMenu", function()
                 end)
                 RageUI.IsVisible(menus[3], function()
                     RageUI.Button("Sélection du sexe", nil, { RightLabel = "→→" }, true, {}, menus[4])
+                    RageUI.Button("Sélection de la tenue", nil, { RightLabel = "→→" }, true, {}, menus[7])
                     RageUI.Line()
                     for _, component in pairs(_ConfigClient.Skin) do
                         RageUI.Button(("Customisation: ~y~%s"):format(component.label), nil, { RightLabel = "→" }, true, {
@@ -157,12 +163,12 @@ _FlashLand.onReceive("creator:initMenu", function()
                     local sex = _FlashClient_SkinChanger.getCharacter()["sex"]
                     RageUI.Button(("%sHomme"):format(_FlashClient_Utils.menu_display_greenIfTrue(sex == 0)), nil, { RightLabel = _FlashClient_Utils.menu_label_select() }, true, {
                         onSelected = function()
-                            applySex(sex, 0)
+                            applySex(sex, 0, selectedOutfit)
                         end
                     })
                     RageUI.Button(("%sFemme"):format(_FlashClient_Utils.menu_display_greenIfTrue(sex == 1)), nil, { RightLabel = _FlashClient_Utils.menu_label_select() }, true, {
                         onSelected = function()
-                            applySex(sex, 1)
+                            applySex(sex, 1, selectedOutfit)
                         end
                     })
                 end)
@@ -192,6 +198,19 @@ _FlashLand.onReceive("creator:initMenu", function()
                                 if (_FlashClient_SkinChanger.getCharacter()[selectedComponentData.sub] ~= i) then
                                     _FlashClient_SkinChanger.applySkin({ [selectedComponentData.sub] = i })
                                     ClearPedProp(PlayerPedId(), 0)
+                                    ClearPedProp(PlayerPedId(), 1)
+                                end
+                            end
+                        })
+                    end
+                end)
+                RageUI.IsVisible(menus[7], function()
+                    for outfitId, data in pairs(_ConfigClient.Creator.defaultOutFits) do
+                        RageUI.Button(data.label, nil, { RightLabel = _FlashClient_Utils.menu_label_selectOrSelected(selectedOutfit == outfitId) }, true, {
+                            onSelected = function()
+                                if (selectedOutfit ~= outfitId) then
+                                    selectedOutfit = outfitId
+                                    _FlashClient_SkinChanger.applySkin(data.values[builder.skin["sex"]])
                                     ClearPedProp(PlayerPedId(), 1)
                                 end
                             end
