@@ -8,3 +8,17 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author Pablo_1610
+
+_FlashLand.onReceive("creator:initMenu", function()
+    local main = RageUI.CreateMenu("Test", "Test", nil, nil, "root_cause", "")
+    RageUI.Visible(main, true)
+    CreateThread(function()
+        while (true) do
+            Wait(0)
+            RageUI.IsVisible(main, function()
+                RageUI.Button('Button', "test", {}, true, {});
+
+            end)
+        end
+    end)
+end)

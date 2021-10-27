@@ -34,6 +34,11 @@ _FlashClient_Utils.ped_spawn = function(model, spawn)
     SetPedDefaultComponentVariation(PlayerPedId())
 end
 
+_FlashClient_Utils.ped_freezeDebug = function(bool)
+    SetEntityCollision(PlayerPedId(), not bool)
+    FreezeEntityPosition(PlayerPedId(), bool)
+end
+
 _FlashClient_Utils.ped_freeze = function(playerId, bool)
     local player = playerId
     SetPlayerControl(player, not bool, false)
@@ -58,6 +63,10 @@ _FlashClient_Utils.ped_freeze = function(playerId, bool)
             ClearPedTasksImmediately(ped)
         end
     end
+end
+
+_FlashClient_Utils.ped_scenario = function(ped, scenario, enterAnim)
+    TaskStartScenarioInPlace(ped, scenario, -1, enterAnim)
 end
 
 _FlashClient_Utils.ped_tp = function(ped, coords, heading)
