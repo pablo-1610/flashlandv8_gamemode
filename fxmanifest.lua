@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
---resource_type 'gametype' { name = 'flashland' }
+resource_type 'gametype' { name = 'flashland' }
 fx_version 'adamant'
 game 'gta5'
 
@@ -49,8 +49,8 @@ files {
 }
 
 shared_scripts {
-    -- Infos
-    "config.lua",
+    -- Config
+    "config/global.lua",
     -- Enum
     "src/class/enum/*.lua",
     -- Objects
@@ -64,6 +64,8 @@ shared_scripts {
 }
 
 client_scripts {
+    -- Config
+    "config/client.lua",
     -- Objects
     "src/class/type/client/*.lua",
     -- Init
@@ -78,6 +80,8 @@ client_scripts {
 }
 
 server_scripts {
+    -- Config
+    "config/server.lua",
     -- Objects
     "src/class/type/server/*.lua",
     -- Init

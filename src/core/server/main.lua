@@ -10,8 +10,13 @@
 ---@author Pablo_1610
 
 _FlashLand.toClient = function(event, targetSrc, ...)
-    TriggerClientEvent(FlashLand.format(event), targetSrc, ...)
+    TriggerClientEvent(_FlashLand.format(event), targetSrc, ...)
     _FlashLand.log(("Envoie d'un event au client (^3%i^7): ^1%s"):format(targetSrc, event))
+end
+
+_FlashLand.toClients = function(event, ...)
+    TriggerClientEvent(_FlashLand.format(event), -1, ...)
+    _FlashLand.log(("Envoie d'un event aux clients: ^1%s"):format(event))
 end
 
 _FlashLand.serverResponded = function(target)

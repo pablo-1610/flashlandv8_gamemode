@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 26/10/2021 23:26
+  Created at 27/10/2021 16:54
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,4 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceiveWithoutNet("loaded", function()
-    _FlashClient_Utils.screen_fade(0)
-    _FlashClient_Utils.loading_show("Chargement de vos données", 4)
-end)
+_FlashClient_Synchronizer = {}

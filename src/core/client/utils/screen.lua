@@ -9,6 +9,10 @@
 --]]
 ---@author Pablo_1610
 
+_FlashClient_Utils.screen_radar = function(bool)
+    DisplayRadar(bool)
+end
+
 _FlashClient_Utils.screen_fade = function(duration, waitUntilFinished)
     DoScreenFadeOut(duration)
     if (waitUntilFinished) then

@@ -59,3 +59,10 @@ _FlashClient_Utils.ped_freeze = function(playerId, bool)
         end
     end
 end
+
+_FlashClient_Utils.ped_tp = function(ped, coords, heading)
+    SetEntityCoords(ped, coords.x, coords.y, (coords.z-1))
+    if (heading ~= nil) then
+        SetEntityHeading(ped, heading)
+    end
+end

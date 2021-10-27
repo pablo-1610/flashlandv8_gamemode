@@ -17,6 +17,12 @@ _FlashClient_Utils.memory_load = function(model)
     end
 end
 
+_FlashClient_Utils.memory_loadAll = function(models)
+    for _, model in pairs(models) do
+        _FlashClient_Utils.memory_load(model)
+    end
+end
+
 _FlashClient_Utils.memory_loadDict = function(dict)
     RequestStreamedTextureDict(dict)
     while (not (HasStreamedTextureDictLoaded(dict))) do

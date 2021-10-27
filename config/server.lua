@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 25/10/2021 10:36
+  Created at 27/10/2021 17:11
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -8,12 +8,3 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author Pablo_1610
-
-_Config = {
-    prefix = "[^1FlashLand^7]",
-    --[[
-        DEV
-        PROD
-    --]]
-    environment = "DEV"
-}

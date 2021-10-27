@@ -8,12 +8,7 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author Pablo_1610
---[[
-_FlashLand.onReceive("joined", function()
-    _FlashLand.log("Tentative de spawn le joueur...")
-    _FlashClient_Utils.ped_spawn("mp_m_freemode_01", { x = 686.26, y = 577.86, z = 129.75, heading = 162.34 })
-    _FlashLand.log("Spawn effectué")
-end)
---]]
+
+
 
 _FlashLand.log("Chargement de l'addon: ^3spawn")

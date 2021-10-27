@@ -12,6 +12,13 @@
 gameType = _FlashEnum_GAMETYPE.RP
 gameState = _FlashENUM_GAMESTATE.WAITING
 
+_FlashLand.setGameState = function(newGameState)
+    gameState = newGameState
+    if (gameState == _FlashENUM_GAMESTATE.PLAYING) then
+        _FlashLand.toInternal("nowPlaying")
+    end
+end
+
 _FlashLand.toServer = function(event, ...)
     TriggerServerEvent(_FlashLand.format(event), ...)
     _FlashLand.log(("Envoie d'un event au serveur: ^1%s"):format(event))
