@@ -16,10 +16,12 @@ _ConfigClient = {
 
         defaultOutFits = {
             {
-                label = "Sportif",
+                label = "Urbain",
                 values = {
-                    ["mask_1"] = 40,
-                    ["mask_2"] = 1
+                    [0] = {
+                        ["mask_1"] = 40,
+                        ["mask_2"] = 1
+                    }
                 }
             }
         }
@@ -28,6 +30,8 @@ _ConfigClient = {
     Skin = {
         {id = "skin", label = "Peau"},
         {id = "face", label = "Visage"},
-        {id = "hair_1", label = "Cheveux", sub = "hair_2"}
+        {id = "hair_1", label = "Cheveux", sub = "hair_color_1"},
+        {id = "beard_2", label = "Taille barbe"},
+        {id = "beard_1", label = "Type barbe", sub = "beard_3"}
     }
 }
