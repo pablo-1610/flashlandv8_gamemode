@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:12
+  Created at 27/10/2021 19:32
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_Config = {
-    prefix = "[^1FlashLand^7]",
-    environment = "DEV"
+_FlashEnum_CHARACTERPICTURE = {
+    SYSTEM = "CHAR_DETONATEBOMB"
 }

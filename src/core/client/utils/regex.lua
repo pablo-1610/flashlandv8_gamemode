@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:12
+  Created at 27/10/2021 19:27
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,10 @@
 --]]
 ---@author Pablo_1610
 
-_Config = {
-    prefix = "[^1FlashLand^7]",
-    environment = "DEV"
-}
+_FlashClient_Utils.regex_validate = function(str, regex)
+    return (string.match(str, regex))
+end
+
+_FlashClient_Utils.regex_name = function(name)
+    return (_FlashClient_Utils.regex_validate(name, "/^[a-z ,.'-]+$/i"))
+end

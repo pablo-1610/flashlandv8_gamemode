@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:12
+  Created at 27/10/2021 19:33
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,11 @@
 --]]
 ---@author Pablo_1610
 
-_Config = {
-    prefix = "[^1FlashLand^7]",
-    environment = "DEV"
+_FlashEnum_MESSAGEICONTYPE = {
+    CHAT = 1,
+    MAIL = 2,
+    FRIEND = 3,
+    ARROW = 7,
+    RP = 8,
+    DOLLAR = 9
 }

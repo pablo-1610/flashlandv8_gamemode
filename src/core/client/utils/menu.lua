@@ -8,3 +8,11 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author Pablo_1610
+
+_FlashClient_Utils.menu_label_change = function()
+    return ("~b~Définir ~s~→")
+end
+
+_FlashClient_Utils.menu_label_valueOrVoid = function(value)
+    return (value == nil and "~r~Vide" or ("~g~%s"):format(value))
+end
