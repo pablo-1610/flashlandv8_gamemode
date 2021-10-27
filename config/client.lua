@@ -23,5 +23,11 @@ _ConfigClient = {
                 }
             }
         }
+    },
+
+    Skin = {
+        {id = "skin", label = "Peau"},
+        {id = "face", label = "Visage"},
+        {id = "hair_1", label = "Cheveux", sub = "hair_2"}
     }
 }
