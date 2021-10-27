@@ -29,5 +29,9 @@ _FlashClient_Utils.notifications_showAdvanced = function(sender, subject, msg, t
 end
 
 _FlashClient_Utils.notifications_template_error = function(message)
-    _FlashClient_Utils.notifications_showAdvanced("Système", "~r~Erreur", message, )
+    _FlashClient_Utils.notifications_showAdvanced("Système", "~r~Erreur", message, _FlashEnum_CHARACTERPICTURE.SYSTEM, _FlashEnum_MESSAGEICONTYPE.CHAT)
+end
+
+_FlashClient_Utils.notifications_template_success = function(message)
+    _FlashClient_Utils.notifications_showAdvanced("Système", "~g~Succès", message, _FlashEnum_CHARACTERPICTURE.SYSTEM, _FlashEnum_MESSAGEICONTYPE.CHAT)
 end

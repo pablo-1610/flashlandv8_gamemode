@@ -14,5 +14,5 @@ _FlashClient_Utils.regex_validate = function(str, regex)
 end
 
 _FlashClient_Utils.regex_name = function(name)
-    return (_FlashClient_Utils.regex_validate(name, "/^[a-z ,.'-]+$/i"))
+    return (_FlashClient_Utils.regex_validate(name, "^[A-Z][A-Za-z\\é\\è\\ê\\-]+$"))
 end
