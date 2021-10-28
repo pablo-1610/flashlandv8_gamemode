@@ -12,8 +12,7 @@
 local time = {12,00}
 local timeOverride
 local running = false
-
-local intervalForAMin = 30000
+local intervalForAMin = _ConfigServer.Synchronizer.time
 
 local function incrementTime()
     time[2] = (time[2]+1)

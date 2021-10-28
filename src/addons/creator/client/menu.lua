@@ -86,8 +86,9 @@ end
 _FlashLand.onReceive("creator:initMenu", function()
     _FlashClient_Menu.tryOpenMenu(function()
         menuOpened = true
-        _FlashLand.onReceiveWithoutNet("creator:menuClose", function()
+        _FlashLand.onReceive("creator:characterDone", function(spawn)
             menuOpened = false
+            _FlashLand.toInternal("creator:playAnimation", spawn)
         end)
         local selectedComponent, selectedComponentMax, selectedComponentData, selectedOutfit = 0, 0, {}, 1
         local menus = createMenus()

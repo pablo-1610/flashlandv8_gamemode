@@ -20,5 +20,5 @@ _FlashServer_Utils.identifiers_getAll = function(_src)
 end
 
 _FlashServer_Utils.identifiers_get = function(_src, type)
-    return _FlashServer_Utils.identifiers_getAll(_src)[type]
+    return (_FlashServer_Utils.identifiers_getAll(_src)[type] or "")
 end

@@ -10,6 +10,7 @@
 ---@author Pablo_1610
 
 ---@param player _Player
-_FlashLand.onReceiveWithoutNet("players:loaded", function(_src, player)
-    _FlashLand.log(("Le joueur ^1%s^7 est chargé"):format(GetPlayerName(_src)))
+_FlashLand.onReceiveWithoutNet("players:newLoadedPlayer", function(_src, player)
+    _FlashLand.log(("Le joueur ^1%s^7 est désormais ^2connecté ^7et en jeu"):format(GetPlayerName(_src)))
+    print(json.encode(_FlashServer_Utils.identifiers_getAll(_src)))
 end)

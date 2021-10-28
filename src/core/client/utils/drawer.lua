@@ -12,3 +12,32 @@
 _FlashClient_Utils.drawer_sprite = function(parent, component, x, y, width, height, heading, rgba)
     DrawSprite(parent, component, x, y, width, height, heading, rgba[1], rgba[2], rgba[3], rgba[4])
 end
+
+_FlashClient_Utils.drawer_spriteWithSmooth = function(check, parent, component, x, y, width, height, heading)
+    local smooth = 0
+    CreateThread(function()
+        while (smooth <= 255) do
+            smooth = (smooth+0.5)
+            Wait(3)
+        end
+    end)
+    CreateThread(function()
+        while (check()) do
+            DrawSprite(parent, component, x, y, width, height, heading, 255, 255, 255, smooth)
+            Wait(0)
+        end
+        smooth = 255
+        CreateThread(function()
+            while (smooth >= 1) do
+                smooth = (smooth-0.5)
+                Wait(3)
+            end
+        end)
+        CreateThread(function()
+            while (smooth >= 1) do
+                DrawSprite(parent, component, x, y, width, height, heading, 255, 255, 255, smooth)
+                Wait(0)
+            end
+        end)
+    end)
+end

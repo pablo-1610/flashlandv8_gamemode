@@ -18,7 +18,9 @@
 ---@field public selectedOutfit number
 ---@field public accessories table
 ---@field public rank _Rank
----@field public sId
+---@field public sId number
+---@field public spawned boolean
+---@field public gameType string
 _Player = {}
 _Player.__index = _Player
 
@@ -36,5 +38,21 @@ setmetatable(_Player, {
         self.selectedOutfit = selectedOutfit
         self.accessories = accessories
         self.sId = sId
+        --
+        self.spawned = false
+        self.gameType = _FlashEnum_GAMETYPE.RP
+        return self
     end
 })
+
+function _Player:savePosition()
+    if (self.gameType == _FlashEnum_GAMETYPE.RP and self.spawned) then
+        local ped = GetPlayerPed(self.sId)
+        local position = GetEntityCoords(ped)
+        position = {coords = { x = position.x, y = position.y, z = position.z }, heading = GetEntityHeading(ped)}
+        _FlashServer_Database.execute("UPDATE flash_players_positions SET position = @position WHERE flashId = @flashId", {
+            ["position"] = json.encode(position),
+            ["flashId"] = self.flashId
+        })
+    end
+end

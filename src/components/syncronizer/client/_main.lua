@@ -10,3 +10,5 @@
 ---@author Pablo_1610
 
 _FlashClient_Synchronizer = {}
+
+_FlashLand.log("Chargement du composant: ^3synchronizer")

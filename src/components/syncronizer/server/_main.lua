@@ -13,4 +13,7 @@ _FlashServer_Synchronizer = {}
 
 _FlashLand.onReceiveWithoutNet("loaded", function()
     _FlashServer_Synchronizer.createTimeThread()
+    _FlashServer_Synchronizer.createPositionsThread()
 end)
+
+_FlashLand.log("Chargement du composant: ^3synchronizer")

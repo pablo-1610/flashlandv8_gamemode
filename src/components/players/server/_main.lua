@@ -37,9 +37,44 @@ _FlashServer_Players.get = function(playerId)
     return (list[playerId])
 end
 
+_FlashServer_Players.getAll = function()
+    return (list)
+end
+
 ---@param player _Player
 _FlashServer_Players.add = function(player)
     list[player.sId] = player
+end
+
+_FlashServer_Players.register = function(_src, infos)
+    local outfits = {["Tenue d'arrivée"] = infos.outfit}
+    local license = _FlashServer_Utils.identifiers_get(_src, "license")
+    _FlashServer_Database.insert("INSERT INTO flash_players (identifier, rankId, identity, cash, skin, outfits, selectedOutfit, accessories) VALUES(@identifier, @rankId, @identity, @cash, @skin, @outfits, @selectedOutfit, @accessories)", {
+        ["identifier"] = license,
+        ["rankId"] = _ConfigServer.Start.rank,
+        ["identity"] = json.encode(infos.identity),
+        ["cash"] = _ConfigServer.Start.cash,
+        ["skin"] = json.encode(infos.skin),
+        ["outfits"] = json.encode(outfits),
+        ["selectedOutfit"] = "Tenue d'arrivée",
+        ["accessories"] = json.encode({})
+    }, function(flashId)
+        _FlashLand.toInternal("creator:playerRegistered", _src)
+        -- TODO -> Send back infos
+        _FlashServer_Database.insert("INSERT INTO flash_players_positions (flashId, position) VALUES(@flashId, @position)", {
+            ["flashId"] = flashId,
+            ["position"] = json.encode(_ConfigServer.Start.startPosition)
+        })
+        _FlashServer_Database.insert("INSERT INTO flash_players_identifiers (flashId, license, steam, live, xbl, discord, endpoint) VALUES(@flashId, @license, @steam, @live, @xbl, @discord, @endpoint)", {
+            ["flashId"] = flashId,
+            ["license"] = _FlashServer_Utils.identifiers_get(_src, "license"),
+            ["steam"] = _FlashServer_Utils.identifiers_get(_src, "steam"),
+            ["live"] = _FlashServer_Utils.identifiers_get(_src, "live"),
+            ["xbl"] = _FlashServer_Utils.identifiers_get(_src, "xbl"),
+            ["discord"] = _FlashServer_Utils.identifiers_get(_src, "discord"),
+            ["endpoint"] = _FlashServer_Utils.identifiers_get(_src, "ip")
+        })
+    end)
 end
 
 _FlashServer_Players.remove = function(playerId)

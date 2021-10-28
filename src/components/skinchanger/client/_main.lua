@@ -266,3 +266,5 @@ end
 _FlashClient_SkinChanger.setCharacterValueWithoutChange = function(key, value)
     Character[key] = value
 end
+
+_FlashLand.log("Chargement du composant: ^3skinchanger")

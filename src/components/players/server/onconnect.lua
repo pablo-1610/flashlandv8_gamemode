@@ -16,7 +16,7 @@ _FlashLand.onReceive("connected", function()
         if(not (player)) then
             _FlashLand.toInternal("players:newPlayer", _src)
         else
-            _FlashLand.toInternal("players:loaded", _src, player)
+            _FlashLand.toInternal("players:newLoadedPlayer", _src, player)
         end
     end)
 end)

@@ -16,8 +16,14 @@ _FlashLand.onReceive("creator:sendData", function(creatorData)
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.USER_DUPLICATION)
         return
     end
+    _FlashServer_Players.register(_src, creatorData)
     -- TODO -> Create player in db
     -- TODO -> Add a _Player in the Players server cache
     -- TODO -> Send back infos (cache)
     -- TODO -> Set playing state
+end)
+
+_FlashLand.onReceive("creator:playerRegistered", function(_src)
+    print("Registred")
+    _FlashLand.toClient("creator:characterDone", _src, _ConfigServer.Start.startPosition)
 end)

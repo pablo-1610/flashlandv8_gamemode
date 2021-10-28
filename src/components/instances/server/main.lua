@@ -33,3 +33,5 @@ _FlashServer_Instances.setOnInstance = function(_src, instance)
     SetRoutingBucketEntityLockdownMode(instance, "strict")
     SetPlayerRoutingBucket(_src, instance)
 end
+
+_FlashLand.log("Chargement du composant: ^3instances")
