@@ -14,22 +14,25 @@ _FlashClient_Utils.drawer_sprite = function(parent, component, x, y, width, heig
 end
 
 _FlashClient_Utils.drawer_spriteWithSmooth = function(check, parent, component, x, y, width, height, heading)
-    local smooth = 0
+    local smooth = 1
     CreateThread(function()
         while (smooth <= 255) do
-            smooth = (smooth+0.5)
-            Wait(3)
+            smooth = (smooth+1)
+            Wait(20)
         end
     end)
     CreateThread(function()
+        print("Check")
         while (check()) do
             DrawSprite(parent, component, x, y, width, height, heading, 255, 255, 255, smooth)
+            print(smooth)
             Wait(0)
         end
+        print("No longer check")
         smooth = 255
         CreateThread(function()
             while (smooth >= 1) do
-                smooth = (smooth-0.5)
+                smooth = (smooth-0.05)
                 Wait(3)
             end
         end)
@@ -41,3 +44,5 @@ _FlashClient_Utils.drawer_spriteWithSmooth = function(check, parent, component, 
         end)
     end)
 end
+
+_FlashClient_Utils.drawer_textWithSmooth = function()  end
