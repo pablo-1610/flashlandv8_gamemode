@@ -17,6 +17,8 @@ local defaultModels = {
 _FlashLand.onReceive("creator:init", function()
     Wait(5000)
     local coords, heading = _ConfigClient.Creator.pedPosition.coords, _ConfigClient.Creator.pedPosition.heading
+    _FlashClient_Synchronizer.setTimeOverride({12,00})
+    _FlashClient_Synchronizer.setWeatherOverride("EXTRASUNNY")
     _FlashClient_Utils.screen_radar(false)
     _FlashClient_Utils.loading_show("Chargement de l'éditeur de personnage", 4)
     _FlashClient_Utils.memory_loadAll(defaultModels)

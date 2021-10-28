@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-local time = {12,00}
+local time = {01,00}
 local timeOverride
 local running = false
 local intervalForAMin = _ConfigServer.Synchronizer.time

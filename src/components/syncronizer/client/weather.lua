@@ -12,6 +12,7 @@
 local overrideWeather
 
 local function setWeather(weather)
+    ClearWeatherTypePersist()
     SetWeatherTypeNow(weather)
     SetWeatherTypePersist(weather)
     SetWeatherTypeNowPersist(weather)

@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-local weather = "EXTRASUNNY"
+local weather = "THUNDER"
 local weatherOverride
 local running = false
 

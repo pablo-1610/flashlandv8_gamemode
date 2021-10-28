@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashClient_Cache.clientCache = function()
+_FlashClient_Cache.player = function()
     return (_FlashClient_Cache.getCache("playerData"))
 end
 

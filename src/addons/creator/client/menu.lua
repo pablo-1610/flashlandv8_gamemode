@@ -18,7 +18,7 @@ local builder = {
 
     skin = {},
 
-    outfit = _ConfigClient.Creator.defaultOutFits[1]
+    outfit = _ConfigClient.Creator.defaultOutFits[1].values[0]
 }
 
 local menuOpened = false
@@ -227,6 +227,7 @@ _FlashLand.onReceive("creator:initMenu", function()
                             onSelected = function()
                                 if (selectedOutfit ~= outfitId) then
                                     selectedOutfit = outfitId
+                                    builder.outfit = data.values[builder.skin["sex"]]
                                     _FlashClient_SkinChanger.applySkin(data.values[builder.skin["sex"]])
                                     ClearPedProp(PlayerPedId(), 1)
                                 end

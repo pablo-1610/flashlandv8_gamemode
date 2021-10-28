@@ -10,13 +10,12 @@
 ---@author Pablo_1610
 
 _FlashLand.onReceive("connected", function()
-    local _src = source
-    ---@param player _Player
-    _FlashServer_Players.load(_src, function(player)
-        if(not (player)) then
+    local _src = tonumber(source)
+    _FlashServer_Players.loadData(_src, function(result)
+        if (not (result)) then
             _FlashLand.toInternal("players:newPlayer", _src)
         else
-            _FlashLand.toInternal("players:newLoadedPlayer", _src, player)
+            _FlashLand.toInternal("players:newLoadedPlayer", _src, result)
         end
     end)
 end)

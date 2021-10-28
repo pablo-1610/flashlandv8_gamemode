@@ -10,7 +10,12 @@
 ---@author Pablo_1610
 
 ---@param player _Player
-_FlashLand.onReceiveWithoutNet("players:newLoadedPlayer", function(_src, player)
-    _FlashLand.log(("Le joueur ^1%s^7 est désormais ^2connecté ^7et en jeu"):format(GetPlayerName(_src)))
-    print(json.encode(_FlashServer_Utils.identifiers_getAll(_src)))
+_FlashLand.onReceiveWithoutNet("players:newLoadedPlayer", function(_src, data)
+    _FlashLand.log(("Le joueur ^1%s^7 est désormais ^2connecté"):format(GetPlayerName(_src)))
+    ---@param player _Player
+    local player = _Player(_src, data.flashId, data.identifier, data.rankId, json.decode(data.identity), data.cash, json.decode(data.skin), json.decode(data.outfits), data.selectedOutfit, json.decode(data.accessories))
+    _FlashServer_Players.add(player)
+    player:getDbPosition(function(position)
+        _FlashLand.toClient("spawn:spawn", _src, position, player.skin, player.outfits[player.selectedOutfit])
+    end)
 end)

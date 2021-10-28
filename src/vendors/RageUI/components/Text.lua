@@ -139,7 +139,7 @@ function RenderText(Text, X, Y, Font, Scale, R, G, B, A, Alignment, DropShadow, 
     local Text, X, Y = tostring(Text), (tonumber(X) or 0) / 1920, (tonumber(Y) or 0) / 1080
     SetTextFont(Font or 0)
     SetTextScale(1.0, Scale or 0)
-    SetTextColour(tonumber(R) or 255, tonumber(G) or 255, tonumber(B) or 255, tonumber(A) or 255)
+    SetTextColour(tonumber(R) or 255, tonumber(G) or 255, tonumber(B) or 255, A)
     if DropShadow then
         SetTextDropShadow()
     end

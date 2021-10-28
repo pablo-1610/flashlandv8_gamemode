@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 26/10/2021 23:14
+  Created at 29/10/2021 00:08
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,8 +9,10 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("players:nowInGame", function(player)
-    _FlashClient_Cache.setCache("playerData", player)
-    _FlashLand.setGameState(_FlashENUM_GAMESTATE.PLAYING)
-    _FlashLand.log("Chargement complet effectué, bon jeu !")
+_FlashLand.onReceive("players:onSpawn", function()
+    local _src = source
+    ---@type _Player
+    local player = _FlashServer_Players.get(_src)
+    player:spawn()
+    _FlashLand.toClient("players:nowInGame", _src, player)
 end)

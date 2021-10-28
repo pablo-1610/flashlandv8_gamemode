@@ -25,7 +25,7 @@ end
 
 _FlashServer_Players.existsInDb = function(_src)
     local license = _FlashServer_Utils.identifiers_get(_src, "license")
-    _FlashServer_Database.query("SELECT * FROM flash_players WHERE identifier = @identifier", {["identifier"] = license}, function(result)
+    _FlashServer_Database.query("SELECT * FROM flash_players WHERE identifier = @identifier", { ["identifier"] = license }, function(result)
         return (result[1] ~= nil)
     end)
 end
@@ -43,11 +43,12 @@ end
 
 ---@param player _Player
 _FlashServer_Players.add = function(player)
+    _FlashLand.log(("^2Ajout ^7d'un ^6PLAYER ^7id: ^3%s"):format(player.sId))
     list[player.sId] = player
 end
 
 _FlashServer_Players.register = function(_src, infos)
-    local outfits = {["Tenue d'arrivée"] = infos.outfit}
+    local outfits = { ["Tenue d'arrivée"] = infos.outfit }
     local license = _FlashServer_Utils.identifiers_get(_src, "license")
     _FlashServer_Database.insert("INSERT INTO flash_players (identifier, rankId, identity, cash, skin, outfits, selectedOutfit, accessories) VALUES(@identifier, @rankId, @identity, @cash, @skin, @outfits, @selectedOutfit, @accessories)", {
         ["identifier"] = license,
@@ -59,6 +60,7 @@ _FlashServer_Players.register = function(_src, infos)
         ["selectedOutfit"] = "Tenue d'arrivée",
         ["accessories"] = json.encode({})
     }, function(flashId)
+        _FlashServer_Players.add(_Player(_src, flashId, license, infos.identity, _ConfigServer.Start.cash, infos.skin, outfits, "Tenue d'arrivée", {}))
         _FlashLand.toInternal("creator:playerRegistered", _src)
         -- TODO -> Send back infos
         _FlashServer_Database.insert("INSERT INTO flash_players_positions (flashId, position) VALUES(@flashId, @position)", {
@@ -78,17 +80,14 @@ _FlashServer_Players.register = function(_src, infos)
 end
 
 _FlashServer_Players.remove = function(playerId)
+    _FlashLand.log(("^1Suppression ^7d'un ^6PLAYER ^7id: ^3%s"):format(list[playerId].sId))
     list[playerId] = nil
 end
 
-_FlashServer_Players.load = function(_src, cb)
+_FlashServer_Players.loadData = function(_src, cb)
     local identifier = _FlashServer_Utils.identifiers_get(_src, "license")
-    _FlashServer_Database.query("SELECT * FROM flash_players WHERE identifier = @identifier", {["identifier"] = identifier}, function(result)
-        if (result[1]) then
-            cb(_Player(_src, result.flashId, result.identifier, result.rankId, result.identity, result.cash, result.skin, result.outfits, result.selectedOutfit, result.accessories))
-        else
-            cb(nil)
-        end
+    _FlashServer_Database.query("SELECT * FROM flash_players WHERE identifier = @identifier", { ["identifier"] = identifier }, function(result)
+        cb(result[1])
     end)
 end
 

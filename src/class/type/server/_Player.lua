@@ -45,14 +45,28 @@ setmetatable(_Player, {
     end
 })
 
+function _Player:getDbPosition(consumer)
+    _FlashServer_Database.query("SELECT position FROM flash_players_positions WHERE flashId = @flashId", {
+        ["flashId"] = self.flashId
+    }, function(result)
+        consumer(json.decode(result[1].position))
+    end)
+end
+
 function _Player:savePosition()
+    _FlashLand.log(("Tentative de sauvegarde position du sID ^3%s^7..."):format(self.sId))
     if (self.gameType == _FlashEnum_GAMETYPE.RP and self.spawned) then
         local ped = GetPlayerPed(self.sId)
         local position = GetEntityCoords(ped)
-        position = {coords = { x = position.x, y = position.y, z = position.z }, heading = GetEntityHeading(ped)}
+        position = { coords = { x = position.x, y = position.y, z = position.z }, heading = GetEntityHeading(ped) }
         _FlashServer_Database.execute("UPDATE flash_players_positions SET position = @position WHERE flashId = @flashId", {
             ["position"] = json.encode(position),
             ["flashId"] = self.flashId
         })
+        _FlashLand.log(("Sauvegarde la position du sID ^3%s"):format(self.sId))
     end
+end
+
+function _Player:spawn()
+    self.spawned = true
 end

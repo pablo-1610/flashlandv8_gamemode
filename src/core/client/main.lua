@@ -21,12 +21,12 @@ _FlashLand.setGameState = function(newGameState)
 end
 
 _FlashLand.setIsWaitingForServer = function(newState)
-    isWaitingForServer = true
+    isWaitingForServer = newState
     if(isWaitingForServer) then
         CreateThread(function()
-            _FlashClient_Utils.loading_show("En attente du serveur", 5)
+            _FlashClient_Utils.loading_show("En attente du serveur", 4)
             while (isWaitingForServer) do
-                Wait(100)
+                Wait(1)
             end
             _FlashClient_Utils.loading_hide()
         end)
