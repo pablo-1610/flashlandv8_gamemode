@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:11
+  Created at 28/10/2021 16:23
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,15 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_ConfigServer = {
-    Logs = {
-        join = "",
-        left = "",
-        new = "",
-        warden = "",
-    },
-
-    RichPresence = {
-        appId = "830843275950424125"
-    }
-}
+_FlashServer_Players.kick = function(_src, author, reason)
+    DropPlayer(_src, ("Vous avez été expulsé de FlashLand !\n\nPar: %s\n\nRaison: %s"):format(author, reason))
+end

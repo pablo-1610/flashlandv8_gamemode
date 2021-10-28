@@ -11,11 +11,25 @@
 
 gameType = _FlashEnum_GAMETYPE.RP
 gameState = _FlashENUM_GAMESTATE.WAITING
+isWaitingForServer = false
 
 _FlashLand.setGameState = function(newGameState)
     gameState = newGameState
     if (gameState == _FlashENUM_GAMESTATE.PLAYING) then
         _FlashLand.toInternal("nowPlaying")
+    end
+end
+
+_FlashLand.setIsWaitingForServer = function(newState)
+    isWaitingForServer = true
+    if(isWaitingForServer) then
+        CreateThread(function()
+            _FlashClient_Utils.loading_show("En attente du serveur", 5)
+            while (isWaitingForServer) do
+                Wait(100)
+            end
+            _FlashClient_Utils.loading_hide()
+        end)
     end
 end
 

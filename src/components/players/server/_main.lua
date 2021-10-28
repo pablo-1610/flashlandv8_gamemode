@@ -23,6 +23,13 @@ _FlashServer_Players.exists = function(playerId)
     return (list[playerId] ~= nil)
 end
 
+_FlashServer_Players.existsInDb = function(_src)
+    local license = _FlashServer_Utils.identifiers_get(_src, "license")
+    _FlashServer_Database.query("SELECT * FROM flash_players WHERE identifier = @identifier", {["identifier"] = license}, function(result)
+        return (result[1] ~= nil)
+    end)
+end
+
 _FlashServer_Players.get = function(playerId)
     if (not (_FlashServer_Players.exists(playerId))) then
         return nil

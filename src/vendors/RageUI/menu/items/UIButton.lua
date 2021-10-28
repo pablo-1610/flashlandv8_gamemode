@@ -18,6 +18,7 @@ local SettingsButton = {
 ---@return nil
 ---@public
 function RageUI.Button(Label, Description, Style, Enabled, Action, Submenu)
+    Enabled = Enabled and (not isWaitingForServer)
     local CurrentMenu = RageUI.CurrentMenu
     if CurrentMenu ~= nil and CurrentMenu() then
         ---@type number

@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:11
+  Created at 25/10/2021 12:23
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,15 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_ConfigServer = {
-    Logs = {
-        join = "",
-        left = "",
-        new = "",
-        warden = "",
-    },
-
-    RichPresence = {
-        appId = "830843275950424125"
-    }
+_FlashEnum_WARDENVIOLATION = {
+    USER_DUPLICATION = { code = 200, severity = _FlashEnum_WARDENSEVERITY.HIGH }
 }

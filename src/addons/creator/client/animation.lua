@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 25/10/2021 12:23
+  Created at 28/10/2021 15:47
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_FlashEnum_WARDENREASON = {
-
-}
+_FlashLand.onReceiveWithoutNet("creator:characterDone", function()
+    -- TODO -> Animation when character is done
+end)

@@ -16,15 +16,19 @@ local builder = {
         age = nil
     },
 
-    skin = {
-
-    },
+    skin = {},
 
     outfit = _ConfigClient.Creator.defaultOutFits[1]
 }
 
+local menuOpened = false
+
 local function validateInfos()
     return (builder.identity.firstname ~= nil and builder.identity.lastname ~= nil and builder.identity.age ~= nil and tonumber(builder.identity.age) ~= nil and builder.identity.age >= 18 and builder.identity.age <= 99)
+end
+
+local function deleteMenus()
+    -- TODO -> Delete menus
 end
 
 local function createMenus()
@@ -81,22 +85,34 @@ end
 
 _FlashLand.onReceive("creator:initMenu", function()
     _FlashClient_Menu.tryOpenMenu(function()
+        menuOpened = true
+        _FlashLand.onReceiveWithoutNet("creator:menuClose", function()
+            menuOpened = false
+        end)
         local selectedComponent, selectedComponentMax, selectedComponentData, selectedOutfit = 0, 0, {}, 1
         local menus = createMenus()
         _FlashClient_SkinChanger.setAllToDefault()
         for _, component in pairs(_ConfigClient.Skin) do
-            builder.skin[component.id] = _FlashClient_SkinChanger.getCharacter()[component.id]
+            builder.skin[component.id] = 0
+            if (component.sub ~= nil) then
+                builder.skin[component.sub] = 0
+            end
         end
         builder.skin["sex"] = 0
         _FlashClient_SkinChanger.applySkin(_ConfigClient.Creator.defaultOutFits[selectedOutfit].values[0])
         RageUI.Visible(menus[1], true)
         CreateThread(function()
-            while (true) do
+            while (menuOpened) do
                 Wait(0)
                 RageUI.IsVisible(menus[1], function()
                     RageUI.Button("Customisation de l'identité", "Vos informations personnelles", { RightLabel = "→→" }, true, {}, menus[2])
                     RageUI.Button("Customisation du personnage", "Vos informations personnelles", { RightLabel = "→→" }, true, {}, menus[3])
-                    RageUI.Button("Valider et commencer", "Confirmez vos informations et commencez l'aventure ~r~FlashLand", { Color = { BackgroundColor = { 0, 255, 0, 25 } } }, validateInfos(), {})
+                    RageUI.Button("Valider et commencer", "Confirmez vos informations et commencez l'aventure ~r~FlashLand", { Color = { BackgroundColor = { 0, 255, 0, 25 } } }, validateInfos(), {
+                        onSelected = function()
+                            _FlashLand.setIsWaitingForServer(true)
+                            _FlashLand.toServer("creator:sendData", builder)
+                        end
+                    })
                 end)
                 RageUI.IsVisible(menus[2], function()
                     RageUI.Button(("Prénom: %s"):format(_FlashClient_Utils.menu_label_valueOrVoid(builder.identity.firstname)), nil, { RightLabel = _FlashClient_Utils.menu_label_change() }, true, {
@@ -218,6 +234,8 @@ _FlashLand.onReceive("creator:initMenu", function()
                     end
                 end)
             end
+            _FlashClient_Menu.menuClosed()
+            -- TODO -> Delete menus
         end)
     end)
 end)

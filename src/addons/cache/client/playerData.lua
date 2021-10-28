@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:11
+  Created at 28/10/2021 15:48
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,15 +9,10 @@
 --]]
 ---@author Pablo_1610
 
-_ConfigServer = {
-    Logs = {
-        join = "",
-        left = "",
-        new = "",
-        warden = "",
-    },
+_FlashClient_Cache.clientCache = function()
+    return (_FlashClient_Cache.getCache("playerData"))
+end
 
-    RichPresence = {
-        appId = "830843275950424125"
-    }
-}
+_FlashLand.onReceive("cache:setPlayerData", function(playerData)
+    _FlashClient_Cache.setCache("playerData", playerData)
+end)

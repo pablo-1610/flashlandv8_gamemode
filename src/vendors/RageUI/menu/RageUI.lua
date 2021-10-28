@@ -403,7 +403,7 @@ function RageUI.Banner()
             if CurrentMenu.Sprite ~= nil then
                 if CurrentMenu.Sprite.Dictionary ~= nil then
                     if CurrentMenu.Sprite.Dictionary == "commonmenu" then
-                        RenderSprite(CurrentMenu.Sprite.Dictionary, CurrentMenu.Sprite.Texture, CurrentMenu.X, CurrentMenu.Y, RageUI.Settings.Items.Title.Background.Width + CurrentMenu.WidthOffset, RageUI.Settings.Items.Title.Background.Height, CurrentMenu.Sprite.Color.R,CurrentMenu.Sprite.Color.G,CurrentMenu.Sprite.Color.B,CurrentMenu.Sprite.Color.A)
+                        RenderSprite(CurrentMenu.Sprite.Dictionary, CurrentMenu.Sprite.Texture, CurrentMenu.X, CurrentMenu.Y, RageUI.Settings.Items.Title.Background.Width + CurrentMenu.WidthOffset, RageUI.Settings.Items.Title.Background.Height, CurrentMenu.Sprite.Color.R, CurrentMenu.Sprite.Color.G, CurrentMenu.Sprite.Color.B, CurrentMenu.Sprite.Color.A)
                     else
                         RenderSprite(CurrentMenu.Sprite.Dictionary, CurrentMenu.Sprite.Texture, CurrentMenu.X, CurrentMenu.Y, RageUI.Settings.Items.Title.Background.Width + CurrentMenu.WidthOffset, RageUI.Settings.Items.Title.Background.Height, nil)
                     end
@@ -455,7 +455,7 @@ function RageUI.Subtitle()
                         CurrentMenu.Pagination.Maximum = CurrentMenu.Pagination.Total
                     end
                 end
-                
+
                 if CurrentMenu.Display.PageCounter then
                     if CurrentMenu.PageCounter == nil then
                         RenderText(CurrentMenu.PageCounterColour .. CurrentMenu.Index .. " / " .. CurrentMenu.Options, CurrentMenu.X + RageUI.Settings.Items.Subtitle.PreText.X + CurrentMenu.WidthOffset, CurrentMenu.Y + RageUI.Settings.Items.Subtitle.PreText.Y + RageUI.ItemOffset, 0, RageUI.Settings.Items.Subtitle.PreText.Scale, 245, 245, 245, 255, 2)
@@ -517,7 +517,7 @@ function RageUI.Render()
             RageUI.StatisticPanelCount = 0
             RageUI.ItemOffset = 0
             if CurrentMenu.Controls.Back.Enabled then
-                if CurrentMenu.Controls.Back.Pressed and CurrentMenu.Closable then
+                if CurrentMenu.Controls.Back.Pressed and CurrentMenu.Closable and (not isWaitingForServer) then
                     CurrentMenu.Controls.Back.Pressed = false
                     local Audio = RageUI.Settings.Audio
                     RageUI.PlaySound(Audio[Audio.Use].Back.audioName, Audio[Audio.Use].Back.audioRef)
