@@ -9,14 +9,14 @@
 --]]
 ---@author Pablo_1610
 
-local weather = "THUNDER"
+local weather = "EXTRASUNNY"
 local weatherOverride
 local running = false
 
 local intervalForAChange = 60000
 
 local function changeWeather()
-    -- TODO: Faire le changement de météo
+    -- TODO → Meteo algorithm
 end
 
 _FlashServer_Synchronizer.destroyWeatherThread = function()

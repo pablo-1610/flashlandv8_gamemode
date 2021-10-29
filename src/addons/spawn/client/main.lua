@@ -19,8 +19,8 @@ _FlashLand.onReceive("spawn:spawn", function(spawn, skin, currentOutfit)
     local model = "mp_m_freemode_01"
     _FlashClient_Utils.memory_load(model)
     if(not (alreadyLoaded)) then
-        _FlashClient_Utils.ped_spawn("mp_m_freemode_01", { x = spawn.coords.x, y = spawn.coords.x, z = spawn.coords.x, heading = spawn.heading})
-        while (#(GetEntityCoords(PlayerPedId())-vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z)) >= 5) do
+        _FlashClient_Utils.ped_spawn("mp_m_freemode_01", { x = spawn.coords.x, y = spawn.coords.x, z = spawn.coords.z-1.0, heading = spawn.heading})
+        while (#(GetEntityCoords(PlayerPedId())-vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z-1.0)) >= 5) do
             SetEntityCoords(PlayerPedId(), spawn.coords.x, spawn.coords.y, spawn.coords.z)
             Wait(10)
         end

@@ -11,11 +11,38 @@
 
 local overrideWeather
 
-local function setWeather(weather)
+local currentWeather
+
+local function doTrails()
+    if (currentWeather == "XMAS") then
+        SetForceVehicleTrails(true)
+        SetForcePedFootstepsTracks(true)
+    else
+        SetForceVehicleTrails(false)
+        SetForcePedFootstepsTracks(false)
+    end
+end
+
+local function setWeather(newWeather)
+    SetWeatherTypeOverTime(currentWeather, 3.5)
+    Wait(3500)
+    ClearOverrideWeather()
+    ClearWeatherTypePersist()
+    SetWeatherTypePersist(newWeather)
+    SetWeatherTypeNow(newWeather)
+    SetWeatherTypeNowPersist(newWeather)
+    currentWeather = newWeather
+    doTrails()
+end
+
+local function setWeatherNow(weather)
+    ClearOverrideWeather()
     ClearWeatherTypePersist()
     SetWeatherTypeNow(weather)
     SetWeatherTypePersist(weather)
     SetWeatherTypeNowPersist(weather)
+    currentWeather = newWeather
+    doTrails()
 end
 
 _FlashClient_Synchronizer.destroyWeatherOverride = function()
@@ -25,12 +52,13 @@ end
 
 _FlashClient_Synchronizer.setWeatherOverride = function(weather)
     overrideWeather = weather
-    setWeather(weather)
+    setWeatherNow(weather)
 end
 
 _FlashLand.onReceiveWithoutNet("joined", function()
     _FlashLand.toServer("synchronizer:getWeather")
 end)
+
 
 _FlashLand.onReceive("synchronizer:setWeather", function(weather)
     if (overrideWeather ~= nil) then
