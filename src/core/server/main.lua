@@ -11,12 +11,12 @@
 
 _FlashLand.toClient = function(event, targetSrc, ...)
     TriggerClientEvent(_FlashLand.format(event), targetSrc, ...)
-    _FlashLand.log(("Envoie d'un event au client (^3%i^7): ^1%s"):format(targetSrc, event))
+    _FlashLand.log(("Envoie d'un event au client (^3%i^7) ^6>^1 %s"):format(targetSrc, event))
 end
 
 _FlashLand.toClients = function(event, ...)
     TriggerClientEvent(_FlashLand.format(event), -1, ...)
-    _FlashLand.log(("Envoie d'un event aux clients: ^1%s"):format(event))
+    _FlashLand.log(("Envoie d'un event aux clients ^6>^1 %s"):format(event))
 end
 
 _FlashLand.serverResponded = function(target)
@@ -25,7 +25,7 @@ end
 
 _FlashLand.toClientExposed = function(event, targetSrc, ...)
     TriggerClientEvent(event, targetSrc, ...)
-    _FlashLand.log(("Envoie d'un event (^1Exposé^7) au client (^3%s^7): ^1%s"):format(targetSrc, event))
+    _FlashLand.log(("Envoie d'un event (^1Exposé^7) au client (^3%s^7) ^6>^1 %s"):format(targetSrc, event))
 end
 
 CreateThread(function()

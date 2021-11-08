@@ -54,7 +54,7 @@ function _Player:getDbPosition(consumer)
 end
 
 function _Player:savePosition()
-    _FlashLand.log(("Tentative de sauvegarde position du sID ^3%s^7..."):format(self.sId))
+    --_FlashLand.log(("Tentative de sauvegarde position du sID ^3%s^7..."):format(self.sId))
     if (self.gameType == _FlashEnum_GAMETYPE.RP and self.spawned) then
         local ped = GetPlayerPed(self.sId)
         local position = GetEntityCoords(ped)
@@ -63,7 +63,7 @@ function _Player:savePosition()
             ["position"] = json.encode(position),
             ["flashId"] = self.flashId
         })
-        _FlashLand.log(("Sauvegarde la position du sID ^3%s"):format(self.sId))
+        --_FlashLand.log(("Sauvegarde la position du sID ^3%s"):format(self.sId))
     end
 end
 

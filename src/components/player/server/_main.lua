@@ -43,7 +43,7 @@ end
 
 ---@param player _Player
 _FlashServer_Players.add = function(player)
-    _FlashLand.log(("^2Ajout ^7d'un ^6PLAYER ^7id: ^3%s"):format(player.sId))
+    --_FlashLand.log(("^2Ajout ^7d'un ^6PLAYER ^7id: ^3%s"):format(player.sId))
     list[player.sId] = player
 end
 
@@ -80,7 +80,7 @@ _FlashServer_Players.register = function(_src, infos)
 end
 
 _FlashServer_Players.remove = function(playerId)
-    _FlashLand.log(("^1Suppression ^7d'un ^6PLAYER ^7id: ^3%s"):format(list[playerId].sId))
+    --_FlashLand.log(("^1Suppression ^7d'un ^6PLAYER ^7id: ^3%s"):format(list[playerId].sId))
     list[playerId] = nil
 end
 

@@ -35,12 +35,12 @@ end
 
 _FlashLand.toServer = function(event, ...)
     TriggerServerEvent(_FlashLand.format(event), ...)
-    _FlashLand.log(("Envoie d'un event au serveur: ^1%s"):format(event))
+    _FlashLand.log(("Envoie d'un event au serveur ^6>^1 %s"):format(event))
 end
 
 _FlashLand.toServerExposed = function(event, ...)
     TriggerServerEvent(event, ...)
-    _FlashLand.log(("Envoie d'un event (^1Exposé^7) au serveur: ^1%s"):format(event))
+    _FlashLand.log(("Envoie d'un event (^1Exposé^7) au serveur ^6>^1 %s"):format(event))
 end
 
 CreateThread(function()

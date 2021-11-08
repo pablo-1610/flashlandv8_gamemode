@@ -48,12 +48,12 @@ local isEventRegistred = function(event)
 end
 
 _FlashLand.toInternal = function(event, ...)
-    _FlashLand.log(("Envoie d'un event interne: ^3%s^7"):format(event))
+    _FlashLand.log(("Envoie d'un event interne ^6>^3 %s^7"):format(event))
     TriggerEvent(_FlashLand.format(event), ...)
 end
 
 _FlashLand.toInternalExposed = function(event, ...)
-    _FlashLand.log(("Envoie d'un event interne: ^3%s^7"):format(event))
+    _FlashLand.log(("Envoie d'un event interne ^6>^3 %s^7"):format(event))
     TriggerEvent(event, ...)
 end
 
@@ -66,7 +66,7 @@ _FlashLand.onReceive = function(event, handler)
     --AddEventHandler(event, handler)
     AddEventHandler(event, function(...)
         local _src, isServer = source, (GetGameName() == "fxserver")
-        _FlashLand.log(isServer and ("Réception d'un event client (^3%s^7): ^2%s"):format(_src, baseEvent) or (("Réception d'un event serveur: ^2%s"):format(baseEvent)))
+        _FlashLand.log(isServer and ("Réception d'un event client (^3%s^7) ^6>^2 %s"):format(_src, baseEvent) or (("Réception d'un event serveur ^6>^2 %s"):format(baseEvent)))
         handler(...)
     end)
 end
@@ -103,16 +103,16 @@ end
 
 _FlashLand.err = function(string)
     if (_Config.enableErrorsLog) then
-        print(("%s (^6ERREUR^7) %s^7"):format(_Config.prefix, string))
+        print(("[^1Erreur^7] %s^7"):format(string))
     end
 end
 
 _FlashLand.loadedComponent = function(id)
-    _FlashLand.log(("Chargement du composant: ^5%s"):format(id))
+    _FlashLand.log(("Chargement du composant ^6>^5 %s"):format(id))
 end
 
 _FlashLand.loadedAddon = function(id)
-    _FlashLand.log(("Chargement de l'addon: ^4%s"):format(id))
+    _FlashLand.log(("Chargement de l'addon ^6>^4 %s"):format(id))
 end
 
 _FlashLand.countTable = function(table)

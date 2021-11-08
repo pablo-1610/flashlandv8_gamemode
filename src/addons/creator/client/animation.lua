@@ -23,11 +23,15 @@ _FlashLand.onReceiveWithoutNet("creator:playAnimation", function(spawn)
     _FlashClient_Utils.drawer_textWithSmooth(function()
         return (animation)
     end, 1920/2, (1080/2)+300, "Bienvenue sur ~r~FlashLand", {252, 255, 255}, function()
-        while (#(GetEntityCoords(PlayerPedId())-vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z-1.0)) >= 2.0) do
-            _FlashClient_Utils.ped_tp(PlayerPedId(), vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z-1.0), spawn.heading)
+        while (#(GetEntityCoords(PlayerPedId()) - vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z - 1.0)) >= 1.0) do
+            _FlashClient_Utils.ped_tp(PlayerPedId(), vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z - 1.0), spawn.heading)
             Wait(1)
         end
         SwitchInPlayer(PlayerPedId())
+        while (#(GetEntityCoords(PlayerPedId()) - vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z - 1.0)) >= 1.0) do
+            _FlashClient_Utils.ped_tp(PlayerPedId(), vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z - 1.0), spawn.heading)
+            Wait(1)
+        end
         Wait(3500)
         _FlashLand.toInternal("spawn:spawned")
         _FlashClient_Utils.screen_radar(true)

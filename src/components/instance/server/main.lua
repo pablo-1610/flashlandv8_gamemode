@@ -14,15 +14,19 @@ _FlashServer_Instances = {}
 
 local public = 0
 
+_FlashServer_Instances.getPublicInstance = function()
+    return (public)
+end
+
 _FlashServer_Instances.setOnPublicInstance = function(_src)
     SetPlayerRoutingBucket(_src, public)
 end
 
 _FlashServer_Instances.setOnRandomInstance = function(_src)
-    local instance = math.random(1,800000)
+    local instance = math.random(1, 800000)
     SetRoutingBucketEntityLockdownMode(instance, "strict")
     SetPlayerRoutingBucket(_src, public)
-    return instance
+    return (instance)
 end
 
 _FlashServer_Instances.getPlayerInstance = function(_src)

@@ -132,7 +132,9 @@ shared_scripts {
     -- Modules
     "src/components/**/shared/*.lua",
     -- Addons
-    "src/addons/**/shared/*.lua"
+    "src/addons/**/shared/*.lua",
+    -- Dev
+    "src/dev/shared.lua",
 }
 
 client_scripts {
@@ -148,7 +150,7 @@ client_scripts {
     -- Addons
     "src/addons/**/client/*.lua",
     -- Dev
-    "src/dev/client.lua"
+    "src/dev/client.lua",
 }
 
 server_scripts {
@@ -162,5 +164,7 @@ server_scripts {
     -- Modules
     "src/components/**/server/*.lua",
     -- Addons
-    "src/addons/**/server/*.lua"
+    "src/addons/**/server/*.lua",
+    -- Dev
+    "src/dev/server.lua",
 }

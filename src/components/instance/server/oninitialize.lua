@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:12
+  Created at 08/11/2021 23:24
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,8 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_Config = {
-    prefix = "[^6FlashLand^7]",
-    environment = "DEV",
-    enableErrorsLog = true,
-}
+_FlashLand.onReceiveWithoutNet("loaded", function()
+    SetRoutingBucketEntityLockdownMode(_FlashServer_Instances.getPublicInstance(), _ConfigServer.Citizens.lockdown and "strict" or "inactive")
+end)

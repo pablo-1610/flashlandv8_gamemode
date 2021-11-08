@@ -16,6 +16,10 @@ _ConfigServer = {
         cash = (1500),
     },
 
+    Citizens = {
+        lockdown = false,
+    },
+
     Synchronizer = {
         time = (30000),
         weather = (60000 * 60),
@@ -30,6 +34,6 @@ _ConfigServer = {
     },
 
     RichPresence = {
-        appId = "830843275950424125"
+        appId = "830843275950424125",
     }
 }
