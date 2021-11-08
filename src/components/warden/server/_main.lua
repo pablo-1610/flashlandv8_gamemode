@@ -9,6 +9,7 @@
 --]]
 ---@author Pablo_1610
 
+---@class _FlashServer_Warden
 _FlashServer_Warden = {}
 
 local function actionBySeverity(_src, violation)

@@ -29,6 +29,7 @@ _FlashLand.toClientExposed = function(event, targetSrc, ...)
 end
 
 CreateThread(function()
+    _FlashLand.log(("Initialisation FlashLand version ^0%s"):format(_FlashServer_Versioning.getCurrentVersion()))
     _FlashLand.log("Demarrage du serveur...")
     _FlashLand.toInternal("loaded")
 end)

@@ -10,3 +10,5 @@
 ---@author Pablo_1610
 
 _FlashLand.loadedComponent("player")
+
+-- TODO → Player
