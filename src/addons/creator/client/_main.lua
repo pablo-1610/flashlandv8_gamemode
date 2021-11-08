@@ -35,4 +35,4 @@ _FlashLand.onReceive("creator:init", function()
     end)
 end)
 
-_FlashLand.log("Chargement de l'addon: ^3creator")
+_FlashLand.loadedAddon("creator")

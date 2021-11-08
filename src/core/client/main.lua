@@ -54,3 +54,5 @@ CreateThread(function()
         end
     end
 end)
+
+_FlashLand.log("Bienvenue sur ^1FlashLand ^7!")

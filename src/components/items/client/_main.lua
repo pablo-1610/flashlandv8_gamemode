@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 16:54
+  Created at 08/11/2021 22:31
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,9 @@
 --]]
 ---@author Pablo_1610
 
-_FlashClient_Synchronizer = {}
+---@class _FlashClient_Items
+_FlashClient_Items = {}
 
-_FlashLand.loadedComponent("synchronizer")
+-- TODO → Faire le useItem
+
+_FlashLand.loadedComponent("items")

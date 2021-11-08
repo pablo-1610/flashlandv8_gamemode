@@ -9,4 +9,4 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.log("Chargement du composant: ^3richpresence")
+_FlashLand.loadedComponent("richPresence")

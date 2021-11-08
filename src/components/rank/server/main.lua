@@ -66,4 +66,4 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
     end)
 end)
 
-_FlashLand.log("Chargement du composant: ^3ranks")
+_FlashLand.loadedComponent("rank")

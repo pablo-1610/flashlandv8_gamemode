@@ -23,3 +23,5 @@ _FlashLand.onReceive("creator:playerRegistered", function(_src)
     _FlashServer_Instances.setOnPublicInstance(_src)
     _FlashLand.toClient("creator:characterDone", _src, _ConfigServer.Start.startPosition)
 end)
+
+_FlashLand.loadedAddon("creator")

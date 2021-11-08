@@ -58,11 +58,17 @@ _FlashLand.toInternalExposed = function(event, ...)
 end
 
 _FlashLand.onReceive = function(event, handler)
+    local baseEvent = event
     event = _FlashLand.format(event)
     if (not (isEventRegistred(event))) then
         registerEvent(event)
     end
-    AddEventHandler(event, handler)
+    --AddEventHandler(event, handler)
+    AddEventHandler(event, function(...)
+        local _src, isServer = source, (GetGameName() == "fxserver")
+        _FlashLand.log(isServer and ("Réception d'un event client (^3%s^7): ^2%s"):format(_src, baseEvent) or (("Réception d'un event serveur: ^2%s"):format(baseEvent)))
+        handler(...)
+    end)
 end
 
 _FlashLand.onReceiveExposed = function(event, handler)
@@ -93,6 +99,20 @@ _FlashLand.log = function(string)
     if (_Config.environment == _FlashEnum_ENV.DEV) then
         print(("%s %s^7"):format(_Config.prefix, string))
     end
+end
+
+_FlashLand.err = function(string)
+    if (_Config.enableErrorsLog) then
+        print(("%s (^6ERREUR^7) %s^7"):format(_Config.prefix, string))
+    end
+end
+
+_FlashLand.loadedComponent = function(id)
+    _FlashLand.log(("Chargement du composant: ^5%s"):format(id))
+end
+
+_FlashLand.loadedAddon = function(id)
+    _FlashLand.log(("Chargement de l'addon: ^4%s"):format(id))
 end
 
 _FlashLand.countTable = function(table)

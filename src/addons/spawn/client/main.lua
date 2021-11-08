@@ -40,4 +40,4 @@ _FlashLand.onReceive("spawn:spawn", function(spawn, skin, currentOutfit)
     _FlashClient_Utils.loading_hide()
 end)
 
-_FlashLand.log("Chargement de l'addon: ^3spawn")
+_FlashLand.loadedAddon("spawn")

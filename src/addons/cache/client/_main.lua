@@ -20,3 +20,5 @@ end
 _FlashClient_Cache.getCache = function(cacheId)
     return (caches[cacheId])
 end
+
+_FlashLand.loadedAddon("cache")

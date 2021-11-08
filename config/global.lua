@@ -11,5 +11,6 @@
 
 _Config = {
     prefix = "[^1FlashLand^7]",
-    environment = "DEV"
+    environment = "DEV",
+    enableErrorsLog = true,
 }

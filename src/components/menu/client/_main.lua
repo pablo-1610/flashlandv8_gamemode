@@ -28,4 +28,4 @@ _FlashClient_Menu.menuClosed = function()
     isMenuOpen = false
 end
 
-_FlashLand.log("Chargement du composant: ^3menu")
+_FlashLand.loadedComponent("menu")

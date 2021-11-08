@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 28/10/2021 18:29
+  Created at 29/10/2021 02:06
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,4 +9,4 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.log("Chargement du composant: ^3players")
+_FlashLand.loadedComponent("zone")

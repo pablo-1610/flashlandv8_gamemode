@@ -33,3 +33,5 @@ end
 _FlashServer_Warden.violation = function(_src, violation)
     actionBySeverity(_src, violation)
 end
+
+_FlashLand.loadedComponent("warden")

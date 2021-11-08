@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 26/10/2021 23:26
+  Created at 08/11/2021 22:08
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -10,7 +10,10 @@
 ---@author Pablo_1610
 
 _FlashLand.onReceiveWithoutNet("loaded", function()
-    _FlashClient_Utils.loading_show("Chargement de vos données", 4)
+    _FlashServer_Database.query("SELECT * FROM flash_item", {}, function(result)
+        for _, row in pairs(result) do
+            local item = _Item(row.item_id, row.item_label, row.item_description, row.item_weight)
+            _FlashServer_Items.add(item)
+        end
+    end)
 end)
-
-_FlashLand.loadedAddon("loading")

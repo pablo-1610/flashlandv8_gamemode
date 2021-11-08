@@ -39,4 +39,4 @@ _FlashServer_Database.insert = function(query, params, func)
     exports[GetCurrentResourceName()]:mysql_insert(query, safeParameters(params), func)
 end
 
-_FlashLand.log("Chargement du composant: ^3database")
+_FlashLand.loadedComponent("database")

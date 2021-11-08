@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 16:54
+  Created at 28/10/2021 18:29
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,4 @@
 --]]
 ---@author Pablo_1610
 
-_FlashClient_Synchronizer = {}
-
-_FlashLand.loadedComponent("synchronizer")
+_FlashLand.loadedComponent("player")

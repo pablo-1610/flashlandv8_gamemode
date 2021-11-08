@@ -91,4 +91,4 @@ _FlashServer_Players.loadData = function(_src, cb)
     end)
 end
 
-_FlashLand.log("Chargement du composant: ^3players")
+_FlashLand.loadedComponent("player")

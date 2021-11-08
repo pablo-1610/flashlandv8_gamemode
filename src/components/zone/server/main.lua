@@ -24,4 +24,4 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
     end)
 end)
 
-_FlashLand.log("Chargement du composant: ^3zones")
+_FlashLand.loadedComponent("zone")
