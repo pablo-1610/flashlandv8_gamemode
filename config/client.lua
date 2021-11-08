@@ -10,6 +10,10 @@
 ---@author Pablo_1610
 
 _ConfigClient = {
+    RichPresence = {
+        appId = 907401133717340161,
+    },
+
     Creator = {
         pedPosition = {coords = vector3(686.25, 577.69, 130.46), heading = 164.0},
         camPosition = {coords = vector3(683.78, 570.56, 130.46)},

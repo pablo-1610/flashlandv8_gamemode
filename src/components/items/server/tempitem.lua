@@ -11,7 +11,7 @@
 
 _FlashServer_Items.registerItem = function(id, label, description, weight, onUse)
     if (_FlashServer_Items.exists(id)) then
-        _FlashLand.err("Tentative d'enregistrer un item deja existant")
+        _FlashLand.err(("Tentative d'enregistrer un item deja existant (^3%s^7)"):format(label))
         return
     end
     ---@type _Item

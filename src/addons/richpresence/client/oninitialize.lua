@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 28/10/2021 16:03
+  Created at 09/11/2021 00:23
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,6 @@
 --]]
 ---@author Pablo_1610
 
----@class _FlashServer_RichPresence
-_FlashServer_RichPresence = {}
-
-_FlashLand.loadedComponent("richPresence")
+_FlashLand.onReceiveWithoutNet("loaded", function()
+    _FlashClient_RichPresence.initialize(_ConfigClient.RichPresence.appId)
+end)
