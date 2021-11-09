@@ -12,4 +12,10 @@
 ---@class _FlashServer_RichPresence
 _FlashServer_RichPresence = {}
 
+_FlashLand.onReceive("richpresence:getVersion", function()
+    local _src = source
+    local version = _FlashServer_Versioning.getCurrentVersion()
+    _FlashLand.toClient("richpresence:cbVersion", _src, version)
+end)
+
 _FlashLand.loadedComponent("richPresence")

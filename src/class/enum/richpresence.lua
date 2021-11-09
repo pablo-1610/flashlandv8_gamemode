@@ -11,8 +11,8 @@
 
 _FlashEnum_RICHPRESENCE = {
     CONNECTING = function()
-        SetRichPresence("Arrive en ville")
+        SetRichPresence("Arrive en ville... ✈️")
         SetDiscordRichPresenceAsset("connecting") -- The name of the big picture you added in the application.
-        SetDiscordRichPresenceAssetText("Connexion en cours...")
+        SetDiscordRichPresenceAssetText("discord.gg/flashland")
     end
 }

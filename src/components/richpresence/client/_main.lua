@@ -19,12 +19,15 @@ _FlashClient_RichPresence.initialize = function(id)
     appId = id
     SetDiscordAppId(id)
     _FlashClient_RichPresence.setPresence(_FlashEnum_RICHPRESENCE.CONNECTING)
-    _FlashClient_RichPresence.setInfos()
+    _FlashClient_RichPresence.requestVersion()
 end
 
-_FlashClient_RichPresence.setInfos = function()
-    SetDiscordRichPresenceAssetSmall("flashguy")
-    SetDiscordRichPresenceAssetSmallText(("FlashLand [PRE-0.04:%s]"):format(_Config.environment))
+_FlashClient_RichPresence.requestVersion = function()
+    _FlashLand.onReceive("richpresence:cbVersion", function(version)
+        SetDiscordRichPresenceAssetSmall("flashguy")
+        SetDiscordRichPresenceAssetSmallText(("FlashLand [Env. → %s] {%s}"):format(_Config.environment,version))
+    end)
+    _FlashLand.toServer("richpresence:getVersion")
 end
 
 _FlashClient_RichPresence.setPresence = function(presenceEnum)
