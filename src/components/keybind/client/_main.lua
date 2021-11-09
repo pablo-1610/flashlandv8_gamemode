@@ -12,8 +12,13 @@
 ---@class _FlashClient_KeyBind
 _FlashClient_KeyBind = {}
 
+local canUse = false
+
 _FlashClient_KeyBind.addKey = function(defaultKey, desc, action)
     RegisterCommand(("+flashland_%s"):format(defaultKey), function(source, args)
+        if(not (canUse)) then
+            return
+        end
         action(source)
     end)
     --[[
@@ -23,3 +28,6 @@ _FlashClient_KeyBind.addKey = function(defaultKey, desc, action)
     RegisterKeyMapping(("+flashland_%s"):format(defaultKey), desc, "keyboard", defaultKey)
 end
 
+_FlashLand.onReceiveWithoutNet("nowPlaying", function()
+    canUse = true
+end)

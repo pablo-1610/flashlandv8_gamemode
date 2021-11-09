@@ -91,6 +91,12 @@ _FlashLand.log = function(string)
     end
 end
 
+_FlashLand.sql = function(query)
+    if (_Config.enableSqlLog) then
+        print(("%s ^0%s^7"):format("[^5MySQL^7]", query))
+    end
+end
+
 _FlashLand.err = function(string)
     if (_Config.enableErrorsLog) then
         print(("[^1Erreur^7] %s^7"):format(string))

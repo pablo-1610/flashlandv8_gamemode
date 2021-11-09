@@ -11,3 +11,5 @@
 
 ---@class _FlashServer_Populator
 _FlashServer_Populator = {}
+
+_FlashLand.loadedAddon("populator")

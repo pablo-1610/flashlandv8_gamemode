@@ -28,14 +28,17 @@ local function safeParameters(params)
 end
 
 _FlashServer_Database.execute = function(query, params, func)
+    _FlashLand.sql(query)
     exports[GetCurrentResourceName()]:mysql_execute(query, safeParameters(params), func)
 end
 
 _FlashServer_Database.query = function(query, params, func)
+    _FlashLand.sql(query)
     exports[GetCurrentResourceName()]:mysql_fetch_all(query, safeParameters(params), func)
 end
 
 _FlashServer_Database.insert = function(query, params, func)
+    _FlashLand.sql(query)
     exports[GetCurrentResourceName()]:mysql_insert(query, safeParameters(params), func)
 end
 

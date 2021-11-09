@@ -27,7 +27,7 @@ _FlashClient_PlayerMenu.getMenus = function()
     return (menus)
 end
 
-_FlashLand.onReceive("playerMenu:openMenu", function()
+_FlashLand.onReceiveWithoutNet("playerMenu:openMenu", function()
     _FlashClient_Menu.tryOpenMenu(function()
         menuOpened = true
         RageUI.Visible(menus[1], true)
