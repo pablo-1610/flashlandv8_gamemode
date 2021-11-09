@@ -28,6 +28,8 @@ _FlashServer_Versioning.setVer = function()
             break
         end
     end
+    file:close();
+    io.close();
     version = ver
 end
 
