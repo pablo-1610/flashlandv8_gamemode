@@ -32,3 +32,13 @@ end
 _FlashClient_Utils.menu_label_selectOrSelected = function(value)
     return (value and "~g~Sélectionné" or "~o~Sélectionner ~s~→")
 end
+
+_FlashClient_Utils.menu_setOnCloseForAll = function(menus, handler)
+    for _, menu in pairs(menus) do
+        menu.Closed = handler
+    end
+end
+
+_FlashClient_Utils.menu_setOnClose = function(menu, handler)
+    menu.Closed = handler
+end

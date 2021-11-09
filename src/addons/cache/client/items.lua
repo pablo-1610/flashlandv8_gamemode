@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:12
+  Created at 09/11/2021 20:44
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,9 +9,10 @@
 --]]
 ---@author Pablo_1610
 
-_Config = {
-    prefix = "[^6FlashLand^7]",
-    environment = "DEV",
-    enableErrorsLog = true,
-    enableSqlLog = true,
-}
+_FlashClient_Cache.items = function()
+    return (_FlashClient_Cache.getCache("items"))
+end
+
+_FlashLand.onReceiveWithoutNet("loaded", function()
+    _FlashLand.toServer("item:requestLightItems")
+end)

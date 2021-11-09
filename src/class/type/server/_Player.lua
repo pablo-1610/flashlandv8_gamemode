@@ -20,7 +20,8 @@
 ---@field public rank _Rank
 ---@field public sId number
 ---@field public spawned boolean
----@field public gameType string
+---@field public gameType number
+---@field public inventory _Inventory
 _Player = {}
 _Player.__index = _Player
 
@@ -45,6 +46,10 @@ setmetatable(_Player, {
     end
 })
 
+function _Player:loadInventory()
+    self.inventory = _FlashServer_Inventory.playerGetOrCreate(self.sId)
+end
+
 function _Player:getDbPosition(consumer)
     _FlashServer_Database.query("SELECT position FROM flash_players_positions WHERE flashId = @flashId", {
         ["flashId"] = self.flashId
@@ -67,6 +72,6 @@ function _Player:savePosition()
     end
 end
 
-function _Player:spawn()
+function _Player:setSpawned()
     self.spawned = true
 end

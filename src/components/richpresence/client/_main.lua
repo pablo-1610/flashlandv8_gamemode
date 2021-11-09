@@ -20,12 +20,13 @@ _FlashClient_RichPresence.initialize = function(id)
     SetDiscordAppId(id)
     _FlashClient_RichPresence.setPresence(_FlashEnum_RICHPRESENCE.CONNECTING)
     _FlashClient_RichPresence.requestVersion()
+    SetDiscordRichPresenceAction(0,"Discord", "https://discord.gg/flashland")
 end
 
 _FlashClient_RichPresence.requestVersion = function()
     _FlashLand.onReceive("richpresence:cbVersion", function(version)
         SetDiscordRichPresenceAssetSmall("flashguy")
-        SetDiscordRichPresenceAssetSmallText(("FlashLand [Env. → %s] {%s}"):format(_Config.environment,version))
+        SetDiscordRichPresenceAssetSmallText(("FlashLand [Version %s]"):format(version))
     end)
     _FlashLand.toServer("richpresence:getVersion")
 end

@@ -13,6 +13,7 @@ _FlashLand.onReceive("players:onSpawn", function()
     local _src = source
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    player:spawn()
+    player:loadInventory()
+    player:setSpawned()
     _FlashLand.toClient("players:nowInGame", _src, player)
 end)

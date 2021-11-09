@@ -14,10 +14,11 @@ _ConfigServer = {
         startPosition = { coords = vector3(-221.74, -1053.19, 30.13), heading = 164.00 },
         rank = "member",
         cash = (1500),
+        bagCapacity = 10.0,
     },
 
     Citizens = {
-        lockdown = false,
+        lockdown = true,
     },
 
     Synchronizer = {

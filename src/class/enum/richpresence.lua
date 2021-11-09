@@ -11,8 +11,20 @@
 
 _FlashEnum_RICHPRESENCE = {
     CONNECTING = function()
-        SetRichPresence("Arrive en ville... ✈️")
+        SetRichPresence("Arrive en ville ✈️")
         SetDiscordRichPresenceAsset("connecting") -- The name of the big picture you added in the application.
+        SetDiscordRichPresenceAssetText("discord.gg/flashland")
+    end,
+
+    INGAME = function()
+        SetRichPresence("Se balade en ville 👟️")
+        SetDiscordRichPresenceAsset("walking") -- The name of the big picture you added in the application.
+        SetDiscordRichPresenceAssetText("discord.gg/flashland")
+    end,
+
+    CREATOR = function()
+        SetRichPresence("Créé son personnage 🧩")
+        SetDiscordRichPresenceAsset("creator") -- The name of the big picture you added in the application.
         SetDiscordRichPresenceAssetText("discord.gg/flashland")
     end
 }

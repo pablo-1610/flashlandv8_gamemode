@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:12
+  Created at 09/11/2021 19:45
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,9 +9,9 @@
 --]]
 ---@author Pablo_1610
 
-_Config = {
-    prefix = "[^6FlashLand^7]",
-    environment = "DEV",
-    enableErrorsLog = true,
-    enableSqlLog = true,
-}
+---@class _FlashClient_PlayerMenu
+_FlashClient_PlayerMenu = {}
+
+_FlashClient_KeyBind.addKey("f5", "Ouvrir le menu personnel", function()
+    _FlashLand.toInternal("playerMenu:openMenu")
+end)
