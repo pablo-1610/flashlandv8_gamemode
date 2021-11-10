@@ -19,18 +19,15 @@
 ---@field public accessories table
 ---@field public rank _Rank
 ---@field public sId number
----@field public spawned boolean
----@field public gameType number
----@field public inventory _Inventory
+---@field public inventory _LightInventory
 _LightPlayer = {}
 _LightPlayer.__index = _LightPlayer
 
 setmetatable(_LightPlayer, {
-    __call = function(_, sId, flashId, identifier, rank, identity, cash, skin, outfits, selectedOutfit, accessories)
+    __call = function(_, sId, flashId, identifier, rank, identity, cash, skin, outfits, selectedOutfit, accessories, inventory)
         local self = setmetatable({}, _LightPlayer)
         self.flashId = flashId
         self.identifier = identifier
-        self.rankId = rankId
         self.rank = rank
         self.identity = identity
         self.cash = cash
@@ -39,9 +36,7 @@ setmetatable(_LightPlayer, {
         self.selectedOutfit = selectedOutfit
         self.accessories = accessories
         self.sId = sId
-        --
-        self.spawned = false
-        self.gameType = _FlashEnum_GAMETYPE.RP
+        self.inventory = inventory
         return self
     end
 })

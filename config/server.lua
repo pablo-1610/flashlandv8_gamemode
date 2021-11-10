@@ -18,10 +18,11 @@ _ConfigServer = {
     },
 
     Citizens = {
-        lockdown = true,
+        lockdown = false,
     },
 
     Synchronizer = {
+        baseTime = {00,00},
         time = (30000),
         weather = (60000 * 60),
         position = (60000),

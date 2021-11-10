@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 26/10/2021 23:14
+  Created at 10/11/2021 00:50
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("players:nowInGame", function()
-    _FlashLand.setGameState(_FlashENUM_GAMESTATE.PLAYING)
-    _FlashLand.log("Chargement complet effectué, bon jeu !")
-end)
+_FlashClient_PlayerMenu.drawer[5] = function()
+
+end

@@ -9,6 +9,13 @@
 --]]
 ---@author Pablo_1610
 
-_FlashClient_PlayerMenu.drawer[2] = function()
-    RageUI.Separator("Test")
+---@param player _Player
+_FlashClient_PlayerMenu.drawer[2] = function(player)
+    if (_FlashLand.countTable(player.inventory.content) <= 0) then
+        RageUI.Separator("Votre sac est vide")
+        RageUI.Line()
+        RageUI.Separator("Rendez-vous dans une ~g~superette ~s~!")
+    else
+
+    end
 end

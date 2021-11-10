@@ -11,7 +11,7 @@
 
 ---@param player _Player
 _FlashLand.onReceiveWithoutNet("players:newLoadedPlayer", function(_src, data)
-    _FlashLand.log(("Le joueur ^1%s^7 est désormais ^2connecté"):format(GetPlayerName(_src)))
+    _FlashLand.log(("Le joueur ^5%s^7 s'est ^2connecté"):format(GetPlayerName(_src)))
     ---@param player _Player
     local player = _Player(_src, data.flashId, data.identifier, data.rankId, json.decode(data.identity), data.cash, json.decode(data.skin), json.decode(data.outfits), data.selectedOutfit, json.decode(data.accessories))
     _FlashServer_Players.add(player)

@@ -13,8 +13,9 @@ _FlashLand.onReceive("players:onSpawn", function()
     local _src = source
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    player:loadInventory()
-    player:setSpawned()
-    -- TODO -> Send LightPlayer (avec le vrai objet rank)
-    _FlashLand.toClient("players:nowInGame", _src, player)
+    player:loadInventory(function()
+        player:setSpawned()
+        player:sendData()
+        _FlashLand.toClient("players:nowInGame", _src)
+    end)
 end)

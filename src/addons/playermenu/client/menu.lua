@@ -15,7 +15,20 @@ local menu_main = RageUI.CreateMenu(title, desc, nil, nil, "root_cause", "black_
 local menu_inventory = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
 local menu_portefeuille = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
 local menu_animations = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
-local menus = { menu_main, menu_inventory, menu_portefeuille, menu_animations }
+local menu_divers = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
+local menu_admin = RageUI.CreateSubMenu(menu_main, "Administration", "Gestion de FlashLand", nil, nil, "root_cause", "black_red")
+local menu_vehicle = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
+
+
+local menus = {
+    menu_main,
+    menu_inventory,
+    menu_portefeuille,
+    menu_animations,
+    menu_admin,
+    menu_vehicle,
+    menu_divers
+}
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()
     menuOpened = false
@@ -36,7 +49,7 @@ _FlashLand.onReceiveWithoutNet("playerMenu:openMenu", function()
                 Wait(0)
                 for id, menu in pairs(menus) do
                     RageUI.IsVisible(menu, function()
-                        _FlashClient_PlayerMenu.drawer[id]()
+                        _FlashClient_PlayerMenu.drawer[id](_FlashClient_Cache.getPlayer())
                     end)
                 end
             end

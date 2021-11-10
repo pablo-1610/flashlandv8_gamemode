@@ -12,6 +12,22 @@
 _FlashClient_Cache = {}
 
 local caches = {}
+local specialActions = {}
+
+_FlashClient_Cache.hasSpecialAction = function(k)
+    return (specialActions[k] ~= nil)
+end
+
+_FlashClient_Cache.onReceive = function(k, handler)
+    specialActions[k] = handler
+end
+
+_FlashClient_Cache.doOnReceive = function(k, v)
+    if (not (_FlashClient_Cache.hasSpecialAction(k))) then
+        return
+    end
+    specialActions[k](v)
+end
 
 _FlashClient_Cache.setCache = function(cacheId, value)
     caches[cacheId] = value

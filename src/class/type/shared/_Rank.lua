@@ -17,18 +17,19 @@ _Rank = {}
 _Rank.__index = _Rank
 
 setmetatable(_Rank, {
-    __call = function(_, id, label, weight)
+    __call = function(_, id, label, weight, permissions)
         local self = setmetatable({}, _Rank)
         self.id = id
         self.label = label
         self.weight = weight
-        self.permissions = {}
+        self.permissions = permissions or {}
         return self
     end
 })
 
 function _Rank:hasPermission(query)
     for _, permission in pairs(self.permissions) do
+        print(permission)
         if (permission == query) then
             return true
         end

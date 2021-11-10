@@ -31,7 +31,7 @@ setmetatable(_Player, {
         self.flashId = flashId
         self.identifier = identifier
         self.rankId = rankId
-        self.rank = _FlashServer_Ranks.getOrLowest(rankId)
+        self.rank = _FlashServer_Ranks.getOrLowest(self.rankId)
         self.identity = identity
         self.cash = cash
         self.skin = skin
@@ -46,8 +46,13 @@ setmetatable(_Player, {
     end
 })
 
-function _Player:loadInventory()
-    self.inventory = _FlashServer_Inventory.playerGetOrCreate(self.sId)
+function _Player:loadInventory(cb)
+    _FlashServer_Inventory.playerGetOrCreate(self.sId, function(inv)
+        self.inventory = inv
+        if (cb ~= nil) then
+            cb()
+        end
+    end)
 end
 
 function _Player:getDbPosition(consumer)
@@ -74,4 +79,9 @@ end
 
 function _Player:setSpawned()
     self.spawned = true
+end
+
+function _Player:sendData()
+    local lightPlayer = _FlashServer_Players.getLightPlayer(self.sId)
+    _FlashLand.toClient("cache:setCache", self.sId, "playerData", lightPlayer)
 end

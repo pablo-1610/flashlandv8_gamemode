@@ -14,19 +14,21 @@ local function createPlayerInventory(player, inventoryId)
     return (_FlashServer_Inventory.createInDb(inventoryId, _FlashEnum_INVENTORYTYPE.PLAYER, ("Sac de %s"):format(("%s %s"):format(player.identity.firstname, player.identity.lastname:upper())), _ConfigServer.Start.bagCapacity, true))
 end
 
-_FlashServer_Inventory.playerGetOrCreate = function(_src)
+_FlashServer_Inventory.playerGetOrCreate = function(_src, cb)
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
     local inventoryId = ("player:%s"):format(player.flashId)
     if (_FlashServer_Inventory.exists(inventoryId)) then
-        return _FlashServer_Inventory.get(inventoryId)
+        cb(_FlashServer_Inventory.get(inventoryId))
     end
 
     _FlashServer_Inventory.existsInDb(inventoryId, function(exists)
         if (exists) then
-            return _FlashServer_Inventory.loadFromDb(inventoryId)
+            _FlashServer_Inventory.loadFromDb(inventoryId, function(inventory)
+                cb(inventory)
+            end)
         else
-            return createPlayerInventory(player, inventoryId)
+            cb(createPlayerInventory(player, inventoryId))
         end
     end)
 

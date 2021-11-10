@@ -30,7 +30,7 @@ _FlashServer_Inventory.createInDb = function(inventoryId, type, label, capacity,
     end
 end
 
-_FlashServer_Inventory.loadFromDb = function(inventoryId)
+_FlashServer_Inventory.loadFromDb = function(inventoryId, cb)
     _FlashServer_Database.query("SELECT * FROM flash_inventory WHERE inventory_owner = @inventoryId", {
         ["inventoryId"] = inventoryId
     }, function(result)
@@ -39,6 +39,9 @@ _FlashServer_Inventory.loadFromDb = function(inventoryId)
             return
         end
         local row = result[1]
-        return (_FlashServer_Inventory.add(row.inventory_owner, row.inventory_type, row.inventory_label, row.inventory_capacity, json.decode(row.inventory_content), true))
+        local inventory = _FlashServer_Inventory.add(row.inventory_owner, row.inventory_type, row.inventory_label, row.inventory_capacity, json.decode(row.inventory_content), true)
+        if (cb ~= nil) then
+            cb(inventory)
+        end
     end)
 end

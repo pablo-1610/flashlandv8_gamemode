@@ -9,8 +9,13 @@
 --]]
 ---@author Pablo_1610
 
-_FlashClient_PlayerMenu.drawer[1] = function()
+---@param player _LightPlayer
+_FlashClient_PlayerMenu.drawer[1] = function(player)
+    RageUI.Separator(("Rang: ~o~%s"):format(player.rank.label))
     RageUI.Button("Inventaire", nil, {RightLabel = "→"}, true, { }, _FlashClient_PlayerMenu.getMenus()[2])
     RageUI.Button("Portefeuille", nil, {RightLabel = "→"}, true, { }, _FlashClient_PlayerMenu.getMenus()[3])
     RageUI.Button("Animations", nil, {RightLabel = "→"}, true, { }, _FlashClient_PlayerMenu.getMenus()[4])
+    RageUI.Button("Divers", nil, {RightLabel = "→"}, true, { }, _FlashClient_PlayerMenu.getMenus()[7])
+    RageUI.Button("Mon véhicule", nil, {RightLabel = "→"}, _FlashClient_Utils.ped_isDriver(PlayerPedId()), { }, _FlashClient_PlayerMenu.getMenus()[6])
+    RageUI.Button("Administration", nil, {RightLabel = "→"}, (player.rank:hasPermission("admin.open")), {}, _FlashClient_PlayerMenu.getMenus()[5])
 end

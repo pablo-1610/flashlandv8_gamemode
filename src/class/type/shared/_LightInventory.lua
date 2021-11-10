@@ -25,5 +25,6 @@ setmetatable(_LightInventory, {
         self.label = label
         self.capacity = capacity
         self.content = content
+        return self
     end
 })

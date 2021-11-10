@@ -10,6 +10,10 @@
 ---@author Pablo_1610
 
 _FlashLand.onReceive("cache:setCache", function(k, v)
+    if(_FlashClient_Cache.hasSpecialAction(k)) then
+        _FlashClient_Cache.doOnReceive(k, v)
+        return
+    end
     _FlashLand.log(("Définition du cache client %s"):format(k))
     _FlashClient_Cache.setCache(k,v)
 end)

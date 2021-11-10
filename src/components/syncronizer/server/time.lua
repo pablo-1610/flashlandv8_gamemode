@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-local time = {21,00}
+local time = _ConfigServer.Synchronizer.baseTime
 local timeOverride
 local running = false
 local intervalForAMin = _ConfigServer.Synchronizer.time

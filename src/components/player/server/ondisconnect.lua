@@ -11,7 +11,9 @@
 
 _FlashLand.onReceiveWithoutNetExposed("playerDropped", function()
     local _src = source
+    local name = GetPlayerName(_src)
     if (_FlashServer_Players.exists(_src)) then
+        _FlashLand.log(("Le joueur ^5%s^7 s'est ^1déconnecté"):format(name))
         _FlashServer_Players.remove(_src)
     end
 end)
