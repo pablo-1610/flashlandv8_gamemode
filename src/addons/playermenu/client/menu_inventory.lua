@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-local isFilterActive = false
+local isFilterActive, isSpaceDisplayActive = false, false
 local currentFilterIndex = 1
 local filterIndexes = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }
 
@@ -37,10 +37,18 @@ local function getItemIsUsable(item)
     return ((_FlashClient_Cache.getCache("items")[item].usable))
 end
 
+local function rd(num, numDeci)
+    return tonumber(string.format("%." .. (numDeci or 0) .. "f", num))
+end
+
+local function getItemTotalWeight(item, player)
+    local qty = (player.inventory.content[item])
+    return (getItemWeight(item) * qty)
+end
+
 ---@param player _Player
 _FlashClient_PlayerMenu.drawer[2] = function(player)
     _FlashClient_PlayerMenu.getMenus()[2].Subtitle = ("Inventaire — ~o~%s~s~/~o~%s~s~kg"):format(player.inventory:calcWeight(), (player.inventory.capacity*1.00))
-
     if (_FlashLand.countTable(player.inventory.content) <= 0) then
         RageUI.Separator("Votre sac est vide")
         RageUI.Line()
@@ -49,6 +57,12 @@ _FlashClient_PlayerMenu.drawer[2] = function(player)
         RageUI.Checkbox("Filtre alphabétique", nil, isFilterActive, {}, {
             onSelected = function(newState)
                 isFilterActive = newState
+            end
+        })
+
+        RageUI.Checkbox("Visualiser l'espace", nil, isSpaceDisplayActive, {}, {
+            onSelected = function(newState)
+                isSpaceDisplayActive = newState
             end
         })
 
@@ -66,7 +80,11 @@ _FlashClient_PlayerMenu.drawer[2] = function(player)
             local draw = true
             local function displayItem()
                 local description, label = getItemDesc(data.name), getItemLabel(data.name)
-                RageUI.Button(("[~o~x%s~s~] %s"):format(data.count, label), (
+                local function roundInv()
+                    local percent = getItemTotalWeight(data.name, player)*100/player.inventory:calcWeight()
+                    return rd(percent, 1)
+                end
+                RageUI.Button(("[~o~x%s~s~] %s%s"):format(data.count, label, (isSpaceDisplayActive and (" "..(("(~r~%s%%~s~)"):format(roundInv()))) or (""))), (
                         (description ~= nil and ("~o~Description: ~s~%s"):format(description))
                 ), { RightLabel = "→" }, true, {
                     onSelected = function()

@@ -37,6 +37,7 @@ _FlashClient_Utils.menu_setOnClose(menu_main, function()
 end)
 
 _FlashClient_PlayerMenu.drawer = {}
+_FlashClient_PlayerMenu.panelDrawer = {}
 
 _FlashClient_PlayerMenu.getMenus = function()
     return (menus)
@@ -53,6 +54,10 @@ _FlashLand.onReceiveWithoutNet("playerMenu:openMenu", function()
                 for id, menu in pairs(menus) do
                     RageUI.IsVisible(menu, function()
                         _FlashClient_PlayerMenu.drawer[id](_FlashClient_Cache.getPlayer(), {closestPlayer, closestDistance})
+                    end, function()
+                        if (_FlashClient_PlayerMenu.panelDrawer[id] ~= nil) then
+                            _FlashClient_PlayerMenu.panelDrawer[id]()
+                        end
                     end)
                 end
             end

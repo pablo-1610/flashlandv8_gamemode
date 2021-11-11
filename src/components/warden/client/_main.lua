@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 09/11/2021 21:05
+  Created at 11/11/2021 16:55
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -8,7 +8,3 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author Pablo_1610
-
-_FlashClient_PlayerMenu.drawer[4] = function()
-    -- TODO → Animation menu
-end
