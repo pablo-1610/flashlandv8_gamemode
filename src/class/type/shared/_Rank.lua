@@ -27,13 +27,17 @@ setmetatable(_Rank, {
     end
 })
 
-function _Rank:hasPermission(query)
+function _Rank:hasSinglePermission(query)
     for _, permission in pairs(self.permissions) do
         if (permission == query) then
             return true
         end
     end
     return false
+end
+
+function _Rank:hasPermission(query)
+    return (self:hasSinglePermission(query))
 end
 
 function _Rank:addPermission(permission)

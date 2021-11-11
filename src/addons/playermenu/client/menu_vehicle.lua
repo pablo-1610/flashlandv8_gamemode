@@ -13,6 +13,6 @@ _FlashClient_PlayerMenu.drawer[6] = function()
     if (not (_FlashClient_Utils.ped_isDriver(PlayerPedId()))) then
         RageUI.GoBack()
     else
-
+        local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
     end
 end

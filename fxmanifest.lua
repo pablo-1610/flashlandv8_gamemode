@@ -128,6 +128,7 @@ shared_scripts {
     -- Objects
     "src/class/type/shared/*.lua",
     -- Init
+    "src/core/shared/utils/*.lua",
     "src/core/shared/main.lua",
     -- Modules
     "src/components/**/shared/*.lua",

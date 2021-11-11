@@ -94,7 +94,7 @@ _FlashClient_PlayerMenu.drawer[2] = function(player)
             end
             if (isFilterActive) then
                 local filter = filterIndexes[currentFilterIndex]:lower()
-                local match = (_FlashClient_Utils.string_startsWith(getItemLabel(data.name):lower(), filter))
+                local match = (_FlashUtils.string_startsWith(getItemLabel(data.name):lower(), filter))
                 if (not (match)) then
                     draw = false
                 end
