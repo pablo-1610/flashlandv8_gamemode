@@ -77,7 +77,10 @@ function _Inventory:addItem(itemId, qty, cb)
         end
         return
     end
-    local fakeContent = self.content
+    local fakeContent = {}
+    for k, v in pairs(self.content) do
+        fakeContent[k] = v
+    end
     if (not (self:hasItem(itemId))) then
         fakeContent[itemId] = 0
     end
@@ -87,6 +90,7 @@ function _Inventory:addItem(itemId, qty, cb)
         if (cb ~= nil) then
             cb(false)
         end
+        return
     else
         self.content = fakeContent
         self:save()
