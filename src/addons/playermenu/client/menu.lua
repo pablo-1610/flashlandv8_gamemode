@@ -13,6 +13,7 @@ local menuOpened = false
 -- Menus
 local menu_main = RageUI.CreateMenu(title, desc, nil, nil, "root_cause", "black_red")
 local menu_inventory = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
+local menu_inventory_item = RageUI.CreateSubMenu(menu_inventory, title, desc, nil, nil, "root_cause", "black_red")
 local menu_portefeuille = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
 local menu_animations = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
 local menu_divers = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
@@ -27,7 +28,8 @@ local menus = {
     menu_animations,
     menu_admin,
     menu_vehicle,
-    menu_divers
+    menu_divers,
+    menu_inventory_item
 }
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()
@@ -47,9 +49,10 @@ _FlashLand.onReceiveWithoutNet("playerMenu:openMenu", function()
         CreateThread(function()
             while (menuOpened) do
                 Wait(0)
+                local closestPlayer, closestDistance = _FlashClient_Utils.proximity_getClosestPlayer()
                 for id, menu in pairs(menus) do
                     RageUI.IsVisible(menu, function()
-                        _FlashClient_PlayerMenu.drawer[id](_FlashClient_Cache.getPlayer())
+                        _FlashClient_PlayerMenu.drawer[id](_FlashClient_Cache.getPlayer(), {closestPlayer, closestDistance})
                     end)
                 end
             end

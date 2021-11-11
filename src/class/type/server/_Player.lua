@@ -22,6 +22,7 @@
 ---@field public spawned boolean
 ---@field public gameType number
 ---@field public inventory _Inventory
+---@field public rpName string
 _Player = {}
 _Player.__index = _Player
 
@@ -33,6 +34,8 @@ setmetatable(_Player, {
         self.rankId = rankId
         self.rank = _FlashServer_Ranks.getOrLowest(self.rankId)
         self.identity = identity
+        self.rpName = ("%s %s"):format(self.identity.firstname, self.identity.lastname)
+        -- TODO → Fake identity implementation
         self.cash = cash
         self.skin = skin
         self.outfits = outfits
@@ -91,6 +94,10 @@ end
 function _Player:sendData()
     local lightPlayer = _FlashServer_Players.getLightPlayer(self.sId)
     _FlashLand.toClient("cache:setCache", self.sId, "playerData", lightPlayer)
+end
+
+function _Player:serverResponded()
+    _FlashLand.toClient("serverReturnedCb", self.sId)
 end
 
 function _Player:sendSystemMessage(type, message)

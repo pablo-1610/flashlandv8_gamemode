@@ -28,7 +28,7 @@ _FlashServer_Items.get = function(itemId)
     if (not (_FlashServer_Items.exists(itemId))) then
         return nil
     end
-    return (list[playerId])
+    return (list[itemId])
 end
 
 _FlashServer_Items.getAll = function()

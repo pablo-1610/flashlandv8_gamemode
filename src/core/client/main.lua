@@ -43,6 +43,10 @@ _FlashLand.toServerExposed = function(event, ...)
     _FlashLand.log(("Envoie d'un event (^1Exposé^7) au serveur ^6>^1 %s"):format(event))
 end
 
+_FlashLand.onReceive("serverReturnedCb", function()
+    _FlashLand.setIsWaitingForServer(false)
+end)
+
 CreateThread(function()
     _FlashLand.log("Demarrage du client...")
     _FlashLand.toInternal("loaded")

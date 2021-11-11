@@ -76,6 +76,14 @@ _FlashClient_Utils.ped_tp = function(ped, coords, heading)
     end
 end
 
+_FlashClient_Utils.ped_getMugShot = function(ped)
+    local mugshot = RegisterPedheadshot(ped)
+    while not IsPedheadshotReady(mugshot) do
+        Wait(1)
+    end
+    return mugshot, GetPedheadshotTxdString(mugshot)
+end
+
 _FlashClient_Utils.ped_isDriver = function(playerId)
     return (IsPedInAnyVehicle(playerId, false) and (GetPedInVehicleSeat(GetVehiclePedIsIn(playerId, false), -1)) == playerId)
 end

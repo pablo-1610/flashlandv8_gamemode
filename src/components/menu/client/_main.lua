@@ -21,6 +21,7 @@ _FlashClient_Menu.tryOpenMenu = function(cb)
     if (isMenuOpen) then
         return
     end
+    isMenuOpen = true
     cb()
 end
 

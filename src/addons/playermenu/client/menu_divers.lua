@@ -9,6 +9,20 @@
 --]]
 ---@author Pablo_1610
 
-_FlashClient_PlayerMenu.drawer[7] = function()
+local radar = true
 
+_FlashClient_PlayerMenu.drawer[7] = function()
+    RageUI.Checkbox("Radar", nil, radar, {}, {
+        onSelected = function(newState)
+            radar = newState
+            DisplayRadar(radar)
+        end
+    })
+
+    RageUI.Button("Sauvegarder", nil, {}, true, {
+        onSelected = function()
+            _FlashLand.setIsWaitingForServer(true)
+            _FlashLand.toServer("player:requestSave")
+        end
+    })
 end

@@ -31,5 +31,4 @@ _FlashServer_Inventory.playerGetOrCreate = function(_src, cb)
             cb(createPlayerInventory(player, inventoryId))
         end
     end)
-
 end

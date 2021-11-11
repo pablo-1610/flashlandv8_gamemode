@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 25/10/2021 12:23
+  Created at 11/11/2021 15:22
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_FlashEnum_WARDENVIOLATION = {
-    USER_DUPLICATION = { code = 200, severity = _FlashEnum_WARDENSEVERITY.HIGH },
-    INVENTORY_NO_ITEM = { code = 201, severity = _FlashEnum_WARDENSEVERITY.HIGH }
-}
+_FlashLand.onReceive("inventory:giveItem", function()
+    -- TODO → Give
+end)

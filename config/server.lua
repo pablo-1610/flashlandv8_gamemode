@@ -22,7 +22,7 @@ _ConfigServer = {
     },
 
     Synchronizer = {
-        baseTime = {00,00},
+        baseTime = {12,00},
         time = (30000),
         weather = (60000 * 60),
         position = (60000),

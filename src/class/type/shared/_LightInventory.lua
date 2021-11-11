@@ -28,3 +28,12 @@ setmetatable(_LightInventory, {
         return self
     end
 })
+
+function _LightInventory:calcWeight()
+    local total = 0.00
+    for name, qty in pairs(self.content) do
+        local weight = _FlashClient_Cache.items()[name].weight
+        total = (total + (weight*qty))
+    end
+    return total
+end

@@ -14,6 +14,7 @@ _FlashServer_Items.getAllLight = function()
     ---@param item _Item
     for id, item in pairs(_FlashServer_Items.getAll()) do
         items[id] = _LightItem(item.id, item.label, item.description, item.weight, item:getIsUsable())
+        print(("%s utilisable ? → %s"):format(id, json.encode(item:getIsUsable())))
     end
     return (items)
 end

@@ -29,7 +29,6 @@ setmetatable(_Rank, {
 
 function _Rank:hasPermission(query)
     for _, permission in pairs(self.permissions) do
-        print(permission)
         if (permission == query) then
             return true
         end
