@@ -28,3 +28,16 @@ setmetatable(_Inventory, {
         return self
     end
 })
+
+function _Inventory:destroy()
+    _FlashServer_Inventory.remove(self.id)
+end
+
+function _Inventory:save()
+    local currentId, currentCapacity, currentContent = self.id, self.capacity, json.encode(self.content)
+    _FlashServer_Database.execute("UPDATE flash_inventory SET inventory_capacity = @inventory_capacity, inventory_content = @inventory_content WHERE inventory_owner = @inventory_owner", {
+        ["inventory_capacity"] = currentCapacity,
+        ["inventory_content"] = currentContent,
+        ["inventory_owner"] = currentId
+    })
+end

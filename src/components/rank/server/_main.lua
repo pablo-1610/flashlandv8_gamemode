@@ -15,18 +15,7 @@ _FlashServer_Ranks = {}
 local list = {}
 
 local function getLowestRank()
-    ---@param rank _Rank
-    ---@type _Rank
-    local lowest
-    for rankId, rank in pairs(list) do
-        if (lowest == nil) then
-            lowest = rank
-        end
-        if (rank.weight > lowest.weight) then
-            lowest = rank
-        end
-    end
-    return lowest
+    return (_FlashServer_Ranks.get(_ConfigServer.Start.rank))
 end
 
 _FlashServer_Ranks.exists = function(rankId)
@@ -35,6 +24,13 @@ end
 
 _FlashServer_Ranks.add = function(rankId, rank)
     list[rankId] = rank
+end
+
+_FlashServer_Ranks.remove = function(rankId)
+    if (_FlashServer_Ranks.exists(rankId)) then
+        return
+    end
+    list[rankId] = nil
 end
 
 _FlashServer_Ranks.get = function(rankId)

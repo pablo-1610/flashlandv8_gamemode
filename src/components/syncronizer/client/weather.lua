@@ -11,7 +11,7 @@
 
 local overrideWeather
 
-local currentWeather
+local currentWeather = "EXTRASUNNY"
 
 local function doTrails()
     if (currentWeather == "XMAS") then

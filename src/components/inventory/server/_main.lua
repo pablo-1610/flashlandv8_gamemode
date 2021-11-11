@@ -42,6 +42,14 @@ _FlashServer_Inventory.add = function(id, type, label, capacity, content, cb)
     end
 end
 
+_FlashServer_Inventory.remove = function(id)
+    if (not (_FlashServer_Inventory.exists(id))) then
+        _FlashLand.err(("Tentative de supprimer un inventaire inexistant (^3%s^7)"):format(id))
+        return
+    end
+    list[id] = nil
+end
+
 _FlashLand.onReceiveWithoutNet("loaded", function()
     _FlashServer_Database.query("SELECT * FROM flash_inventory WHERE flash_inventory.inventory_type = 2", {}, function(result)
         for _, row in pairs(result) do

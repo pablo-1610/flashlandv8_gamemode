@@ -77,6 +77,13 @@ function _Player:savePosition()
     end
 end
 
+function _Player:saveData()
+    _FlashServer_Database.execute("UPDATE flash_players SET rankId = @rankId WHERE flashId = @flashId", {
+        ["rankId"] = self.rank.id,
+        ["flashId"] = self.flashId
+    })
+end
+
 function _Player:setSpawned()
     self.spawned = true
 end
@@ -85,3 +92,29 @@ function _Player:sendData()
     local lightPlayer = _FlashServer_Players.getLightPlayer(self.sId)
     _FlashLand.toClient("cache:setCache", self.sId, "playerData", lightPlayer)
 end
+
+function _Player:sendSystemMessage(type, message)
+    _FlashLand.toClient(("utils:messenger_system_%s"):format(type:lower()), self.sId, message)
+end
+
+---@param newRank _Rank
+function _Player:setGroup(newRank, notify)
+    self.rank = newRank
+    self.rankId = self.rank.id
+    self:saveData()
+    self:sendData()
+    if (notify) then
+        _FlashServer_Players.messenger_system_info(self.sId, ("Grade changé: ~y~%s"):format(self.rank.label))
+    end
+end
+
+function _Player:setGroupId(newRankId, notify)
+    if (not (_FlashServer_Ranks.exists(newRankId))) then
+        _FlashLand.err(("Tentative de changement de group id inexistant (^3%s^7|^3%s^7)"):format(self.flashId, newRankId))
+        return
+    end
+    ---@type _Rank
+    local rank = _FlashServer_Ranks.get(newRankId)
+    self:setGroup(rank, notify)
+end
+

@@ -35,3 +35,23 @@ end
 _FlashClient_Utils.notifications_template_success = function(message)
     _FlashClient_Utils.notifications_showAdvanced("Système", "~g~Succès", message, _FlashEnum_CHARACTERPICTURE.SYSTEM, _FlashEnum_MESSAGEICONTYPE.CHAT)
 end
+
+_FlashClient_Utils.notifications_template_info = function(message)
+    _FlashClient_Utils.notifications_showAdvanced("Système", "~o~Information", message, _FlashEnum_CHARACTERPICTURE.SYSTEM, _FlashEnum_MESSAGEICONTYPE.CHAT)
+end
+
+_FlashLand.onReceive("utils:messenger_system_error", function(message)
+    _FlashClient_Utils.notifications_template_error(message)
+end)
+
+_FlashLand.onReceive("utils:messenger_system_success", function(message)
+    _FlashClient_Utils.notifications_template_success(message)
+end)
+
+_FlashLand.onReceive("utils:messenger_system_info", function(message)
+    _FlashClient_Utils.notifications_template_info(message)
+end)
+
+_FlashLand.onReceive("utils:messenger_system_custom", function(title, message)
+    _FlashClient_Utils.notifications_showAdvanced("Système", title, message, _FlashEnum_CHARACTERPICTURE.SYSTEM, _FlashEnum_MESSAGEICONTYPE.CHAT)
+end)

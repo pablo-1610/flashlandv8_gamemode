@@ -9,10 +9,13 @@
 --]]
 ---@author Pablo_1610
 
-_FlashServer_Commands.registerConsoleCommand = function(name, handler)
+_FlashServer_Commands.registerConsoleCommand = function(name, handler, requieredArgs)
     RegisterCommand(name, function(_src, args)
         if (_src ~= 0) then
-            print("NO")
+            return
+        end
+        if (#args ~= #requieredArgs) then
+            _FlashLand.errLog(_FlashServer_Commands.usage(name, requieredArgs))
             return
         end
         handler(args)

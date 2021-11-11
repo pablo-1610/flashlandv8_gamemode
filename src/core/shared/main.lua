@@ -100,6 +100,17 @@ end
 _FlashLand.err = function(string)
     if (_Config.enableErrorsLog) then
         print(("[^1Erreur^7] %s^7"):format(string))
+        -- TODO → Report to webhook
+    end
+end
+
+_FlashLand.suc = function(string)
+    print(("[^2Succes^7] %s^7"):format(string))
+end
+
+_FlashLand.errLog = function(string)
+    if (_Config.enableErrorsLog) then
+        print(("[^1Erreur^7] %s^7"):format(string))
     end
 end
 
