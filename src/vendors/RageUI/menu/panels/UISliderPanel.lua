@@ -61,7 +61,6 @@ function RageUI.SliderPanel(Value, MinValue, UpperText, MaxValue, Actions, Index
 						Value = MaxValue
 					end
 					Value = math.round(Value, 0)
-					print(Value)
 					if (Actions.onSliderChange ~= nil) then
 						Actions.onSliderChange(Value)
 					end
@@ -74,7 +73,6 @@ function RageUI.SliderPanel(Value, MinValue, UpperText, MaxValue, Actions, Index
 				elseif Value > max  then
 					Value = MinValue
 				end
-				print(Value)
 				if (Actions.onSliderChange ~= nil) then
 					Actions.onSliderChange(Value);
 				end

@@ -29,7 +29,6 @@ end
 
 local function showItemInfos(item, player)
     local mugshot, mugshotStr = _FlashClient_Utils.ped_getMugShot(PlayerPedId())
-    print("Test")
     _FlashClient_Utils.notifications_showAdvanced("Inventaire", ("~o~%s"):format(getItemLabel(item)), ("~s~Poids occupé: ~o~%sg~n~~s~Poids unitaire: ~o~%sg~n~~s~Utilisable: ~s~%s"):format(getItemTotalWeight(item, player), getItemWeight(item), (getItemIsUsable(item) and "~g~Oui" or "~r~Non")), mugshotStr, _FlashEnum_MESSAGEICONTYPE.ARROW)
 end
 

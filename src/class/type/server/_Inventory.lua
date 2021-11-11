@@ -91,7 +91,7 @@ function _Inventory:addItem(itemId, qty, cb)
         self.content = fakeContent
         self:save()
         if (cb ~= nil) then
-            cb(false)
+            cb(true)
         end
     end
 end

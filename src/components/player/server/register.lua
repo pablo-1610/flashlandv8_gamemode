@@ -24,7 +24,6 @@ _FlashServer_Players.register = function(_src, infos)
     }, function(flashId)
         ---@type _Player
         local player = _Player(_src, flashId, license, _ConfigServer.Start.rank, infos.identity, _ConfigServer.Start.cash, infos.skin, outfits, "Tenue d'arrivée", {})
-        print(json.encode(player.identity))
         _FlashServer_Players.add(player)
         _FlashLand.toInternal("creator:playerRegistered", _src)
         -- TODO -> Send back infos

@@ -9,8 +9,8 @@
 --]]
 ---@author Pablo_1610
 
-_FlashServer_Commands.usage = function(name, args)
-    local sb = ("Utilisation: ^3/%s"):format(name:lower())
+_FlashServer_Commands.usage = function(name, args, client)
+    local sb = ("Utilisation: %s/%s"):format((client and "~y~" or "^3") ,name:lower())
     for _, arg in pairs(args) do
         sb = (sb..(" (%s)"):format(arg))
     end

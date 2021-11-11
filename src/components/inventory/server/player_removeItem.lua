@@ -21,6 +21,9 @@ _FlashServer_Inventory.player_removeItem = function(_src, itemId, qty)
         return false
     end
     player.inventory:removeItem(itemId, qty, function(success)
+        if (success) then
+            player:sendData()
+        end
         return success
     end)
 end

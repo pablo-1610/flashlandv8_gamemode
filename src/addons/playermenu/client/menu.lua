@@ -12,13 +12,13 @@ local title, desc = "MON PERSONNAGE", "Menu personnel"
 local menuOpened = false
 -- Menus
 local menu_main = RageUI.CreateMenu(title, desc, nil, nil, "root_cause", "black_red")
-local menu_inventory = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
-local menu_inventory_item = RageUI.CreateSubMenu(menu_inventory, title, desc, nil, nil, "root_cause", "black_red")
-local menu_portefeuille = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
-local menu_animations = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
-local menu_divers = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
-local menu_admin = RageUI.CreateSubMenu(menu_main, "Administration", "Gestion de FlashLand", nil, nil, "root_cause", "black_red")
-local menu_vehicle = RageUI.CreateSubMenu(menu_main, title, desc, nil, nil, "root_cause", "black_red")
+local menu_inventory = RageUI.CreateSubMenu(menu_main, "INVENTAIRE", desc, nil, nil, "root_cause", "black_red")
+local menu_inventory_item = RageUI.CreateSubMenu(menu_inventory, "INVENTAIRE", desc, nil, nil, "root_cause", "black_red")
+local menu_portefeuille = RageUI.CreateSubMenu(menu_main, "PORTEFEUILLE", desc, nil, nil, "root_cause", "black_red")
+local menu_animations = RageUI.CreateSubMenu(menu_main, "ANIMATIONS", desc, nil, nil, "root_cause", "black_red")
+local menu_divers = RageUI.CreateSubMenu(menu_main, "DIVERS", desc, nil, nil, "root_cause", "black_red")
+local menu_admin = RageUI.CreateSubMenu(menu_main, "ADMINISTRATION", "Gestion de FlashLand", nil, nil, "root_cause", "black_red")
+local menu_vehicle = RageUI.CreateSubMenu(menu_main, "VÉHICULE", desc, nil, nil, "root_cause", "black_red")
 
 
 local menus = {
