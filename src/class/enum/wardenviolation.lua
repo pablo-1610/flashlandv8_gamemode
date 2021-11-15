@@ -11,5 +11,6 @@
 
 _FlashEnum_WARDENVIOLATION = {
     USER_DUPLICATION = { code = 200, severity = _FlashEnum_WARDENSEVERITY.HIGH },
-    INVENTORY_NO_ITEM = { code = 201, severity = _FlashEnum_WARDENSEVERITY.HIGH }
+    INVENTORY_NO_ITEM = { code = 201, severity = _FlashEnum_WARDENSEVERITY.HIGH },
+    TARGET_NO_EXISTS = { code = 202, severity = _FlashEnum_WARDENSEVERITY.HIGH }
 }

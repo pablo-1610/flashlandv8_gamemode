@@ -9,6 +9,7 @@
 --]]
 ---@author Pablo_1610
 
+-- FIXME → Les perms ne sont pas refresh correctement ?
 _FlashServer_Ranks.refresh = function(id)
     if (not (_FlashServer_Ranks.exists(id))) then
         _FlashLand.err(("Tentative de supprimer un rang inexistant (^3%s^7)"):format(id))

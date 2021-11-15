@@ -15,15 +15,19 @@ local function showSelfIdentity(playerData)
     _FlashClient_Utils.notifications_showAdvanced("Carte d'identité", ("~o~%s %s ~s~(~o~%s ans~s~)"):format(playerData.identity.firstname, playerData.identity.lastname, playerData.identity.age), "", mugshotStr, _FlashEnum_MESSAGEICONTYPE.ARROW, false)
 end
 
----@param playerData _Player
-_FlashClient_PlayerMenu.drawer[3] = function(playerData, closestData)
+---@param player _Player
+_FlashClient_PlayerMenu.drawer[3] = function(player, closestData)
+    RageUI.Separator(("Monnaie: %s"):format(_FlashUtils.math_price(player.cash)))
+
+    RageUI.Line()
+
     RageUI.Button("Lister mes licences", nil, { RightLabel = "→" }, true, {
         -- TODO → License manager and show licenses
     })
 
     RageUI.Button("Regarder ma carte d'identité", nil, {}, true, {
         onSelected = function()
-            showSelfIdentity(playerData)
+            showSelfIdentity(player)
         end
     })
 

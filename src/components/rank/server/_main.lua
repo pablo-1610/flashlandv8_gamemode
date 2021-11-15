@@ -27,7 +27,7 @@ _FlashServer_Ranks.add = function(rankId, rank)
 end
 
 _FlashServer_Ranks.remove = function(rankId)
-    if (_FlashServer_Ranks.exists(rankId)) then
+    if (not (_FlashServer_Ranks.exists(rankId))) then
         return
     end
     list[rankId] = nil
