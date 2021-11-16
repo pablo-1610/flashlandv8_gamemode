@@ -36,4 +36,10 @@ _FlashClient_PlayerMenu.drawer[3] = function(player, closestData)
             _FlashLand.toServer("playerMenu:showIdCard", _FlashClient_Utils.proximity_getClosestPlayerId(closestData))
         end
     })
+
+    RageUI.Button("Donner de l'argent", nil, {}, (_FlashClient_Utils.proximity_canInteract(closestData)), {
+        onSelected = function()
+            -- TODO → Give to closest money
+        end
+    })
 end

@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:12
+  Created at 16/11/2021 23:54
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,15 +9,9 @@
 --]]
 ---@author Pablo_1610
 
-_Config = {
-    prefix = "[^6FlashLand^7]",
-    environment = "DEV",
-    enableErrorsLog = true,
-    enableSqlLog = true,
-
-    Staff = {
-        permissions = {
-            ["open"] = "admin.open"
-        }
-    },
-}
+_FlashLand.onReceiveWithoutNetExposed("playerDropped", function()
+    local _src = source
+    if(_FlashServer_Staff.isActive(_src)) then
+        _FlashServer_Staff.removeFromActives(_src)
+    end
+end)

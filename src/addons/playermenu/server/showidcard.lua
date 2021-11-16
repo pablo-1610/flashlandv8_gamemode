@@ -11,7 +11,6 @@
 
 _FlashLand.onReceive("showIdCard", function(targetSrc)
     local _src = source
-    targetSrc = tonumber(targetSrc)
     if (not (_FlashServer_Players.exists(targetSrc))) then
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.TARGET_NO_EXISTS)
         return

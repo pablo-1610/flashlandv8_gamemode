@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 10/11/2021 00:50
+  Created at 17/11/2021 00:21
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_FlashClient_PlayerMenu.drawer[5] = function()
-
-end
+_FlashEnum_GENERICMESSAGE = {
+    ACTION_NO_PERMISSION = "Vous n'avez pas la permission de faire cette action"
+}
