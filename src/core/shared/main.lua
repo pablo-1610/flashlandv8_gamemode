@@ -91,6 +91,10 @@ _FlashLand.log = function(string)
     end
 end
 
+_FlashLand.logOverall = function(string)
+    print(("%s %s^7"):format(_Config.prefix, string))
+end
+
 _FlashLand.sql = function(query)
     if (_Config.enableSqlLog) then
         print(("%s ^0%s^7"):format("[^5MySQL^7]", query))
@@ -125,6 +129,14 @@ end
 _FlashLand.countTable = function(table)
     local i = 0
     for k, v in pairs(table) do
+        i = (i + 1)
+    end
+    return i
+end
+
+_FlashLand.countTableIp = function(table)
+    local i = 0
+    for k in (table) do
         i = (i + 1)
     end
     return i

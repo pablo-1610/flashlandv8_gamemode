@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 27/10/2021 17:12
+  Created at 17/11/2021 00:21
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,15 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_Config = {
-    prefix = "[^6FlashLand^7]",
-    environment = "DEV",
-    enableErrorsLog = true,
-    enableSqlLog = true,
-
-    Staff = {
-        permissions = {
-            ["open"] = "admin.open"
-        }
-    },
+_FlashEnum_GENERICMESSAGE = {
+    ACTION_NO_PERMISSION = "Vous n'avez pas la permission de faire cette action"
 }

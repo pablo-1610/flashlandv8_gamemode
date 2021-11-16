@@ -53,7 +53,7 @@ _FlashLand.onReceiveWithoutNet("playerMenu:openMenu", function()
                 local closestPlayer, closestDistance = _FlashClient_Utils.proximity_getClosestPlayer()
                 for id, menu in pairs(menus) do
                     RageUI.IsVisible(menu, function()
-                        _FlashClient_PlayerMenu.drawer[id](_FlashClient_Cache.getPlayer(), {closestPlayer, closestDistance})
+                        _FlashClient_PlayerMenu.drawer[id](_FlashClient_Cache.getPlayer(), {closestPlayer, closestDistance}, _FlashClient_Staff.isCurrentActive())
                     end, function()
                         if (_FlashClient_PlayerMenu.panelDrawer[id] ~= nil) then
                             _FlashClient_PlayerMenu.panelDrawer[id]()

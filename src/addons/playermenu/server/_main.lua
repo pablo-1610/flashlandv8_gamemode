@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 10/11/2021 00:50
+  Created at 15/11/2021 20:52
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,5 @@
 --]]
 ---@author Pablo_1610
 
-_FlashClient_PlayerMenu.drawer[5] = function()
-
-end
+---@clas _FlashServer_PlayerMenu
+_FlashServer_PlayerMenu = {}
