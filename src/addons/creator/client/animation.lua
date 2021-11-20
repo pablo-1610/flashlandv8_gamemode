@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-SwitchInPlayer(PlayerPedId())
+--SwitchInPlayer(PlayerPedId())
 
 _FlashLand.onReceiveWithoutNet("creator:playAnimation", function(spawn)
     RenderScriptCams(0,0,0,0,0)
@@ -17,6 +17,9 @@ _FlashLand.onReceiveWithoutNet("creator:playAnimation", function(spawn)
     local animation = true
     _FlashClient_Utils.memory_loadDict("flashland")
     SwitchOutPlayer(PlayerPedId(), 0, 1)
+    SetTimeout(500, function()
+        _FlashClient_Utils.ped_tp(PlayerPedId(), vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z - 1.0), spawn.heading)
+    end)
     _FlashClient_Utils.drawer_spriteWithSmooth(function()
        return (animation)
     end, "flashland", "logo_transparent", 0.5, 0.38, 0.35, 0.60, 0.0)
