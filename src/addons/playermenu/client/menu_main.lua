@@ -11,8 +11,9 @@
 
 ---@param player _LightPlayer
 _FlashClient_PlayerMenu.drawer[1] = function(player)
-    RageUI.Separator(("Rang: ~o~%s"):format(player.rank.label))
+    RageUI.Separator(("Rang: %s%s"):format(player.rank.baseColor, player.rank.label))
     RageUI.Button("Inventaire", nil, {RightLabel = "→"}, true, { }, _FlashClient_PlayerMenu.getMenus()[2])
+    RageUI.Button("Équipement", nil, {RightLabel = "→"}, true, {}, _FlashClient_PlayerMenu.getMenus()[12])
     RageUI.Button("Portefeuille", nil, {RightLabel = "→"}, true, { }, _FlashClient_PlayerMenu.getMenus()[3])
     RageUI.Button("Animations", nil, {RightLabel = "→"}, true, { }, _FlashClient_PlayerMenu.getMenus()[4])
     RageUI.Button("Divers", nil, {RightLabel = "→"}, true, { }, _FlashClient_PlayerMenu.getMenus()[7])

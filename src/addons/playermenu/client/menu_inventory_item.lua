@@ -59,7 +59,7 @@ _FlashClient_PlayerMenu.drawer[8] = function(player, closestPlayerData)
                 _FlashLand.toServer("inventory:useItem", selectedItem)
             end
         })
-        RageUI.Button("Donner", nil, {}, _FlashClient_Utils.proximity_canInteract(closestPlayerData), {
+        RageUI.Button(("%sDonner"):format(_FlashClient_Utils.menu_tooFarIndicatorIfTrue(not (_FlashClient_Utils.proximity_canInteract(closestPlayerData)))), nil, {}, _FlashClient_Utils.proximity_canInteract(closestPlayerData), {
             onSelected = function()
                 -- TODO → Give to closest
             end

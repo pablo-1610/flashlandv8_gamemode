@@ -10,11 +10,13 @@
 ---@author Pablo_1610
 
 _FlashClient_Utils.memory_load = function(model)
+    _FlashClient_Utils.loading_show(("Chargement du modèle %s"):format(model), 4)
     model = GetHashKey(model)
     RequestModel(model)
     while not HasModelLoaded(model) do
         Wait(1)
     end
+    _FlashClient_Utils.loading_hide()
 end
 
 _FlashClient_Utils.memory_loadAll = function(models)

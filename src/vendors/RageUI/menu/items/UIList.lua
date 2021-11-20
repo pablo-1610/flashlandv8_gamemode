@@ -145,7 +145,7 @@ function RageUI.List(Label, Items, Index, Description, Style, Enabled, Actions, 
                     local Audio = RageUI.Settings.Audio
                     RageUI.PlaySound(Audio[Audio.Use].Select.audioName, Audio[Audio.Use].Select.audioRef)
 
-                    if (Actions.onSelected ~= nil) then
+                    if (Actions.onSelected ~= nil and not isWaitingForServer) then
                         Actions.onSelected(Index, Items[Index]);
                     end
 

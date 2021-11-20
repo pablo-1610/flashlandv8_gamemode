@@ -25,6 +25,14 @@ _FlashClient_Utils.menu_display_greenIfTrue = function(value)
     return (value == true and "~g~" or "")
 end
 
+_FlashClient_Utils.menu_tooFarIndicatorIfTrue = function(value)
+    return (value == true and "~s~[~o~»~s~] " or "")
+end
+
+_FlashClient_Utils.menu_crossIndicatorIfTrue = function(value)
+    return (value == true and "~s~[~r~×~s~] " or "")
+end
+
 _FlashClient_Utils.menu_color_greenIfTrue = function(value)
     return (value == true and { BackgroundColor = { 0, 255, 0, 100 } } or {})
 end

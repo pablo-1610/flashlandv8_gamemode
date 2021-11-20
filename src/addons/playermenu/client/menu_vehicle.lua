@@ -14,5 +14,6 @@ _FlashClient_PlayerMenu.drawer[6] = function()
         RageUI.GoBack()
     else
         local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+        -- TODO → Vehicle menu
     end
 end

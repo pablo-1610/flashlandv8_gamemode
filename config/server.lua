@@ -18,7 +18,7 @@ _ConfigServer = {
     },
 
     Citizens = {
-        lockdown = false,
+        lockdown = true,
     },
 
     Synchronizer = {

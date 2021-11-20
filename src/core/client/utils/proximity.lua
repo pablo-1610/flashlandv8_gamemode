@@ -17,6 +17,25 @@ _FlashClient_Utils.proximity_getClosestPlayerId = function(closestPlayerData)
     return (GetPlayerServerId(closestPlayerData[1]))
 end
 
+_FlashClient_Utils.proximity_getClosestVehicle = function()
+    local pCoords = GetEntityCoords(PlayerPedId())
+    local closestVehicle, closestDistance = nil, 0
+    for vehicle in (_FlashClient_Utils.entityiter_vehicles()) do
+        local dst = #(GetEntityCoords(vehicle)-pCoords)
+        if (dst > 0.0) then
+            if (not (closestVehicle)) then
+                closestVehicle = vehicle
+                closestDistance = dst
+            end
+            if (dst < closestDistance) then
+                closestVehicle = vehicle
+                closestDistance = dst
+            end
+        end
+    end
+    return closestVehicle, closestDistance
+end
+
 _FlashClient_Utils.proximity_getClosestPlayer = function()
     local players = GetActivePlayers()
     local myCoords = GetEntityCoords(PlayerPedId())

@@ -47,6 +47,16 @@ _FlashClient_Staff.getPlayerList = function()
     return (playerList)
 end
 
+_FlashClient_Staff.getPermFromConfig = function(permission)
+    return (_Config.Staff.permissions[permission])
+end
+
+_FlashClient_Staff.hasPermission = function(permission)
+    ---@type _Player
+    local player = _FlashClient_Cache.getPlayer()
+    return (player.rank:hasPermission(permission))
+end
+
 _FlashLand.onReceive("staff:cbPlayerList", function(lightPlayers)
     for k, lightPlayer in pairs(lightPlayers) do
         lightPlayer.rank = _Rank(lightPlayer.rank.id, lightPlayer.rank.label, lightPlayer.rank.weight, lightPlayer.rank.permissions, lightPlayer.rank.baseColor)

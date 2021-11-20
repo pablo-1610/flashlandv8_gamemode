@@ -18,7 +18,8 @@ _Config = {
 
     Staff = {
         permissions = {
-            ["open"] = "admin.open"
+            ["open"] = "admin.open",
+            ["noclip"] = "admin.noclip",
         }
     },
 }

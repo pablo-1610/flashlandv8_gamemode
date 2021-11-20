@@ -39,6 +39,7 @@ function _Rank:hasSinglePermission(query)
 end
 
 function _Rank:hasPermission(query)
+    -- TODO → Do group splitter, eg: "admin.*" will allows everything in admin
     return (self:hasSinglePermission(query))
 end
 
