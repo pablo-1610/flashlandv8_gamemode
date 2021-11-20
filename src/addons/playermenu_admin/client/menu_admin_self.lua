@@ -88,7 +88,25 @@ _FlashClient_PlayerMenu.drawer[10] = function(player)
                 _FlashClient_Utils.notifications_template_error(_Static_GenericMessages.NO_PERM)
                 return
             end
-            -- TODO → Teleport player to his waypoint
+            local blip = GetFirstBlipInfoId(8)
+            if (DoesBlipExist(blip)) then
+                CreateThread(function()
+                    local waypointCoords = GetBlipInfoIdCoord(blip)
+                    local foundGround, zCoords, zPos = false, -500.0, 0.0
+                    while (not (foundGround)) do
+                        zCoords = zCoords + 10.0
+                        RequestCollisionAtCoord(waypointCoords.x, waypointCoords.y, zCoords)
+                        Wait(0)
+                        foundGround, zPos = GetGroundZFor_3dCoord(waypointCoords.x, waypointCoords.y, zCoords)
+                        if (not (foundGround) and zCoords >= 2000.0) then
+                            foundGround = true
+                        end
+                    end
+                    SetPedCoordsKeepVehicle(PlayerPedId(), waypointCoords.x, waypointCoords.y, zPos)
+                end)
+            else
+                _FlashClient_Utils.notifications_template_error(_Static_GenericMessages.INVALID_WAYPOINT)
+            end
         end
     })
 end

@@ -13,5 +13,6 @@ _Static_GenericMessages = {
     NO_PERM = "Vous n'avez pas la permission de faire cette action",
     NO_CLOSEST_VEHICLE = "Il n'y a aucun véhicule proche de vous",
     INVALID_MODEL = "Ce modèle est invalide",
-    INVALID_SERVER_ENTITY = "L'entité ciblée n'est plus disponible"
+    INVALID_SERVER_ENTITY = "L'entité ciblée n'est plus disponible",
+    INVALID_WAYPOINT = "Vous n'avez pas de point placé sur la map"
 }
