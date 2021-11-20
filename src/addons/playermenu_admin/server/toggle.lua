@@ -23,5 +23,10 @@ _FlashLand.onReceive("staff:onToggle", function(state)
     end
     _FlashLand.toClient("staff:cbPlayerList", _src, (state and _FlashServer_Staff.generateAllLightPlayers() or {}))
     _FlashLand.logOverall(("(^4%s^7) %s a désormais son staffmode %s"):format(player.rank.label, GetPlayerName(_src), (state and "^2activé" or "^1désactivé")))
+    if (state) then
+        _FlashServer_Staff.addActive(_src)
+    else
+        _FlashServer_Staff.removeFromActives(_src)
+    end
     player:serverResponded()
 end)

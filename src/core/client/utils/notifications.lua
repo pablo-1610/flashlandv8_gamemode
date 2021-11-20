@@ -29,15 +29,15 @@ _FlashClient_Utils.notifications_showAdvanced = function(sender, subject, msg, t
 end
 
 _FlashClient_Utils.notifications_template_error = function(message)
-    _FlashClient_Utils.notifications_showAdvanced("Système", "~r~Erreur", message, _FlashEnum_CHARACTERPICTURE.SYSTEM, _FlashEnum_MESSAGEICONTYPE.CHAT)
+    _FlashClient_Utils.notifications_showAdvanced("FlashLand", "~r~Erreur", message, _FlashEnum_CHARACTERPICTURE.EPSILON, _FlashEnum_MESSAGEICONTYPE.CHAT)
 end
 
 _FlashClient_Utils.notifications_template_success = function(message)
-    _FlashClient_Utils.notifications_showAdvanced("Système", "~g~Succès", message, _FlashEnum_CHARACTERPICTURE.SYSTEM, _FlashEnum_MESSAGEICONTYPE.CHAT)
+    _FlashClient_Utils.notifications_showAdvanced("FlashLand", "~g~Succès", message, _FlashEnum_CHARACTERPICTURE.EPSILON, _FlashEnum_MESSAGEICONTYPE.CHAT)
 end
 
 _FlashClient_Utils.notifications_template_info = function(message)
-    _FlashClient_Utils.notifications_showAdvanced("Système", "~o~Information", message, _FlashEnum_CHARACTERPICTURE.SYSTEM, _FlashEnum_MESSAGEICONTYPE.CHAT)
+    _FlashClient_Utils.notifications_showAdvanced("FlashLand", "~o~Information", message, _FlashEnum_CHARACTERPICTURE.EPSILON, _FlashEnum_MESSAGEICONTYPE.CHAT)
 end
 
 _FlashLand.onReceive("utils:messenger_system_error", function(message)

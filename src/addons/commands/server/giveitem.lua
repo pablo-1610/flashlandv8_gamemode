@@ -41,4 +41,4 @@ _FlashServer_Commands.registerPermissionCommand("giveitem", "admin.giveitem", fu
         end
     end)
 
-end, { "id", "item", "quantité" })
+end, { "id", "item", "quantite" })

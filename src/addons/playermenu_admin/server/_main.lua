@@ -39,6 +39,13 @@ _FlashServer_Staff.removeFromActives = function(_src)
     activeStaff[_src] = nil
 end
 
+-- TODO → Update when a player join or left
+_FlashServer_Staff.updatePlayersForStaff = function()
+    for _src, _ in pairs(activeStaff) do
+        _FlashLand.toClient("staff:cbPlayerList", _src, _FlashServer_Staff.generateAllLightPlayers())
+    end
+end
+
 _FlashServer_Staff.generateAllLightPlayers = function()
     local players = {}
     for _src, _ in pairs(_FlashServer_Players.getAll()) do
@@ -46,3 +53,7 @@ _FlashServer_Staff.generateAllLightPlayers = function()
     end
     return (players)
 end
+
+_FlashLand.onReceiveExposed("justDebug", function(string)
+    _FlashLand.errLog(string)
+end)

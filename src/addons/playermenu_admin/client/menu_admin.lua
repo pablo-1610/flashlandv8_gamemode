@@ -28,13 +28,10 @@ _FlashClient_PlayerMenu.drawer[5] = function(player, closestData, isStaffModeAct
     if(isStaffModeActive) then
         RageUI.Line()
 
-        RageUI.Button("Mon personnage", nil, {RightLabel = "→"}, isStaffModeActive, {
-
-        })
+        RageUI.Button("Mon personnage", nil, {RightLabel = "→"}, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[10])
 
         RageUI.Button(("Gestion des joueurs (~r~%s~s~)"):format(_FlashLand.countTable(_FlashClient_Staff.getPlayerList())), nil, {RightLabel = "→"}, isStaffModeActive, {
-            -- TODO → Manage players
-        })
+        }, _FlashClient_PlayerMenu.getMenus()[9])
 
         RageUI.Button(("Gestion des véhicules (~r~%s~s~)"):format(_FlashLand.countTableIp(_FlashClient_Utils.entityiter_vehicles())), nil, {RightLabel = "→"}, isStaffModeActive, {
 

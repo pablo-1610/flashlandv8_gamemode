@@ -14,6 +14,7 @@ _Config = {
     environment = "DEV",
     enableErrorsLog = true,
     enableSqlLog = true,
+    startRank = "member",
 
     Staff = {
         permissions = {

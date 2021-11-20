@@ -23,6 +23,7 @@
 ---@field public gameType number
 ---@field public inventory _Inventory
 ---@field public rpName string
+---@field public name string
 _Player = {}
 _Player.__index = _Player
 
@@ -45,6 +46,7 @@ setmetatable(_Player, {
         --
         self.spawned = false
         self.gameType = _FlashEnum_GAMETYPE.RP
+        self.name = GetPlayerName(self.sId)
         return self
     end
 })
@@ -102,6 +104,10 @@ end
 
 function _Player:sendSystemMessage(type, message)
     _FlashLand.toClient(("utils:messenger_system_%s"):format(type:lower()), self.sId, message)
+end
+
+function _Player:getPed()
+    return (GetPlayerPed(self.sId))
 end
 
 ---@param newRank _Rank

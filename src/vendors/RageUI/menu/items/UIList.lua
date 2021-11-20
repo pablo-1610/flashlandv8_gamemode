@@ -15,7 +15,7 @@ local SettingsList = {
     Text = { X = 403, Y = 3, Scale = 0.35 },
 }
 
-function RageUI.List(Label, Items, Index, Description, Style, Enabled, Actions, Submenu)
+function RageUI.List(Label, Items, Index, Description, Style, Enabled, Actions, Submenu, IndexColor)
     ---@type table
     local CurrentMenu = RageUI.CurrentMenu;
 
@@ -43,7 +43,7 @@ function RageUI.List(Label, Items, Index, Description, Style, Enabled, Actions, 
                 if CurrentMenu.EnableMouse == true and (CurrentMenu.CursorStyle == 0) or (CurrentMenu.CursorStyle == 1) then
                     Hovered = RageUI.ItemsMouseBounds(CurrentMenu, Selected, Option, SettingsButton);
                 end
-                local ListText = (type(Items[Index]) == "table") and string.format("← %s →", Items[Index].Name) or string.format("← %s →", Items[Index]) or "NIL"
+                local ListText = (type(Items[Index]) == "table") and string.format("← %s →", Items[Index].Name) or string.format("← %s%s~s~ →", (IndexColor ~= nil and IndexColor or "~s~"), Items[Index]) or "NIL"
 
                 if Selected then
                     RenderSprite(SettingsButton.SelectedSprite.Dictionary, SettingsButton.SelectedSprite.Texture, CurrentMenu.X, CurrentMenu.Y + SettingsButton.SelectedSprite.Y + CurrentMenu.SubtitleHeight + RageUI.ItemOffset, SettingsButton.SelectedSprite.Width + CurrentMenu.WidthOffset, SettingsButton.SelectedSprite.Height)

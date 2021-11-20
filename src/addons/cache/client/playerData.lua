@@ -18,7 +18,7 @@ end
 
 ---@param lightPlayer _LightPlayer
 _FlashClient_Cache.onReceive("playerData", function(lightPlayer)
-    lightPlayer.rank = _Rank(lightPlayer.rank.id, lightPlayer.rank.label, lightPlayer.rank.weight, lightPlayer.rank.permissions)
+    lightPlayer.rank = _Rank(lightPlayer.rank.id, lightPlayer.rank.label, lightPlayer.rank.weight, lightPlayer.rank.permissions, lightPlayer.rank.baseColor)
     lightPlayer.inventory = _LightInventory(lightPlayer.inventory.id, lightPlayer.inventory.type, lightPlayer.inventory.label, lightPlayer.inventory.capacity, lightPlayer.inventory.content)
     _FlashClient_Cache.setCache("playerData", lightPlayer)
 end)

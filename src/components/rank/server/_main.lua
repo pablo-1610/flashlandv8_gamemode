@@ -45,7 +45,7 @@ _FlashServer_Ranks.getOrLowest = function(rankId)
 end
 
 _FlashLand.onReceiveWithoutNet("loaded", function()
-    _FlashServer_Database.query("SELECT flash_ranks.id,flash_ranks.label,flash_ranks.weight,flash_ranks_permissions.permission FROM flash_ranks LEFT JOIN flash_ranks_permissions ON flash_ranks.id = flash_ranks_permissions.rankId", {}, function(result)
+    _FlashServer_Database.query("SELECT flash_ranks.id,flash_ranks.label,flash_ranks.weight,flash_ranks.baseColor,flash_ranks_permissions.permission FROM flash_ranks LEFT JOIN flash_ranks_permissions ON flash_ranks.id = flash_ranks_permissions.rankId", {}, function(result)
         for row, data in pairs(result) do
             if (_FlashServer_Ranks.exists(data.id)) then
                 ---@type _Rank
@@ -53,7 +53,7 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
                 rank:addPermission(data.permission)
             else
                 ---@type _Rank
-                local rank = _Rank(data.id, data.label, data.weight)
+                local rank = _Rank(data.id, data.label, data.weight, nil, data.baseColor)
                 _FlashServer_Ranks.add(data.id, rank)
                 _FlashLand.log(("Ajout d'un rang: ^2%s"):format(data.label))
                 rank:addPermission(data.permission)

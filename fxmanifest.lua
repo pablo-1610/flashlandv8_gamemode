@@ -121,6 +121,8 @@ files {
 }
 
 shared_scripts {
+    -- Static
+    "static/**/*.lua",
     -- Config
     "config/global.lua",
     -- Enum

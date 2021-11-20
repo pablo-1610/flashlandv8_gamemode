@@ -13,6 +13,7 @@ local isFilterActive, isSpaceDisplayActive = false, false
 local currentFilterIndex = 1
 local filterIndexes = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }
 
+--[[
 local function sortAlphabetically(curTable)
     local ret = {}
     for k, v in _FlashClient_Utils.table_pairByKeys(curTable) do
@@ -20,6 +21,7 @@ local function sortAlphabetically(curTable)
     end
     return (ret)
 end
+--]]
 
 local function getItemLabel(item)
     return ((_FlashClient_Cache.getCache("items")[item].label))
@@ -76,7 +78,7 @@ _FlashClient_PlayerMenu.drawer[2] = function(player)
 
         RageUI.Line()
 
-        for _, data in pairs(sortAlphabetically(player.inventory.content)) do
+        for _, data in pairs(_FlashUtils.table_sortAlphabetically(player.inventory.content)) do
             local draw = true
             local function displayItem()
                 local description, label = getItemDesc(data.name), getItemLabel(data.name)

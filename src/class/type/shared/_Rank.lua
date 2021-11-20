@@ -13,16 +13,18 @@
 ---@field public label string
 ---@field public weight number
 ---@field public permissions table<string>
+---@field public baseColor string
 _Rank = {}
 _Rank.__index = _Rank
 
 setmetatable(_Rank, {
-    __call = function(_, id, label, weight, permissions)
+    __call = function(_, id, label, weight, permissions, baseColor)
         local self = setmetatable({}, _Rank)
         self.id = id
         self.label = label
         self.weight = weight
         self.permissions = permissions or {}
+        self.baseColor = baseColor
         return self
     end
 })
