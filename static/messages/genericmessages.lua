@@ -14,5 +14,11 @@ _Static_GenericMessages = {
     NO_CLOSEST_VEHICLE = "Il n'y a aucun véhicule proche de vous",
     INVALID_MODEL = "Ce modèle est invalide",
     INVALID_SERVER_ENTITY = "L'entité ciblée n'est plus disponible",
-    INVALID_WAYPOINT = "Vous n'avez pas de point placé sur la map"
+    INVALID_WAYPOINT = "Vous n'avez pas de point placé sur la map",
+    ADMIN_INVALID_ID = "Cet id est invalide",
+    ADMIN_INVALID_WEAPON = "Cette arme n'existe pas",
+    ADMIN_INVALID_ARG_NUMBER = "Le chiffre passe en argument est invalide",
+    ADMIN_OFFLINE_PLAYER = "Ce joueur n'est pas connecte",
+    ADMIN_ACTION_FAILED = "L'operation a echouee",
+    ADMIN_ACTION_PERFORMED = "Operation effectuee"
 }

@@ -15,6 +15,7 @@ _ConfigServer = {
         rank = "member",
         cash = (1500),
         bagCapacity = 10.0,
+        loadoutCapacity = 3.0
     },
 
     Citizens = {

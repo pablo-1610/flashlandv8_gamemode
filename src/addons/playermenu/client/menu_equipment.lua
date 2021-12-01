@@ -11,5 +11,12 @@
 
 ---@param player _Player
 _FlashClient_PlayerMenu.drawer[12] = function(player)
-    -- TODO → Equipment menu
+    for _, name in pairs(player.loadout.content) do
+        local weaponData = _Static_Weapons[GetHashKey(name:lower())]
+        RageUI.Button(("~s~%s"):format(weaponData.label), nil, { RightLabel = "→"}, true, {
+            onSelected = function()
+                _FlashClient_PlayerMenu.var.selectedWeapon = name
+            end
+        })
+    end
 end

@@ -10,12 +10,53 @@
 ---@author Pablo_1610
 
 local radar = true
+local cinematicMode = false
+
+local function startCinematicMode()
+    CreateThread(function()
+        while (cinematicMode) do
+            DrawRect(0.0, 0.0, 2.0, 0.15, 0,0,0,255)
+            DrawRect(0.0, 1.0, 2.0, 0.15, 0,0,0,255)
+            Wait(0)
+        end
+    end)
+end
+
+local function alterRadarActive(newState)
+    if (not (cinematicMode)) then
+        radar = newState
+        DisplayRadar(radar)
+    end
+end
+
+local function alterCinematicMode(newState)
+    cinematicMode = newState
+    radar = not (newState)
+    DisplayRadar(not (newState))
+    if (newState) then
+        startCinematicMode()
+    end
+end
 
 _FlashClient_PlayerMenu.drawer[7] = function()
     RageUI.Checkbox("Radar", nil, radar, {}, {
-        onSelected = function(newState)
-            radar = newState
-            DisplayRadar(radar)
+        onChecked = function()
+            alterRadarActive(true)
+        end,
+
+        onUnChecked = function()
+            alterRadarActive(false)
+        end
+    })
+
+
+    RageUI.Checkbox("Cinématique", nil, cinematicMode, {}, {
+        onChecked = function()
+            alterCinematicMode(true)
+        end,
+
+        onUnChecked = function()
+            alterCinematicMode(false)
         end
     })
 

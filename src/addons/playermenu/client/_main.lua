@@ -14,6 +14,7 @@ _FlashClient_PlayerMenu = {}
 
 _FlashClient_PlayerMenu.var = {
     selectedItem = nil,
+    selectedWeapon = nil,
 }
 
 _FlashClient_KeyBind.addKey("f5", "Ouvrir le menu personnel", function()

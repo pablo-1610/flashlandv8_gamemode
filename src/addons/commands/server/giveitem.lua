@@ -15,6 +15,7 @@ _FlashServer_Commands.registerPermissionCommand("giveitem", "admin.giveitem", fu
     local quantity = tonumber(args[3])
     if (not (targetId)) then
         cbMesage(false, "L'id indique est invalide")
+        return
     end
     if (not (quantity)) then
         cbMesage(false, "La quantite est invalide")

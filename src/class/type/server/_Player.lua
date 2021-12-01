@@ -22,6 +22,7 @@
 ---@field public spawned boolean
 ---@field public gameType number
 ---@field public inventory _Inventory
+---@field public loadout _Loadout
 ---@field public rpName string
 ---@field public name string
 _Player = {}
@@ -54,6 +55,15 @@ setmetatable(_Player, {
 function _Player:loadInventory(cb)
     _FlashServer_Inventory.playerGetOrCreate(self.sId, function(inv)
         self.inventory = inv
+        if (cb ~= nil) then
+            cb()
+        end
+    end)
+end
+
+function _Player:loadLoadout(cb)
+    _FlashServer_Loadout.playerGetOrCreate(self.sId, function(ld)
+        self.loadout = ld
         if (cb ~= nil) then
             cb()
         end
