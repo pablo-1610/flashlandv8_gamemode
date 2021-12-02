@@ -14,10 +14,10 @@
 ---@field public label string
 ---@field public capacity number
 ---@field public content table
-_Inventoryz = {}
-_Inventoryz.__index = _Inventory
+_Inventory = {}
+_Inventory.__index = _Inventory
 
-setmetatable(_Inventoryz, {
+setmetatable(_Inventory, {
     __call = function(_, id, type, label, capacity, content)
         local self = setmetatable({}, _Inventory)
         self.id = id
