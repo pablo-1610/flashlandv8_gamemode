@@ -39,7 +39,7 @@ _FlashClient_Staff.setCurrentActive = function(checked)
     active = checked
 end
 
-_FlashClient_Staff.playerListExists = function(_src)
+_FlashClient_Utils.playerListExists = function(_src)
     return (playerList[_src] ~= nil)
 end
 
