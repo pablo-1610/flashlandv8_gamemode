@@ -16,13 +16,13 @@ _FlashServer_Blips.createPublic(vector3(249.22, 217.81, 106.28), 106, 30, _Confi
 
 for _, location in pairs(_ConfigServer.NationalBank.guards) do
     ---@type _Npc
-    local guard = _FlashServer_Npc.createPublic(location.position, location.heading, "s_m_m_security_01", false, true, 30.0)
+    local guard = _FlashServer_Npc.create(location.position, location.heading, "s_m_m_security_01", false, true, 30.0)
     guard:setScenario("WORLD_HUMAN_GUARD_STAND", true)
 end
 
 for deskId, deskData in pairs(_ConfigServer.NationalBank.desks) do
     ---@type _Npc
-    local npc = _FlashServer_Npc.createPublic(deskData.ped.position, deskData.ped.heading, _ConfigServer.NationalBank.pedModel, false, true, 20.0)
+    local npc = _FlashServer_Npc.create(deskData.ped.position, deskData.ped.heading, _ConfigServer.NationalBank.pedModel, false, true, 20.0)
     npc:setName("Banquier", 0, 10.0)
     ---@type _Zone
     local zone = _FlashServer_Zones.createPublic(deskData.position, {255,255,255}, function(_src, player)

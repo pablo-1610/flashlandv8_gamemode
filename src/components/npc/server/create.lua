@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashServer_Npc.createPublic = function(position, heading, model, ai, frozen, drawDist)
+_FlashServer_Npc.create = function(position, heading, model, ai, frozen, drawDist)
     local id = _FlashServer_Npc.getNextId()
     local npc = _Npc(id, position, heading, model, ai, frozen, drawDist)
     _FlashServer_Npc.add(npc)

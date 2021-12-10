@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 10/12/2021 00:42
+  Created at 10/12/2021 16:23
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -11,13 +11,10 @@
 
 _FlashLand.onReceiveWithoutNetExposed("playerDropped", function()
     local _src = source
-    ---@param blip _Blip
-    for _, blip in pairs(_FlashServer_Blips.getAll()) do
-        if (blip:isAllowed(_src)) then
-            blip:removeAllowed(_src)
-        end
-        if (blip:isSubscribed(_src)) then
-            blip:unsubscribe(_src, true)
+    ---@param npc _Blip
+    for _, npc in pairs(_FlashServer_Npc.getAll()) do
+        if (npc:isSubscribed(_src)) then
+            npc:unsubscribe(_src, true)
         end
     end
 end)
