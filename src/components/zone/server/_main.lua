@@ -44,13 +44,4 @@ _FlashServer_Zones.exists = function(zoneId)
     return (list[zoneId] ~= nil)
 end
 
-_FlashLand.onReceiveWithoutNet("loaded", function()
-    CreateThread(function()
-        while (true) do
-            Wait(500)
-            -- TODO -> Implement zones
-        end
-    end)
-end)
-
 _FlashLand.loadedComponent("zone")

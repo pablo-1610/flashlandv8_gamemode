@@ -101,6 +101,8 @@ end
 
 function _Player:setSpawned()
     self.spawned = true
+    -- Additional actions
+    _FlashLand.toInternal("blip:requestFirstBlips", self.sId)
 end
 
 function _Player:sendData()

@@ -15,6 +15,11 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
             local playerCoords = GetEntityCoords(GetPlayerPed(_src))
             ---@param zone _Zone
             for _, zone in pairs(_FlashServer_Zones.getAll()) do
+                -- Disable restricted for the moment
+                if (zone.restricted) then
+                    -- TODO → Check if player is in the zone (which is restricted)
+                    goto continue
+                end
                 local distance = #(playerCoords - zone.location)
                 -- Already subscribed and in zone draw distance
                 if (zone:isSubscribed(_src) and distance <= zone.drawDist) then

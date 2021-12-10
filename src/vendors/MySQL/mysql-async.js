@@ -791,7 +791,6 @@
             var flags = 0x0;
             for (var flag in allFlags) {
                 if (allFlags[flag]) {
-                    // TODO: Throw here on some future release
                     flags |= ClientConstants['CLIENT_' + flag] || 0x0;
                 }
             }

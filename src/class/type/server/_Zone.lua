@@ -68,11 +68,13 @@ function _Zone:subscribe(_src)
     end
 end
 
-function _Zone:unsubscribe(_src)
+function _Zone:unsubscribe(_src, doNotSendEvent)
     for i, v in pairs(self.subscribed) do
         if (v == _src) then
             table.remove(self.subscribed, i)
-            _FlashLand.toClient("zone:unsubscribe", _src, self.id)
+            if (not (doNotSendEvent)) then
+                _FlashLand.toClient("zone:unsubscribe", _src, self.id)
+            end
             break
         end
     end

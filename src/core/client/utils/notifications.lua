@@ -16,8 +16,8 @@ _FlashClient_Utils.notifications_show = function(message)
 end
 
 _FlashClient_Utils.notifications_showHelp = function(message)
-    AddTextEntry("FlashLand", message)
-    DisplayHelpTextThisFrame("FlashLand", false)
+    AddTextEntry("FlashLandHelp", message)
+    DisplayHelpTextThisFrame("FlashLandHelp", false)
 end
 
 _FlashClient_Utils.notifications_showAdvanced = function(sender, subject, msg, textureDict, iconType, flash, saveToBrief, hudColorIndex)
