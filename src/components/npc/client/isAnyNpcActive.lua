@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 10/12/2021 00:36
+  Created at 10/12/2021 14:53
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,6 @@
 --]]
 ---@author Pablo_1610
 
----@param blip _Blip
-_FlashLand.onReceive("blip:subscribe", function(blip)
-    _FlashClient_Blip.add(blip)
-end)
+_FlashClient_Npc.isAnyNpcActive = function()
+    return (_FlashClient_Npc.getAmount() > 0)
+end

@@ -9,14 +9,20 @@
 --]]
 ---@author Pablo_1610
 
-_FlashClient_Utils.memory_load = function(model)
-    _FlashClient_Utils.loading_show(("Chargement du modèle %s"):format(model), 4)
-    model = GetHashKey(model)
+_FlashClient_Utils.memory_load = function(model, alreadyHashed, noLoading)
+    if (not (noLoading)) then
+        _FlashClient_Utils.loading_show(("Chargement du modèle %s"):format(model), 4)
+    end
+    if (not (alreadyHashed)) then
+        model = GetHashKey(model)
+    end
     RequestModel(model)
     while not HasModelLoaded(model) do
         Wait(1)
     end
-    _FlashClient_Utils.loading_hide()
+    if (not (noLoading)) then
+        _FlashClient_Utils.loading_hide()
+    end
 end
 
 _FlashClient_Utils.memory_loadAll = function(models)
@@ -32,7 +38,9 @@ _FlashClient_Utils.memory_loadDict = function(dict)
     end
 end
 
-_FlashClient_Utils.memory_unload = function(model)
-    model = GetHashKey(model)
+_FlashClient_Utils.memory_unload = function(model, alreadyHashed)
+    if (not (alreadyHashed)) then
+        model = GetHashKey(model)
+    end
     SetModelAsNoLongerNeeded(model)
 end

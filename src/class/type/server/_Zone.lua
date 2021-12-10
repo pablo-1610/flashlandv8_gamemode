@@ -17,13 +17,14 @@
 ---@field public drawDist number
 ---@field public itrDist number
 ---@field public restricted boolean
+---@field public hideIfAMenuIsOpen boolean
 ---@field public subscribed table
 ---@field public allowed table
 _Zone = {}
 _Zone.__index = _Zone
 
 setmetatable(_Zone, {
-    __call = function(_, id, location, color, onInteract, helpText, drawDist, itrDist, restricted)
+    __call = function(_, id, location, color, onInteract, helpText, drawDist, itrDist, restricted, hideIfAMenuIsOpen)
         local self = setmetatable({}, _Zone)
         self.id = id
         self.location = location
@@ -33,6 +34,7 @@ setmetatable(_Zone, {
         self.drawDist = drawDist
         self.itrDist = itrDist
         self.restricted = restricted
+        self.hideIfAMenuIsOpen = hideIfAMenuIsOpen
         self.subscribed = {}
         self.allowed = {}
         return (self)
@@ -40,7 +42,7 @@ setmetatable(_Zone, {
 })
 
 function _Zone:getLightZone()
-    return (_LightZone(self.id, self.location, self.color, self.helpText, self.itrDist))
+    return (_LightZone(self.id, self.location, self.color, self.helpText, self.itrDist, self.hideIfAMenuIsOpen))
 end
 
 function _Zone:isSubscribed(_src)

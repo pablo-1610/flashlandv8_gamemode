@@ -9,34 +9,37 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceiveWithoutNet("loaded", function()
-    _FlashScheduler.scheduleRepeatingTask(function()
-        for _src, _ in pairs(_FlashServer_Players.getAll()) do
-            local playerCoords = GetEntityCoords(GetPlayerPed(_src))
-            ---@param zone _Zone
-            for _, zone in pairs(_FlashServer_Zones.getAll()) do
-                -- Disable restricted for the moment
-                if (zone.restricted) then
-                    -- TODO → Check if player is in the zone (which is restricted)
-                    goto continue
-                end
-                local distance = #(playerCoords - zone.location)
-                -- Already subscribed and in zone draw distance
-                if (zone:isSubscribed(_src) and distance <= zone.drawDist) then
-                    goto continue
-                end
-                -- Already subscribed and out of zone draw distance
-                if (zone:isSubscribed(_src) and distance > zone.drawDist) then
-                    zone:unsubscribe(_src)
-                    goto continue
-                end
-                -- Not subscribed and in zone draw distance
-                if (not zone:isSubscribed(_src) and distance <= zone.drawDist) then
-                    zone:subscribe(_src)
-                    goto continue
-                end
-                :: continue ::
-            end
+_FlashServer_Task.doZoneUpdater = function()
+    ---@param player _Player
+    for _src, player in pairs(_FlashServer_Players.getAll()) do
+        if (not (player.spawned)) then
+            goto skipPlayer
         end
-    end, 2000, 1000)
-end)
+        local playerCoords = GetEntityCoords(GetPlayerPed(_src))
+        ---@param zone _Zone
+        for _, zone in pairs(_FlashServer_Zones.getAll()) do
+            -- Disable restricted for the moment
+            if (zone.restricted) then
+                -- TODO → Check if player is in the zone (which is restricted)
+                goto continue
+            end
+            local distance = #(playerCoords - zone.location)
+            -- Already subscribed and in zone draw distance
+            if (zone:isSubscribed(_src) and distance <= zone.drawDist) then
+                goto continue
+            end
+            -- Already subscribed and out of zone draw distance
+            if (zone:isSubscribed(_src) and distance > zone.drawDist) then
+                zone:unsubscribe(_src)
+                goto continue
+            end
+            -- Not subscribed and in zone draw distance
+            if (not zone:isSubscribed(_src) and distance <= zone.drawDist) then
+                zone:subscribe(_src)
+                goto continue
+            end
+            :: continue ::
+        end
+        :: skipPlayer ::
+    end
+end

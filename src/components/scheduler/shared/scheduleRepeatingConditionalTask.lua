@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashScheduler.scheduleRepeatingConditionalTask = function(onRun, condition, delay, interval)
+_FlashScheduler.scheduleRepeatingConditionalTask = function(onRun, onStopped, condition, delay, interval)
     _FlashLand.log(("Creation d'un scheduler sur ^2%ims"):format(delay))
     CreateThread(function()
         Wait(delay)
@@ -17,5 +17,6 @@ _FlashScheduler.scheduleRepeatingConditionalTask = function(onRun, condition, de
             onRun()
             Wait(interval)
         end
+        onStopped()
     end)
 end

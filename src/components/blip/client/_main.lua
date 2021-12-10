@@ -30,6 +30,17 @@ _FlashClient_Blip.exists = function(blipId)
     return (list[blipId] ~= nil)
 end
 
+---@param blip _Blip
+_FlashClient_Blip.add = function(blip)
+    list[blip.id] = blip
+    _FlashClient_Blip.createInGameBlip(blip)
+end
+
+_FlashClient_Blip.remove = function(blipId)
+    list[blipId] = nil
+    _FlashClient_Blip.destroyInGameBlip(blipId)
+end
+
 _FlashClient_Blip.setAll = function(blips)
     -- Incoming blips
     ---@param newBlip _Blip

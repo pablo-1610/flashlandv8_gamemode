@@ -14,17 +14,19 @@
 ---@field public color table
 ---@field public helpText string
 ---@field public itrDist number
+---@field public hideIfAMenuIsOpen boolean
 _LightZone = {}
 _LightZone.__index = _LightZone
 
 setmetatable(_LightZone, {
-    __call = function(_, id, location, color, helpText, itrDist)
+    __call = function(_, id, location, color, helpText, itrDist, hideIfAMenuIsOpen)
         local self = setmetatable({}, _LightZone)
         self.id = id
         self.location = location
         self.color = color
         self.helpText = helpText
         self.itrDist = itrDist
+        self.hideIfAMenuIsOpen = hideIfAMenuIsOpen
         return (self)
     end
 })

@@ -27,16 +27,22 @@ _FlashClient_Zone.tryInvokeDrawer = function()
         local playerPosition = GetEntityCoords(PlayerPedId())
         ---@param lightZone _LightZone
         for _, lightZone in pairs(_FlashClient_Zone.getAll()) do
+            if (lightZone.hideIfAMenuIsOpen and _FlashClient_Menu.isMenuOpen()) then
+                goto continue
+            end
             lightZone:draw()
             if (lightZone:canInteract(playerPosition)) then
                 lightZone:sendHelpMessage()
-                if (IsControlJustPressed(0, 51) and not (isOnCoolDown)) then
+                if (IsControlJustPressed(0, 51) and not (isOnCoolDown) and not (isWaitingForServer)) then
                     lightZone:interact()
                     isOnCoolDown = true
                     doCoolDown()
                 end
             end
+            :: continue ::
         end
+    end, function()
+        drawerRunning = false
     end, function()
         return (_FlashClient_Zone.isAnyZoneActive())
     end, 0, 0)

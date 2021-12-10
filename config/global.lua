@@ -16,6 +16,8 @@ _Config = {
     enableSqlLog = true,
     startRank = "member",
 
+    genericBlipSize = 1.0,
+
     Staff = {
         permissions = {
             ["open"] = "admin.open",
