@@ -24,6 +24,7 @@ _Static_GenericMessages = {
     DESCRIPTION = "~y~Description~s~: ",
     ERROR = "~r~Erreur",
     SUCCESS = "~g~Succes",
+    BILLING = "~g~Facture",
     NO_ENOUGH_MONEY = "Vous n'avez pas assez d'argent",
     BILLING_PAYMENT_DONE_CASH = "Vous avez payé %s",
 }

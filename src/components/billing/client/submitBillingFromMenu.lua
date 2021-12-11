@@ -11,7 +11,7 @@
 
 local menuBillingOpened = false
 
-_FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, elements, acceptedPaymentMethods, billingData, callbackMenu)
+_FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, elements, acceptedPaymentMethods, billingData, callbackMenu, whenBackOnMenu)
     _FlashClient_Billing.currentBillingPaid = false
     local accounts = nil
     _FlashLand.toServer("banking:requestAccountsForBilling")
@@ -80,6 +80,9 @@ _FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, el
                         onSelected = function()
                             RageUI.Visible(callbackMenu, true)
                             menuBillingOpened = false
+                            if (whenBackOnMenu ~= nil) then
+                                whenBackOnMenu()
+                            end
                         end,
                     })
                 end
