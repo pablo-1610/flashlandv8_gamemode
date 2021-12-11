@@ -39,7 +39,12 @@ _FlashClient_PlayerMenu.drawer[3] = function(player, closestData)
 
     RageUI.Button("Donner de l'argent", nil, {}, (_FlashClient_Utils.proximity_canInteract(closestData)), {
         onSelected = function()
-            -- TODO → Give to closest money
+            local amount = _FlashClient_Utils.input_showBox("Montant:", "", 20, true)
+            if (amount ~= nil and tonumber(amount) ~= nil) then
+                amount = tonumber(amount)
+                isWaitingForServer = true
+                _FlashLand.toServer("playerMenu:giveMoney", GetPlayerServerId(closestData[1]), amount)
+            end
         end
     })
 end
