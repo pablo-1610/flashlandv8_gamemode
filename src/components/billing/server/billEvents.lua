@@ -15,15 +15,15 @@ _FlashServer_Billing.billEventExists = function(billEvent)
     return (billEvents[billEvent] ~= nil)
 end
 
-_FlashServer_Billing.triggerBillingEvent = function(billEvent, _src, method, args)
+_FlashServer_Billing.triggerBillingEvent = function(billEvent, _src, method, total, args)
     if (not (_FlashServer_Billing.billEventExists(billEvent))) then
         return
     end
-    billEvents[billEvent](_src, method, args)
+    billEvents[billEvent](_src, method, total, args)
 end
 
 _FlashServer_Billing.registerBillEvent = function(billEvent, handler)
-    billEvents[billEvent] = function(_src, method, args)
-        handler(_src, method, args)
+    billEvents[billEvent] = function(_src, method, total, args)
+        handler(_src, method, total, args)
     end
 end
