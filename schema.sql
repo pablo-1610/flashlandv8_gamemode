@@ -8,7 +8,7 @@ CREATE TABLE `flash_bankaccounts` (
                                       `owner` varchar(50) NOT NULL,
                                       `pin` int(11) NOT NULL,
                                       `balance` int(11) NOT NULL,
-                                      `state` int(11) NOT NULL,
+                                      `state` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `flash_bankaccounts_transaction` (
