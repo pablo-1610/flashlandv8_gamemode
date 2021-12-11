@@ -24,6 +24,7 @@ _FlashClient_NationalBank.drawer[4] = function(player)
             RageUI.Button(("Solde: %s"):format(_FlashUtils.math_price(account.balance)), nil, {}, true, {})
         end
         RageUI.Line()
+        RageUI.Button("~y~Virer ~s~de l'argent", nil, { RightLabel = "→" }, account.state == 1, {}, _FlashClient_NationalBank.getMenus()[5])
         RageUI.Button("~o~Approvisionner ~s~le compte", nil, { RightLabel = "→" }, account.state == 1, {
             onSelected = function()
                 local input = _FlashClient_Utils.input_showBox("Montant:", "", 20, true)

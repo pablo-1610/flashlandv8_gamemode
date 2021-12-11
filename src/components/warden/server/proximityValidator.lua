@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 11/12/2021 00:36
+  Created at 11/12/2021 17:51
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashEnum_BILLINGSTATICSENDER = {
-    NATIONALBANK = "Flash Bank ® INC."
-}
+_FlashServer_Warden.isCloseEnoughToInteract = function(pedA, pedB)
+    local distA, distB = GetEntityCoords(pedA), GetEntityCoords(pedB)
+    return (#(distA - distB) < 3.5)
+end
