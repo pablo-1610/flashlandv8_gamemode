@@ -6,6 +6,6 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("billing:setAsPaid", function()
+_FlashLand.onReceive("billing:setBillingAsPaid", function()
     _FlashClient_Billing.currentBillingPaid = true
 end)

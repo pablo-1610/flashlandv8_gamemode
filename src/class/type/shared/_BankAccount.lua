@@ -15,11 +15,12 @@
 ---@field public label string
 ---@field public pin number
 ---@field public balance number
+---@field public state number
 _BankAccount = {}
 _BankAccount.__index = _BankAccount
 
 setmetatable(_BankAccount, {
-    __call = function(_, accountId, type, owner, label, pin, balance)
+    __call = function(_, accountId, type, owner, label, pin, balance, state)
         local self = setmetatable({}, _BankAccount)
         self.accountId = accountId
         self.type = type
@@ -27,6 +28,7 @@ setmetatable(_BankAccount, {
         self.label = label
         self.pin = pin
         self.balance = balance
+        self.state = state
         return (self)
     end
 })

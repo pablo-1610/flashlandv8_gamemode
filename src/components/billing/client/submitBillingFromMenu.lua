@@ -11,38 +11,40 @@
 
 local menuBillingOpened = false
 
-_FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, elements, acceptedPaymentMethods, billingData, callbackMenu, whenBackOnMenu)
-    _FlashClient_Billing.currentBillingPaid = false
-    local accounts = nil
-    _FlashLand.toServer("banking:requestAccountsForBilling")
-    _FlashLand.onReceive("billing:callBackAccounts", function(newAccounts)
-        accounts = newAccounts
-    end)
-    ---@type _Player
-    local player = _FlashClient_Cache.getPlayer()
-    local function acceptPaymentMethod(paymentMethod)
-        for k, v in pairs(acceptedPaymentMethods) do
-            if v == paymentMethod then
-                return (true)
-            end
+local function doAcceptPaymentMethod(acceptedPaymentMethods, paymentMethod)
+    for k, v in pairs(acceptedPaymentMethods) do
+        if v == paymentMethod then
+            return (true)
         end
-        return (false)
     end
-    local total = 0
-    for k, v in pairs(elements) do
-        total = total + v[2]
-    end
-    menuBillingOpened = true
-    local menu_bill_main = RageUI.CreateSubMenu(callbackMenu, "", "Règlement d'une facture", nil, nil, "root_cause", "shopui_title_fleecabank")
-    local menu_bill_selectedMethod = RageUI.CreateSubMenu(menu_bill_main, "", "Sélectionnez le moyen de paiement", nil, nil, "root_cause", "shopui_title_fleecabank")
-    menu_bill_selectedMethod.Closable = true
-    menu_bill_main.Closed = function()
+    return (false)
+end
+
+local function onBillingMenuClosed(currentMenu, callbackMenu)
+    currentMenu.Closed = function()
         menuBillingOpened = false
         callbackMenu.Closable = false
         SetTimeout(100, function()
             callbackMenu.Closable = true
         end)
     end
+end
+
+_FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, elements, acceptedPaymentMethods, billingData, callbackMenu, whenBackOnMenu)
+    ---@type _Player
+    local player = _FlashClient_Cache.getPlayer()
+    local total = 0
+    for k, v in pairs(elements) do total = total + v[2] end
+    local menu_bill_main = RageUI.CreateSubMenu(callbackMenu, "", "Règlement d'une facture", nil, nil, "root_cause", "shopui_title_fleecabank")
+    local menu_bill_selectedMethod = RageUI.CreateSubMenu(menu_bill_main, "", "Sélectionnez le moyen de paiement", nil, nil, "root_cause", "shopui_title_fleecabank")
+    local accounts = nil
+    menuBillingOpened = true
+    menu_bill_selectedMethod.Closable = true
+    _FlashClient_Billing.currentBillingPaid = false
+    _FlashLand.toServer("banking:requestAccountsForBilling")
+    _FlashLand.onReceive("billing:callBackAccounts", function(newAccounts) accounts = newAccounts end)
+    onBillingMenuClosed(menu_bill_main, callbackMenu)
+    -- Menu related
     RageUI.Visible(menu_bill_main, true)
     CreateThread(function()
         while (menuBillingOpened) do
