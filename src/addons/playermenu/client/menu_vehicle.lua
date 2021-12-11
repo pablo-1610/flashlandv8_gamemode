@@ -116,7 +116,3 @@ _FlashClient_PlayerMenu.drawer[6] = function()
         end
     end
 end
-
-RegisterCommand("dt", function()
-    SetVehicleDoorOpen(GetVehiclePedIsIn(PlayerPedId(), false), 4, false, true)
-end)

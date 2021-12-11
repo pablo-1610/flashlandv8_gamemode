@@ -15,6 +15,7 @@ _FlashClient_Staff = {}
 local active = false
 local playerList = {}
 local selectedPlayer = {}
+local reportList = {}
 
 _FlashClient_Staff.backIfNotActive = function()
     print(json.encode(active))
@@ -57,10 +58,18 @@ _FlashClient_Staff.hasPermission = function(permission)
     return (player.rank:hasPermission(permission))
 end
 
+_FlashClient_Staff.getReportList = function()
+    return (reportList)
+end
+
 _FlashLand.onReceive("staff:cbPlayerList", function(lightPlayers)
     for k, lightPlayer in pairs(lightPlayers) do
         lightPlayer.rank = _Rank(lightPlayer.rank.id, lightPlayer.rank.label, lightPlayer.rank.weight, lightPlayer.rank.permissions, lightPlayer.rank.baseColor)
         lightPlayer.inventory = _LightInventory(lightPlayer.inventory.id, lightPlayer.inventory.type, lightPlayer.inventory.label, lightPlayer.inventory.capacity, lightPlayer.inventory.content)
     end
     playerList = lightPlayers
+end)
+
+_FlashLand.onReceive("staff:cbReportList", function(reports)
+    reportList = reports
 end)

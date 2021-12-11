@@ -20,5 +20,10 @@ _Static_GenericMessages = {
     ADMIN_INVALID_ARG_NUMBER = "Le chiffre passe en argument est invalide",
     ADMIN_OFFLINE_PLAYER = "Ce joueur n'est pas connecte",
     ADMIN_ACTION_FAILED = "L'operation a echouee",
-    ADMIN_ACTION_PERFORMED = "Operation effectuee"
+    ADMIN_ACTION_PERFORMED = "Operation effectuee",
+    PLAYER_REPORT_ACTIVE = "Vous avez déjà un report actif !",
+    PLAYER_REPORT_REASON_NIL = "Merci de rentrer une raison à votre report !",
+    PLAYER_SEND_REPORT_SUCCESS = "Votre report a été créé avec succès !",
+    NOTIFY_ALL_STAFF_NEW_REPORT = "~b~%s ~s~viens de créer un report !";
+    ALL_MESSAGE_STAFF_TAKE_REPORT = "~r~%s ~s~viens de prendre le report de ~b~%s ~s~!"
 }

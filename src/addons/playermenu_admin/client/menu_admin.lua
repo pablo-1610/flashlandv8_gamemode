@@ -25,10 +25,11 @@ _FlashClient_PlayerMenu.drawer[5] = function(player, closestData, isStaffModeAct
         end
     })
 
-    if(isStaffModeActive) then
+    if (isStaffModeActive) then
         RageUI.Line()
-        RageUI.Button("Mon personnage", nil, {RightLabel = "→"}, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[10])
-        RageUI.Button(("Gestion des joueurs (~r~%s~s~)"):format(_FlashLand.countTable(_FlashClient_Staff.getPlayerList())), nil, {RightLabel = "→"}, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[9])
-        RageUI.Button(("Gestion des véhicules (~r~%s~s~)"):format(_FlashLand.countTableIp(_FlashClient_Utils.entityiter_vehicles())), nil, {RightLabel = "→"}, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[11])
+        RageUI.Button("Mon personnage", nil, { RightLabel = "→" }, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[10])
+        RageUI.Button(("Gestion des joueurs (~r~%s~s~)"):format(_FlashLand.countTable(_FlashClient_Staff.getPlayerList())), nil, { RightLabel = "→" }, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[9])
+        RageUI.Button(("Gestion des véhicules (~r~%s~s~)"):format(_FlashLand.countTableIp(_FlashClient_Utils.entityiter_vehicles())), nil, { RightLabel = "→" }, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[11])
+        RageUI.Button(("Gestion des reports (~r~%s~s~)"):format(_FlashLand.countTable(_FlashClient_Staff.getReportList())), nil, { RightLabel = "→" }, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[13])
     end
 end
