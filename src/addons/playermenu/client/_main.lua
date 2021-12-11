@@ -22,3 +22,7 @@ _FlashClient_PlayerMenu.var = {
 _FlashClient_KeyBind.addKey("f5", "Ouvrir le menu personnel", function()
     _FlashLand.toInternal("playerMenu:openMenu")
 end)
+
+_FlashClient_KeyBind.addKey("x", "Arreter l'animation en cour", function()
+    ClearPedTasksImmediately(PlayerPedId())
+end)
