@@ -65,12 +65,24 @@ _FlashClient_Utils.ped_freeze = function(playerId, bool)
     end
 end
 
-_FlashClient_Utils.ped_scenario = function(ped, scenario, enterAnim)
-    TaskStartScenarioInPlace(ped, scenario, -1, enterAnim)
+_FlashClient_Utils.ped_scenario = function(ped, scenario)
+    TaskStartScenarioInPlace(ped, scenario, 0, false)
+end
+
+_FlashClient_Utils.ped_animation = function(ped, dict, name)
+    TaskPlayAnim(ped, dict, name, 8.0, -8.0, -1, 0, 0, false, false, false)
+end
+
+_FlashClient_Utils.ped_expression = function(ped, name, dict)
+    SetFacialIdleAnimOverride(ped, name, dict)
+end
+
+_FlashClient_Utils.ped_process = function(ped, name, transition)
+    SetPedMovementClipset(ped, name, transition)
 end
 
 _FlashClient_Utils.ped_tp = function(ped, coords, heading)
-    SetEntityCoords(ped, coords.x, coords.y, (coords.z-1))
+    SetEntityCoords(ped, coords.x, coords.y, (coords.z - 1))
     if (heading ~= nil) then
         SetEntityHeading(ped, heading)
     end

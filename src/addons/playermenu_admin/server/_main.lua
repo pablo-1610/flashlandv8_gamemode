@@ -14,6 +14,10 @@ _FlashServer_Staff = {}
 
 local activeStaff = {}
 
+_FlashServer_Staff.getAllStaffInService = function()
+    return (activeStaff)
+end
+
 _FlashServer_Staff.isActive = function(_src)
     for id, _ in pairs(activeStaff) do
         if (id == _src) then
@@ -52,6 +56,28 @@ _FlashServer_Staff.generateAllLightPlayers = function()
         players[_src] = _FlashServer_Players.getLightPlayer(_src)
     end
     return (players)
+end
+
+_FlashServer_Staff.updateReportsForStaff = function()
+    for _src, _ in pairs(activeStaff) do
+        _FlashLand.toClient("staff:cbReportList", _src, _FlashServer_Staff.generateAllReports())
+    end
+end
+
+_FlashServer_Staff.generateAllReports = function()
+    local reports = {}
+    for reportSource, _ in pairs(_FlashServer_Reports.getAll()) do
+        reports[reportSource] = _FlashServer_Players.getReport(reportSource)
+    end
+    return (reports)
+end
+
+_FlashServer_Staff.getNotifyAllStaffInService = function(message)
+    for _src, _ in pairs(activeStaff) do
+        ---@type _Player
+        local player = _FlashServer_Players.get(_src)
+        player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.INFO, message)
+    end
 end
 
 _FlashLand.onReceiveExposed("justDebug", function(string)

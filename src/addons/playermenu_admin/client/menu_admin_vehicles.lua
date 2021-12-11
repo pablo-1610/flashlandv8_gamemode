@@ -61,7 +61,7 @@ _FlashClient_PlayerMenu.drawer[11] = function(player)
     end
 
     perm = "admin.vehdelete"
-    RageUI.Button(myVehicle == nil and ("%s%sSupprimer le véhicule proche"):format(_FlashClient_Utils.menu_tooFarIndicatorIfTrue(not (canInteractWithClosestVehicle())), _FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))) or ("%sSupprimer ~y~mon~s~ véhicule"):format(_FlashClient_Staff.permCross(not (checkPerm(perm)))), nil, {}, checkPerm(perm) and (myVehicle ~= nil and true or canInteractWithClosestVehicle()), {
+    RageUI.Button(myVehicle == nil and ("%s%sSupprimer le véhicule proche"):format(_FlashClient_Utils.menu_tooFarIndicatorIfTrue(not (canInteractWithClosestVehicle())), _FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))) or ("%sSupprimer ~y~mon~s~ véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, checkPerm(perm) and (myVehicle ~= nil and true or canInteractWithClosestVehicle()), {
         onActive = function()
             drawClosestVehicleIndicator(myVehicle == nil and closestVehicle or myVehicle)
         end,
@@ -85,7 +85,7 @@ _FlashClient_PlayerMenu.drawer[11] = function(player)
     })
 
     perm = "admin.vehmax"
-    RageUI.Button(myVehicle == nil and ("%s%sMaxer le véhicule proche"):format(_FlashClient_Utils.menu_tooFarIndicatorIfTrue(not (canInteractWithClosestVehicle())), _FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))) or ("%sMaxer ~y~mon~s~ véhicule"):format(_FlashClient_Staff.permCross(not (checkPerm(perm)))), nil, {}, checkPerm(perm) and (myVehicle ~= nil and true or canInteractWithClosestVehicle()), {
+    RageUI.Button(myVehicle == nil and ("%s%sMaxer le véhicule proche"):format(_FlashClient_Utils.menu_tooFarIndicatorIfTrue(not (canInteractWithClosestVehicle())), _FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))) or ("%sMaxer ~y~mon~s~ véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, checkPerm(perm) and (myVehicle ~= nil and true or canInteractWithClosestVehicle()), {
         onActive = function()
             drawClosestVehicleIndicator(myVehicle == nil and closestVehicle or myVehicle)
         end,

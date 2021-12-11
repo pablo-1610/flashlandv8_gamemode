@@ -17,7 +17,5 @@ _FlashLand.onReceive("showIdCard", function(targetSrc)
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    ---@type _Player
-    local target = _FlashServer_Players.get(targetSrc)
-    -- TODO → Show id card btw
+    _FlashLand.toClient("showIdCard", targetSrc, _src, player.identity)
 end)
