@@ -21,7 +21,7 @@ _FlashServer_Banking.getPlayerAccounts = function(_src, cb)
     }, function(result)
         local accounts = {}
         for _, row in pairs(result) do
-            table.insert(accounts, _BankAccount(row.accountId, row.type, row.owner, row.label, row.pin, row.balance))
+            table.insert(accounts, _BankAccount(row.accountId, row.type, row.owner, row.label, row.pin, row.balance, row.state))
         end
         cb(accounts)
     end)

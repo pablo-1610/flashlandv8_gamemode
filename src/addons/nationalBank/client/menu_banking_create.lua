@@ -39,7 +39,7 @@ _FlashClient_NationalBank.drawer[3] = function()
         end
     })
     RageUI.Line()
-    RageUI.Button("Créer le compte bancaire", nil, { RightLabel = "→" }, true, {
+    RageUI.Button("Créer le compte bancaire", nil, { RightLabel = ("%s~s~ →"):format(_Static_GenericMessages.BILLING) }, true, {
         onSelected = function()
             _FlashClient_Billing.submitBillingFromMenu("create_bank_account",
                     _FlashEnum_BILLINGSTATICSENDER.NATIONALBANK,
@@ -49,7 +49,10 @@ _FlashClient_NationalBank.drawer[3] = function()
                     },
                     { _FlashEnum_BILLINGPAYMENTMETHOD.CASH, _FlashEnum_BILLINGPAYMENTMETHOD.CARD },
                     { accountInfos = _FlashClient_NationalBank.var.accountBuilder, deskNpcId = _FlashClient_NationalBank.var.deskNpcId },
-                    _FlashClient_NationalBank.getMenus()[3]
+                    _FlashClient_NationalBank.getMenus()[3],
+                    function()
+                        _FlashLand.toServer("nationalBank:requestAccounts")
+                    end
             )
         end
     })

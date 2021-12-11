@@ -12,6 +12,9 @@
 _FlashLand.onReceiveWithoutNetExposed("playerDropped", function()
     local _src = source
     ---@type _Player
+    if (not (_FlashServer_Players.exists(_src))) then
+        return
+    end
     local player = _FlashServer_Players.get(_src)
     player:saveData()
     player:savePosition()

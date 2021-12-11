@@ -35,6 +35,9 @@ _FlashClient_Zone.tryInvokeDrawer = function()
                 lightZone:sendHelpMessage()
                 if (IsControlJustPressed(0, 51) and not (isOnCoolDown) and not (isWaitingForServer)) then
                     lightZone:interact()
+                    if (lightZone.headingCorrection ~= nil) then
+                        SetEntityHeading(PlayerPedId(), lightZone.headingCorrection)
+                    end
                     isOnCoolDown = true
                     doCoolDown()
                 end

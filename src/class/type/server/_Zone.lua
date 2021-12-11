@@ -18,13 +18,14 @@
 ---@field public itrDist number
 ---@field public restricted boolean
 ---@field public hideIfAMenuIsOpen boolean
+---@field public headingCorrection number
 ---@field public subscribed table
 ---@field public allowed table
 _Zone = {}
 _Zone.__index = _Zone
 
 setmetatable(_Zone, {
-    __call = function(_, id, location, color, onInteract, helpText, drawDist, itrDist, restricted, hideIfAMenuIsOpen)
+    __call = function(_, id, location, color, onInteract, helpText, drawDist, itrDist, restricted, hideIfAMenuIsOpen, headingCorrection)
         local self = setmetatable({}, _Zone)
         self.id = id
         self.location = location
@@ -35,6 +36,7 @@ setmetatable(_Zone, {
         self.itrDist = itrDist
         self.restricted = restricted
         self.hideIfAMenuIsOpen = hideIfAMenuIsOpen
+        self.headingCorrection = headingCorrection
         self.subscribed = {}
         self.allowed = {}
         return (self)
@@ -42,7 +44,7 @@ setmetatable(_Zone, {
 })
 
 function _Zone:getLightZone()
-    return (_LightZone(self.id, self.location, self.color, self.helpText, self.itrDist, self.hideIfAMenuIsOpen))
+    return (_LightZone(self.id, self.location, self.color, self.helpText, self.itrDist, self.hideIfAMenuIsOpen, self.headingCorrection))
 end
 
 function _Zone:isSubscribed(_src)
@@ -111,5 +113,5 @@ function _Zone:interact(_src)
     -- Interaction
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    self.onInteract(_src, player)
+    self.onInteract(_src, player, self:getLightZone())
 end

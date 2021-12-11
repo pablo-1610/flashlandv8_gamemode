@@ -14,12 +14,14 @@ local menuOpened = false
 -- Menus
 local menu_main = RageUI.CreateMenu(title, desc, nil, nil, "root_cause", "shopui_title_mazebank")
 local menu_banking = RageUI.CreateSubMenu(menu_main, title, desc,nil, nil, "root_cause", "shopui_title_mazebank")
+local menu_banking_manage = RageUI.CreateSubMenu(menu_banking, title, desc,nil, nil, "root_cause", "shopui_title_mazebank")
 local menu_banking_create = RageUI.CreateSubMenu(menu_banking, title, desc,nil, nil, "root_cause", "shopui_title_mazebank")
 
 local menus = {
     menu_main,
     menu_banking,
-    menu_banking_create
+    menu_banking_create,
+    menu_banking_manage
 }
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()
@@ -29,9 +31,17 @@ end)
 _FlashClient_NationalBank.drawer = {}
 _FlashClient_NationalBank.panelDrawer = {}
 
+_FlashClient_NationalBank.requestAccounts = function()
+    _FlashLand.toServer("nationalBank:requestAccounts")
+end
+
 _FlashClient_NationalBank.getMenus = function()
     return (menus)
 end
+
+_FlashLand.onReceive("nationalBank:cbAccounts", function(accounts)
+    _FlashClient_NationalBank.var.accounts = accounts
+end)
 
 _FlashLand.onReceive("nationalBank:openMenu", function(deskNpcId, accountCreationPrice, accounts)
     _FlashClient_NationalBank.var.deskNpcId = deskNpcId
