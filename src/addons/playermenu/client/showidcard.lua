@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("showIdCard", function(playerSource, playerIdentity)
+_FlashLand.onReceive("playerMenu:showIdCard", function(playerSource, playerIdentity)
     local otherPed = GetPlayerPed(GetPlayerFromServerId(playerSource))
     local mugshot, mugshotStr = _FlashClient_Utils.ped_getMugShot(otherPed)
     _FlashClient_Utils.notifications_showAdvanced("Carte d'identité", ("~o~%s %s ~s~(~o~%s ans~s~)"):format(playerIdentity.firstname, playerIdentity.lastname, playerIdentity.age), "", mugshotStr, _FlashEnum_MESSAGEICONTYPE.ARROW, false)

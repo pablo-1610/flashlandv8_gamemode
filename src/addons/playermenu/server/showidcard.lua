@@ -9,13 +9,17 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("showIdCard", function(targetSrc)
+_FlashLand.onReceive("playerMenu:showIdCard", function(targetSrc)
     local _src = source
-    if (not (_FlashServer_Players.exists(targetSrc))) then
-        _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.TARGET_NO_EXISTS)
+    if (not (_FlashServer_Players.exists(_src))) then
+        _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.PLAYER_NOT_EXISTS)
         return
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    _FlashLand.toClient("showIdCard", targetSrc, _src, player.identity)
+    if (not (_FlashServer_Warden.isCloseEnoughToInteract(GetPlayerPed(_src), GetPlayerPed(targetSrc)))) then
+        _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.PLAYER_INTERACTION_TOO_FAR)
+        return
+    end
+    _FlashLand.toClient("playerMenu:showIdCard", targetSrc, _src, player.identity)
 end)

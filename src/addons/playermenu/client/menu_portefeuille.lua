@@ -33,7 +33,7 @@ _FlashClient_PlayerMenu.drawer[3] = function(player, closestData)
 
     RageUI.Button("Montrer ma carte d'identité", nil, {}, (_FlashClient_Utils.proximity_canInteract(closestData)), {
         onSelected = function()
-            _FlashLand.toServer("playerMenu:showIdCard", _FlashClient_Utils.proximity_getClosestPlayerId(closestData))
+            _FlashLand.toServer("playerMenu:showIdCard", GetPlayerServerId(closestData[1]))
         end
     })
 
