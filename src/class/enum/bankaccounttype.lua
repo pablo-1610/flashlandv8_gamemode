@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 10/12/2021 00:37
+  Created at 10/12/2021 22:53
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,8 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("blip:unsubscribe", function(lightBlipId)
-    _FlashClient_Blip.remove(lightBlipId)
-end)
+_FlashEnum_BANKACCOUNTTYPE = {
+    PERSONAL = {id = 1, name = "Personnel"},
+    COMPANY = {id = 2, name = "Entreprise"},
+    ILLEGAL = {id = 3, name = "Illégal"}
+}

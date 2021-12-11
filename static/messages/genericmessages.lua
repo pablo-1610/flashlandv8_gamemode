@@ -20,5 +20,10 @@ _Static_GenericMessages = {
     ADMIN_INVALID_ARG_NUMBER = "Le chiffre passe en argument est invalide",
     ADMIN_OFFLINE_PLAYER = "Ce joueur n'est pas connecte",
     ADMIN_ACTION_FAILED = "L'operation a echouee",
-    ADMIN_ACTION_PERFORMED = "Operation effectuee"
+    ADMIN_ACTION_PERFORMED = "Operation effectuee",
+    DESCRIPTION = "~y~Description~s~: ",
+    ERROR = "~r~Erreur",
+    SUCCESS = "~g~Succes",
+    NO_ENOUGH_MONEY = "Vous n'avez pas assez d'argent",
+    BILLING_PAYMENT_DONE_CASH = "Vous avez payé %s",
 }

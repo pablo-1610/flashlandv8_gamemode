@@ -14,8 +14,8 @@ _FlashClient_Blip.destroyInGameBlip = function(blipId)
         return
     end
     local blip = _FlashClient_Blip.get(blipId)
-    if (not (blip.handle)) then
+    if (not (blip.handler)) then
         return
     end
-    RemoveBlip(blip.handle)
+    RemoveBlip(blip.handler)
 end

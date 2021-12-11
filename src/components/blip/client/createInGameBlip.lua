@@ -12,7 +12,7 @@
 ---@param blipData _Blip
 _FlashClient_Blip.createInGameBlip = function(blipData)
     -- Blip already exists in the player's game
-    if (_FlashClient_Blip.exists(blipData.id) and _FlashClient_Blip.get(blipData.id).handle) then
+    if (_FlashClient_Blip.exists(blipData.id) and _FlashClient_Blip.get(blipData.id).handler) then
         return
     end
     local blip = AddBlipForCoord(blipData.position.x, blipData.position.y, blipData.position.z)
@@ -23,5 +23,5 @@ _FlashClient_Blip.createInGameBlip = function(blipData)
     BeginTextCommandSetBlipName("STRING")
     AddTextComponentString(blipData.label)
     EndTextCommandSetBlipName(blip)
-    blipData.handle = blip
+    blipData.handler = blip
 end

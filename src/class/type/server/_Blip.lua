@@ -14,6 +14,7 @@
 ---@field public sprite number
 ---@field public color number
 ---@field public size number
+---@field public label string
 ---@field public shortRange boolean
 ---@field public drawDist number
 ---@field public restricted boolean
@@ -23,13 +24,14 @@ _Blip = {}
 _Blip.__index = _Blip
 
 setmetatable(_Blip, {
-    __call = function(_, id, position, sprite, color, size, shortRange, drawDist, restricted)
+    __call = function(_, id, position, sprite, color, size, label, shortRange, drawDist, restricted)
         local self = setmetatable({}, _Blip)
         self.id = id
         self.position = position
         self.sprite = sprite
         self.color = color
         self.size = size
+        self.label = label
         self.shortRange = shortRange
         self.drawDist = drawDist
         self.restricted = restricted
@@ -38,6 +40,10 @@ setmetatable(_Blip, {
         return (self)
     end
 })
+
+function _Blip:getLightBlip()
+    return (_LightBlip(self.id, self.position, self.sprite, self.color, self.size, self.label, self.shortRange))
+end
 
 function _Blip:isSubscribed(_src)
     for _, v in pairs(self.subscribed) do

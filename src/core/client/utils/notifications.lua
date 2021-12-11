@@ -33,6 +33,10 @@ _FlashClient_Utils.notifications_showAdvanced = function(sender, subject, msg, t
     EndTextCommandThefeedPostTicker(flash or false, saveToBrief)
 end
 
+_FlashLand.onReceive("utils:notifications_showAdvanced", function(sender, subject, msg, textureDict, iconType)
+    _FlashClient_Utils.notifications_showAdvanced(sender, subject, msg, textureDict, iconType)
+end)
+
 _FlashClient_Utils.notifications_template_error = function(message)
     _FlashClient_Utils.notifications_showAdvanced("FlashLand", "~r~Erreur", message, _FlashEnum_CHARACTERPICTURE.EPSILON, _FlashEnum_MESSAGEICONTYPE.CHAT)
 end

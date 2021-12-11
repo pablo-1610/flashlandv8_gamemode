@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 10/12/2021 01:03
+  Created at 10/12/2021 21:28
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,9 +9,9 @@
 --]]
 ---@author Pablo_1610
 
-_FlashServer_Blips.createPublic = function(position, sprite, color, size, label, shortRange)
+_FlashServer_Blips.createPublicInArea = function(position, sprite, color, size, label, shortRange, drawDist)
     local id = _FlashServer_Blips.getNextId()
-    local blip = _Blip(id, position, sprite, color, size, label, shortRange, 0, false)
+    local blip = _Blip(id, position, sprite, color, size, label, shortRange, drawDist, false)
     _FlashServer_Blips.add(blip)
     return (id)
 end

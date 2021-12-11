@@ -37,6 +37,8 @@ _ConfigServer = {
     },
 
     NationalBank = {
+        accountCreationPrice = 500,
+
         pedModel = "a_m_y_business_02",
         desks = {
             {

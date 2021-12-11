@@ -9,22 +9,24 @@
 --]]
 ---@author Pablo_1610
 ---@class _BankAccount
----@field public uniqueId number
----@field public owner string
+---@field public accountId number
 ---@field public type number
----@field public balance number
+---@field public owner string
+---@field public label string
 ---@field public pin number
+---@field public balance number
 _BankAccount = {}
 _BankAccount.__index = _BankAccount
 
 setmetatable(_BankAccount, {
-    __call = function(_, uniqueId, owner, type, balance, pin)
+    __call = function(_, accountId, type, owner, label, pin, balance)
         local self = setmetatable({}, _BankAccount)
-        self.uniqueId = uniqueId
-        self.owner = owner
+        self.accountId = accountId
         self.type = type
-        self.balance = balance
+        self.owner = owner
+        self.label = label
         self.pin = pin
+        self.balance = balance
         return (self)
     end
 })

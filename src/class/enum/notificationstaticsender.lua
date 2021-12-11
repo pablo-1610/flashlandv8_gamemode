@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 10/12/2021 00:37
+  Created at 11/12/2021 01:47
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("blip:unsubscribe", function(lightBlipId)
-    _FlashClient_Blip.remove(lightBlipId)
-end)
+_FlashEnum_NOTIFICATIONSTATICSENDER = {
+    NATIONALBANK = "Banque Nationale"
+}

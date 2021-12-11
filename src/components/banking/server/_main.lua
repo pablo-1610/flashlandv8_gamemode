@@ -9,7 +9,8 @@
 --]]
 ---@author Pablo_1610
 
----@class _FlashServer_Bank
-_FlashServer_Bank = {}
+---@class _FlashServer_Banking
+_FlashServer_Banking = {}
 
 local list = {}
+

@@ -18,7 +18,7 @@ _FlashServer_Task.doBlipUpdater = function()
         local playerCoords = GetEntityCoords(GetPlayerPed(_src))
         ---@param blip _Blip
         for _, blip in pairs(_FlashServer_Blips.getAll()) do
-            local distance = #(playerCoords - npc.position)
+            local distance = #(playerCoords - blip.position)
             if (blip.restricted) then
                 -- TODO : Restriction
                 goto continue

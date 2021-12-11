@@ -9,10 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-local deskZone = {}
-local deskNpc = {}
-
-_FlashServer_Blips.createPublic(vector3(249.22, 217.81, 106.28), 106, 30, _Config.genericBlipSize, true, "Banque nationale")
+_FlashServer_Blips.createPublic(vector3(249.22, 217.81, 106.28), 106, 30, _Config.genericBlipSize, "Banque nationale", true)
 
 for _, location in pairs(_ConfigServer.NationalBank.guards) do
     ---@type _Npc
@@ -21,11 +18,12 @@ for _, location in pairs(_ConfigServer.NationalBank.guards) do
 end
 
 for deskId, deskData in pairs(_ConfigServer.NationalBank.desks) do
+    _FlashServer_Blips.createPublicInArea(deskData.ped.position, 480, 28, _Config.genericSubBlipSize, "Conseiller bancaire", true, 20.0)
     ---@type _Npc
     local npc = _FlashServer_Npc.create(deskData.ped.position, deskData.ped.heading, _ConfigServer.NationalBank.pedModel, false, true, 20.0)
     npc:setName("Banquier", 0, 10.0)
     ---@type _Zone
-    local zone = _FlashServer_Zones.createPublic(deskData.position, {255,255,255}, function(_src, player)
-        npc:sayForAll("GENERIC_HI", "SPEECH_PARAMS_FORCE_NORMAL_CLEAR")
+    _FlashServer_Zones.createPublic(deskData.position, {255,255,255}, function(_src, player)
+        _FlashLand.toInternal("nationalBank:openNationalBankMenu", _src, deskId, npc.id)
     end, "Appuyez sur ~INPUT_CONTEXT~ pour parler au conseiller", 20.0, 1.0, true)
 end

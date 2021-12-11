@@ -93,16 +93,15 @@ function _Player:savePosition()
 end
 
 function _Player:saveData()
-    _FlashServer_Database.execute("UPDATE flash_players SET rankId = @rankId WHERE flashId = @flashId", {
+    _FlashServer_Database.execute("UPDATE flash_players SET rankId = @rankId, cash = @cash WHERE flashId = @flashId", {
         ["rankId"] = self.rank.id,
+        ["cash"] = self.cash,
         ["flashId"] = self.flashId
     })
 end
 
 function _Player:setSpawned()
     self.spawned = true
-    -- Additional actions
-    _FlashLand.toInternal("blip:requestFirstBlips", self.sId)
 end
 
 function _Player:sendData()
