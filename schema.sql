@@ -6,8 +6,10 @@ CREATE TABLE `flash_bankaccounts` (
                                       `accountId` int(11) NOT NULL,
                                       `type` int(11) NOT NULL,
                                       `owner` varchar(50) NOT NULL,
+                                      `label` varchar(255) NOT NULL,
                                       `pin` int(11) NOT NULL,
-                                      `balance` int(11) NOT NULL
+                                      `balance` int(11) NOT NULL,
+                                      `state` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `flash_bankaccounts_transaction` (

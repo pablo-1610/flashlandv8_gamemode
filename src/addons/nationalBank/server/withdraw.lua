@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("withdraw", function(accountId, amount, deskNpcId)
+_FlashLand.onReceive("nationalBank:withdraw", function(accountId, amount, deskNpcId)
     local _src = source
     if (not (_FlashServer_Players.exists(_src))) then
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.PLAYER_NOT_EXISTS)
