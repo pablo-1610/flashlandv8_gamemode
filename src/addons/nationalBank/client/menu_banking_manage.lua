@@ -24,13 +24,23 @@ _FlashClient_NationalBank.drawer[4] = function(player)
             RageUI.Button(("Solde: %s"):format(_FlashUtils.math_price(account.balance)), nil, {}, true, {})
         end
         RageUI.Line()
-        RageUI.Button("Approvisionner le compte", nil, { RightLabel = "→" }, account.state == 1, {
+        RageUI.Button("~o~Approvisionner ~s~le compte", nil, { RightLabel = "→" }, account.state == 1, {
             onSelected = function()
                 local input = _FlashClient_Utils.input_showBox("Montant:", "", 20, true)
                 if (input ~= nil and tonumber(input) ~= nil and tonumber(input) > 0) then
                     input = tonumber(input)
                     isWaitingForServer = true
                     _FlashLand.toServer("nationalBank:deposit", account.accountId, input, _FlashClient_NationalBank.var.deskNpcId)
+                end
+            end
+        })
+        RageUI.Button("~o~Retirer ~s~du compte", nil, { RightLabel = "→" }, account.state == 1, {
+            onSelected = function()
+                local input = _FlashClient_Utils.input_showBox("Montant:", "", 20, true)
+                if (input ~= nil and tonumber(input) ~= nil and tonumber(input) > 0) then
+                    input = tonumber(input)
+                    isWaitingForServer = true
+                    _FlashLand.toServer("nationalBank:withdraw", account.accountId, input, _FlashClient_NationalBank.var.deskNpcId)
                 end
             end
         })

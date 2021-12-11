@@ -23,7 +23,7 @@ for deskId, deskData in pairs(_ConfigServer.NationalBank.desks) do
     local npc = _FlashServer_Npc.create(deskData.ped.position, deskData.ped.heading, _ConfigServer.NationalBank.pedModel, false, true, 20.0)
     npc:setName("Banquier", 0, 10.0)
     ---@type _Zone
-    _FlashServer_Zones.createPublic(deskData.position, {255,255,255}, function(_src, player)
-        _FlashLand.toInternal("nationalBank:openNationalBankMenu", _src, deskId, npc.id)
-    end, "Appuyez sur ~INPUT_CONTEXT~ pour parler au conseiller", 20.0, 1.0, true)
+    _FlashServer_Zones.createPublic(deskData.position, {255,255,255}, function(_src, player, lightZone)
+        _FlashLand.toInternal("nationalBank:openNationalBankMenu", _src, deskId, npc.id, lightZone)
+    end, "Appuyez sur ~INPUT_CONTEXT~ pour parler au conseiller", 20.0, 1.0, true, 337.0)
 end

@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 11/12/2021 12:35
+  Created at 11/12/2021 15:35
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("nationalBank:deposit", function(accountId, amount, deskNpcId)
+_FlashLand.onReceive("withdraw", function(accountId, amount, deskNpcId)
     local _src = source
     if (not (_FlashServer_Players.exists(_src))) then
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.PLAYER_NOT_EXISTS)
@@ -31,14 +31,14 @@ _FlashLand.onReceive("nationalBank:deposit", function(accountId, amount, deskNpc
                 _FlashServer_Npc.get(deskNpcId):sayForAll("Generic_Insult_Med", "Speech_Params_Force")
                 return
             end
-            if (player.cash < amount) then
+            if (account.balance < amount) then
                 player:serverResponded()
-                _FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.ERROR, _Static_GenericMessages.BANKING_DEPOSIT_NO_ENOUGH_CASH, _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
+                _FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.ERROR, _Static_GenericMessages.BANKING_WITHDRAW_NO_ENOUGH, _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
                 _FlashServer_Npc.get(deskNpcId):sayForAll("Generic_Insult_Med", "Speech_Params_Force")
                 return
             end
-            _FlashServer_Banking.depositToAccount(accountId, amount, function()
-                player.cash = (player.cash - amount)
+            _FlashServer_Banking.withdrawFromAccount(accountId, amount, function()
+                player.cash = (player.cash + amount)
                 player:saveData()
                 player:sendData()
                 _FlashServer_Banking.getPlayerAccounts(_src, function(accounts)

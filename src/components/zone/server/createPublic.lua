@@ -9,9 +9,9 @@
 --]]
 ---@author Pablo_1610
 
-_FlashServer_Zones.createPublic = function(location, color, onInteract, helpText, drawDist, itrDist, hideIfAMenuIsOpen)
+_FlashServer_Zones.createPublic = function(location, color, onInteract, helpText, drawDist, itrDist, hideIfAMenuIsOpen, headingCorrection)
     local id = _FlashServer_Zones.getNextId()
-    local zone = _Zone(id, location, color, onInteract, helpText, drawDist, itrDist, false, hideIfAMenuIsOpen)
+    local zone = _Zone(id, location, color, onInteract, helpText, drawDist, itrDist, false, hideIfAMenuIsOpen, headingCorrection)
     _FlashServer_Zones.add(zone)
     return (zone)
 end

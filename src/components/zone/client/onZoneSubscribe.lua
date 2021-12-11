@@ -11,6 +11,6 @@
 
 ---@param lightZone _LightZone
 _FlashLand.onReceive("zone:subscribe", function(lightZone)
-    lightZone = _LightZone(lightZone.id, lightZone.location, lightZone.color, lightZone.helpText, lightZone.itrDist, lightZone.hideIfAMenuIsOpen)
+    lightZone = _LightZone(lightZone.id, lightZone.location, lightZone.color, lightZone.helpText, lightZone.itrDist, lightZone.hideIfAMenuIsOpen, lightZone.headingCorrection)
     _FlashClient_Zone.set(lightZone.id, lightZone)
 end)
