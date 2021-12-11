@@ -22,6 +22,10 @@ _FlashLand.onReceive("admin:spawnVehicle", function(model, sendInto)
         return
     end
     local ped = player:getPed()
+    local currentVehicle = GetVehiclePedIsIn(ped, false)
+    if currentVehicle ~= nil then
+        DeleteEntity(currentVehicle)
+    end
     local car = CreateVehicle(model, GetEntityCoords(ped), GetEntityHeading(ped), true, false)
     if (sendInto) then
         TaskWarpPedIntoVehicle(ped, car, -1)

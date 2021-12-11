@@ -23,6 +23,8 @@ local menu_admin = RageUI.CreateSubMenu(menu_main, "ADMINISTRATION", adminDesc, 
 local menu_admin_players = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 local menu_admin_self = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 local menu_admin_vehicles = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_reports = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_report_action = RageUI.CreateSubMenu(menu_admin_reports, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 
 local menus = {
     menu_main,
@@ -36,7 +38,9 @@ local menus = {
     menu_admin_players,
     menu_admin_self,
     menu_admin_vehicles,
-    menu_equipment
+    menu_equipment,
+    menu_admin_reports,
+    menu_admin_report_action
 }
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()

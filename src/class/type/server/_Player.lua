@@ -121,6 +121,10 @@ function _Player:getPed()
     return (GetPlayerPed(self.sId))
 end
 
+function _Player:getName()
+    return (self.name)
+end
+
 ---@param newRank _Rank
 function _Player:setGroup(newRank, notify)
     self.rank = newRank
@@ -141,4 +145,3 @@ function _Player:setGroupId(newRankId, notify)
     local rank = _FlashServer_Ranks.get(newRankId)
     self:setGroup(rank, notify)
 end
-
