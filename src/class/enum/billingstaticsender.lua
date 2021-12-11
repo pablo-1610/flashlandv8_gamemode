@@ -10,5 +10,5 @@
 ---@author Pablo_1610
 
 _FlashEnum_BILLINGSTATICSENDER = {
-    NATIONALBANK = "FlashLand National Bank INC."
+    NATIONALBANK = "Flash Bank ® INC."
 }
