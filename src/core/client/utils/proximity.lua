@@ -46,7 +46,7 @@ _FlashClient_Utils.proximity_getClosestPlayer = function()
     for _, localSrc in pairs(players) do
         if (GetPlayerPed(localSrc) ~= PlayerPedId()) then
             local playerPed = GetPlayerPed(localSrc)
-            local playerDistance = #(myCoords - (GetEntityCoords(players)))
+            local playerDistance = #(myCoords - (GetEntityCoords(GetPlayerPed(localSrc))))
             if (not closestPlayer) then
                 setClosest(playerPed, playerDistance)
             else

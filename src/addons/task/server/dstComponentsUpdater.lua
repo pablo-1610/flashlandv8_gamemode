@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 25/10/2021 11:47
+  Created at 10/12/2021 13:59
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,19 +9,10 @@
 --]]
 ---@author Pablo_1610
 
----@class _FlashServer_Zones
-_FlashServer_Zones = {}
-
-local count = 0
-local list = {}
-
 _FlashLand.onReceiveWithoutNet("loaded", function()
-    CreateThread(function()
-        while (true) do
-            Wait(500)
-            -- TODO -> Implement zones
-        end
-    end)
+    _FlashScheduler.scheduleRepeatingTask(function()
+        _FlashServer_Task.doZoneUpdater()
+        _FlashServer_Task.doNpcUpdater()
+        _FlashServer_Task.doBlipUpdater()
+    end, 2000, 1000)
 end)
-
-_FlashLand.loadedComponent("zone")
