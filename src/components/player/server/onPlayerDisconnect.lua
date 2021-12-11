@@ -17,6 +17,7 @@ _FlashLand.onReceiveWithoutNetExposed("playerDropped", function()
     player:savePosition()
     player.inventory:save()
     player.inventory:destroy()
+    player.loadout:destroy()
     local name = GetPlayerName(_src)
     if (_FlashServer_Players.exists(_src)) then
         _FlashLand.log(("Le joueur ^5%s^7 s'est ^1déconnecté"):format(name))

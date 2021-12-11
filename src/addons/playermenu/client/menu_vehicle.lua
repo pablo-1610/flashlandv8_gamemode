@@ -108,7 +108,6 @@ _FlashClient_PlayerMenu.drawer[6] = function()
                     if (input ~= nil and tonumber(input) ~= nil and tonumber(input) >= 0) then
                         input = tonumber(input)
                         speedLimiter = input
-                        print(("New speed limit = %s"):format(speedLimiter))
                         SetVehicleMaxSpeed(vehicle, speedLimiter/3.6)
                     end
                 end

@@ -9,4 +9,32 @@
 --]]
 ---@author Pablo_1610
 
+---@class _FlashClient_Zone
+_FlashClient_Zone = {}
+
+local list = {}
+
+_FlashClient_Zone.getAmount = function()
+    return (_FlashUtils.table_count(list))
+end
+
+_FlashClient_Zone.getAll = function()
+    return (list)
+end
+
+_FlashClient_Zone.remove = function(lightZoneId)
+    list[lightZoneId] = nil
+end
+
+_FlashClient_Zone.set = function(lightZoneId, lightZone)
+    list[lightZoneId] = lightZone
+    _FlashClient_Zone.tryInvokeDrawer()
+end
+
+_FlashClient_Zone.get = function(lightZoneId)
+    return (list[lightZoneId])
+end
+
+_FlashClient_Zone.coolDown = false
+
 _FlashLand.loadedComponent("zone")

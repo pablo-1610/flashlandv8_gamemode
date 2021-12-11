@@ -15,6 +15,11 @@ _FlashClient_Utils.notifications_show = function(message)
     DrawNotification(0, 1)
 end
 
+_FlashClient_Utils.notifications_showHelp = function(message)
+    AddTextEntry("FlashLandHelp", message)
+    DisplayHelpTextThisFrame("FlashLandHelp", false)
+end
+
 _FlashClient_Utils.notifications_showAdvanced = function(sender, subject, msg, textureDict, iconType, flash, saveToBrief, hudColorIndex)
     if saveToBrief == nil then
         saveToBrief = true
@@ -27,6 +32,10 @@ _FlashClient_Utils.notifications_showAdvanced = function(sender, subject, msg, t
     EndTextCommandThefeedPostMessagetext(textureDict, textureDict, false, iconType, sender, subject)
     EndTextCommandThefeedPostTicker(flash or false, saveToBrief)
 end
+
+_FlashLand.onReceive("utils:notifications_showAdvanced", function(sender, subject, msg, textureDict, iconType)
+    _FlashClient_Utils.notifications_showAdvanced(sender, subject, msg, textureDict, iconType)
+end)
 
 _FlashClient_Utils.notifications_template_error = function(message)
     _FlashClient_Utils.notifications_showAdvanced("FlashLand", "~r~Erreur", message, _FlashEnum_CHARACTERPICTURE.EPSILON, _FlashEnum_MESSAGEICONTYPE.CHAT)
