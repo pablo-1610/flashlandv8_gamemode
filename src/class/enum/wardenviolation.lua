@@ -21,4 +21,5 @@ _FlashEnum_WARDENVIOLATION = {
     ZONE_TOO_FAR = { code = 207, severity = _FlashEnum_WARDENSEVERITY.HIGH },
 
     PLAYER_INTERACTION_TOO_FAR = { code = 208, severity = _FlashEnum_WARDENSEVERITY.MED },
+    ARGS_OUT_OF_DELIMITATION = { code = 209, severity = _FlashEnum_WARDENSEVERITY.HIGH },
 }
