@@ -16,11 +16,12 @@
 ---@field public size number
 ---@field public label string
 ---@field public shortRange boolean
+---@field public visualData table
 _LightBlip = {}
 _LightBlip.__index = _LightBlip
 
 setmetatable(_LightBlip, {
-    __call = function(_, id, position, sprite, color, size, label, shortRange)
+    __call = function(_, id, position, sprite, color, size, label, shortRange, visualData)
         local self = setmetatable({}, _LightBlip)
         self.id = id
         self.position = position
@@ -29,6 +30,7 @@ setmetatable(_LightBlip, {
         self.size = size
         self.label = label
         self.shortRange = shortRange
+        self.visualData = visualData
         return (self)
     end
 })

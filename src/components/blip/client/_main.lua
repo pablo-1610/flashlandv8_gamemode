@@ -12,6 +12,8 @@
 ---@class _FlashClient_Blip
 _FlashClient_Blip = {}
 
+_FlashClient_Blip.radiusBlips = {}
+
 local list = {}
 
 _FlashClient_Blip.getAmount = function()
@@ -37,6 +39,7 @@ _FlashClient_Blip.set = function(lightBlipId, lightBlip)
         return
     end
     list[lightBlipId] = lightBlip
+    print(json.encode(lightBlip))
     _FlashClient_Blip.createInGameBlip(lightBlip)
 end
 

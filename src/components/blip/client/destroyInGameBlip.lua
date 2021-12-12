@@ -17,5 +17,10 @@ _FlashClient_Blip.destroyInGameBlip = function(blipId)
     if (not (blip.handler)) then
         return
     end
+    local radiusBlip = _FlashClient_Blip.radiusBlips[blip.handler]
+    if (radiusBlip) then
+        RemoveBlip(radiusBlip)
+        _FlashClient_Blip.radiusBlips[blip.handler] = nil
+    end
     RemoveBlip(blip.handler)
 end
