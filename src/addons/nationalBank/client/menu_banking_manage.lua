@@ -54,7 +54,7 @@ _FlashClient_NationalBank.drawer[4] = function(player)
                     if (newPing ~= nil and tonumber(newPing) ~= nil and tonumber(newPing) > 0) then
                         newPing = tonumber(oldPin)
                         isWaitingForServer = true
-                        _FlashLand.toServer("nationalBank:withdraw", account.accountId, input, _FlashClient_NationalBank.var.deskNpcId)
+                        _FlashLand.toServer("nationalBank:changePin", account.accountId, oldPin, newPing, _FlashClient_NationalBank.var.deskNpcId)
                     end
                 end
                 isWaitingForServer = true
