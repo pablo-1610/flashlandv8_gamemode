@@ -10,7 +10,7 @@
 ---@author Pablo_1610
 
 _FlashClient_Utils.proximity_canInteract = function(closestPlayerData)
-    return (closestPlayerData[1] ~= nil and closestPlayerData[2] <= 5.0)
+    return (closestPlayerData[1] ~= nil and closestPlayerData[2] <= 2.0)
 end
 
 _FlashClient_Utils.proximity_getClosestPlayerId = function(closestPlayerData)
@@ -38,23 +38,27 @@ end
 
 _FlashClient_Utils.proximity_getClosestPlayer = function()
     local players = GetActivePlayers()
-    local myCoords = GetEntityCoords(PlayerPedId())
-    local closestPlayer, closestDistance = nil, 0
-    local function setClosest(player, distance)
-        closestPlayer, closestDistance =  player, distance
-    end
-    for _, localSrc in pairs(players) do
-        if (GetPlayerPed(localSrc) ~= PlayerPedId()) then
-            local playerPed = GetPlayerPed(localSrc)
-            local playerDistance = #(myCoords - (GetEntityCoords(GetPlayerPed(localSrc))))
-            if (not closestPlayer) then
-                setClosest(playerPed, playerDistance)
+    local coords = GetEntityCoords(PlayerPedId())
+    local pCloset = nil
+    local pClosetPos = nil
+    local pClosetDst = nil
+    for k, v in pairs(players) do
+        if GetPlayerPed(v) ~= PlayerPedId() then
+            local oPed = GetPlayerPed(v)
+            local oCoords = GetEntityCoords(oPed)
+            local dst = GetDistanceBetweenCoords(oCoords, coords, true)
+            if pCloset == nil then
+                pCloset = v
+                pClosetPos = oCoords
+                pClosetDst = dst
             else
-                if (playerDistance < closestDistance) then
-                    setClosest(playerPed, playerDistance)
+                if dst < pClosetDst then
+                    pCloset = v
+                    pClosetPos = oCoords
+                    pClosetDst = dst
                 end
             end
         end
     end
-    return closestPlayer, closestDistance
+    return pCloset, pClosetDst
 end

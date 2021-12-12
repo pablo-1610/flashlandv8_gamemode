@@ -17,6 +17,7 @@ _FlashLand.onReceiveWithoutNet("admin:toggleNoClip", function(newState)
         CreateThread(function()
             while (_FlashClient_Staff.getNoClipState()) do
                 Wait(1)
+                HideHudComponentThisFrame(19)
                 local pCoords = GetEntityCoords(PlayerPedId(), false)
                 local camCoords = _FlashClient_Utils.controls_getCamDirection()
                 SetEntityVelocity(PlayerPedId(), 0.01, 0.01, 0.01)

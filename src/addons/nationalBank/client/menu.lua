@@ -14,14 +14,16 @@ local menuOpened = false
 -- Menus
 local menu_main = RageUI.CreateMenu(title, desc, nil, nil, "root_cause", "shopui_title_mazebank")
 local menu_banking = RageUI.CreateSubMenu(menu_main, title, desc,nil, nil, "root_cause", "shopui_title_mazebank")
-local menu_banking_manage = RageUI.CreateSubMenu(menu_banking, title, desc,nil, nil, "root_cause", "shopui_title_mazebank")
-local menu_banking_create = RageUI.CreateSubMenu(menu_banking, title, desc,nil, nil, "root_cause", "shopui_title_mazebank")
+local menu_banking_manage = RageUI.CreateSubMenu(menu_banking, title, desc, nil, nil, "root_cause", "shopui_title_mazebank")
+local menu_banking_manage_send = RageUI.CreateSubMenu(menu_banking_manage, title, desc, nil, nil, "root_cause", "shopui_title_mazebank")
+local menu_banking_create = RageUI.CreateSubMenu(menu_banking, title, desc, nil, nil, "root_cause", "shopui_title_mazebank")
 
 local menus = {
     menu_main,
     menu_banking,
     menu_banking_create,
-    menu_banking_manage
+    menu_banking_manage,
+    menu_banking_manage_send
 }
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()

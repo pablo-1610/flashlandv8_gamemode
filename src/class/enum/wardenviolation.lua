@@ -19,4 +19,6 @@ _FlashEnum_WARDENVIOLATION = {
 
     ZONE_NOT_EXISTS = { code = 206, severity = _FlashEnum_WARDENSEVERITY.HIGH },
     ZONE_TOO_FAR = { code = 207, severity = _FlashEnum_WARDENSEVERITY.HIGH },
+
+    PLAYER_INTERACTION_TOO_FAR = { code = 208, severity = _FlashEnum_WARDENSEVERITY.MED },
 }

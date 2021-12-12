@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 16/11/2021 23:22
+  Created at 11/12/2021 18:01
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,8 +9,8 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("playerMenu:showIdCard", function(playerSource, playerIdentity)
+_FlashLand.onReceive("playerMenu:giveMoneyNotification", function(playerSource, playerIdentity, sender, subject, content)
     local otherPed = GetPlayerPed(GetPlayerFromServerId(playerSource))
     local mugshot, mugshotStr = _FlashClient_Utils.ped_getMugShot(otherPed)
-    _FlashClient_Utils.notifications_showAdvanced("Carte d'identité", ("~o~%s %s ~s~(~o~%s ans~s~)"):format(playerIdentity.firstname, playerIdentity.lastname, playerIdentity.age), "", mugshotStr, _FlashEnum_MESSAGEICONTYPE.ARROW, false)
+    _FlashClient_Utils.notifications_showAdvanced(sender, subject, content, mugshotStr, _FlashEnum_MESSAGEICONTYPE.DOLLAR, false)
 end)
