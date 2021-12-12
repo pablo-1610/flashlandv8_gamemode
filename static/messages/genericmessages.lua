@@ -49,6 +49,7 @@ _Static_GenericMessages = {
     BANKING_WITHDRAW_NO_ENOUGH = "Il n'y a pas assez d'argent sur votre compte",
     PLAYER_SELECTED_IS_INVALID = "Un souci est arrivé avec le joueur selectionné",
     PLAYER_MESSAGE_GIVE_ITEM_SUCCESS = "Le staff vous a donné x~o~%s %s",
-    STAFF_MESSAGE_GIVE_ITEM_SUCCESS = "Le staff vous a donné x~o~%s %s à ~b~%s ~s~!",
+    STAFF_MESSAGE_GIVE_ITEM_SUCCESS = "Vous a donné x~o~%s %s à ~b~%s ~s~!",
     STAFF_MESSAGE_GIVE_ITEM_ERROR = "Impossible de donner l'item, pas assez de place dans l'inventaire ?",
+    STAFF_KICK_PLAYER = "⚠️ VOUS ETES KICK ⚠️\n👮🏽 • Staff : %s️\n🕖 • Heure : %s️\n📝 • Raison : %s",
 }

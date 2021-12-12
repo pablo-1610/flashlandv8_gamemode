@@ -17,7 +17,6 @@ _FlashLand.onReceive("staff:giveItem", function(targetSource, itemName, amount)
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    print(json.encode(player.rank.permissions))
     if (not (player.rank:hasPermission("admin.giveitem"))) then
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _FlashEnum_GENERICMESSAGE.ACTION_NO_PERMISSION)
         return

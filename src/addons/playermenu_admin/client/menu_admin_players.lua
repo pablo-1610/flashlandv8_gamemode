@@ -73,7 +73,6 @@ _FlashClient_PlayerMenu.drawer[9] = function(player, closestData, isStaffModeAct
 
         local isSelf = otherPlayer.flashId == player.flashId
         local isHigher = otherPlayer.rank.weight > player.rank.weight
-        print(json.encode(isSelf))
 
         RageUI.Button(("%s%s"):format(
                 (showRanks and (otherPlayer.rank.id ~= _Config.startRank and ("(%s%s~s~) "):format(otherPlayer.rank.baseColor, otherPlayer.rank.label) or "") or ""),

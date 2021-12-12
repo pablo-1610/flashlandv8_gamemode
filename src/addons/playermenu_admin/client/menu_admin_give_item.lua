@@ -21,12 +21,12 @@ end
 _FlashClient_PlayerMenu.drawer[17] = function(player)
     local perm = nil
     if (_FlashClient_PlayerMenu.var.selectedPlayerAction ~= nil) then
-        local reports = _FlashClient_Staff.getReportList()
-        local playerData = reports[_FlashClient_PlayerMenu.var.selectedPlayerAction]
+        local players = _FlashClient_Staff.getPlayerList()
+        local playerData = players[_FlashClient_PlayerMenu.var.selectedPlayerAction]
         if (getItemsList ~= nil) then
             perm = "admin.giveitem"
             for name, data in pairs(getItemsList()) do
-                RageUI.Button(("%s"):format(data.label), ("~o~Description : ~s~%s"):format(data.description), {}, (not (checkPerm(perm))), {
+                RageUI.Button(("%s"):format(data.label), ("~o~Description : ~s~%s"):format(data.description), {}, (checkPerm(perm)), {
                     onSelected = function()
                         local input = _FlashClient_Utils.input_showBox("Combien:", "", 10, true)
                         if (input ~= nil and tonumber(input) ~= nil and tonumber(input) > 0) then

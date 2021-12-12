@@ -27,19 +27,26 @@ _FlashClient_PlayerMenu.drawer[15] = function(player)
         RageUI.Separator(("ID : ~b~%s"):format(playerData.sId))
         RageUI.Line()
         perm = "admin.teleport"
-        RageUI.List("Teleportation : ", teleportType, teleportIndex, nil, {}, (not (checkPerm(perm))), {
+        RageUI.List("Teleportation : ", teleportType, teleportIndex, nil, {}, (checkPerm(perm)), {
             onListChange = function(Index)
                 teleportIndex = Index
             end,
             onSelected = function()
                 if teleportIndex == 1 then
-                    _FlashLand.toServer("staff:teleportStaffToPlayer", playerData.source)
+                    _FlashLand.toServer("staff:teleportStaffToPlayer", playerData.sId)
                 elseif teleportIndex == 2 then
-                    _FlashLand.toServer("staff:teleportPlayerToStaff", playerData.source)
+                    _FlashLand.toServer("staff:teleportPlayerToStaff", playerData.sId)
                 end
             end,
         })
         perm = "admin.playerinv"
-        RageUI.Button("Inventaire", nil, {}, (not (checkPerm(perm))), {}, _FlashClient_PlayerMenu.getMenus()[16])
+        RageUI.Button("Inventaire", nil, { RightLabel = "→" }, (checkPerm(perm)), {}, _FlashClient_PlayerMenu.getMenus()[16])
+        perm = "admin.giveitem"
+        RageUI.Button("Donner un item", nil, { RightLabel = "→" }, (checkPerm(perm)), {
+            onSelected = function()
+                _FlashClient_PlayerMenu.var.selectedPlayerAction = playerData.sId
+                _FlashLand.toServer("item:requestLightItems")
+            end
+        }, _FlashClient_PlayerMenu.getMenus()[17])
     end
 end

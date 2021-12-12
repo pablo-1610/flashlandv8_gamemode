@@ -9,7 +9,7 @@
 --]]
 ---@author VibR1cY
 
-_FlashUtils.setTime = function()
+_FlashUtils.getTime = function()
     return (os.time())
 end
 
@@ -18,14 +18,20 @@ _FlashUtils.decodeTime = function(time)
     return (decodeTime)
 end
 
+_FlashUtils.setTime = function()
+    local decodeTime = os.date("*t", _FlashUtils.getTime())
+    local hour = ("%s/%s/%s - %sh%s"):format(decodeTime.day, decodeTime.month, decodeTime.year, decodeTime.hour, decodeTime.min)
+    return (hour)
+end
+
 _FlashUtils.setHour = function()
-    local decodeTime = os.date("*t", _FlashUtils.setTime())
+    local decodeTime = os.date("*t", _FlashUtils.getTime())
     local hour = ("%sh%s"):format(decodeTime.hour, decodeTime.min)
     return (hour)
 end
 
 _FlashUtils.setDay = function()
-    local decodeTime = os.date("*t", _FlashUtils.setTime())
+    local decodeTime = os.date("*t", _FlashUtils.getTime())
     local day = ("%s/%s/%s"):format(decodeTime.day, decodeTime.month, decodeTime.year)
     return (day)
 end
