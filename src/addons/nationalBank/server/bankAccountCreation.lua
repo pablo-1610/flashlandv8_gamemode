@@ -6,7 +6,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashServer_Billing.registerBillEvent("create_bank_account", function(_src, method, args)
+_FlashServer_Billing.registerBillEvent("create_bank_account", function(_src, method, total, args)
     ---@type _Npc
     local npc = _FlashServer_Npc.get(args.deskNpcId)
     npc:sayForAll("GENERIC_THANKS", "Speech_Params_Force_Shouted_Critical")
