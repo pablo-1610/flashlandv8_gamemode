@@ -50,15 +50,13 @@ _FlashClient_NationalBank.drawer[4] = function(player)
                 local oldPin = _FlashClient_Utils.input_showBox("Ancien code secret:", "", 20, true)
                 if (oldPin ~= nil and tonumber(oldPin) ~= nil and tonumber(oldPin) > 0) then
                     oldPin = tonumber(oldPin)
-                    local newPing = _FlashClient_Utils.input_showBox("Nouveau code secret:", "", 20, true)
-                    if (newPing ~= nil and tonumber(newPing) ~= nil and tonumber(newPing) > 0) then
-                        newPing = tonumber(oldPin)
+                    local newPin = _FlashClient_Utils.input_showBox("Nouveau code secret:", "", 20, true)
+                    if (newPin ~= nil and tonumber(newPin) ~= nil and tonumber(newPin) > 0) then
+                        newPin = tonumber(newPin)
                         isWaitingForServer = true
-                        _FlashLand.toServer("nationalBank:changePin", account.accountId, oldPin, newPing, _FlashClient_NationalBank.var.deskNpcId)
+                        _FlashLand.toServer("nationalBank:changePin", account.accountId, oldPin, newPin, _FlashClient_NationalBank.var.deskNpcId)
                     end
                 end
-                isWaitingForServer = true
-                _FlashLand.toServer("nationalBank:alterState", account.accountId, _FlashClient_NationalBank.var.deskNpcId)
             end
         })
         RageUI.Button(account.state == 1 and "~r~Vérouiller~s~ le compte" or "~g~Déverouiller ~s~le compte", nil, account.state == _FlashEnum_BANKACCOUNTSTATE.ACTIVE and { RightBadge = RageUI.BadgeStyle.Alert } or {}, true, {

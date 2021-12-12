@@ -17,6 +17,11 @@ _FlashLand.onReceive("nationalBank:changePin", function(accountId, oldPin, newPi
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
+    if (tonumber(oldPin) == nil or tonumber(newPin) == nil) then
+        player:serverResponded()
+        player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.ERROR_OCCUR)
+        return
+    end
     _FlashServer_Banking.getAccount(accountId, function(account)
         if (not (account)) then
             player:serverResponded()
@@ -31,6 +36,27 @@ _FlashLand.onReceive("nationalBank:changePin", function(accountId, oldPin, newPi
                 _FlashServer_Npc.get(deskNpcId):sayForAll("Generic_Insult_Med", "Speech_Params_Force")
                 return
             end
+            if(account.pin ~= oldPin) then
+                player:serverResponded()
+                _FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.ERROR, _Static_GenericMessages.BANKING_OLDPIN_WRONG, _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
+                _FlashServer_Npc.get(deskNpcId):sayForAll("Generic_Insult_Med", "Speech_Params_Force")
+                return
+            end
+            if (account.pin == newPin) then
+                player:serverResponded()
+                _FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.ERROR, _Static_GenericMessages.BANKING_OLDPIN_SAME_AS_NEWPIN, _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
+                _FlashServer_Npc.get(deskNpcId):sayForAll("Generic_Insult_Med", "Speech_Params_Force")
+                return
+            end
+            _FlashServer_Banking.setPin(accountId, newPin, function()
+                print("Ok set pin")
+                _FlashServer_Banking.getPlayerAccounts(_src, function(accounts)
+                    _FlashServer_Npc.get(deskNpcId):sayForAll("Generic_Shocked_Med", "Speech_Params_Force_Shouted_Critical")
+                    --_FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.SUCCESS, (_Static_GenericMessages.BANKING_ACCOUNT_DELETED):format(account.accountId), _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
+                    _FlashLand.toClient("nationalBank:cbAccounts", _src, accounts)
+                    player:serverResponded()
+                end)
+            end)
             -- TODO → Compare old pin and new pin and check if they are the same
         end
     end)
