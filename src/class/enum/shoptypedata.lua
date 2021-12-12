@@ -12,14 +12,14 @@
 _FlashEnum_SHOPTYPEDATA = {
     [_FlashEnum_SHOPTYPE.LTD] = {
         label = "LTD",
-        blipColor = 67,
         fleesPercentage = 2,
+        banner = "shopui_title_ltdgasoline"
     },
 
     [_FlashEnum_SHOPTYPE.ELEVEN] = {
         label = "24/7",
-        blipColor = 69,
         fleesPercentage = 5,
+        banner = "shopui_title_24-7"
     },
 
 }
