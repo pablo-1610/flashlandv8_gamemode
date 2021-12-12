@@ -9,14 +9,16 @@
 --]]
 ---@author Pablo_1610
 
+local filterList = { _FlashEnum_DIVERFILTER.NORMAL, _FlashEnum_DIVERFILTER.ORANGE, _FlashEnum_DIVERFILTER.AMPLIFIE, _FlashEnum_DIVERFILTER.BLACK_AND_WHITE }
+local filterIndex = 1
 local radar = true
 local cinematicMode = false
 
 local function startCinematicMode()
     CreateThread(function()
         while (cinematicMode) do
-            DrawRect(0.0, 0.0, 2.0, 0.15, 0,0,0,255)
-            DrawRect(0.0, 1.0, 2.0, 0.15, 0,0,0,255)
+            DrawRect(0.0, 0.0, 2.0, 0.15, 0, 0, 0, 255)
+            DrawRect(0.0, 1.0, 2.0, 0.15, 0, 0, 0, 255)
             Wait(0)
         end
     end)
@@ -49,7 +51,6 @@ _FlashClient_PlayerMenu.drawer[7] = function()
         end
     })
 
-
     RageUI.Checkbox("Cinématique", nil, cinematicMode, {}, {
         onChecked = function()
             alterCinematicMode(true)
@@ -59,6 +60,26 @@ _FlashClient_PlayerMenu.drawer[7] = function()
             alterCinematicMode(false)
         end
     })
+
+    RageUI.List("Filtre : ", filterList, filterIndex, nil, {}, true, {
+        onListChange = function(Index)
+            filterIndex = Index
+        end,
+        onSelected = function()
+            if filterIndex == 1 then
+                SetTimecycleModifier("")
+            elseif filterIndex == 2 then
+                SetTimecycleModifier("tunnel")
+            elseif filterIndex == 3 then
+                SetTimecycleModifier("rply_saturation")
+            elseif filterIndex == 4 then
+                SetTimecycleModifier("rply_saturation_neg")
+            elseif filterIndex == 5 then
+                SetTimecycleModifier("V_FIB_IT3")
+            end
+        end,
+    })
+    -- TODO -> Mettre en place le mode steamer (cacher les informations importantes style code du compte bancaire pour eviter que tous le monde le vois)
 
     RageUI.Button("Sauvegarder", nil, {}, true, {
         onSelected = function()
