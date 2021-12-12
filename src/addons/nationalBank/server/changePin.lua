@@ -31,14 +31,7 @@ _FlashLand.onReceive("nationalBank:changePin", function(accountId, oldPin, newPi
                 _FlashServer_Npc.get(deskNpcId):sayForAll("Generic_Insult_Med", "Speech_Params_Force")
                 return
             end
-            _FlashServer_Banking.deleteAccount(accountId, function()
-                _FlashServer_Banking.getPlayerAccounts(_src, function(accounts)
-                    _FlashServer_Npc.get(deskNpcId):sayForAll("Generic_Shocked_Med", "Speech_Params_Force_Shouted_Critical")
-                    --_FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.SUCCESS, (_Static_GenericMessages.BANKING_ACCOUNT_DELETED):format(account.accountId), _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
-                    _FlashLand.toClient("nationalBank:cbAccounts", _src, accounts)
-                    player:serverResponded()
-                end)
-            end)
+            -- TODO → Compare old pin and new pin and check if they are the same
         end
     end)
 end)
