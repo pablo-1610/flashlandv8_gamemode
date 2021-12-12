@@ -23,7 +23,7 @@ _ConfigServer = {
     },
 
     Synchronizer = {
-        baseTime = {21,00},
+        baseTime = { 21, 00 },
         time = (30000),
         weather = (60000 * 60),
         position = (60000),
@@ -78,6 +78,13 @@ _ConfigServer = {
         }
     },
 
+    Banks = {
+        pedModel = "a_f_y_business_02",
+        list = {
+            { position = vector3(150.05, -1040.09, 29.37), npcPos = vector3(149.36, -1042.44, 29.36), npcHeading = 341.03, rob = vector3(146.81, -1044.86, 29.37), guard = { position = vector3(152.36, -1038.65, 29.36), heading = 163.96 } }
+        }
+    },
+
     NationalBank = {
         accountCreationPrice = 500,
 
@@ -109,9 +116,9 @@ _ConfigServer = {
         },
 
         guards = {
-            {position = vector3(259.40, 215.93, 106.28), heading = 74.89},
-            {position = vector3(232.91, 220.11, 106.28), heading = 255.54},
-            {position = vector3(237.56, 217.80, 110.28), heading = 296.28}
+            { position = vector3(259.40, 215.93, 106.28), heading = 74.89 },
+            { position = vector3(232.91, 220.11, 106.28), heading = 255.54 },
+            { position = vector3(237.56, 217.80, 110.28), heading = 296.28 }
         }
     },
 
