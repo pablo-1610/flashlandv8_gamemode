@@ -32,7 +32,7 @@ end
 ---@param report _Report
 _FlashServer_Reports.add = function(report)
     _FlashLand.log(("^2Ajout ^7d'un ^6REPORT ^7id: ^3%s"):format(report.source))
-    list[report.source] = report
+    list[report.sId] = report
 end
 
 _FlashServer_Reports.remove = function(reportSource)

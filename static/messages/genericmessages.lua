@@ -47,4 +47,8 @@ _Static_GenericMessages = {
     BANKING_TRANSFER_TARGETED_ACCOUNT_NOT_FOUND = "Ce compte n'existe pas",
     BANKING_TRANSFER_DONE = "Transfert de ~g~%s$~s~ effectué sur le compte ~o~#%s~s~",
     BANKING_WITHDRAW_NO_ENOUGH = "Il n'y a pas assez d'argent sur votre compte",
+    PLAYER_SELECTED_IS_INVALID = "Un souci est arrivé avec le joueur selectionné",
+    PLAYER_MESSAGE_GIVE_ITEM_SUCCESS = "Le staff vous a donné x~o~%s %s",
+    STAFF_MESSAGE_GIVE_ITEM_SUCCESS = "Le staff vous a donné x~o~%s %s à ~b~%s ~s~!",
+    STAFF_MESSAGE_GIVE_ITEM_ERROR = "Impossible de donner l'item, pas assez de place dans l'inventaire ?",
 }

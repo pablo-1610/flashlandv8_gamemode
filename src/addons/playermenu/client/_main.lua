@@ -15,10 +15,15 @@ _FlashClient_PlayerMenu = {}
 _FlashClient_PlayerMenu.var = {
     selectedItem = nil,
     selectedWeapon = nil,
-    selectedPlayer = {},
-    selectedReport = {}
+    selectedPlayer = nil,
+    selectedReport = nil,
+    selectedPlayerAction = nil
 }
 
 _FlashClient_KeyBind.addKey("f5", "Ouvrir le menu personnel", function()
     _FlashLand.toInternal("playerMenu:openMenu")
+end)
+
+_FlashClient_KeyBind.addKey("x", "Arreter l'animation en cour", function()
+    ClearPedTasksImmediately(PlayerPedId())
 end)

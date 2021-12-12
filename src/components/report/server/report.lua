@@ -13,5 +13,5 @@
 _FlashServer_Players.getReport = function(reportSource)
     ---@type _Report
     local report = _FlashServer_Reports.get(reportSource)
-    return (_Report(report.source, report.name, report.reason, report.date, report.status, report.moderator))
+    return (_Report(report.sId, report.name, report.reason, report.status, report.moderator))
 end

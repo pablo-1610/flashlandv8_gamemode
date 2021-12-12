@@ -20,12 +20,12 @@ _Report = {}
 _Report.__index = _Report
 
 setmetatable(_Report, {
-    __call = function(_, source, name, reason, date, status, moderator)
+    __call = function(_, sId, name, reason, status, moderator)
         local self = setmetatable({}, _Report)
-        self.source = source
+        self.sId = sId
         self.name = name
         self.reason = reason
-        self.date = date
+        self.date = _FlashUtils.setHour()
         self.status = status or 0
         self.moderator = moderator or nil
         return self

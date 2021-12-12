@@ -104,6 +104,14 @@ function _Player:setSpawned()
     self.spawned = true
 end
 
+function _Player:getPlayerPos()
+    return (GetEntityCoords(GetPlayerPed(self.sId)))
+end
+
+function _Player:setTeleportPlayer(position)
+    SetEntityCoords(GetPlayerPed(self.sId), position.x, position.y, position.z)
+end
+
 function _Player:sendData()
     local lightPlayer = _FlashServer_Players.getLightPlayer(self.sId)
     _FlashLand.toClient("cache:setCache", self.sId, "playerData", lightPlayer)

@@ -83,9 +83,9 @@ _FlashClient_PlayerMenu.drawer[9] = function(player, closestData, isStaffModeAct
                 (player.rank.weight >= otherPlayer.rank.weight and not isSelf),
                 {
                     onSelected = function()
-                        -- TODO → Interact with player
-                    end
-                }
-        )
+                        _FlashClient_PlayerMenu.var.selectedPlayer = key
+                    end,
+                },
+                _FlashClient_PlayerMenu.getMenus()[15])
     end
 end

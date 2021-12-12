@@ -35,10 +35,10 @@ _FlashServer_Commands.registerPermissionCommand("giveitem", "admin.giveitem", fu
     local item = _FlashServer_Items.get(itemId)
     _FlashServer_Inventory.player_addItem(targetId, itemId, quantity, function(success)
         if (success) then
-            player:sendSystemMessage("info", ("Le staff vous a donné x~o~%s %s"):format(quantity, item.label))
-            cbMesage(true, ("Don de %s %s a %s"):format(quantity, item.label, GetPlayerName(targetId)))
+            player:sendSystemMessage("info", (_Static_GenericMessages.PLAYER_MESSAGE_GIVE_ITEM_SUCCESS):format(quantity, item.label))
+            cbMesage(true, (_Static_GenericMessages.STAFF_MESSAGE_GIVE_ITEM_SUCCESS):format(quantity, item.label, GetPlayerName(targetId)))
         else
-            cbMesage(false, "Impossible de donner l'item, pas assez de place dans l'inventaire ?")
+            cbMesage(false, _Static_GenericMessages.STAFF_MESSAGE_GIVE_ITEM_ERROR)
         end
     end)
 
