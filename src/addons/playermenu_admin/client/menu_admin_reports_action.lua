@@ -32,6 +32,7 @@ _FlashClient_PlayerMenu.drawer[14] = function(player)
             perm = "admin.report"
             RageUI.Button("Prendre le report", ("Raison du report : ~b~%s~s~"):format(reportData.reason), {}, (checkPerm(perm)), {
                 onSelected = function()
+                    _FlashLand.setIsWaitingForServer(true)
                     reportData.status = 1
                     reportData.moderator = player.name
                     _FlashLand.toServer("staff:takeReport", reportData.sId)
@@ -47,8 +48,10 @@ _FlashClient_PlayerMenu.drawer[14] = function(player)
                 end,
                 onSelected = function()
                     if teleportIndex == 1 then
+                        _FlashLand.setIsWaitingForServer(true)
                         _FlashLand.toServer("staff:teleportStaffToPlayer", reportData.sId)
                     elseif teleportIndex == 2 then
+                        _FlashLand.setIsWaitingForServer(true)
                         _FlashLand.toServer("staff:teleportPlayerToStaff", reportData.sId)
                     end
                 end,
@@ -64,9 +67,10 @@ _FlashClient_PlayerMenu.drawer[14] = function(player)
             perm = "admin.kickplayer"
             RageUI.Button("Kick", nil, {}, (checkPerm(perm)), {
                 onSelected = function()
-                    local reason = _FlashClient_Utils.input_showBox("Raison du kick:", nil, 25, false)
+                    local reason = _FlashClient_Utils.input_showBox("Raison du kick:", nil, 55, false)
                     if (reason ~= nil) then
                         RageUI.GoBack()
+                        _FlashLand.setIsWaitingForServer(true)
                         _FlashLand.toServer("staff:kickPlayer", reportData.sId, reason)
                     end
                 end,

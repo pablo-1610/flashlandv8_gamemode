@@ -59,7 +59,7 @@ function _Inventory:removeItem(itemId, qty, cb)
         end
         return
     end
-    self.content[itemId] = (self.content[itemId] - 1)
+    self.content[itemId] = (self.content[itemId] - qty)
     if (self.content[itemId] <= 0) then
         self.content[itemId] = nil
     end

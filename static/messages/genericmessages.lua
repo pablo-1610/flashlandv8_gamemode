@@ -52,5 +52,10 @@ _Static_GenericMessages = {
     PLAYER_MESSAGE_GIVE_ITEM_SUCCESS = "Le staff vous a donné x~o~%s %s",
     STAFF_MESSAGE_GIVE_ITEM_SUCCESS = "Vous a donné x~o~%s %s à ~b~%s ~s~!",
     STAFF_MESSAGE_GIVE_ITEM_ERROR = "Impossible de donner l'item, pas assez de place dans l'inventaire ?",
+    PLAYER_MESSAGE_REMOVE_ITEM_SUCCESS = "Le staff vous a enlevé x~o~%s %s",
+    STAFF_MESSAGE_REMOVE_ITEM_SUCCESS = "Vous avez enlevé x~o~%s %s à ~b~%s ~s~!",
+    PLAYER_MESSAGE_REMOVE_WEAPON_SUCCESS = "Un staff vous à retiré votre : ~o~%s ~s~!",
+    STAFF_MESSAGE_REMOVE_WEAPON_SUCCESS = "Vous avez retiré (~o~%s~s~) à ~b~%s ~s~!",
+    STAFF_MESSAGE_REMOVE_WEAPON_ERROR = "Une erreur c'est produite lors du retrait de l'arme !",
     STAFF_KICK_PLAYER = "⚠️ VOUS ETES KICK ⚠️\n👮🏽 • Staff : %s️\n🕖 • Heure : %s️\n📝 • Raison : %s",
 }

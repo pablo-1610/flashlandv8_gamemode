@@ -19,13 +19,16 @@ _FlashLand.onReceive("staff:teleportPlayerToStaff", function(targetSource)
     local player = _FlashServer_Players.get(_src)
     if (not (player.rank:hasPermission("admin.teleport"))) then
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _FlashEnum_GENERICMESSAGE.ACTION_NO_PERMISSION)
+        player:serverResponded()
         return
     end
     if (not (_FlashServer_Players.exists(targetSource))) then
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.PLAYER_SELECTED_IS_INVALID)
+        player:serverResponded()
         return
     end
     ---@type _Player
     local target = _FlashServer_Players.get(targetSource)
     target:setTeleportPlayer(player:getPlayerPos())
+    player:serverResponded()
 end)

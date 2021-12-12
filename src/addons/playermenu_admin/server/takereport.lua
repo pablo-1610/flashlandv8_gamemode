@@ -25,6 +25,7 @@ _FlashLand.onReceive("staff:takeReport", function(reportSource)
     local player = _FlashServer_Players.get(_src)
     if (not (player.rank:hasPermission("admin.report"))) then
         player:sendSystemMessage("error", _FlashEnum_GENERICMESSAGE.ACTION_NO_PERMISSION)
+        player:serverResponded()
         return
     end
     ---@type _Report
@@ -32,4 +33,5 @@ _FlashLand.onReceive("staff:takeReport", function(reportSource)
     report:updateStatus()
     report:setModerator(player:getName())
     takeReportToAllStaff(report:getPlayerName(), report:getStaffName())
+    player:serverResponded()
 end)
