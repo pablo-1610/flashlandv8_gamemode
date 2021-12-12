@@ -48,7 +48,8 @@ _FlashLand.onReceive("bill:payBillBank", function(billEvent, accountId, total, b
             _FlashServer_Banking.withdrawFromAccount(account.accountId, total, function()
                 _FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.SUCCESS, (_Static_GenericMessages.BILLING_PAYMENT_DONE_CASH):format(_FlashUtils.math_price(total)), _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
                 _FlashLand.toClient("billing:setBillingAsPaid", _src)
-                _FlashServer_Billing.triggerBillingEvent(billEvent, _src, _FlashEnum_BILLINGPAYMENTMETHOD.CASH, total, billArgs)
+                billArgs.accountId = accountId
+                _FlashServer_Billing.triggerBillingEvent(billEvent, _src, _FlashEnum_BILLINGPAYMENTMETHOD.CARD, total, billArgs)
                 player:serverResponded()
             end)
         end
