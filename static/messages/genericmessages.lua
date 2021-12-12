@@ -38,6 +38,7 @@ _Static_GenericMessages = {
     BILLING_PAYMENT_WRONG_SECRET_CODE = "Le code secret est invalide",
     BILLING_PAYMENT_ACCOUNT_SUSPENDED = "Le compte est suspendu, paiement impossible",
     BILLING_PAYMENT_UNKNOWN_ACCOUNT = "Le compte spécifié n'existe pas",
+    BILLING_PAYMENT_FAILED_REFUNDED = "Votre paiement a echoué, vous avez reçu un remboursement de %s",
     BANKING_ACCOUNT_UNLOCKED = "Votre compte a ete débloque",
     BANKING_ACCOUNT_LOCKED = "Votre compte a ete bloqué",
     BANKING_ACCOUNT_DELETED = "Votre compte (~o~#%s~s~) a été supprimé",

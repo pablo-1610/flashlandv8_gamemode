@@ -78,6 +78,4 @@ _FlashClient_Npc.exists = function(lightNpcId)
     return (list[lightNpcId] ~= nil)
 end
 
-_FlashClient_Zone.coolDown = false
-
-_FlashLand.loadedComponent("zone")
+_FlashLand.loadedComponent("npc")

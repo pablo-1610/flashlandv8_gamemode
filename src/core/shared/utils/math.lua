@@ -11,7 +11,7 @@
 
 _FlashUtils.math_group = function(value)
     local left, num, right = string.match(value, '^([^%d]*%d)(%d*)(.-)$')
-    return left .. (num:reverse():gsub('(%d%d%d)', '%1' .. "."):reverse()) .. right
+    return left .. (num:reverse():gsub('(%d%d%d)', '%1' .. ","):reverse()) .. right
 end
 
 _FlashUtils.math_price = function(value)
