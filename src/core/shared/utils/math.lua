@@ -17,3 +17,7 @@ end
 _FlashUtils.math_price = function(value)
     return ("~g~%s$~s~"):format(_FlashUtils.math_group(value))
 end
+
+_FlashUtils.math_getInversedHeading = function(heading)
+    return (heading + 180) % 360
+end
