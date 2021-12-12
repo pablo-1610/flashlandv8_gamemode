@@ -41,7 +41,7 @@ _FlashClient_PlayerMenu.drawer[14] = function(player)
             RageUI.Separator(("Le report a été prit par : ~r~%s"):format(reportData.moderator))
             RageUI.Line()
             perm = "admin.teleport"
-            RageUI.List("Teleportation : ", teleportType, teleportIndex, nil, {}, (not (checkPerm(perm))), {
+            RageUI.List("Teleportation : ", teleportType, teleportIndex, nil, {}, (checkPerm(perm)), {
                 onListChange = function(Index)
                     teleportIndex = Index
                 end,
@@ -54,12 +54,23 @@ _FlashClient_PlayerMenu.drawer[14] = function(player)
                 end,
             })
             perm = "admin.giveitem"
-            RageUI.Button("Donner un item", nil, {}, (not (checkPerm(perm))), {
+            RageUI.Button("Donner un item", nil, { RightLabel = "→" }, (checkPerm(perm)), {
                 onSelected = function()
                     _FlashClient_PlayerMenu.var.selectedPlayerAction = reportData.sId
                     _FlashLand.toServer("item:requestLightItems")
                 end
             }, _FlashClient_PlayerMenu.getMenus()[17])
+            RageUI.Line()
+            perm = "admin.kickplayer"
+            RageUI.Button("Kick", nil, {}, (checkPerm(perm)), {
+                onSelected = function()
+                    local reason = _FlashClient_Utils.input_showBox("Raison du kick:", nil, 25, false)
+                    if (reason ~= nil) then
+                        RageUI.GoBack()
+                        _FlashLand.toServer("staff:kickPlayer", reportData.sId, reason)
+                    end
+                end,
+            })
         end
     end
 end
