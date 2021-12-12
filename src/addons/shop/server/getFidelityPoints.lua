@@ -18,6 +18,10 @@ _FlashServer_Shops.getFidelityPoints = function(_src, cb)
     _FlashServer_Database.query("SELECT * FROM flash_shopsfidelity WHERE owner = @owner", {
         ["owner"] = ("player:%s"):format(player.flashId)
     }, function(result)
+        if (not (result[1])) then
+            cb(nil)
+            return
+        end
         cb(result[1].points)
     end)
 end
