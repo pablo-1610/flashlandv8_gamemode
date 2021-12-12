@@ -26,7 +26,7 @@ _FlashServer_Reports.createReport = function(playerSource, reason)
             return
         end
         ---@type _Report
-        local report = _Report(playerSource, player:getName(), reason, "test")
+        local report = _Report(playerSource, player:getName(), reason)
         _FlashServer_Reports.add(report)
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.SUCCESS, ("%s"):format(_Static_GenericMessages.PLAYER_SEND_REPORT_SUCCESS))
         _FlashServer_Staff.updateReportsForStaff()

@@ -38,4 +38,8 @@ _Static_GenericMessages = {
     BANKING_ACCOUNT_DELETED = "Votre compte (~o~#%s~s~) a été supprimé",
     BANKING_DEPOSIT_DONE = "Dêpot de ~g~%s$~s~ effectué",
     BANKING_DEPOSIT_NO_ENOUGH_CASH = "Vous n'avez pas assez d'argent sur vous",
+    PLAYER_SELECTED_IS_INVALID = "Un souci est arrivé avec le joueur selectionné",
+    PLAYER_MESSAGE_GIVE_ITEM_SUCCESS = "Le staff vous a donné x~o~%s %s",
+    STAFF_MESSAGE_GIVE_ITEM_SUCCESS = "Le staff vous a donné x~o~%s %s à ~b~%s ~s~!",
+    STAFF_MESSAGE_GIVE_ITEM_ERROR = "Impossible de donner l'item, pas assez de place dans l'inventaire ?",
 }
