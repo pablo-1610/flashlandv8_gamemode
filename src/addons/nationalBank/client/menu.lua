@@ -41,7 +41,7 @@ _FlashClient_NationalBank.getMenus = function()
     return (menus)
 end
 
-_FlashLand.onReceive("nationalBank:cbAccounts", function(accounts)
+_FlashLand.onReceive("banking:cbAccounts", function(accounts)
     _FlashClient_NationalBank.var.accounts = accounts
 end)
 

@@ -53,7 +53,7 @@ _FlashLand.onReceive("nationalBank:changePin", function(accountId, oldPin, newPi
                 _FlashServer_Banking.getPlayerAccounts(_src, function(accounts)
                     _FlashServer_Npc.get(deskNpcId):sayForAll("Generic_Shocked_Med", "Speech_Params_Force_Shouted_Critical")
                     --_FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.SUCCESS, (_Static_GenericMessages.BANKING_ACCOUNT_DELETED):format(account.accountId), _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
-                    _FlashLand.toClient("nationalBank:cbAccounts", _src, accounts)
+                    _FlashLand.toClient("banking:cbAccounts", _src, accounts)
                     player:serverResponded()
                 end)
             end)

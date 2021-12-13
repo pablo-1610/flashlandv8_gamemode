@@ -57,7 +57,7 @@ _FlashLand.onReceive("nationalBank:transfer", function(acSource, acDest, amount,
                         _FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.ERROR, (_Static_GenericMessages.BANKING_TRANSFER_DONE):format(amount, acDest), _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
                         _FlashServer_Npc.get(deskNpcId):sayForAll("GENERIC_THANKS", "Speech_Params_Force_Shouted_Critical")
                         _FlashServer_Banking.getPlayerAccounts(_src, function(accounts)
-                            _FlashLand.toClient("nationalBank:cbAccounts", _src, accounts)
+                            _FlashLand.toClient("banking:cbAccounts", _src, accounts)
                             player:serverResponded()
                         end)
                     end)

@@ -12,6 +12,6 @@
 _FlashLand.onReceive("nationalBank:requestAccounts", function()
     local _src = source
     _FlashServer_Banking.getPlayerAccounts(_src, function(accounts)
-        _FlashLand.toClient("nationalBank:cbAccounts", _src, accounts)
+        _FlashLand.toClient("banking:cbAccounts", _src, accounts)
     end)
 end)
