@@ -113,5 +113,8 @@ function _Zone:interact(_src)
     -- Interaction
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
+    CreateThread(function()
+        _FlashServer_Webhooks.send(_Webhooks.ZONE_INTERACT, ("[%s] __%s__ (%s) a intéragit avec la zone **%s**"):format(player.rank.label, player.name, player.flashId, self.id))
+    end)
     self.onInteract(_src, player, self:getLightZone())
 end

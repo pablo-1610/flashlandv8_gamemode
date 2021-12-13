@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 11/12/2021 00:27
+  Created at 13/12/2021 21:52
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,9 +9,7 @@
 --]]
 ---@author Pablo_1610
 
----@class _FlashClient_Billing
-_FlashClient_Billing = {}
-
-_FlashClient_Billing.currentBillingParentMenu = nil
-
-_FlashClient_Billing.currentBillingPaid = false
+_FlashEnum_BILLINGPAYMENTMETHODLABEL = {
+    [_FlashEnum_BILLINGPAYMENTMETHOD.CASH] = "Cash",
+    [_FlashEnum_BILLINGPAYMENTMETHOD.CARD] = "Banque"
+}

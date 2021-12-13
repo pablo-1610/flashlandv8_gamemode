@@ -20,7 +20,11 @@ _FlashUtils.math_group = function(value)
 end
 
 _FlashUtils.math_price = function(value)
-    return ("~g~%s$~s~"):format(_FlashUtils.math_group(value))
+    return ("~g~%s$~s~"):format(_FlashUtils.math_group(_FlashUtils.math_round(value, 2)))
+end
+
+_FlashUtils.math_price_color = function(value, color)
+    return ("%s%s$~s~"):format(color, _FlashUtils.math_group(_FlashUtils.math_round(value, 2)))
 end
 
 _FlashUtils.math_getInversedHeading = function(heading)

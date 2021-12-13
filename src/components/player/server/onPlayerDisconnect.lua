@@ -15,15 +15,15 @@ _FlashLand.onReceiveWithoutNetExposed("playerDropped", function()
     if (not (_FlashServer_Players.exists(_src))) then
         return
     end
+    ---@type _Player
     local player = _FlashServer_Players.get(_src)
     player:saveData()
     player:savePosition()
     player.inventory:save()
     player.inventory:destroy()
     player.loadout:destroy()
-    local name = GetPlayerName(_src)
     if (_FlashServer_Players.exists(_src)) then
-        _FlashLand.log(("Le joueur ^5%s^7 s'est ^1déconnecté"):format(name))
+        _FlashLand.log(("Le joueur ^5%s^7 s'est ^1déconnecté"):format(player.name))
         _FlashServer_Players.remove(_src)
         _FlashServer_Staff.updatePlayersForStaff()
         ---@type _Report
@@ -32,5 +32,6 @@ _FlashLand.onReceiveWithoutNetExposed("playerDropped", function()
         end
         _FlashServer_Reports.remove(_src)
         _FlashServer_Staff.updateReportsForStaff()
+        _FlashServer_Webhooks.send(_Webhooks.QUIT, ("[%s] __%s__ (%s) s'est deconnecté. Il était id **%s**"):format(player.rank.label, player.name, player.flashId, player.sId))
     end
 end)

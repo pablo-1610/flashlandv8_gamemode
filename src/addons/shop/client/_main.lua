@@ -54,7 +54,6 @@ _FlashClient_Shop.calculateTotalPrice = function()
     for itemId, count in pairs(_FlashClient_Shop.var.basket) do
         total = total + (_FlashClient_Shop.getItemPrice(itemId) * count)
     end
-    print(total)
     return total
 end
 

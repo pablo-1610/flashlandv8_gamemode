@@ -18,7 +18,6 @@ local selectedPlayer = {}
 local reportList = {}
 
 _FlashClient_Staff.backIfNotActive = function()
-    print(json.encode(active))
     if (not (active)) then
         RageUI.GoBack()
     end

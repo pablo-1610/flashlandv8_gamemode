@@ -11,7 +11,8 @@
 
 _FlashClient_Shop.drawer[2] = function(player)
     local currentCategory = _FlashClient_Shop.var.categories[_FlashClient_Shop.var.selectedCategory]
-    RageUI.Separator(("Catégorie: ~b~%s"):format(currentCategory.label))
+    --RageUI.Separator(("Catégorie: ~b~%s"):format(currentCategory.label))
+    RageUI.Separator(("Total: %s"):format(_FlashUtils.math_price(_FlashClient_Shop.calculateTotalPrice())))
     RageUI.Line()
     for k, v in pairs(currentCategory.content) do
         RageUI.Button(("%s%s"):format(v.label, (_FlashClient_Shop.isItemInBasket(v.item) and (" (~b~x%s~s~)"):format(_FlashClient_Shop.getItemCount(v.item)) or "")), nil, { RightLabel = _FlashUtils.math_price(v.price) }, true, {

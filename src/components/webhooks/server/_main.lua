@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 20/11/2021 16:49
+  Created at 13/12/2021 21:02
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,10 +9,5 @@
 --]]
 ---@author Pablo_1610
 
-_FlashEnum_WEBHOOK = {
-    JOIN_LEFT = "",
-    ADMIN = "",
-    INVENTORIES = "",
-    WARDEN = "",
-    SANCTIONS = ""
-}
+---@class _FlashServer_Webhooks
+_FlashServer_Webhooks = {}

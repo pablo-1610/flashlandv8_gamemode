@@ -17,8 +17,6 @@ _FlashLand.onReceive("nationalBank:transfer", function(acSource, acDest, amount,
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    print(acSource)
-    print(acDest)
     if (acSource == acDest) then
         player:serverResponded()
         _FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.ERROR, _Static_GenericMessages.BANKING_TRANSFER_SAME_ACCOUNT, _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
@@ -60,6 +58,7 @@ _FlashLand.onReceive("nationalBank:transfer", function(acSource, acDest, amount,
                             _FlashLand.toClient("banking:cbAccounts", _src, accounts)
                             player:serverResponded()
                         end)
+                        _FlashServer_Webhooks.send(_FlashServer_Webhooks.send(_Webhooks.BANK_TRANSFER, ("[%s] __%s__ (%s) a transféré **%s$** de son compte (`#%s`) au compte `#%s`"):format(player.rank.label, player.name, player.flashId, amount, acSource, acDest)))
                     end)
                 end)
             end)

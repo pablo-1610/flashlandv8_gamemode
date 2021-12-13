@@ -26,6 +26,8 @@ _FlashLand.onReceiveWithoutNet("nationalBank:createPlayerBankAccount", function(
             ["@label"] = label,
             ["@pin"] = pin,
             ["@balance"] = 0,
-        })
+        }, function(rowId)
+            _FlashServer_Webhooks.send(_FlashServer_Webhooks.send(_Webhooks.BANK_CREATE, ("[%s] __%s__ (%s) a créé un compte (`#%s`) avec comme label **\"**%s**\"**"):format(player.rank.label, player.name, player.flashId, rowId, label)))
+        end)
     end)
 end)

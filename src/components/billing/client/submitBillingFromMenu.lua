@@ -31,17 +31,16 @@ local function onBillingMenuClosed(currentMenu, callbackMenu)
 end
 
 _FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, elements, acceptedPaymentMethods, billingData, callbackMenu, whenBackOnMenu)
+    _FlashClient_Billing.currentBillingParentMenu = callbackMenu
     ---@type _Player
     local player = _FlashClient_Cache.getPlayer()
     local total = 0
     for k, v in pairs(elements) do
         total = total + v[2]
-
     end
     local menu_bill_main = RageUI.CreateSubMenu(callbackMenu, "", "Règlement d'une facture", nil, nil, "root_cause", "shopui_title_fleecabank")
     local menu_bill_selectedMethod = RageUI.CreateSubMenu(menu_bill_main, "", "Sélectionnez le moyen de paiement", nil, nil, "root_cause", "shopui_title_fleecabank")
     local menu_bill_flashPay = RageUI.CreateSubMenu(menu_bill_selectedMethod, "", "Paiement par FlashPay™", nil, nil, "root_cause", "shopui_title_fleecabank")
-
     local accounts = nil
     menuBillingOpened = true
     menu_bill_selectedMethod.Closable = true
@@ -54,7 +53,7 @@ _FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, el
     -- Menu related
     RageUI.Visible(menu_bill_main, true)
     CreateThread(function()
-        isAllowedToInteract = false
+        FreezeEntityPosition(PlayerPedId(), true)
         while (menuBillingOpened) do
             Wait(0)
             RageUI.IsVisible(menu_bill_main, function()
@@ -83,13 +82,12 @@ _FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, el
                     RageUI.Line()
                     RageUI.Button("Revenir en arrière", nil, { RightLabel = "→" }, true, {
                         onSelected = function()
-                            RageUI.Visible(callbackMenu, true)
                             menuBillingOpened = false
                             if (whenBackOnMenu ~= nil) then
                                 whenBackOnMenu()
                             end
                         end,
-                    })
+                    }, callbackMenu)
                 end
             end)
 
@@ -100,7 +98,7 @@ _FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, el
                     RageUI.Separator(("Total: %s"):format(_FlashUtils.math_price(total)))
                     for k, v in pairs(accounts) do
                         local canUse = (v.balance >= total and v.state == _FlashEnum_BANKACCOUNTSTATE.ACTIVE)
-                        RageUI.Button(("[~o~#%s~s~] %s%s"):format(v.accountId, (canUse and "" or "~c~"), v.label), (canUse and nil or "Vous ne pouvez pas utiliser ce compte pour procéder au paiement de la facture"), { RightLabel = _FlashUtils.math_price(v.balance) }, true, {
+                        RageUI.Button(("[~o~#%s~s~] %s%s"):format(v.accountId, (canUse and "" or "~c~"), v.label), (canUse and "" or "Vous ne pouvez pas utiliser ce compte pour procéder au paiement de la facture"), { RightLabel = _FlashUtils.math_price_color(v.balance, (canUse and "~g~" or "~c~")) }, true, {
                             onSelected = function()
                                 if (canUse) then
                                     isWaitingForServer = true
@@ -126,6 +124,6 @@ _FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, el
                 end
             end)
         end
-        isAllowedToInteract = true
+        _FlashClient_Billing.currentBillingParentMenu = nil
     end)
 end

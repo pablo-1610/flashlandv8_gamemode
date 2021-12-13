@@ -32,7 +32,14 @@ _FlashServer_Warden.getPrefix = function()
 end
 
 _FlashServer_Warden.violation = function(_src, violation)
+    ---@type _Player
+    local player = _FlashServer_Players.get(_src)
     actionBySeverity(_src, violation)
+    if (player ~= nil) then
+        _FlashServer_Webhooks.send(_Webhooks.WARDEN, ("[%s] __%s__ (%s) a alerté WARDEN sur un code **%s**"):format(player.rank.label, player.name, player.flashId, violation.code))
+    else
+        _FlashServer_Webhooks.send(_Webhooks.WARDEN, ("L'id **%s** a alerté WARDEN sur un code **%s**"):format(_src, violation.code))
+    end
 end
 
 _FlashLand.loadedComponent("warden")

@@ -104,7 +104,10 @@ end
 _FlashLand.err = function(string)
     if (_Config.enableErrorsLog) then
         print(("[^1Erreur^7] %s^7"):format(string))
-        -- TODO → Report to webhook
+        local isServer = GetGameName() == "fxserver"
+        if (isServer) then
+            _FlashLand.toInternal("errorCatcher:report", string)
+        end
     end
 end
 

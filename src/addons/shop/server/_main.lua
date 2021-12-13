@@ -21,10 +21,6 @@ for shopId, shop in pairs(_ConfigServer.Shops.list) do
     local npc = _FlashServer_Npc.create(shop.npc, shop.npcHeading, "mp_m_shopkeep_01", false, true, 50.0)
     npc:setScenario("WORLD_HUMAN_CLIPBOARD_FACILITY", true)
 
-    if (_Config.environment == _FlashEnum_ENV.DEV) then
-        npc:setName(("[DEBUG] SHOPID %s"):format(shopId), 0, 10.0)
-    end
-
     ---@type _Zone
     local zone = _FlashServer_Zones.createPublic(shop.loc, { 255, 255, 255 }, function(_src, player)
         _FlashLand.toInternal("shop:openShopMenu", _src, shopId, shop.type, npc.id)

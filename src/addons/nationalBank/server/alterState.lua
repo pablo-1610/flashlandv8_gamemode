@@ -18,9 +18,7 @@ _FlashLand.onReceive("nationalBank:alterState", function(accountId, deskNpcId)
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
     _FlashServer_Banking.getAccount(accountId, function(account)
-        print(("Current state is %s"):format(account.state))
         local newState = account.state == 0 and true or false
-        print(("New state should be %s"):format(newState))
         if (not (account)) then
             player:serverResponded()
             player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.ERROR_OCCUR)
@@ -46,6 +44,7 @@ _FlashLand.onReceive("nationalBank:alterState", function(accountId, deskNpcId)
                     _FlashLand.toClient("banking:cbAccounts", _src, accounts)
                     player:serverResponded()
                 end)
+                _FlashServer_Webhooks.send(_FlashServer_Webhooks.send(_Webhooks.BANK_STATE, ("[%s] __%s__ (%s) a changé le statut de son compte (`#%s`) en **%s**"):format(player.rank.label, player.name, player.flashId, accountId, (newState and "Ouvert" or "Vérouillé"))))
             end)
         end
     end)

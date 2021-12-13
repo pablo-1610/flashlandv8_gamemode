@@ -47,6 +47,7 @@ _FlashLand.onReceive("nationalBank:withdraw", function(accountId, amount, deskNp
                     _FlashLand.toClient("banking:cbAccounts", _src, accounts)
                     player:serverResponded()
                 end)
+                _FlashServer_Webhooks.send(_FlashServer_Webhooks.send(_Webhooks.BANK_WITHDRAW, ("[%s] __%s__ (%s) a retiré **%s$** de son compte (`#%s`)"):format(player.rank.label, player.name, player.flashId, _FlashUtils.math_group(amount), accountId)))
             end)
         end
     end)

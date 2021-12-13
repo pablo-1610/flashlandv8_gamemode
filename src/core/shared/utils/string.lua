@@ -10,13 +10,17 @@
 ---@author Pablo_1610
 
 _FlashUtils.string_startsWith = function(str, start)
-    return (string.sub(str,1,string.len(start))==start)
+    return (string.sub(str, 1, string.len(start)) == start)
 end
 
 _FlashUtils.string_split = function(str, delimiter)
     result = {};
-    for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+    for match in (str .. delimiter):gmatch("(.-)" .. delimiter) do
         table.insert(result, match);
     end
     return result;
+end
+
+_FlashUtils.string_replaceAll = function(str, find, replace)
+    return str:gsub(find, replace)
 end

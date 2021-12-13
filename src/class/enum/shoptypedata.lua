@@ -10,10 +10,11 @@
 ---@author Pablo_1610
 
 _FlashEnum_SHOPTYPEDATA = {
+    -- All of this data are unuseful for the moment
     [_FlashEnum_SHOPTYPE.LTD] = {
         label = "LTD",
         fleesPercentage = 2,
-        banner = "shopui_title_ltdgasoline"
+        banner = "shopui_title_24-7"
     },
 
     [_FlashEnum_SHOPTYPE.ELEVEN] = {

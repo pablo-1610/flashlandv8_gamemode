@@ -39,7 +39,6 @@ _FlashClient_Blip.set = function(lightBlipId, lightBlip)
         return
     end
     list[lightBlipId] = lightBlip
-    print(json.encode(lightBlip))
     _FlashClient_Blip.createInGameBlip(lightBlip)
 end
 
