@@ -9,12 +9,24 @@
 --]]
 ---@author VibR1cY
 
+local function checkPerm(permission)
+    return (_FlashClient_Staff.hasPermission(permission))
+end
+
 ---@param player _Player
 _FlashClient_PlayerMenu.drawer[18] = function(player)
     local perm = nil
     if (_FlashClient_PlayerMenu.var.selectedPlayerAction ~= nil) then
         local players = _FlashClient_Staff.getPlayerList()
         local playerData = players[_FlashClient_PlayerMenu.var.selectedPlayerAction]
-        -- TODO -> Recup la liste des armes pour pour pouvoir les afficher et les gives !
+        perm = "admin.giveweapon"
+        for _, weaponData in pairs(_Static_Weapons) do
+            RageUI.Button(("%s"):format(weaponData.label), nil, {}, (checkPerm(perm)), {
+                onSelected = function()
+                    _FlashLand.setIsWaitingForServer(true)
+                    _FlashLand.toServer("staff:giveWeapon", playerData.sId, weaponData.name)
+                end,
+            })
+        end
     end
 end

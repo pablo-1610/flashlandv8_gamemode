@@ -23,7 +23,7 @@ _FlashLand.onReceive("admin:deleteVehicle", function(vehicleId)
     end
     local vehicle = NetworkGetEntityFromNetworkId(vehicleId)
     if(not (DoesEntityExist(vehicle))) then
-        player:sendSystemMessage("error", _Static_GenericMessages.INVALID_SERVER_ENTITY)
+        player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.INVALID_SERVER_ENTITY)
         player:serverResponded()
         return
     end

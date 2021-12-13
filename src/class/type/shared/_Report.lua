@@ -15,18 +15,20 @@
 ---@field public reason string
 ---@field public date string
 ---@field public status number
+---@field public moderatorId number
 ---@field public moderator string
 _Report = {}
 _Report.__index = _Report
 
 setmetatable(_Report, {
-    __call = function(_, sId, name, reason, status, moderator)
+    __call = function(_, sId, name, reason, status, moderatorId, moderator)
         local self = setmetatable({}, _Report)
         self.sId = sId
         self.name = name
         self.reason = reason
         self.date = _FlashUtils.setHour()
         self.status = status or 0
+        self.moderatorId = moderatorId or nil
         self.moderator = moderator or nil
         return self
     end
@@ -56,6 +58,7 @@ end
 ---setModerator
 ---@public
 ---@return void
-function _Report:setModerator(name)
+function _Report:setModerator(sId, name)
+    self.moderatorId = sId
     self.moderator = name
 end
