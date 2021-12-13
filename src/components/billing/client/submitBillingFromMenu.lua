@@ -54,6 +54,7 @@ _FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, el
     -- Menu related
     RageUI.Visible(menu_bill_main, true)
     CreateThread(function()
+        isAllowedToInteract = false
         while (menuBillingOpened) do
             Wait(0)
             RageUI.IsVisible(menu_bill_main, function()
@@ -125,5 +126,6 @@ _FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, el
                 end
             end)
         end
+        isAllowedToInteract = true
     end)
 end
