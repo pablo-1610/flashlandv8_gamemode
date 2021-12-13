@@ -133,6 +133,10 @@ function _Player:getName()
     return (self.name)
 end
 
+function _Player:getServerId()
+    return (self.sId)
+end
+
 ---@param newRank _Rank
 function _Player:setGroup(newRank, notify)
     self.rank = newRank

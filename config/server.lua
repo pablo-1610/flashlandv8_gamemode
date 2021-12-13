@@ -115,6 +115,29 @@ _ConfigServer = {
         }
     },
 
+    TattooShop = {
+        list = {
+            { position = vector3(1321.73, -1653.59, 52.27), npcPosition = vector3(1324.70, -1650.07, 52.27), npcHeading = 128.66 },
+            { position = vector3(324.23, 180.31, 103.58), npcPosition = vector3(319.65, 181.01, 103.58), npcHeading = 247.66 },
+            { position = vector3(-1155.22, -1427.03, 4.95), npcPosition = vector3(-1152.00, -1423.79, 4.95), npcHeading = 123.98 },
+            { position = vector3(-3169.54, 1077.47, 20.82), npcPosition = vector3(-3170.69, 1072.96, 20.82), npcHeading = 335.63 },
+            { position = vector3(1864.92, 3746.97, 33.03), npcPosition = vector3(1862.87, 3748.18, 33.03), npcHeading = 28.20 },
+            { position = vector3(-294.48, 6200.48, 31.48), npcPosition = vector3(-292.37, 6199.75, 31.48), npcHeading = 221.87 },
+        }
+    },
+
+    BarberShop = {
+        list = {
+            { position = vector3(-278.40, 6226.84, 31.75), npcPosition = vector3(-277.88, 6230.32, 31.69), npcHeading = 47.93 },
+            { position = vector3(1932.25, 3731.42, 32.85), npcPosition = vector3(1930.81, 3728.31, 32.84), npcHeading = 210.73 },
+            { position = vector3(1212.85, -473.97, 66.21), npcPosition = vector3(1211.64, -470.72, 66.20), npcHeading = 73.73 },
+            { position = vector3(-34.24, -152.72, 57.08), npcPosition = vector3(-30.97, -151.77, 57.07), npcHeading = 334.94 },
+            { position = vector3(-815.11, -182.86, 37.56), npcPosition = vector3(-821.96, -183.12, 37.56), npcHeading = 208.65 },
+            { position = vector3(-1282.08, -1118.30, 7.00), npcPosition = vector3(-1284.03, -1115.62, 6.99), npcHeading = 87.15 },
+            { position = vector3(138.32, -1708.28, 29.30), npcPosition = vector3(134.79, -1707.86, 29.29), npcHeading = 139.65 },
+        }
+    },
+
     RichPresence = {
         appId = "830843275950424125",
     }

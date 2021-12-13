@@ -68,5 +68,21 @@ _FlashClient_PlayerMenu.drawer[15] = function(player)
                 end
             end,
         })
+        perm = "admin.vehspawn"
+        RageUI.Button("Spawn un véhicule", nil, {}, (checkPerm(perm)), {
+            onSelected = function()
+                local input = _FlashClient_Utils.input_showBox("Modèle", "", 20, false)
+                if (input ~= nil) then
+                    input = input:lower()
+                    local model = GetHashKey(input)
+                    if (not (IsModelValid(model))) then
+                        _FlashClient_Utils.notifications_template_error(_Static_GenericMessages.INVALID_MODEL)
+                    else
+                        _FlashLand.setIsWaitingForServer(true)
+                        _FlashLand.toServer("staff:spawnPlayerSelectedVehicule", playerData.sId, model)
+                    end
+                end
+            end,
+        })
     end
 end

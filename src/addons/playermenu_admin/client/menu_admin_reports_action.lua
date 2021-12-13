@@ -33,14 +33,21 @@ _FlashClient_PlayerMenu.drawer[14] = function(player)
             RageUI.Button("Prendre le report", ("Raison du report : ~b~%s~s~"):format(reportData.reason), {}, (checkPerm(perm)), {
                 onSelected = function()
                     _FlashLand.setIsWaitingForServer(true)
-                    reportData.status = 1
-                    reportData.moderator = player.name
                     _FlashLand.toServer("staff:takeReport", reportData.sId)
                 end,
             })
         else
-            RageUI.Separator(("Le report a été prit par : ~r~%s"):format(reportData.moderator))
+            RageUI.Separator(("Le report a été prit par : ~r~%s ~s~(~r~%s~s~)"):format(reportData.moderator, reportData.moderatorId))
             RageUI.Line()
+            perm = "admin.report"
+            RageUI.Button(("~o~Supprimer le report de : ~r~%s"):format(reportData.name), ("Raison : ~b~%s~s~~n~Heure du report : ~b~%s~s~"):format(reportData.reason, reportData.date), {}, (checkPerm(perm)), {
+                onSelected = function()
+                    RageUI.GoBack()
+                    _FlashLand.setIsWaitingForServer(true)
+                    _FlashLand.toServer("staff:closeReport", reportData.sId)
+                    _FlashClient_PlayerMenu.var.selectedReport = nil
+                end,
+            })
             perm = "admin.teleport"
             RageUI.List("Teleportation : ", teleportType, teleportIndex, nil, {}, (checkPerm(perm)), {
                 onListChange = function(Index)
@@ -63,6 +70,12 @@ _FlashClient_PlayerMenu.drawer[14] = function(player)
                     _FlashLand.toServer("item:requestLightItems")
                 end
             }, _FlashClient_PlayerMenu.getMenus()[17])
+            perm = "admin.giveweapon"
+            RageUI.Button("Donner une arme", nil, { RightLabel = "→" }, (checkPerm(perm)), {
+                onSelected = function()
+                    _FlashClient_PlayerMenu.var.selectedPlayerAction = reportData.sId
+                end
+            }, _FlashClient_PlayerMenu.getMenus()[18])
             RageUI.Line()
             perm = "admin.kickplayer"
             RageUI.Button("Kick", nil, {}, (checkPerm(perm)), {
@@ -72,6 +85,22 @@ _FlashClient_PlayerMenu.drawer[14] = function(player)
                         RageUI.GoBack()
                         _FlashLand.setIsWaitingForServer(true)
                         _FlashLand.toServer("staff:kickPlayer", reportData.sId, reason)
+                    end
+                end,
+            })
+            perm = "admin.vehspawn"
+            RageUI.Button("Spawn un véhicule", nil, {}, (checkPerm(perm)), {
+                onSelected = function()
+                    local input = _FlashClient_Utils.input_showBox("Modèle", "", 20, false)
+                    if (input ~= nil) then
+                        input = input:lower()
+                        local model = GetHashKey(input)
+                        if (not (IsModelValid(model))) then
+                            _FlashClient_Utils.notifications_template_error(_Static_GenericMessages.INVALID_MODEL)
+                        else
+                            _FlashLand.setIsWaitingForServer(true)
+                            _FlashLand.toServer("staff:spawnPlayerSelectedVehicule", reportData.sId, model)
+                        end
                     end
                 end,
             })
