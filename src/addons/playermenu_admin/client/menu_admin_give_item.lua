@@ -31,6 +31,7 @@ _FlashClient_PlayerMenu.drawer[17] = function(player)
                         local input = _FlashClient_Utils.input_showBox("Combien:", "", 10, true)
                         if (input ~= nil and tonumber(input) ~= nil and tonumber(input) > 0) then
                             input = tonumber(input)
+                            _FlashLand.setIsWaitingForServer(true)
                             _FlashLand.toServer("staff:giveItem", playerData.sId, name, input)
                         end
                     end,

@@ -9,7 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashServer_Inventory.player_removeItem = function(_src, itemId, qty)
+_FlashServer_Inventory.player_removeItem = function(_src, itemId, qty, cb)
     if (not (_FlashServer_Players.exists(_src))) then
         _FlashLand.err(("Tentative de removeItem sur un player inexistant (^3%s^7|^3%s^7)"):format(_src, itemId))
         return false
@@ -24,6 +24,6 @@ _FlashServer_Inventory.player_removeItem = function(_src, itemId, qty)
         if (success) then
             player:sendData()
         end
-        return success
+        cb(success)
     end)
 end

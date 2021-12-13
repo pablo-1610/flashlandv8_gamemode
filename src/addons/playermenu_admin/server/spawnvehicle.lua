@@ -19,6 +19,7 @@ _FlashLand.onReceive("admin:spawnVehicle", function(model, sendInto)
     local player = _FlashServer_Players.get(_src)
     if (not (player.rank:hasPermission("admin.vehspawn"))) then
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.DENIED_ADMIN_PERMISSION)
+        player:serverResponded()
         return
     end
     local ped = player:getPed()

@@ -19,11 +19,14 @@ _FlashLand.onReceive("staff:kickPlayer", function(targetSource, reason)
     local player = _FlashServer_Players.get(_src)
     if (not (player.rank:hasPermission("admin.kickplayer"))) then
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _FlashEnum_GENERICMESSAGE.ACTION_NO_PERMISSION)
+        player:serverResponded()
         return
     end
     if (not (_FlashServer_Players.exists(targetSource))) then
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.PLAYER_SELECTED_IS_INVALID)
+        player:serverResponded()
         return
     end
     DropPlayer(targetSource, (_Static_GenericMessages.STAFF_KICK_PLAYER):format(player:getName(), _FlashUtils.setTime(), reason))
+    player:serverResponded()
 end)

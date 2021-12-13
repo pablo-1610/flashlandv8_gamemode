@@ -57,6 +57,15 @@ function _Loadout:addWeapon(weaponName)
     self:save()
 end
 
+function _Loadout:removeWeapon(weaponName)
+    for i, name in pairs(self.content) do
+        if (name == weaponName) then
+            table.remove(self.content, i)
+            self:save()
+        end
+    end
+end
+
 function _Loadout:save()
     local currentId, currentCapacity, currentContent = self.id, self.capacity, json.encode(self.content)
     _FlashServer_Database.execute("UPDATE flash_loadout SET loadout_capacity = @loadout_capacity,loadout_content = @loadout_content WHERE loadout_owner = @loadout_owner", {

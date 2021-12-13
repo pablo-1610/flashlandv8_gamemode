@@ -33,8 +33,10 @@ _FlashClient_PlayerMenu.drawer[15] = function(player)
             end,
             onSelected = function()
                 if teleportIndex == 1 then
+                    _FlashLand.setIsWaitingForServer(true)
                     _FlashLand.toServer("staff:teleportStaffToPlayer", playerData.sId)
                 elseif teleportIndex == 2 then
+                    _FlashLand.setIsWaitingForServer(true)
                     _FlashLand.toServer("staff:teleportPlayerToStaff", playerData.sId)
                 end
             end,
@@ -48,5 +50,23 @@ _FlashClient_PlayerMenu.drawer[15] = function(player)
                 _FlashLand.toServer("item:requestLightItems")
             end
         }, _FlashClient_PlayerMenu.getMenus()[17])
+        perm = "admin.giveweapon"
+        RageUI.Button("Donner une arme", nil, { RightLabel = "→" }, (checkPerm(perm)), {
+            onSelected = function()
+                _FlashClient_PlayerMenu.var.selectedPlayerAction = playerData.sId
+            end
+        }, _FlashClient_PlayerMenu.getMenus()[18])
+        RageUI.Line()
+        perm = "admin.kickplayer"
+        RageUI.Button("Kick", nil, {}, (checkPerm(perm)), {
+            onSelected = function()
+                local reason = _FlashClient_Utils.input_showBox("Raison du kick:", nil, 55, false)
+                if (reason ~= nil) then
+                    RageUI.GoBack()
+                    _FlashLand.setIsWaitingForServer(true)
+                    _FlashLand.toServer("staff:kickPlayer", playerData.sId, reason)
+                end
+            end,
+        })
     end
 end

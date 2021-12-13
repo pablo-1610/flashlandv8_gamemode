@@ -21,70 +21,58 @@ local function getItemDesc(item)
     return ((_FlashClient_Cache.getCache("items")[item].description))
 end
 
-local function getItemWeight(item)
-    return ((_FlashClient_Cache.getCache("items")[item].weight))
-end
-
-local function getItemIsUsable(item)
-    return ((_FlashClient_Cache.getCache("items")[item].usable))
-end
-
-local function rd(num, numDeci)
-    return tonumber(string.format("%." .. (numDeci or 0) .. "f", num))
-end
-
-local function getItemTotalWeight(item, player)
-    local qty = (player.inventory.content[item])
-    return (getItemWeight(item) * qty)
+local function checkPerm(permission)
+    return (_FlashClient_Staff.hasPermission(permission))
 end
 
 ---@param player _Player
 _FlashClient_PlayerMenu.drawer[16] = function(player)
-    local players = _FlashClient_Staff.getPlayerList()
-    local playerData = players[_FlashClient_PlayerMenu.var.selectedPlayer]
-    RageUI.List("Type : ", actionList, actionIndex, nil, {}, true, {
-        onListChange = function(Index)
-            actionIndex = Index
-        end,
-    })
+    local perm = nil
+    if (_FlashClient_PlayerMenu.var.selectedPlayer ~= nil) then
+        local players = _FlashClient_Staff.getPlayerList()
+        local playerData = players[_FlashClient_PlayerMenu.var.selectedPlayer]
+        RageUI.List("Type : ", actionList, actionIndex, nil, {}, true, {
+            onListChange = function(Index)
+                actionIndex = Index
+            end,
+        })
 
-    RageUI.Line()
-    if actionIndex == 1 then
-        if (_FlashLand.countTable(playerData.inventory.content) <= 0) then
-            RageUI.Separator("La personne ne possède aucun item !")
-        else
-            for _, data in pairs(_FlashUtils.table_sortAlphabetically(playerData.inventory.content)) do
-                local draw = true
-                local function displayItem()
-                    local description, label = getItemDesc(data.name), getItemLabel(data.name)
-                    local function roundInv()
-                        local percent = getItemTotalWeight(data.name, player) * 100 / player.inventory:calcWeight()
-                        return rd(percent, 1)
-                    end
-                    RageUI.Button(("[~o~x%s~s~] %s%s"):format(data.count, label, (isSpaceDisplayActive and (" " .. (("(~r~%s%%~s~)"):format(roundInv()))) or (""))), (
-                            (description ~= nil and ("~o~Description: ~s~%s"):format(description))
-                    ), { RightLabel = "→" }, true, {
+        RageUI.Line()
+        if actionIndex == 1 then
+            if (_FlashLand.countTable(playerData.inventory.content) <= 0) then
+                RageUI.Separator("La personne ne possède aucun item !")
+            else
+                perm = "admin.removeplayeritem"
+                for _, data in pairs(_FlashUtils.table_sortAlphabetically(playerData.inventory.content)) do
+                    RageUI.Button(("[~o~x%s~s~] %s"):format(data.count, getItemLabel(data.name)), (
+                            (getItemDesc(data.name) ~= nil and ("~o~Description: ~s~%s"):format(getItemDesc(data.name)))
+                    ), { RightLabel = "→" }, (checkPerm(perm)), {
                         onSelected = function()
-
-                        end
+                            local input = _FlashClient_Utils.input_showBox("Combien:", "", 10, true)
+                            if (input ~= nil and tonumber(input) ~= nil and tonumber(input) > 0) then
+                                ---RageUI.GoBack()
+                                input = tonumber(input)
+                                _FlashLand.setIsWaitingForServer(true)
+                                _FlashLand.toServer("staff:removePlayerItem", playerData.sId, data.name, input)
+                            end
+                        end,
                     })
                 end
-                if draw then
-                    displayItem()
-                end
             end
-        end
-    elseif actionIndex == 2 then
-        if (_FlashLand.countTable(playerData.loadout.content) <= 0) then
-            RageUI.Separator("La personne ne possède aucune arme !")
-        else
-            for _, name in pairs(playerData.loadout.content) do
-                local weaponData = _Static_Weapons[GetHashKey(name:lower())]
-                RageUI.Button(("~s~%s"):format(weaponData.label), nil, { RightLabel = "→" }, true, {
-                    onSelected = function()
-
-                    end
-                })
+        elseif actionIndex == 2 then
+            if (_FlashLand.countTable(playerData.loadout.content) <= 0) then
+                RageUI.Separator("La personne ne possède aucune arme !")
+            else
+                perm = "admin.removeplayerweapon"
+                for _, name in pairs(playerData.loadout.content) do
+                    local weaponData = _Static_Weapons[GetHashKey(name:lower())]
+                    RageUI.Button(("~s~%s"):format(weaponData.label), nil, { RightLabel = "→" }, (checkPerm(perm)), {
+                        onSelected = function()
+                            _FlashLand.setIsWaitingForServer(true)
+                            _FlashLand.toServer("staff:removePlayerWeapon", playerData.sId, name)
+                        end,
+                    })
+                end
             end
         end
     end
