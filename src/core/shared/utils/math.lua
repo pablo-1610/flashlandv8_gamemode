@@ -9,6 +9,11 @@
 --]]
 ---@author Pablo_1610
 
+_FlashUtils.math_round = function(number, decimalPlace)
+    local mult = 10 ^ (decimalPlace or 0)
+    return math.floor(number * mult + 0.5) / mult
+end
+
 _FlashUtils.math_group = function(value)
     local left, num, right = string.match(value, '^([^%d]*%d)(%d*)(.-)$')
     return left .. (num:reverse():gsub('(%d%d%d)', '%1' .. ","):reverse()) .. right
