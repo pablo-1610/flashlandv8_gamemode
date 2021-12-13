@@ -16,6 +16,7 @@ _FlashClient_Blip.createInGameBlip = function(blipData)
         return
     end
     local blip = AddBlipForCoord(blipData.position.x, blipData.position.y, blipData.position.z)
+    SetBlipHighDetail(blip, true)
     SetBlipSprite(blip, blipData.sprite)
     SetBlipColour(blip, blipData.color)
     SetBlipAsShortRange(blip, blipData.shortRange)
@@ -24,4 +25,12 @@ _FlashClient_Blip.createInGameBlip = function(blipData)
     AddTextComponentString(blipData.label)
     EndTextCommandSetBlipName(blip)
     blipData.handler = blip
+
+    if (blipData.visualData.radiusData ~= nil) then
+        local radiusBlip = AddBlipForRadius(blipData.position.x, blipData.position.y, blipData.position.z, blipData.visualData.radiusData.radius)
+        SetBlipColour(radiusBlip, blipData.color)
+        SetBlipAlpha(radiusBlip, 128)
+        SetBlipHighDetail(radiusBlip, true)
+        _FlashClient_Blip.radiusBlips[blip.id] = radiusBlip
+    end
 end

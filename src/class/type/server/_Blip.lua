@@ -41,8 +41,19 @@ setmetatable(_Blip, {
     end
 })
 
+function _Blip:getVisualData()
+    return ({ radiusData = self.radiusData })
+end
+
+function _Blip:setRadius(radius, color)
+    self.radiusData = {
+        radius = radius,
+        color = color or self.color
+    }
+end
+
 function _Blip:getLightBlip()
-    return (_LightBlip(self.id, self.position, self.sprite, self.color, self.size, self.label, self.shortRange))
+    return (_LightBlip(self.id, self.position, self.sprite, self.color, self.size, self.label, self.shortRange, self:getVisualData()))
 end
 
 function _Blip:isSubscribed(_src)

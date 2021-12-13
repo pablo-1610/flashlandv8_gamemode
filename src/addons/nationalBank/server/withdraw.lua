@@ -44,7 +44,7 @@ _FlashLand.onReceive("nationalBank:withdraw", function(accountId, amount, deskNp
                 _FlashServer_Banking.getPlayerAccounts(_src, function(accounts)
                     _FlashServer_Npc.get(deskNpcId):sayForAll("GENERIC_THANKS", "Speech_Params_Force_Shouted_Critical")
                     --_FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.SUCCESS, (_Static_GenericMessages.BANKING_DEPOSIT_DONE):format(amount), _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
-                    _FlashLand.toClient("nationalBank:cbAccounts", _src, accounts)
+                    _FlashLand.toClient("banking:cbAccounts", _src, accounts)
                     player:serverResponded()
                 end)
             end)

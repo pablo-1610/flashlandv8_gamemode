@@ -23,7 +23,7 @@ _ConfigServer = {
     },
 
     Synchronizer = {
-        baseTime = {21,00},
+        baseTime = { 21, 00 },
         time = (30000),
         weather = (60000 * 60),
         position = (60000),
@@ -78,6 +78,15 @@ _ConfigServer = {
         }
     },
 
+    Banks = {
+        pedModel = "a_f_y_business_02",
+        list = {
+            { position = vector3(150.05, -1040.09, 29.37), npcPos = vector3(149.36, -1042.44, 29.36), npcHeading = 341.03, rob = vector3(146.81, -1044.86, 29.37), guard = { position = vector3(152.36, -1038.65, 29.36), heading = 163.96 } },
+            { position = vector3(314.54, -278.030, 54.15), npcPos = vector3(313.62, -280.81, 54.15), npcHeading = 340.15, rob = vector3(310.62, -283.09, 54.16), guard = {position = vector3(313.05493164062,-275.80218505859,54.150146484375), heading = 158.74015808105} },
+            { position = vector3(-2963.88, 482.95, 15.68), npcPos = vector3(-2960.86, 482.94, 15.68), npcHeading = 87.87, rob = vector3(-2957.82, 480.80, 15.69), guard = { position = vector3(-2965.38,484.66,15.68), heading = 269.29 } }
+        }
+    },
+
     NationalBank = {
         accountCreationPrice = 500,
 
@@ -109,9 +118,9 @@ _ConfigServer = {
         },
 
         guards = {
-            {position = vector3(259.40, 215.93, 106.28), heading = 74.89},
-            {position = vector3(232.91, 220.11, 106.28), heading = 255.54},
-            {position = vector3(237.56, 217.80, 110.28), heading = 296.28}
+            { position = vector3(259.40, 215.93, 106.28), heading = 74.89 },
+            { position = vector3(232.91, 220.11, 106.28), heading = 255.54 },
+            { position = vector3(237.56, 217.80, 110.28), heading = 296.28 }
         }
     },
 

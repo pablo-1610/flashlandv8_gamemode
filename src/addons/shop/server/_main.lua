@@ -12,10 +12,6 @@
 ---@class _FlashServer_Shops
 _FlashServer_Shops = {}
 
-local function getInverseHeading(heading)
-    return (heading + 180) % 360
-end
-
 for shopId, shop in pairs(_ConfigServer.Shops.list) do
     local type = _FlashEnum_SHOPTYPEDATA[shop.type]
     ---@type _Blip
@@ -32,5 +28,5 @@ for shopId, shop in pairs(_ConfigServer.Shops.list) do
     ---@type _Zone
     local zone = _FlashServer_Zones.createPublic(shop.loc, { 255, 255, 255 }, function(_src, player)
         _FlashLand.toInternal("shop:openShopMenu", _src, shopId, shop.type, npc.id)
-    end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir parler au vendeur", 20.0, 1.0, true, getInverseHeading(shop.npcHeading))
+    end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir parler au vendeur", 20.0, 1.0, true, _FlashUtils.math_getInversedHeading(shop.npcHeading))
 end

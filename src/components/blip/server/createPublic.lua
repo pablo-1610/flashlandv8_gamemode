@@ -13,5 +13,5 @@ _FlashServer_Blips.createPublic = function(position, sprite, color, size, label,
     local id = _FlashServer_Blips.getNextId()
     local blip = _Blip(id, position, sprite, color, size, label, shortRange, 0, false)
     _FlashServer_Blips.add(blip)
-    return (id)
+    return (blip)
 end

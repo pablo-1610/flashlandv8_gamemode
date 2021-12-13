@@ -45,13 +45,27 @@ _FlashClient_NationalBank.drawer[4] = function(player)
                 end
             end
         })
+        RageUI.Button("~r~Changer ~s~le code secret", nil, {}, true, {
+            onSelected = function()
+                local oldPin = _FlashClient_Utils.input_showBox("Ancien code secret:", "", 20, true)
+                if (oldPin ~= nil and tonumber(oldPin) ~= nil and tonumber(oldPin) > 0) then
+                    oldPin = tonumber(oldPin)
+                    local newPin = _FlashClient_Utils.input_showBox("Nouveau code secret:", "", 20, true)
+                    if (newPin ~= nil and tonumber(newPin) ~= nil and tonumber(newPin) > 0) then
+                        newPin = tonumber(newPin)
+                        isWaitingForServer = true
+                        _FlashLand.toServer("nationalBank:changePin", account.accountId, oldPin, newPin, _FlashClient_NationalBank.var.deskNpcId)
+                    end
+                end
+            end
+        })
         RageUI.Button(account.state == 1 and "~r~Vérouiller~s~ le compte" or "~g~Déverouiller ~s~le compte", nil, account.state == _FlashEnum_BANKACCOUNTSTATE.ACTIVE and { RightBadge = RageUI.BadgeStyle.Alert } or {}, true, {
             onSelected = function()
                 isWaitingForServer = true
                 _FlashLand.toServer("nationalBank:alterState", account.accountId, _FlashClient_NationalBank.var.deskNpcId)
             end
         })
-        RageUI.Button("~r~Supprimer~s~ le compte", nil, {RightBadge = RageUI.BadgeStyle.Alert}, true, {
+        RageUI.Button("~r~Supprimer~s~ le compte", nil, { RightBadge = RageUI.BadgeStyle.Alert }, true, {
             onSelected = function()
                 isWaitingForServer = true
                 _FlashLand.toServer("nationalBank:deleteAccount", account.accountId, _FlashClient_NationalBank.var.deskNpcId)
