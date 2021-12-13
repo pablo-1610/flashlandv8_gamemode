@@ -10,6 +10,9 @@
 ---@author Pablo_1610
 
 for bankId, bankData in pairs(_ConfigServer.Banks.list) do
+    if (not (bankData.rob)) then
+        goto continue
+    end
     -- Zones
     ---@type _Zone
     local rob = _FlashServer_Zones.createPublic(bankData.rob, { 255, 0, 0 }, function(_src, player, lightZone)
@@ -18,4 +21,5 @@ for bankId, bankData in pairs(_ConfigServer.Banks.list) do
 
     -- Blips
     local blip = _FlashServer_Blips.createPublicInArea(bankData.rob, 648, 59, _Config.genericSubBlipSize, "Coffre de la banque", true, 10.0)
+    :: continue ::
 end
