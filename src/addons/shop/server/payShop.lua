@@ -57,12 +57,16 @@ _FlashServer_Billing.registerBillEvent("shop_pay", function(_src, method, total,
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.ARGS_OUT_OF_DELIMITATION)
         return
     end
+    local webhookBuilder = ("[%s] __%s__ (%s) a payé **%s$** à la superette n°**%s**:```lua"):format(player.rank.label, player.name, player.flashId, total, args.shopId)
     local refund = 0
     for k, v in pairs(args.basket) do
         ---@type _Item
         local item = _FlashServer_Items.get(k)
         _FlashServer_Inventory.player_addItem(_src, k, v, function(success)
             local shopItem = getItemDataFromShopConfig(k)
+            local webHookItemLabel = item.label
+            webHookItemLabel = _FlashUtils.string_replaceAll(webHookItemLabel, "'", "-")
+            webhookBuilder = webhookBuilder .. ("\n➤ x%s %s (%s$)%s"):format(v, webHookItemLabel, (shopItem.price * v), (success and "" or " [REMBOURSÉ]"))
             if (not (success)) then
                 refund = (shopItem.price * v)
                 player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, ("Vous n'avez pas assez de place pour recevoir %s x%s"):format(item.label, v))
@@ -70,6 +74,7 @@ _FlashServer_Billing.registerBillEvent("shop_pay", function(_src, method, total,
             end
         end)
     end
+    webhookBuilder = webhookBuilder .. "```"
     if (refund > 0) then
         if (method == _FlashEnum_BILLINGPAYMENTMETHOD.CASH) then
             player.cash = (player.cash + refund)
@@ -83,4 +88,5 @@ _FlashServer_Billing.registerBillEvent("shop_pay", function(_src, method, total,
             end)
         end
     end
+    _FlashServer_Webhooks.send(_Webhooks.SHOP, webhookBuilder)
 end)

@@ -157,6 +157,10 @@ client_scripts {
 }
 
 server_scripts {
+    -- Environment
+    "config/env/environment.lua",
+    -- Webhooks
+    "config/webhook.lua",
     -- Config
     "config/server.lua",
     -- Objects

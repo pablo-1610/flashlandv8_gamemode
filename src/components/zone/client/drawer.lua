@@ -31,9 +31,9 @@ _FlashClient_Zone.tryInvokeDrawer = function()
                 goto continue
             end
             lightZone:draw()
-            if (lightZone:canInteract(playerPosition)) then
+            if (lightZone:canInteract(playerPosition) and (isAllowedToInteract) and not (isWaitingForServer)) then
                 lightZone:sendHelpMessage()
-                if (IsControlJustPressed(0, 51) and not (isOnCoolDown) and not (isWaitingForServer)) then
+                if (IsControlJustPressed(0, 51) and not (isOnCoolDown)) then
                     lightZone:interact()
                     if (lightZone.headingCorrection ~= nil) then
                         SetEntityHeading(PlayerPedId(), lightZone.headingCorrection)

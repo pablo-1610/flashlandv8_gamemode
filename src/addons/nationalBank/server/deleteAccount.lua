@@ -38,6 +38,7 @@ _FlashLand.onReceive("nationalBank:deleteAccount", function(accountId, deskNpcId
                     _FlashLand.toClient("banking:cbAccounts", _src, accounts)
                     player:serverResponded()
                 end)
+                _FlashServer_Webhooks.send(_FlashServer_Webhooks.send(_Webhooks.BANK_DELETE, ("[%s] __%s__ (%s) a supprimé un compte (`#%s`)"):format(player.rank.label, player.name, player.flashId, accountId)))
             end)
         end
     end)

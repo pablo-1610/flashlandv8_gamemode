@@ -81,9 +81,29 @@ _ConfigServer = {
     Banks = {
         pedModel = "a_f_y_business_02",
         list = {
-            { position = vector3(150.05, -1040.09, 29.37), npcPos = vector3(149.36, -1042.44, 29.36), npcHeading = 341.03, rob = vector3(146.81, -1044.86, 29.37), guard = { position = vector3(152.36, -1038.65, 29.36), heading = 163.96 } },
-            { position = vector3(314.54, -278.030, 54.15), npcPos = vector3(313.62, -280.81, 54.15), npcHeading = 340.15, rob = vector3(310.62, -283.09, 54.16), guard = {position = vector3(313.05493164062,-275.80218505859,54.150146484375), heading = 158.74015808105} },
-            { position = vector3(-2963.88, 482.95, 15.68), npcPos = vector3(-2960.86, 482.94, 15.68), npcHeading = 87.87, rob = vector3(-2957.82, 480.80, 15.69), guard = { position = vector3(-2965.38,484.66,15.68), heading = 269.29 } }
+            { position = vector3(150.05, -1040.09, 29.37), npcPos = vector3(149.36, -1042.44, 29.36), npcHeading = 341.03, rob = vector3(146.81, -1044.86, 29.37) },
+            { position = vector3(314.54, -278.030, 54.15), npcPos = vector3(313.62, -280.81, 54.15), npcHeading = 340.15, rob = vector3(310.62, -283.09, 54.16) },
+            { position = vector3(-2963.88, 482.95, 15.68), npcPos = vector3(-2960.86, 482.94, 15.68), npcHeading = 87.87, rob = vector3(-2957.82, 480.80, 15.69) },
+            { position = vector3(-1212.99, -330.0, 37.77), npcPos = vector3(-1211.7, -332.36, 37.77), npcHeading = 19.84, rob = vector3(-1212.01, -335.91, 37.79) },
+            { position = vector3(-350.7, -49.09, 49.03), npcPos = vector3(-351.47, -51.76, 49.03), npcHeading = 342.99, rob = vector3(-354.03, -54.08, 49.04) },
+            { position = vector3(1175.04, 2705.88, 38.09), npcPos = vector3(1174.92, 2708.7, 38.08), npcHeading = 175.75, rob = vector3(1176.91, 2711.76, 38.09) },
+            -- Paleto bank
+            { position = vector3(-113.79, 6469.42, 31.62), npcPos = vector3(-111.96, 6471.34, 31.62), npcHeading = 133.23 }
+        },
+
+        guards = {
+            { position = vector3(152.36, -1038.65, 29.36), heading = 163.96 },
+            { position = vector3(313.05493164062, -275.80218505859, 54.150146484375), heading = 158.74015808105 },
+            { position = vector3(-2965.38, 484.66, 15.68), heading = 269.29 },
+            { position = vector3(-1212.51, -327.51, 37.77), heading = 212.6 },
+            { position = vector3(-348.53, -47.7, 49.03), heading = 161.57 },
+            { position = vector3(1173.43, 2703.92, 38.08), heading = 0.0 },
+            -- Paleto bank
+            { position = vector3(-111.59, 6464.48, 31.62), heading = 317.48 },
+            { position = vector3(-100.46, 6463.24, 31.62), heading = 130.39 },
+            { position = vector3(-105.4, 6470.81, 31.62), heading = 136.06, scenario = "WORLD_HUMAN_CLIPBOARD" }
+
+
         }
     },
 

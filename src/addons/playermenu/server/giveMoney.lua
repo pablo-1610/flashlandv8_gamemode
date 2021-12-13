@@ -12,14 +12,12 @@
 _FlashLand.onReceive("playerMenu:giveMoney", function(targetSrc, amount)
     local _src = source
     if (not (_FlashServer_Players.exists(_src))) then
-        print("Returned 1")
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.PLAYER_NOT_EXISTS)
         return
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
     if (not (_FlashServer_Players.exists(targetSrc))) then
-        print("Returned 2")
         _FlashServer_Warden.violation(targetSrc, _FlashEnum_WARDENVIOLATION.TARGET_NO_EXISTS)
         return
     end
@@ -27,20 +25,16 @@ _FlashLand.onReceive("playerMenu:giveMoney", function(targetSrc, amount)
     local target = _FlashServer_Players.get(targetSrc)
     -- Security
     if (not (_FlashServer_Warden.isCloseEnoughToInteract(GetPlayerPed(_src), GetPlayerPed(targetSrc)))) then
-        print("Returned 3")
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.PLAYER_INTERACTION_TOO_FAR)
         return
     end
     -- No enough money
     if (player.cash < amount) then
-        print("Returned 4")
         player:serverResponded()
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.NO_ENOUGH_MONEY)
         return
     end
-
     -- Do transfer between player.money and the other one
-
     player.cash = (player.cash - amount)
     target.cash = (target.cash + amount)
     player:serverResponded()

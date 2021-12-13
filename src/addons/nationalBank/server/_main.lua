@@ -21,7 +21,7 @@ for deskId, deskData in pairs(_ConfigServer.NationalBank.desks) do
     _FlashServer_Blips.createPublicInArea(deskData.ped.position, 480, 28, _Config.genericSubBlipSize, "Conseiller bancaire", true, 20.0)
     ---@type _Npc
     local npc = _FlashServer_Npc.create(deskData.ped.position, deskData.ped.heading, _ConfigServer.NationalBank.pedModel, false, true, 20.0)
-    npc:setName("Banquier", 0, 10.0)
+    --npc:setName("Banquier", 0, 10.0)
     ---@type _Zone
     _FlashServer_Zones.createPublic(deskData.position, {255,255,255}, function(_src, player, lightZone)
         _FlashLand.toInternal("nationalBank:openNationalBankMenu", _src, deskId, npc.id, lightZone)

@@ -12,10 +12,7 @@
 for bankId, bankData in pairs(_ConfigServer.Banks.list) do
     -- Npcs
     ---@type _Npc
-    local npc = _FlashServer_Npc.create(bankData.npcPos, bankData.npcHeading, _ConfigServer.Banks.pedModel, false, true, 40.0)
-    ---@type _Npc
-    local guard = _FlashServer_Npc.create(bankData.guard.position, bankData.guard.heading, "s_m_m_security_01", false, true, 30.0)
-    guard:setScenario("WORLD_HUMAN_GUARD_STAND", true)
+    local npc = _FlashServer_Npc.create(bankData.npcPos, bankData.npcHeading, _ConfigServer.Banks.pedModel, false, true, 60.0)
 
     -- Zones
     ---@type _Zone
@@ -25,4 +22,10 @@ for bankId, bankData in pairs(_ConfigServer.Banks.list) do
 
     -- Blips
     local blip = _FlashServer_Blips.createPublic(bankData.position, 278, 24, _Config.genericBlipSize + 0.45, "Banque Fleeca", true)
+end
+
+for _, guardData in pairs(_ConfigServer.Banks.guards) do
+    ---@type _Npc
+    local guard = _FlashServer_Npc.create(guardData.position, guardData.heading, "s_m_m_security_01", false, true, 60.0)
+    guard:setScenario(guardData.scenario and guardData.scenario or "WORLD_HUMAN_GUARD_STAND", true)
 end

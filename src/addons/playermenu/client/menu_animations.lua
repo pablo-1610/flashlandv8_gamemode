@@ -54,7 +54,6 @@ _FlashClient_PlayerMenu.drawer[4] = function()
                         _FlashClient_Utils.animation_load(animation.data.lib)
                         _FlashClient_Utils.ped_animation(PlayerPedId(), animation.data.lib, animation.data.anim)
                     elseif animation.type == "scenario" then
-                        print("ko")
                         _FlashClient_Utils.ped_scenario(PlayerPedId(), animation.data.anim)
                     end
                 end,
