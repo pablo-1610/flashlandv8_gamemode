@@ -11,6 +11,8 @@
 
 gameType = _FlashEnum_GAMETYPE.RP
 gameState = _FlashENUM_GAMESTATE.WAITING
+
+isAllowedToInteract = true
 isWaitingForServer = false
 
 _FlashLand.setGameState = function(newGameState)
