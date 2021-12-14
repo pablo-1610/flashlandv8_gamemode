@@ -1,0 +1,3 @@
+[submodule "src\\web\\ingame\\flashweb"]
+	path = src\\web\\ingame\\flashweb
+	url = https://github.com/PABLO-1610/flashweb
