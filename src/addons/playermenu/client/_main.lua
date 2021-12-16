@@ -25,5 +25,7 @@ _FlashClient_KeyBind.addKey("f5", "Ouvrir le menu personnel", function()
 end)
 
 _FlashClient_KeyBind.addKey("x", "Arreter l'animation en cour", function()
-    ClearPedTasksImmediately(PlayerPedId())
+    if ( not (IsPedInAnyVehicle(PlayerPedId(), false))) then
+        ClearPedTasksImmediately(PlayerPedId())
+    end
 end)
