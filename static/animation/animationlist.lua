@@ -105,7 +105,7 @@ _Static_Animation = {
     },
     animation = {
         {
-            label = _FlashEnum_ANIMATIONTYPE.ANIMATION_LIST_FESTIVE,
+            label = "Festives",
             items = {
                 { label = "Fumer une cigarette", type = "scenario", data = { anim = "WORLD_HUMAN_SMOKING" } },
                 { label = "Jouer de la musique", type = "scenario", data = { anim = "WORLD_HUMAN_MUSICIAN" } },
@@ -120,7 +120,7 @@ _Static_Animation = {
             }
         },
         {
-            label = _FlashEnum_ANIMATIONTYPE.ANIMATION_LIST_SALUTE,
+            label = "Salutations",
             items = {
                 { label = "Saluer", type = "anim", data = { lib = "gestures@m@standing@casual", anim = "gesture_hello" } },
                 { label = "Serrer la main", type = "anim", data = { lib = "mp_common", anim = "givetake1_a" } },
@@ -130,7 +130,7 @@ _Static_Animation = {
             },
         },
         {
-            label = _FlashEnum_ANIMATIONTYPE.ANIMATION_LIST_WORK,
+            label = "Travail",
             items = {
                 { label = "Se rendre", type = "anim", data = { lib = "random@arrests@busted", anim = "idle_c" } },
                 { label = "Pêcheur", type = "scenario", data = { anim = "world_human_stand_fishing" } },
@@ -153,7 +153,7 @@ _Static_Animation = {
             },
         },
         {
-            label = _FlashEnum_ANIMATIONTYPE.ANIMATION_LIST_MOOD,
+            label = "Humeurs",
             items = {
                 { label = "Féliciter", type = "scenario", data = { anim = "WORLD_HUMAN_CHEERING" } },
                 { label = "Super", type = "anim", data = { lib = "mp_action", anim = "thanks_male_06" } },
@@ -177,7 +177,7 @@ _Static_Animation = {
             },
         },
         {
-            label = _FlashEnum_ANIMATIONTYPE.ANIMATION_LIST_SPORT,
+            label = "Sports",
             items = {
                 { label = "Montrer ses muscles", type = "anim", data = { lib = "amb@world_human_muscle_flex@arms_at_side@base", anim = "base" } },
                 { label = "Barre de musculation", type = "anim", data = { lib = "amb@world_human_muscle_free_weights@male@barbell@base", anim = "base" } },
@@ -187,7 +187,7 @@ _Static_Animation = {
             },
         },
         {
-            label = _FlashEnum_ANIMATIONTYPE.ANIMATION_LIST_OTHER,
+            label = "Divers",
             items = {
                 { label = "S'asseoir", type = "anim", data = { lib = "anim@heists@prison_heistunfinished_biztarget_idle", anim = "target_idle" } },
                 { label = "Attendre contre un mur", type = "scenario", data = { anim = "world_human_leaning" } },
@@ -201,7 +201,7 @@ _Static_Animation = {
             },
         },
         {
-            label = _FlashEnum_ANIMATIONTYPE.ANIMATION_LIST_PEGI,
+            label = "PEGI 21",
             items = {
                 { label = "Se gratter les couil***", type = "anim", data = { lib = "mp_player_int_uppergrab_crotch", anim = "mp_player_int_grab_crotch" } },
                 { label = "Faire du charme", type = "anim", data = { lib = "mini@strip_club@idles@stripper", anim = "stripper_idle_02" } },

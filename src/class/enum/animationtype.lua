@@ -20,5 +20,4 @@ _FlashEnum_ANIMATIONTYPE = {
     ANIMATION_LIST_SPORT = "Sports",
     ANIMATION_LIST_OTHER = "Divers",
     ANIMATION_LIST_PEGI = "PEGI 21"
-
 }
