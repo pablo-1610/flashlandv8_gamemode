@@ -156,15 +156,17 @@ _ConfigServer = {
     },
 
     BarberShop = {
+        haircutPrice = 150,
+        beardPrice = 50,
         list = {
-            { position = vector3(-278.40, 6226.84, 31.75), npcPosition = vector3(-277.88, 6230.32, 31.69), npcHeading = 47.93 },
-            { position = vector3(1932.25, 3731.42, 32.85), npcPosition = vector3(1930.81, 3728.31, 32.84), npcHeading = 210.73 },
-            { position = vector3(1212.85, -473.97, 66.21), npcPosition = vector3(1211.64, -470.72, 66.20), npcHeading = 73.73 },
-            { position = vector3(-34.24, -152.72, 57.08), npcPosition = vector3(-30.97, -151.77, 57.07), npcHeading = 334.94 },
-            { position = vector3(-815.11, -182.86, 37.56), npcPosition = vector3(-821.96, -183.12, 37.56), npcHeading = 208.65 },
-            { position = vector3(-1282.08, -1118.30, 7.00), npcPosition = vector3(-1284.03, -1115.62, 6.99), npcHeading = 87.15 },
-            { position = vector3(138.32, -1708.28, 29.30), npcPosition = vector3(134.79, -1707.86, 29.29), npcHeading = 139.65 },
-        }
+            { position = vector3(-278.40, 6226.84, 31.75), npcPosition = vector3(-277.88, 6230.32, 31.69), npcHeading = 47.93, npc = nil, seat = {pos = vector3(-279.50, 6226.89, 31.50), heading = 130.39, status = false}},
+            { position = vector3(1932.25, 3731.42, 32.85), npcPosition = vector3(1930.81, 3728.31, 32.84), npcHeading = 210.73, npc = nil },
+            { position = vector3(1212.85, -473.97, 66.21), npcPosition = vector3(1211.64, -470.72, 66.20), npcHeading = 73.73, npc = nil },
+            { position = vector3(-34.24, -152.72, 57.08), npcPosition = vector3(-30.97, -151.77, 57.07), npcHeading = 334.94, npc = nil },
+            { position = vector3(-815.11, -182.86, 37.56), npcPosition = vector3(-821.96, -183.12, 37.56), npcHeading = 208.65, npc = nil },
+            { position = vector3(-1282.08, -1118.30, 7.00), npcPosition = vector3(-1284.03, -1115.62, 6.99), npcHeading = 87.15, npc = nil },
+            { position = vector3(138.32, -1708.28, 29.30), npcPosition = vector3(134.79, -1707.86, 29.29), npcHeading = 139.65, npc = nil },
+        },
     },
 
     RichPresence = {
