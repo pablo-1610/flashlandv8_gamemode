@@ -52,6 +52,10 @@ setmetatable(_Player, {
     end
 })
 
+function _Player:getPlayerCash()
+    return (self.cash)
+end
+
 function _Player:loadInventory(cb)
     _FlashServer_Inventory.playerGetOrCreate(self.sId, function(inv)
         self.inventory = inv

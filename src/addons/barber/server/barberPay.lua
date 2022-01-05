@@ -19,18 +19,31 @@ _FlashServer_Billing.registerBillEvent("barber_pay", function(_src, method, tota
     local barberData = _ConfigServer.BarberShop.list[args.barberId]
     ---@type _Npc
     local npc = barberData.npc
-    npc:sayForAll("GENERIC_THANKS", "Speech_Params_Force_Shouted_Critical")
+    local refund = 0
+    local playerMoney = player:getPlayerCash()
+    if (playerMoney >= _ConfigServer.BarberShop.price) then
+        print("'1")
+        _FlashLand.toClient("applySkin", _src, args.skin)
+        player.cash = (player.cash - _ConfigServer.BarberShop.price)
+        player:saveData()
+        player:sendData()
+        npc:sayForAll("GENERIC_THANKS", "Speech_Params_Force_Shouted_Critical")
+    else
+        refund = _ConfigServer.BarberShop.price
+    end
     --local webhookBuilder = ("[%s] __%s__ (%s) a payé **%s$** à la superette n°**%s**:```lua"):format(player.rank.label, player.name, player.flashId, total, args.shopId)
-    local refund = 150
     if (refund > 0) then
+        print('oui')
         if (method == _FlashEnum_BILLINGPAYMENTMETHOD.CASH) then
             player.cash = (player.cash + refund)
             player:saveData()
             player:sendData()
+            _FlashLand.toClient("applySkinDefaultSkin", _src)
             _FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.ERROR, (_Static_GenericMessages.BILLING_PAYMENT_FAILED_REFUNDED):format(_FlashUtils.math_price(refund)), _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
         elseif (method == _FlashEnum_BILLINGPAYMENTMETHOD.CARD) then
             local accountId = args.accountId
             _FlashServer_Banking.depositToAccount(accountId, refund, function()
+                _FlashLand.toClient("applySkinDefaultSkin", _src)
                 _FlashLand.toClient("utils:notifications_showAdvanced", _src, _FlashEnum_NOTIFICATIONSTATICSENDER.NATIONALBANK, _Static_GenericMessages.ERROR, (_Static_GenericMessages.BILLING_PAYMENT_FAILED_REFUNDED):format(_FlashUtils.math_price(refund)), _FlashEnum_CHARACTERPICTURE.FLEECA, _FlashEnum_MESSAGEICONTYPE.DOLLAR)
             end)
         end

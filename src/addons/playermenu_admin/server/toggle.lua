@@ -17,12 +17,13 @@ _FlashLand.onReceive("staff:onToggle", function(state)
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    if (not (player.rank:hasPermission(_Config.Staff.permissions["open"]))) then
+    if (not (player.rank:hasPermission("admin.open"))) then
         player:sendSystemMessage("error", _FlashEnum_GENERICMESSAGE.ACTION_NO_PERMISSION)
         return
     end
     _FlashLand.toClient("staff:cbPlayerList", _src, (state and _FlashServer_Staff.generateAllLightPlayers() or {}))
     _FlashLand.toClient("staff:cbReportList", _src, (state and _FlashServer_Staff.generateAllReports() or {}))
+    _FlashLand.toClient("staff:cbBanList", _src, (state and _FlashServer_Staff.generateAllLightBans() or {}))
     _FlashLand.logOverall(("(^4%s^7) %s a désormais son staffmode %s"):format(player.rank.label, GetPlayerName(_src), (state and "^2activé" or "^1désactivé")))
     if (state) then
         _FlashServer_Staff.addActive(_src)

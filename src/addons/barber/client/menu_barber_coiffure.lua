@@ -9,8 +9,6 @@
 --]]
 ---@author VibR1cY
 
-local defaultSkinTemporary = {}
-
 local currentIndexColor1 = 1
 local minimalIndexColor1 = 1
 local currentIndexColor2 = 1
@@ -21,30 +19,30 @@ _FlashClient_Barber.drawer[2] = function(player, barberInformation)
     local maxIndex = _FlashClient_SkinChanger.getMaxValues()["hair_1"]
     local index = {}
     for i = 1, maxIndex do
-        RageUI.Button(("Coupe de cheveux %s"):format(i), nil, { RightLabel = ("~g~%s $"):format(barberInformation.haircutPrice) }, true, {
+        RageUI.Button(("Coupe de cheveux %s"):format(i), nil, { RightLabel = ("~g~%s $"):format(barberInformation.price) }, true, {
             onActive = function()
                 SetPedComponentVariation(PlayerPedId(), 2, i)
             end,
             onSelected = function()
-                SetPedComponentVariation(PlayerPedId(), 2, i)
-                SetPedHairColor(PlayerPedId(), currentIndexColor1, currentIndexColor2)
+                local skin = {}
+                skin["hair_1"] = i
+                skin["hair_color_1"] = currentIndexColor1
+                skin["hair_color_2"] = currentIndexColor2
                 _FlashClient_Billing.currentBillingParentMenu = _FlashClient_Barber.getMenus()[1]
                 local elements = {}
-                table.insert(elements, { "Coiffure Moderne + Couleur", barberInformation.haircutPrice })
+                table.insert(elements, { "Coiffure Moderne + Couleur", barberInformation.price })
                 _FlashClient_Billing.submitBillingFromMenu(
                         "barber_pay",
                         "Tattoo Expert",
                         elements,
                         { _FlashEnum_BILLINGPAYMENTMETHOD.CARD, _FlashEnum_BILLINGPAYMENTMETHOD.CASH },
-                        { barberId = _FlashClient_Barber.var.barberId },
+                        function()
+                            SetPedComponentVariation(PlayerPedId(), 2, i)
+                            SetPedHairColor(PlayerPedId(), currentIndexColor1, currentIndexColor2)
+                        end,
+                        { barberId = _FlashClient_Barber.var.barberId, skin = skin },
                         _FlashClient_Barber.getMenus()[1],
                         function()
-                            print('ok')
-                            local skin = {}
-                            skin["hair_1"] = i
-                            skin["hair_color_1"] = currentIndexColor1
-                            skin["hair_color_2"] = currentIndexColor2
-                            _FlashClient_SkinChanger.applySkin(skin)
                             _FlashClient_Barber.var = {
                                 barberId = nil
                             }

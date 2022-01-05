@@ -30,7 +30,7 @@ setmetatable(_Report, {
         self.status = status or 0
         self.moderatorId = moderatorId or nil
         self.moderator = moderator or nil
-        return self
+        return (self)
     end
 })
 

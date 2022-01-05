@@ -30,7 +30,7 @@ local function onBillingMenuClosed(currentMenu, callbackMenu)
     end
 end
 
-_FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, elements, acceptedPaymentMethods, billingData, callbackMenu, whenBackOnMenu)
+_FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, elements, acceptedPaymentMethods, callbackFunction, billingData, callbackMenu, whenBackOnMenu)
     _FlashClient_Billing.currentBillingParentMenu = callbackMenu
     ---@type _Player
     local player = _FlashClient_Cache.getPlayer()
@@ -56,6 +56,9 @@ _FlashClient_Billing.submitBillingFromMenu = function(billingTrigger, sender, el
         FreezeEntityPosition(PlayerPedId(), true)
         while (menuBillingOpened) do
             Wait(0)
+            if (callbackFunction ~= nil) then
+                callbackFunction()
+            end
             RageUI.IsVisible(menu_bill_main, function()
                 RageUI.Button(("Émise par: ~o~%s"):format(sender), nil, {}, true, {})
                 RageUI.Separator("Récapitulatif de la facture")

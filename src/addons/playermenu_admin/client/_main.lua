@@ -16,6 +16,7 @@ local active = false
 local playerList = {}
 local selectedPlayer = {}
 local reportList = {}
+local banList = {}
 
 _FlashClient_Staff.backIfNotActive = function()
     if (not (active)) then
@@ -61,6 +62,10 @@ _FlashClient_Staff.getReportList = function()
     return (reportList)
 end
 
+_FlashClient_Staff.getBanList = function()
+    return (banList)
+end
+
 _FlashLand.onReceive("staff:cbPlayerList", function(lightPlayers)
     for k, lightPlayer in pairs(lightPlayers) do
         lightPlayer.rank = _Rank(lightPlayer.rank.id, lightPlayer.rank.label, lightPlayer.rank.weight, lightPlayer.rank.permissions, lightPlayer.rank.baseColor)
@@ -71,4 +76,9 @@ end)
 
 _FlashLand.onReceive("staff:cbReportList", function(reports)
     reportList = reports
+end)
+
+_FlashLand.onReceive("staff:cbBanList", function(bans)
+    print(json.encode(bans))
+    banList = bans
 end)

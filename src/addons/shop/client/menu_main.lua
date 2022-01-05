@@ -40,6 +40,8 @@ _FlashClient_Shop.drawer[1] = function(player, categories)
                         "LTD Co Limited",
                         elements,
                         { _FlashEnum_BILLINGPAYMENTMETHOD.CARD, _FlashEnum_BILLINGPAYMENTMETHOD.CASH },
+                        function()
+                        end,
                         { basket = _FlashClient_Shop.var.basket, shopId = _FlashClient_Shop.var.shopId, shopNpcId = _FlashClient_Shop.var.shopNpcId },
                         _FlashClient_Shop.getMenus()[1],
                         function()

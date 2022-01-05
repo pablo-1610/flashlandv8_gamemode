@@ -9,11 +9,12 @@
 --]]
 ---@author VibR1cY
 
+local statusBool = { [0] = false, [1] = true }
+local statusReport = { [0] = _FlashEnum_ADMINREPORTACTION.REPORT_NOT_MANAGE, [1] = _FlashEnum_ADMINREPORTACTION.REPORT_MANAGE }
+
 local function checkPerm(permission)
     return (_FlashClient_Staff.hasPermission(permission))
 end
-local statusBool = { [0] = false, [1] = true }
-local statusReport = { [0] = _FlashEnum_ADMINREPORTACTION.REPORT_NOT_MANAGE, [1] = _FlashEnum_ADMINREPORTACTION.REPORT_MANAGE }
 
 ---@param player _Player
 _FlashClient_PlayerMenu.drawer[13] = function(player)

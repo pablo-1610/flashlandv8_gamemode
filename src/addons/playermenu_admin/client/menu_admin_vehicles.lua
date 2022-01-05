@@ -32,7 +32,7 @@ _FlashClient_PlayerMenu.drawer[11] = function(player)
 
     RageUI.Separator(("Rang: %s%s"):format(player.rank.baseColor, player.rank.label))
     RageUI.Line()
-    RageUI.List(("%sSpawn un véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm("admin.vehspawn")))), spawnTypes, spawnIndex, nil, {}, checkPerm("admin.vehspawn"), {
+    RageUI.List(("%sSpawn un véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm("admin.vehspawn")))), spawnTypes, spawnIndex, nil, {}, (checkPerm("admin.vehspawn")), {
         onListChange = function(index)
             spawnIndex = index
         end,

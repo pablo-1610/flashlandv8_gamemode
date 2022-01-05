@@ -10,8 +10,8 @@
 ---@author VibR1cY
 
 ---@param report _Report
-_FlashServer_Players.getReport = function(reportSource)
-    ---@type _Report
+_FlashServer_Players.getLightReport = function(reportSource)
+    ---@type _LightReport
     local report = _FlashServer_Reports.get(reportSource)
-    return (_Report(report.sId, report.name, report.reason, report.status, report.moderatorId, report.moderator))
+    return (_LightReport(report.sId, report.name, report.reason, report.date, report.status, report.moderatorId, report.moderator))
 end

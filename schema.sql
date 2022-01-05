@@ -2,7 +2,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE TABLE `flash_bankaccounts` (
+create TABLE `flash_bankaccounts` (
                                       `accountId` int(11) NOT NULL,
                                       `type` int(11) NOT NULL,
                                       `owner` varchar(50) NOT NULL,
@@ -12,14 +12,14 @@ CREATE TABLE `flash_bankaccounts` (
                                       `state` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `flash_bankaccounts_transaction` (
+create TABLE `flash_bankaccounts_transaction` (
                                                   `accountId` int(11) NOT NULL,
                                                   `type` int(11) NOT NULL,
                                                   `label` varchar(255) NOT NULL,
                                                   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `flash_inventory` (
+create TABLE `flash_inventory` (
                                    `inventory_owner` varchar(80) NOT NULL,
                                    `inventory_type` int(1) NOT NULL,
                                    `inventory_label` varchar(255) NOT NULL,
@@ -27,14 +27,14 @@ CREATE TABLE `flash_inventory` (
                                    `inventory_content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `flash_item` (
+create TABLE `flash_item` (
                               `item_id` varchar(80) NOT NULL,
                               `item_label` varchar(60) NOT NULL,
                               `item_description` text NOT NULL,
                               `item_weight` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `flash_loadout` (
+create TABLE `flash_loadout` (
                                  `loadout_owner` varchar(80) NOT NULL,
                                  `loadout_type` int(1) NOT NULL,
                                  `loadout_capacity` double NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `flash_loadout` (
 
 
 
-CREATE TABLE `flash_players` (
+create TABLE `flash_players` (
                                  `flashId` int(11) NOT NULL,
                                  `identifier` varchar(80) NOT NULL,
                                  `rankId` varchar(50) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE `flash_players` (
                                  `accessories` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `flash_players_identifiers` (
+create TABLE `flash_players_identifiers` (
   `flashId` int(11) NOT NULL,
   `license` varchar(150) NOT NULL,
   `steam` varchar(150) NOT NULL,
@@ -65,69 +65,94 @@ CREATE TABLE `flash_players_identifiers` (
   `endpoint` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `flash_players_positions` (
+create TABLE `flash_players_positions` (
   `flashId` int(11) NOT NULL,
   `position` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `flash_ranks` (
+create TABLE `flash_ranks` (
   `id` varchar(50) NOT NULL,
   `label` varchar(255) NOT NULL,
   `weight` int(11) NOT NULL DEFAULT 0,
   `baseColor` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `flash_ranks` (`id`, `label`, `weight`, `baseColor`) VALUES
+insert into `flash_ranks` (`id`, `label`, `weight`, `baseColor`) VALUES
 ('fonda', 'Fondateur', 90000000, '~r~'),
-('member', 'Membre', 0, '~m~'),
+('member', 'Membre', 0, '~m~');
 
-CREATE TABLE `flash_ranks_permissions` (
+create TABLE `flash_ranks_permissions` (
   `id` int(50) NOT NULL,
   `rankId` varchar(50) NOT NULL,
   `permission` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
+create TABLE `flash_bans` (
+  `identifier` varchar(55) NOT NULL,
+  `flashId` varchar(50) NOT NULL,
+  `moderator` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `reason` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+insert into `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
+(0, 'fonda', 'admin.report'),
 (1, 'fonda', 'admin.open'),
-(2, 'mod', 'admin.open');
-ALTER TABLE `flash_bankaccounts`
+(2, 'mod', 'admin.open'),
+(3, 'fonda', 'admin.vehdelete'),
+(4, 'fonda', 'admin.giveitem'),
+(5, 'fonda', 'admin.giveweapon'),
+(6, 'fonda', 'admin.kickplayer'),
+(7, 'fonda', 'admin.removeplayeritem'),
+(8, 'fonda', 'admin.removeplayerweapon'),
+(9, 'fonda', 'admin.vehspawn'),
+(10, 'fonda', 'admin.teleport');
+
+alter table `flash_bans`
+    ADD PRIMARY KEY (`identifier`);
+commit;
+
+alter table `flash_bans`
+    MODIFY `flashId` int(11) NOT NULL AUTO_INCREMENT;
+commit;
+
+alter table `flash_bankaccounts`
   ADD PRIMARY KEY (`accountId`);
 
-ALTER TABLE `flash_bankaccounts_transaction`
+alter table `flash_bankaccounts_transaction`
   ADD PRIMARY KEY (`accountId`);
 
-ALTER TABLE `flash_inventory`
+alter table `flash_inventory`
   ADD PRIMARY KEY (`inventory_owner`);
 
-ALTER TABLE `flash_item`
+alter table `flash_item`
   ADD PRIMARY KEY (`item_id`);
 
-ALTER TABLE `flash_loadout`
+alter table `flash_loadout`
   ADD PRIMARY KEY (`loadout_owner`);
 
-ALTER TABLE `flash_players`
+alter table `flash_players`
   ADD PRIMARY KEY (`flashId`),
   ADD UNIQUE KEY `id` (`flashId`),
   ADD UNIQUE KEY `identifier` (`identifier`);
 
-ALTER TABLE `flash_players_identifiers`
+alter table `flash_players_identifiers`
   ADD PRIMARY KEY (`flashId`);
 
-ALTER TABLE `flash_players_positions`
+alter table `flash_players_positions`
   ADD PRIMARY KEY (`flashId`);
 
-ALTER TABLE `flash_ranks`
+alter table `flash_ranks`
   ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `flash_ranks_permissions`
+alter table `flash_ranks_permissions`
   ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `flash_bankaccounts`
+alter table `flash_bankaccounts`
   MODIFY `accountId` int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `flash_players`
+alter table `flash_players`
   MODIFY `flashId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
-ALTER TABLE `flash_ranks_permissions`
+alter table `flash_ranks_permissions`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-COMMIT;
