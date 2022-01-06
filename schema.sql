@@ -95,8 +95,7 @@ create TABLE `flash_bans` (
   `reason` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-insert into `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
-(0, 'fonda', 'admin.report'),
+INSERT INTO `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
 (1, 'fonda', 'admin.open'),
 (2, 'mod', 'admin.open'),
 (3, 'fonda', 'admin.vehdelete'),
@@ -106,7 +105,16 @@ insert into `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
 (7, 'fonda', 'admin.removeplayeritem'),
 (8, 'fonda', 'admin.removeplayerweapon'),
 (9, 'fonda', 'admin.vehspawn'),
-(10, 'fonda', 'admin.teleport');
+(10, 'fonda', 'admin.teleport'),
+(11, 'fonda', 'admin.ban'),
+(12, 'fonda', 'admin.unban'),
+(13, 'fonda', 'admin.banlist'),
+(14, 'fonda', 'admin.noclip'),
+(15, 'fonda', 'admin.report'),
+(16, 'fonda', 'admin.names'),
+(17, 'fonda', 'admin.blips'),
+(18, 'fonda', 'admin.tpwaypoint'),
+(20, 'fonda', 'admin.playerinv');
 
 alter table `flash_bans`
     ADD PRIMARY KEY (`identifier`);

@@ -79,6 +79,5 @@ _FlashLand.onReceive("staff:cbReportList", function(reports)
 end)
 
 _FlashLand.onReceive("staff:cbBanList", function(bans)
-    print(json.encode(bans))
     banList = bans
 end)

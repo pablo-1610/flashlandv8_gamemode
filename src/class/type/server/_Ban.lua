@@ -10,18 +10,16 @@
 ---@author VibR1cY
 ---@class _Ban
 ---@field public identifier string
----@field public flashId number
----@field moderator flashId string
----@field date flashId string
----@field reason flashId string
+---@field public moderator string
+---@field public date string
+---@field public reason string
 _Ban = {}
 _Ban.__index = _Ban
 
 setmetatable(_Ban, {
-    __call = function(_, identifier, flashId, name, moderator, date, reason)
+    __call = function(_, identifier, name, moderator, date, reason)
         local self = setmetatable({}, _Ban)
         self.identifier = identifier
-        self.flashId = flashId
         self.name = name
         self.moderator = moderator
         self.date = date

@@ -13,5 +13,5 @@
 _FlashServer_Bans.getLightBan = function(banIdentifier)
     ---@type _LightBan
     local ban = _FlashServer_Bans.get(banIdentifier)
-    return (_LightBan(ban.identifier, ban.flashId, ban.name, ban.moderator, ban.date, ban.reason, ban.status))
+    return (_LightBan(ban.identifier, ban.name, ban.moderator, ban.date, ban.reason, ban.status))
 end

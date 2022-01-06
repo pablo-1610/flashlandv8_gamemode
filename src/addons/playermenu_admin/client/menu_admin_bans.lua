@@ -19,7 +19,7 @@ _FlashClient_PlayerMenu.drawer[19] = function(player)
     if (_FlashLand.countTable(_FlashClient_Staff.getBanList()) <= 0) then
         RageUI.Separator("~g~Aucun ~s~ban actif !")
     else
-        perm = "admin.ban"
+        perm = "admin.banlist"
         for key, data in pairs(_FlashClient_Staff.getBanList()) do
             RageUI.Button(("%sBan de : ~b~%s"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm))), data.name), ("Raison : ~b~%s~s~~n~Jour du ban : ~b~%s~s~~n~Ban par : ~b~%s~s~"):format(data.reason, data.date, data.moderator), { RightLabel = "→" }, (checkPerm(perm)), {
                 onSelected = function()

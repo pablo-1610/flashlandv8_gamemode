@@ -37,8 +37,6 @@ end
 
 _FlashServer_Bans.remove = function(banIdentifier)
     _FlashLand.log(("^1Suppression ^7d'un ^6BAN ^7identifier: ^3%s"):format(list[banIdentifier].flashId))
-    _FlashServer_Database.execute("DELETE FROM flash_bans WHERE flashId = @flashId", { ["flashId"] = list[banIdentifier].flashId }, function()
-    end)
     list[banIdentifier] = nil
 end
 

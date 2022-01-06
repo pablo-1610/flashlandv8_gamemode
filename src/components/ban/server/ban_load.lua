@@ -12,7 +12,8 @@
 _FlashLand.onReceiveWithoutNet("loaded", function()
     _FlashServer_Database.query("SELECT * FROM flash_bans", {}, function(result)
         for _, data in pairs(result) do
-            local ban = _Ban(data.identifier, data.flashId, data.name, data.moderator, data.date, data.reason)
+            ---@type _Ban
+            local ban = _Ban(data.identifier, data.name, data.moderator, data.date, data.reason)
             _FlashServer_Bans.add(ban)
         end
     end)

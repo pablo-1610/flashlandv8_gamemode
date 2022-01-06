@@ -66,4 +66,5 @@ _Static_GenericMessages = {
     STAFF_MESSAGE_REMOVE_WEAPON_ERROR = "Une erreur c'est produite lors du retrait de l'arme !",
     STAFF_KICK_PLAYER = "⚠️ VOUS ETES KICK ⚠️\n👮🏽 • Staff : %s️\n🕖 • Heure : %s️\n📝 • Raison : %s",
     BAN_SELECTED_NOT_EXIST = "La ban sélectionné n'existe pas ou plus !",
+    STAFF_BAN_PLAYER = "Vous venez d'être bannie par : %s pour : %s",
 }
