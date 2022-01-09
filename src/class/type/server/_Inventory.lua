@@ -109,6 +109,13 @@ function _Inventory:calcWeight(fakeContent)
     return total
 end
 
+function _Inventory:hasItemQty(itemId, qty)
+    if (not (self:hasItem(itemId))) then
+        return false
+    end
+    return (self.content[itemId] >= qty)
+end
+
 function _Inventory:save()
     local currentId, currentCapacity, currentContent = self.id, self.capacity, json.encode(self.content)
     _FlashServer_Database.execute("UPDATE flash_inventory SET inventory_capacity = @inventory_capacity, inventory_content = @inventory_content WHERE inventory_owner = @inventory_owner", {

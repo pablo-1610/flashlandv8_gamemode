@@ -65,4 +65,14 @@ _Static_GenericMessages = {
     STAFF_MESSAGE_REMOVE_WEAPON_SUCCESS = "Vous avez retiré (~o~%s~s~) à ~b~%s ~s~!",
     STAFF_MESSAGE_REMOVE_WEAPON_ERROR = "Une erreur c'est produite lors du retrait de l'arme !",
     STAFF_KICK_PLAYER = "⚠️ VOUS ETES KICK ⚠️\n👮🏽 • Staff : %s️\n🕖 • Heure : %s️\n📝 • Raison : %s",
+    WEAPON_BOUGHT = "Votre arme vous a été donnée par le vendeur",
+    GIVEMONEY = "Don d'argent",
+    RECEIVEMONEY = "Réception d'argent",
+    PLAYER_GIVEMONEY = "Vous avez donné %s",
+    PLAYER_GIVEITEM = "Vous avez donné ~o~%s ~s~[~o~x%s~s~]",
+    PLAYER_RECEIVEMONEY = "Vous avez reçu %s",
+    PLAYER_RECEIVEITEM = "Vous avez reçu ~o~%s ~s~[~o~x%s~s~]",
+    PLAYER_INVENTORY_NO_ENOUGH_ITEM_TYPE = "Vous n'avez pas assez de ~o~%s",
+    INTERACTION = "Interaction",
+    TARGET_NO_ENOUGH_INVENTORY_SPACE = "La cible n'a pas assez de place"
 }

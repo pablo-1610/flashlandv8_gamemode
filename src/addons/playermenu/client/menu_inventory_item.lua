@@ -33,7 +33,7 @@ local function showItemInfos(item, player)
 end
 
 ---@param player _Player
-_FlashClient_PlayerMenu.drawer[8] = function(player, closestPlayerData)
+_FlashClient_PlayerMenu.drawer[8] = function(player, closestData)
     local selectedItem = _FlashClient_PlayerMenu.var.selectedItem
     if (not (player.inventory.content[selectedItem])) then
         RageUI.Separator("~r~Vous ne possédez pas cet item")
@@ -59,9 +59,14 @@ _FlashClient_PlayerMenu.drawer[8] = function(player, closestPlayerData)
                 _FlashLand.toServer("inventory:useItem", selectedItem)
             end
         })
-        RageUI.Button(("%sDonner"):format(_FlashClient_Utils.menu_tooFarIndicatorIfTrue(not (_FlashClient_Utils.proximity_canInteract(closestPlayerData)))), nil, {}, _FlashClient_Utils.proximity_canInteract(closestPlayerData), {
+        RageUI.Button(("%sDonner"):format(_FlashClient_Utils.menu_tooFarIndicatorIfTrue(not (_FlashClient_Utils.proximity_canInteract(closestData)))), nil, {}, _FlashClient_Utils.proximity_canInteract(closestData), {
             onSelected = function()
-                -- TODO → Give to closest
+                local amount = _FlashClient_Utils.input_showBox("Quantité:", "", 20, true)
+                if (amount ~= nil and tonumber(amount) ~= nil and tonumber(amount) > 0) then
+                    amount = tonumber(amount)
+                    isWaitingForServer = true
+                    _FlashLand.toServer("playerMenu:giveItem", GetPlayerServerId(closestData[1]), selectedItem, amount)
+                end
             end
         })
     end

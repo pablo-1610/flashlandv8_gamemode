@@ -23,6 +23,10 @@ _FlashUtils.math_price = function(value)
     return ("~g~%s$~s~"):format(_FlashUtils.math_group(_FlashUtils.math_round(value, 2)))
 end
 
+_FlashUtils.math_price_integer = function(value)
+    return ("~g~%s$~s~"):format(_FlashUtils.math_group(math.floor(value)))
+end
+
 _FlashUtils.math_price_color = function(value, color)
     return ("%s%s$~s~"):format(color, _FlashUtils.math_group(_FlashUtils.math_round(value, 2)))
 end

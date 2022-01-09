@@ -10,7 +10,9 @@
 ---@author Pablo_1610
 
 ---@param lightBlip _LightBlip
+--[[
 _FlashLand.onReceive("blip:subscribe", function(lightBlip)
     lightBlip = _LightBlip(lightBlip.id, lightBlip.position, lightBlip.sprite, lightBlip.color, lightBlip.size, lightBlip.label, lightBlip.shortRange, lightBlip.visualData)
     _FlashClient_Blip.set(lightBlip.id, lightBlip)
 end)
+--]]

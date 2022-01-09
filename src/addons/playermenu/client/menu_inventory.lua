@@ -56,11 +56,13 @@ _FlashClient_PlayerMenu.drawer[2] = function(player)
         RageUI.Line()
         RageUI.Separator("Rendez-vous dans une ~g~superette ~s~!")
     else
+        --[[
         RageUI.Checkbox("Filtre alphabétique", nil, isFilterActive, {}, {
             onSelected = function(newState)
                 isFilterActive = newState
             end
         })
+        --]]
 
         RageUI.Checkbox("Visualiser l'espace", nil, isSpaceDisplayActive, {}, {
             onSelected = function(newState)

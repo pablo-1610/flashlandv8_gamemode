@@ -19,6 +19,18 @@ _ConfigClient = {
         showNpcIcon = true,
     },
 
+    Ammunation = {
+        categories = {
+            [_FlashEnum_WEAPONCATEGORY.MELEE] = "Arme blanche",
+            [_FlashEnum_WEAPONCATEGORY.PISTOL] = "Pistolet",
+            [_FlashEnum_WEAPONCATEGORY.SHOTGUN] = "Fusil à pompe",
+            [_FlashEnum_WEAPONCATEGORY.SMG] = "SMG",
+            [_FlashEnum_WEAPONCATEGORY.RIFLE] = "Fusil d'assaut",
+            [_FlashEnum_WEAPONCATEGORY.SNIPER] = "Sniper",
+            [_FlashEnum_WEAPONCATEGORY.THROWABLE] = "Grenades",
+        },
+    },
+
     Creator = {
         pedPosition = {coords = vector3(686.25, 577.69, 130.46), heading = 164.0},
         camPosition = {coords = vector3(683.78, 570.56, 130.46)},

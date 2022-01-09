@@ -26,5 +26,17 @@ _Static_Weapons = {
         name = "WEAPON_RPG",
         label = "RPG",
         weight = 0.8
-    }
+    },
+
+    [GetHashKey("WEAPON_PISTOL50")] = {
+        name = "WEAPON_PISTOL50",
+        label = "Pistolet Cal.50",
+        weight = 0.9
+    },
+
+    [GetHashKey("WEAPON_HEAVYPISTOL")] = {
+        name = "WEAPON_HEAVYPISTOL",
+        label = "Pistolet Lourd",
+        weight = 0.9
+    },
 }
