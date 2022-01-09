@@ -12,12 +12,12 @@
 _FlashLand.onReceiveWithoutNetExposed("playerConnecting", function(playerName, setKickReason, deferrals)
     local _src = source
     local identifier = _FlashServer_Utils.identifiers_get(_src, "license")
-    deferrals.update(_FlashEnum_PLAYER_CONNECT.PLAYER_CHECK_IS_BAN)
+    deferrals.update(_FlashEnum_BAN.PLAYER_CHECK_IS_BAN)
     Wait(2500)
-    for banIdentifier, data in pairs(_FlashServer_Bans.getAll()) do
-        if (banIdentifier == identifier) then
-            deferrals.done((_FlashEnum_PLAYER_CONNECT.PLAYER_IS_BAN):format(data.date, data.reason, data.moderator))
-        end
+    if (_FlashServer_Bans.exist(identifier)) then
+        ---@type _Ban
+        local ban = _FlashServer_Bans.get(identifier)
+        deferrals.done((_FlashEnum_BAN.PLAYER_BAN):format(ban.reason, ban.date, ban.time, ban.moderator))
     end
     deferrals.done()
 end)

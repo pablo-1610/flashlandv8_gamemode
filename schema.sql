@@ -87,12 +87,13 @@ create TABLE `flash_ranks_permissions` (
   `permission` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-create TABLE `flash_bans` (
+CREATE TABLE `flash_bans` (
   `identifier` varchar(55) NOT NULL,
-  `flashId` varchar(50) NOT NULL,
-  `moderator` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL,
-  `reason` text NOT NULL
+  `name` varchar(75) NOT NULL,
+  `date` varchar(65) NOT NULL,
+  `time` varchar(65) NOT NULL,
+  `reason` longtext NOT NULL,
+  `moderator` varchar(75) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
@@ -116,13 +117,10 @@ INSERT INTO `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
 (18, 'fonda', 'admin.tpwaypoint'),
 (20, 'fonda', 'admin.playerinv');
 
-alter table `flash_bans`
-    ADD PRIMARY KEY (`identifier`);
-commit;
-
-alter table `flash_bans`
-    MODIFY `flashId` int(11) NOT NULL AUTO_INCREMENT;
-commit;
+ALTER TABLE `flash_bans`
+  ADD PRIMARY KEY (`identifier`),
+  ADD UNIQUE KEY `identifier` (`identifier`);
+COMMIT;
 
 alter table `flash_bankaccounts`
   ADD PRIMARY KEY (`accountId`);

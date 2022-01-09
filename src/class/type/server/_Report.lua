@@ -26,7 +26,7 @@ setmetatable(_Report, {
         self.sId = sId
         self.name = name
         self.reason = reason
-        self.date = _FlashUtils.setHour()
+        self.date = _FlashUtils.getCurrentTime()
         self.status = status or 0
         self.moderatorId = moderatorId or nil
         self.moderator = moderator or nil

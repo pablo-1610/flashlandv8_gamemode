@@ -31,12 +31,12 @@ end
 
 ---@param ban _Ban
 _FlashServer_Bans.add = function(ban)
-    _FlashLand.log(("^2Ajout ^7d'un ^6BAN ^7identifier: ^3%s"):format(ban.identifier))
+    _FlashLand.log(("^2Ajout ^7d'un ^6BAN ^7Nom: ^3%s"):format(ban.name))
     list[ban.identifier] = ban
 end
 
 _FlashServer_Bans.remove = function(banIdentifier)
-    _FlashLand.log(("^1Suppression ^7d'un ^6BAN ^7identifier: ^3%s"):format(list[banIdentifier].flashId))
+    _FlashLand.log(("^1Suppression ^7d'un ^6BAN ^7Nom: ^3%s"):format(list[banIdentifier].name))
     list[banIdentifier] = nil
 end
 

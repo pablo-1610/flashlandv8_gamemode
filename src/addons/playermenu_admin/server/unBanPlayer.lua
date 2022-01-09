@@ -27,7 +27,13 @@ _FlashLand.onReceive("staff:unBanPlayer", function(identifier)
         player:serverResponded()
         return
     end
-    _FlashServer_Bans.removeBan(identifier)
-    _FlashServer_Staff.updateBansForStaff()
+    _FlashServer_Bans.removePlayerBan(identifier, function(succes)
+        if (succes) then
+            player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.SUCCESS, _Static_GenericMessages.UNBAN_SUCCES)
+            _FlashServer_Staff.updateBansForStaff()
+        else
+            player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.UNBAN_ERROR)
+        end
+    end)
     player:serverResponded()
 end)

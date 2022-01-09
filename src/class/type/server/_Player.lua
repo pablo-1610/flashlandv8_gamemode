@@ -161,3 +161,7 @@ function _Player:setGroupId(newRankId, notify)
     local rank = _FlashServer_Ranks.get(newRankId)
     self:setGroup(rank, notify)
 end
+
+function _Player:kickPlayer(reason)
+    DropPlayer(self.source, "test")
+end

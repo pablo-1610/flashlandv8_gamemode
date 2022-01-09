@@ -67,4 +67,8 @@ _Static_GenericMessages = {
     STAFF_KICK_PLAYER = "⚠️ VOUS ETES KICK ⚠️\n👮🏽 • Staff : %s️\n🕖 • Heure : %s️\n📝 • Raison : %s",
     BAN_SELECTED_NOT_EXIST = "La ban sélectionné n'existe pas ou plus !",
     STAFF_BAN_PLAYER = "Vous venez d'être bannie par : %s pour : %s",
+    BAN_SUCCES = "Le ban à bien été fait avec succès !",
+    BAN_ERROR = "Il y a une erreur lors du ban !",
+    UNBAN_SUCCES = "Le deban à été fait avec succès !",
+    UNBAN_ERROR = "Il y a une erreur lors du deban !",
 }

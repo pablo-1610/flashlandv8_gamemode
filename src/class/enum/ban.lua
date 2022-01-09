@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 03/01/2022 19:34
+  Created at 09/01/2022 18:17
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,8 @@
 --]]
 ---@author VibR1cY
 
-_FlashEnum_PLAYER_CONNECT = {
+_FlashEnum_BAN = {
     PLAYER_CHECK_IS_BAN = "Vérification si vous êtes ban !",
-    PLAYER_IS_BAN = "👮 Vous êtes ban 👮\n⏱ • Date : %s\n📃 • Raison : %s\n👮🏽 • Par : %s",
+    PLAYER_BAN = "Vous êtes bannie du serveur !\n📲 Raison : %s\n⏲ Ban du : %s\n⏱ Expire le : %s\n👮 Bannie par : %s",
+    DELETE_BAN_FOR_EXPIRATION = "Le ban de ^1%s^7 viens d'être enlever car il est arrivé à therme !",
 }

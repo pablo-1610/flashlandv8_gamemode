@@ -9,7 +9,7 @@
 --]]
 ---@author VibR1cY
 
-_FlashLand.onReceive("staff:banPlayerConnect", function(targetSource, reason)
+_FlashLand.onReceive("staff:banPlayerConnect", function(targetSource, day, reason)
     local _src = source
     if (not (_FlashServer_Players.exists(_src))) then
         _FlashLand.err(("staff:kickPlayer sans player (%s)"):format(_src))
@@ -27,10 +27,13 @@ _FlashLand.onReceive("staff:banPlayerConnect", function(targetSource, reason)
         player:serverResponded()
         return
     end
-    ---@type _Player
-    local target = _FlashServer_Players.get(targetSource)
-    _FlashServer_Bans.addBan(target.identifier, target:getName(), player:getName(), reason)
-    DropPlayer(targetSource, (_Static_GenericMessages.STAFF_BAN_PLAYER):format(player:getName(), reason))
-    _FlashServer_Staff.updateBansForStaff()
+    _FlashServer_Bans.addPlayerBan(targetSource, day, reason, player:getName(), function(succes)
+        if (succes) then
+            player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.SUCCESS, _Static_GenericMessages.BAN_SUCCES)
+            _FlashServer_Staff.updateBansForStaff()
+        else
+            player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.BAN_ERROR)
+        end
+    end)
     player:serverResponded()
 end)

@@ -12,9 +12,17 @@
 _FlashLand.onReceiveWithoutNet("loaded", function()
     _FlashServer_Database.query("SELECT * FROM flash_bans", {}, function(result)
         for _, data in pairs(result) do
-            ---@type _Ban
-            local ban = _Ban(data.identifier, data.name, data.moderator, data.date, data.reason)
-            _FlashServer_Bans.add(ban)
+            local currentTime = _FlashUtils.setCurrentTime()
+            local banTime = tonumber(data.time)
+            if (currentTime < banTime) then
+                local ban = _Ban(data.identifier, data.name, data.date, _FlashUtils.decodeTime(data.time), data.reason, data.moderator)
+                _FlashServer_Bans.add(ban)
+            else
+                _FlashLand.log((_FlashEnum_BAN.DELETE_BAN_FOR_EXPIRATION):format(data.name))
+                _FlashServer_Database.execute("DELETE FROM flash_bans WHERE identifier = @identifier", {
+                    ["identifier"] = data.identifier
+                })
+            end
         end
     end)
 end)
