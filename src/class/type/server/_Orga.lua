@@ -14,11 +14,12 @@ _Orga = {}
 _Orga.__index = _Orga
 
 setmetatable(_Orga, {
-    __call = function(_, id, job, grade, bossPos, safePos, spawnVehiclePos, delVehiclePos, blipPos, blipName, blipId, blipColor, allowed)
+    __call = function(_, jobName, jobLabel, bossPos, safePos, spawnVehiclePos, delVehiclePos, blip, allowed)
         local self = setmetatable({}, _Orga)
-        self.id = id
-        self.job = job
-        self.grade = grade
+        self.jobName = jobName
+        self.jobLabel = jobLabel
+        self.grade = {}
+        _FlashServer_Organisation.loadGrade()
         self.bossPos = _FlashServer_Zones.createPublic(vector3(bossPos.x, bossPos.y, bossPos.z), { 255, 255, 255 }, function(source, player, zone)
             -- TODO -> function open boss menu
         end, "Appuyez sur ~INPUT_CONTEXT~ pour gérer votre organisation", 20.0, 1.0, true, 180.0)
@@ -31,12 +32,8 @@ setmetatable(_Orga, {
         self.safePos = _FlashServer_Zones.createPublic(vector3(delVehiclePos.x, delVehiclePos.y, delVehiclePos.z), { 255, 255, 255 }, function(source, player, zone)
             -- TODO -> function open boss menu
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ranger le véhicule", 20.0, 1.0, true, 180.0)
-        self.blip = _FlashServer_Blips.createPublic(vector3(blipPos.x, blipPos.y, blipPos.z), blipId, blipColor, _Config.genericBlipSize, blipName, true)
+        self.blip = _FlashServer_Blips.createPublic(vector3(blip.pos.x, blip.pos.y, blip.pos.z), blip.id, blip.color, _Config.genericBlipSize, blip.name, true)
         self.allowed = allowed or {}
         return (self)
     end
 })
-
-RegisterCommand("encode", function()
-    print(json.encode(vector3(0.0, 0.0, 0.0)), json.encode({ pos = vector3(0.0, 0.0, 0.0), name = "vagos", id = 56, color = 28 }))
-end)

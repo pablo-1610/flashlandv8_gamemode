@@ -88,6 +88,21 @@ _FlashServer_Staff.generateAllLightBans = function()
     return (bans)
 end
 
+--Organisation
+_FlashServer_Staff.generateAllLightOrganisations = function()
+    local organisation = {}
+    for orgaId, _ in pairs(_FlashServer_Organisation.getAll()) do
+        organisation[orgaId] = _FlashServer_Organisation.getLightOrganisation(orgaId)
+    end
+    return (organisation)
+end
+
+_FlashServer_Staff.updateOrganisationForStaff = function()
+    for _src, _ in pairs(activeStaff) do
+        _FlashLand.toClient("staff:cbOrganisationList", _src, _FlashServer_Staff.generateAllLightOrganisations())
+    end
+end
+
 _FlashServer_Staff.getNotifyAllStaffInService = function(message)
     for _src, _ in pairs(activeStaff) do
         ---@type _Player

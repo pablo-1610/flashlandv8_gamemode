@@ -32,5 +32,6 @@ _FlashClient_PlayerMenu.drawer[5] = function(player, closestData, isStaffModeAct
         RageUI.Button(("Gestion des véhicules (~r~%s~s~)"):format(_FlashLand.countTableIp(_FlashClient_Utils.entityiter_vehicles())), nil, { RightLabel = "→" }, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[11])
         RageUI.Button(("Gestion des reports (~r~%s~s~)"):format(_FlashLand.countTable(_FlashClient_Staff.getReportList())), nil, { RightLabel = "→" }, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[13])
         RageUI.Button(("Gestion des bans (~r~%s~s~)"):format(_FlashLand.countTable(_FlashClient_Staff.getBanList())), nil, { RightLabel = "→" }, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[19])
+        RageUI.Button(("Gestion des organisations (~r~%s~s~)"):format(_FlashLand.countTable(_FlashClient_Staff.getOrganisationList())), nil, { RightLabel = "→" }, isStaffModeActive, {}, _FlashClient_PlayerMenu.getMenus()[20])
     end
 end

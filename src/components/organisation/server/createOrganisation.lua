@@ -9,9 +9,9 @@
 --]]
 ---@author VibR1cY
 
-_FlashServer_Organisation.createOrganisation = function(job, grade, bossPos, safePos, spawnVehiclePos, delVehiclePos, blipPos, blipName, blipId, blipColor, allowed)
+_FlashServer_Organisation.createOrganisation = function(jobName, jobLabel, bossPos, safePos, spawnVehiclePos, delVehiclePos, blip)
     ---@type _Orga
-    local orga = _Orga(_FlashServer_Organisation.getNextId(), job, grade, bossPos, safePos, spawnVehiclePos, delVehiclePos, blipPos, blipName, blipId, blipColor, allowed)
+    local orga = _Orga(jobName, jobLabel, bossPos, safePos, spawnVehiclePos, delVehiclePos, blip)
     _FlashServer_Organisation.add(orga)
     return (orga)
 end

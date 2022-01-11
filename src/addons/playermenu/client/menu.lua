@@ -31,6 +31,8 @@ local menu_admin_give_item = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", 
 local menu_admin_give_weapon = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 local menu_admin_bans = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 local menu_admin_bans_action = RageUI.CreateSubMenu(menu_admin_bans, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_organisations = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_organisations_action = RageUI.CreateSubMenu(menu_admin_organisations, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 
 local menus = {
     menu_main,
@@ -52,7 +54,9 @@ local menus = {
     menu_admin_give_item,
     menu_admin_give_weapon,
     menu_admin_bans,
-    menu_admin_bans_action
+    menu_admin_bans_action,
+    menu_admin_organisations,
+    menu_admin_organisations_action
 }
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()
