@@ -96,6 +96,32 @@ CREATE TABLE `flash_bans` (
   `moderator` varchar(75) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `flash_orga` (
+  `name` varchar(55) NOT NULL,
+  `label` varchar(255) DEFAULT NULL,
+  `boss` text DEFAULT NULL,
+  `safe` text DEFAULT NULL,
+  `spawn_vehicle` text DEFAULT NULL,
+  `del_vehicle` text DEFAULT NULL,
+  `blip` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `flash_orga_grades` (
+  `orgaId` varchar(55) NOT NULL,
+  `grade_id` int(11) NOT NULL,
+  `grade_name` varchar(55) NOT NULL,
+  `grade_label` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `flash_orga_grades_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `orga_name` varchar(55) NOT NULL,
+  `grade_name` varchar(55) NOT NULL,
+  `grade_id` int(11) NOT NULL,
+  `permission` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 INSERT INTO `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
 (1, 'fonda', 'admin.open'),
 (2, 'mod', 'admin.open'),
@@ -117,9 +143,19 @@ INSERT INTO `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
 (18, 'fonda', 'admin.tpwaypoint'),
 (20, 'fonda', 'admin.playerinv');
 
+ALTER TABLE `flash_orga_grades_permissions`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `flash_orga_grades`
+  ADD PRIMARY KEY (`grade_id`);
+COMMIT;
+
+ALTER TABLE `flash_orga`
+  ADD PRIMARY KEY (`name`);
+COMMIT;
+
 ALTER TABLE `flash_bans`
   ADD PRIMARY KEY (`identifier`),
-  ADD UNIQUE KEY `identifier` (`identifier`);
 COMMIT;
 
 alter table `flash_bankaccounts`
