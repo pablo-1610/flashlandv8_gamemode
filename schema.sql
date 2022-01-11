@@ -110,17 +110,15 @@ CREATE TABLE `flash_orga_grades` (
   `orgaId` varchar(55) NOT NULL,
   `grade_id` int(11) NOT NULL,
   `grade_name` varchar(55) NOT NULL,
-  `grade_label` int(11) NOT NULL
+  `grade_label` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `flash_orga_grades_permissions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `orga_name` varchar(55) NOT NULL,
-  `grade_name` varchar(55) NOT NULL,
-  `grade_id` int(11) NOT NULL,
+  `gradeId` int(11) NOT NULL,
   `permission` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 
 INSERT INTO `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
 (1, 'fonda', 'admin.open'),
@@ -143,16 +141,16 @@ INSERT INTO `flash_ranks_permissions` (`id`, `rankId`, `permission`) VALUES
 (18, 'fonda', 'admin.tpwaypoint'),
 (20, 'fonda', 'admin.playerinv');
 
-ALTER TABLE `flash_orga_grades_permissions`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `flash_orga`
+  ADD PRIMARY KEY (`name`);
+COMMIT;
 
 ALTER TABLE `flash_orga_grades`
   ADD PRIMARY KEY (`grade_id`);
 COMMIT;
 
-ALTER TABLE `flash_orga`
-  ADD PRIMARY KEY (`name`);
-COMMIT;
+ALTER TABLE `flash_orga_grades_permissions`
+  ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `flash_bans`
   ADD PRIMARY KEY (`identifier`),

@@ -26,10 +26,10 @@ setmetatable(_Orga, {
         self.safePos = _FlashServer_Zones.createPublic(vector3(safePos.x, safePos.y, safePos.z), { 255, 255, 255 }, function(source, player, zone)
             -- TODO -> function open boss menu
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le coffre", 20.0, 1.0, true, 180.0)
-        self.safePos = _FlashServer_Zones.createPublic(vector3(spawnVehiclePos.x, spawnVehiclePos.y, spawnVehiclePos.z), { 255, 255, 255 }, function(source, player, zone)
+        self.spawnVehiclePos = _FlashServer_Zones.createPublic(vector3(spawnVehiclePos.x, spawnVehiclePos.y, spawnVehiclePos.z), { 255, 255, 255 }, function(source, player, zone)
             -- TODO -> function open boss menu
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le garage", 20.0, 1.0, true, 180.0)
-        self.safePos = _FlashServer_Zones.createPublic(vector3(delVehiclePos.x, delVehiclePos.y, delVehiclePos.z), { 255, 255, 255 }, function(source, player, zone)
+        self.delVehiclePos = _FlashServer_Zones.createPublic(vector3(delVehiclePos.x, delVehiclePos.y, delVehiclePos.z), { 255, 255, 255 }, function(source, player, zone)
             -- TODO -> function open boss menu
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ranger le véhicule", 20.0, 1.0, true, 180.0)
         self.blip = _FlashServer_Blips.createPublic(vector3(blip.pos.x, blip.pos.y, blip.pos.z), blip.id, blip.color, _Config.genericBlipSize, blip.name, true)
