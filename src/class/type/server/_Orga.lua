@@ -19,7 +19,6 @@ setmetatable(_Orga, {
         self.jobName = jobName
         self.jobLabel = jobLabel
         self.grade = {}
-        _FlashServer_Organisation.loadGrade()
         self.bossPos = _FlashServer_Zones.createPublic(vector3(bossPos.x, bossPos.y, bossPos.z), { 255, 255, 255 }, function(source, player, zone)
             -- TODO -> function open boss menu
         end, "Appuyez sur ~INPUT_CONTEXT~ pour gérer votre organisation", 20.0, 1.0, true, 180.0)
@@ -37,3 +36,92 @@ setmetatable(_Orga, {
         return (self)
     end
 })
+
+function _Orga:updateOrgaBossAction(newPos)
+    for _, _src in pairs(self.bossPos.subscribed) do
+        if (self.bossPos:isSubscribed(_src)) then
+            self.bossPos:unsubscribe(_src, false)
+        end
+    end
+    local zoneId = self.bossPos.id
+    _FlashServer_Zones.remove(zoneId)
+    _FlashServer_Database.execute("UPDATE flash_orga SET boss = (@boss) WHERE name = @name", {
+        ["boss"] = json.encode(newPos),
+        ["name"] = self.jobName
+    }, function()
+        self.bossPos = _FlashServer_Zones.createPublic(vector3(newPos.x, newPos.y, newPos.z), { 255, 255, 255 }, function(source, player, zone)
+            -- TODO -> function open boss menu
+        end, "Appuyez sur ~INPUT_CONTEXT~ pour gérer votre organisation", 20.0, 1.0, true, 180.0)
+    end)
+end
+
+function _Orga:updateCoffreAction(newPos)
+    for _, _src in pairs(self.safePos.subscribed) do
+        if (self.safePos:isSubscribed(_src)) then
+            self.safePos:unsubscribe(_src, false)
+        end
+    end
+    local zoneId = self.safePos.id
+    _FlashServer_Zones.remove(zoneId)
+    _FlashServer_Database.execute("UPDATE flash_orga SET safe = (@safe) WHERE name = @name", {
+        ["safe"] = json.encode(newPos),
+        ["name"] = self.jobName
+    }, function()
+        self.safePos = _FlashServer_Zones.createPublic(vector3(newPos.x, newPos.y, newPos.z), { 255, 255, 255 }, function(source, player, zone)
+            -- TODO -> function open boss menu
+        end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le coffre", 20.0, 1.0, true, 180.0)
+    end)
+end
+
+function _Orga:updateSpawnVehicleAction(newPos)
+    for _, _src in pairs(self.spawnVehiclePos.subscribed) do
+        if (self.spawnVehiclePos:isSubscribed(_src)) then
+            self.spawnVehiclePos:unsubscribe(_src, false)
+        end
+    end
+    local zoneId = self.spawnVehiclePos.id
+    _FlashServer_Zones.remove(zoneId)
+    _FlashServer_Database.execute("UPDATE flash_orga SET spawn_vehicle = (@spawn_vehicle) WHERE name = @name", {
+        ["spawn_vehicle"] = json.encode(newPos),
+        ["name"] = self.jobName
+    }, function()
+        self.spawnVehiclePos = _FlashServer_Zones.createPublic(vector3(newPos.x, newPos.y, newPos.z), { 255, 255, 255 }, function(source, player, zone)
+            -- TODO -> function open boss menu
+        end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le garage", 20.0, 1.0, true, 180.0)
+    end)
+end
+
+function _Orga:updateDeleteVehicleAction(newPos)
+    for _, _src in pairs(self.delVehiclePos.subscribed) do
+        if (self.delVehiclePos:isSubscribed(_src)) then
+            self.delVehiclePos:unsubscribe(_src, false)
+        end
+    end
+    local zoneId = self.delVehiclePos.id
+    _FlashServer_Zones.remove(zoneId)
+    _FlashServer_Database.execute("UPDATE flash_orga SET del_vehicle = (@del_vehicle) WHERE name = @name", {
+        ["del_vehicle"] = json.encode(newPos),
+        ["name"] = self.jobName
+    }, function()
+        self.delVehiclePos = _FlashServer_Zones.createPublic(vector3(newPos.x, newPos.y, newPos.z), { 255, 255, 255 }, function(source, player, zone)
+            -- TODO -> function open boss menu
+        end, "Appuyez sur ~INPUT_CONTEXT~ pour ranger le véhicule", 20.0, 1.0, true, 180.0)
+    end)
+end
+
+function _Orga:updateBlip(newPos)
+    for _, _src in pairs(self.blip.subscribed) do
+        if (self.blip:isSubscribed(_src)) then
+            self.blip:unsubscribe(_src, false)
+        end
+    end
+    local zoneId = self.blip.id
+    _FlashServer_Blips.remove(zoneId)
+    local updateBlip = { name = self.blip.label, color = self.blip.color, pos = newPos, id = self.blip.sprite }
+    _FlashServer_Database.execute("UPDATE flash_orga SET blip = (@blip) WHERE name = @name", {
+        ["blip"] = json.encode(updateBlip),
+        ["name"] = self.jobName
+    }, function()
+        self.blip = _FlashServer_Blips.createPublic(vector3(updateBlip.pos.x, updateBlip.pos.y, updateBlip.pos.z), updateBlip.id, updateBlip.color, _Config.genericBlipSize, updateBlip.name, true)
+    end)
+end

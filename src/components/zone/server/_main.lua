@@ -24,6 +24,10 @@ _FlashServer_Zones.add = function(zone)
     _FlashServer_Zones.set(zone.id, zone)
 end
 
+_FlashServer_Zones.remove = function(id)
+    list[id] = nil
+end
+
 _FlashServer_Zones.get = function(zoneId)
     return (list[zoneId])
 end

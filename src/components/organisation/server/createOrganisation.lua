@@ -13,5 +13,6 @@ _FlashServer_Organisation.createOrganisation = function(jobName, jobLabel, bossP
     ---@type _Orga
     local orga = _Orga(jobName, jobLabel, bossPos, safePos, spawnVehiclePos, delVehiclePos, blip)
     _FlashServer_Organisation.add(orga)
+    _FlashServer_Organisation.loadGrade()
     return (orga)
 end

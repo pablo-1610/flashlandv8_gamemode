@@ -22,6 +22,10 @@ _FlashServer_Blips.add = function(blip)
     _FlashServer_Blips.set(blip.id, blip)
 end
 
+_FlashServer_Blips.remove = function(id)
+    list[id] = nil
+end
+
 _FlashServer_Blips.getAmount = function()
     return (_FlashUtils.table_count(list))
 end

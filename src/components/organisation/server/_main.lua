@@ -13,7 +13,6 @@
 _FlashServer_Organisation = {}
 
 local list = {}
-local listGrade = {}
 
 _FlashServer_Organisation.exist = function(jobName)
     return (list[jobName] ~= nil)
@@ -39,6 +38,13 @@ _FlashServer_Organisation.getGrade = function(jobName, id)
         return
     end
     return (list[jobName].grade[id])
+end
+
+_FlashServer_Organisation.getAllGrades = function(jobName)
+    if (not (_FlashServer_Organisation.exist(jobName))) then
+        return
+    end
+    return (list[jobName].grade)
 end
 
 _FlashServer_Organisation.add = function(orga)
