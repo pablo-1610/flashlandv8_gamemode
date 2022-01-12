@@ -71,5 +71,7 @@ _Static_GenericMessages = {
     BAN_ERROR = "Il y a une erreur lors du ban !",
     UNBAN_SUCCES = "Le deban à été fait avec succès !",
     UNBAN_ERROR = "Il y a une erreur lors du deban !",
-    ORGANISATION_SELECTED_NOT_EXIST = "L'organisation selectionnée n'existe pas !"
+    ORGANISATION_SELECTED_NOT_EXIST = "L'organisation selectionnée n'existe pas !",
+    RANK_SELECTED_NOT_EXIST = "Le rang selectionné n'est pas valide !",
+    PERMISSION_SELECTED_NOT_EXIST = "La permission selectionné n'est pas valide !",
 }

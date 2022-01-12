@@ -14,7 +14,7 @@ local function checkPerm(permission)
 end
 
 ---@param player _Player
-_FlashClient_PlayerMenu.drawer[23] = function(player)
+_FlashClient_PlayerMenu.drawer[24] = function(player)
     local perm = nil
     if ((_FlashClient_PlayerMenu.var.selectedOrganisation ~= nil) and (_FlashClient_PlayerMenu.var.selectedGradeOrganisation ~= nil)) then
         local organisations = _FlashClient_Staff.getOrganisationList()

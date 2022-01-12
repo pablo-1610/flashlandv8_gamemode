@@ -20,7 +20,8 @@ _FlashClient_PlayerMenu.var = {
     selectedPlayerAction = nil,
     selectedBan = nil,
     selectedOrganisation = nil,
-    selectedGradeOrganisation = nil
+    selectedGradeOrganisation = nil,
+    selectedPermission = nil
 }
 
 _FlashClient_KeyBind.addKey("f5", "Ouvrir le menu personnel", function()

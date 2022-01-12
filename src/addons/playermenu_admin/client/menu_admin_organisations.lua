@@ -14,7 +14,7 @@ local function checkPerm(permission)
 end
 
 ---@param player _Player
-_FlashClient_PlayerMenu.drawer[20] = function(player)
+_FlashClient_PlayerMenu.drawer[21] = function(player)
     local perm = nil
     if (_FlashLand.countTable(_FlashClient_Staff.getOrganisationList()) <= 0) then
         RageUI.Separator("~g~Aucun ~s~report actif !")
@@ -25,7 +25,7 @@ _FlashClient_PlayerMenu.drawer[20] = function(player)
                 onSelected = function()
                     _FlashClient_PlayerMenu.var.selectedOrganisation = key
                 end,
-            }, _FlashClient_PlayerMenu.getMenus()[21])
+            }, _FlashClient_PlayerMenu.getMenus()[22])
         end
     end
 end

@@ -14,7 +14,7 @@ local function checkPerm(permission)
 end
 
 ---@param player _Player
-_FlashClient_PlayerMenu.drawer[21] = function(player)
+_FlashClient_PlayerMenu.drawer[22] = function(player)
     local perm = nil
     if (_FlashClient_PlayerMenu.var.selectedOrganisation ~= nil) then
         local organisation = _FlashClient_Staff.getOrganisationList()
@@ -29,7 +29,7 @@ _FlashClient_PlayerMenu.drawer[21] = function(player)
         })
         RageUI.Line()
         perm = "admin.openOrgaGrade"
-        RageUI.Button(("%sAfficher tous les grades"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {}, _FlashClient_PlayerMenu.getMenus()[22])
+        RageUI.Button(("%sAfficher tous les grades"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {}, _FlashClient_PlayerMenu.getMenus()[23])
         RageUI.Separator("~o~↓↓ ~r~ACTION PATRON ~o~↓↓")
         perm = "admin.moveOrgaPoint"
         RageUI.Button(("%s -> Déplacer"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {
