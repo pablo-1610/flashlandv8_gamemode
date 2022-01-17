@@ -23,8 +23,8 @@ _FlashServer_Ranks.exists = function(rankId)
     return (list[rankId] ~= nil)
 end
 
-_FlashServer_Ranks.add = function(rankId, rank)
-    list[rankId] = rank
+_FlashServer_Ranks.add = function(rank)
+    list[rank.id] = rank
 end
 
 _FlashServer_Ranks.remove = function(rankId)
@@ -81,7 +81,7 @@ _FlashServer_Ranks.getOrLowest = function(rankId)
 end
 
 _FlashLand.onReceiveWithoutNet("loaded", function()
-    _FlashServer_Database.query("SELECT flash_ranks.id,flash_ranks.label,flash_ranks.weight,flash_ranks.baseColor,flash_ranks_permissions.permission FROM flash_ranks LEFT JOIN flash_ranks_permissions ON flash_ranks.id = flash_ranks_permissions.rankId", {}, function(result)
+    _FlashServer_Database.query("SELECT flash_ranks.position,flash_ranks.id,flash_ranks.label,flash_ranks.weight,flash_ranks.baseColor,flash_ranks_permissions.permission FROM flash_ranks LEFT JOIN flash_ranks_permissions ON flash_ranks.id = flash_ranks_permissions.rankId", {}, function(result)
         for row, data in pairs(result) do
             if (_FlashServer_Ranks.exists(data.id)) then
                 ---@type _Rank
@@ -89,8 +89,8 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
                 rank:addPermission(data.permission)
             else
                 ---@type _Rank
-                local rank = _Rank(data.id, data.label, data.weight, nil, data.baseColor)
-                _FlashServer_Ranks.add(data.id, rank)
+                local rank = _Rank(data.id, data.label, data.position, data.weight, nil, data.baseColor)
+                _FlashServer_Ranks.add(rank)
                 _FlashLand.log(("Ajout d'un rang: ^2%s"):format(data.label))
                 rank:addPermission(data.permission)
             end
@@ -107,3 +107,12 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
 end)
 
 _FlashLand.loadedComponent("rank")
+
+RageUI.List("→ ~s~Give une Arme", Account, index, "", {}, true, function(h, a, s, i)
+    if s then
+        MFAClient.ShowNotification("Saaa")
+    end
+end, function(Index, Items)
+    Account = Items
+    index = Index
+end)

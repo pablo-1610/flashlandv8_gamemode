@@ -68,7 +68,6 @@ end
 _FlashServer_Organisation.loadGrade = function()
     _FlashServer_Database.query("SELECT flash_orga_grades.orgaId,flash_orga_grades.grade_name,flash_orga_grades.grade_label,flash_orga_grades.grade_id,flash_orga_grades_permissions.permission FROM flash_orga_grades LEFT JOIN flash_orga_grades_permissions ON flash_orga_grades.orgaId = flash_orga_grades_permissions.orga_name WHERE flash_orga_grades.grade_id = flash_orga_grades_permissions.gradeId", {}, function(result)
         for row, data in pairs(result) do
-            print(data.orgaId, data.grade_id)
             if (_FlashServer_Organisation.gradeExist(data.orgaId, data.grade_id)) then
                 ---@type _OrgaGrade
                 local orgaGrade = _FlashServer_Organisation.getGrade(data.orgaId, data.grade_id)

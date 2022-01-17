@@ -37,6 +37,8 @@ local menu_admin_organisations_action_grades = RageUI.CreateSubMenu(menu_admin_o
 local menu_admin_organisations_action_grade_selected = RageUI.CreateSubMenu(menu_admin_organisations_action_grades, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 local menu_admin_manage_permission = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 local menu_admin_manage_permission_selected = RageUI.CreateSubMenu(menu_admin_manage_permission, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_manage_permission_create = RageUI.CreateSubMenu(menu_admin_manage_permission, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_organisation_create = RageUI.CreateSubMenu(menu_admin_organisations, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 
 local menus = {
     menu_main, --1
@@ -65,6 +67,8 @@ local menus = {
     menu_admin_organisations_action_grade_selected, --24
     menu_admin_manage_permission, --25
     menu_admin_manage_permission_selected, --26
+    menu_admin_manage_permission_create, --27
+    menu_admin_organisation_create, --28
 }
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()

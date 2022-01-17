@@ -9,8 +9,8 @@
 --]]
 ---@author VibR1cY
 
----@class _FlashServer_Bans
 _FlashServer_Bans = {}
+---@class _FlashServer_Bans
 
 local list = {}
 

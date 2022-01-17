@@ -34,29 +34,34 @@ _FlashClient_PlayerMenu.drawer[22] = function(player)
         perm = "admin.moveOrgaPoint"
         RageUI.Button(("%s -> Déplacer"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {
             onSelected = function()
+                _FlashLand.setIsWaitingForServer(true)
                 _FlashLand.toServer("staff:moveBossActionOrganisation", organisationData.jobName)
             end,
         })
         RageUI.Separator("~o~↓↓ ~r~COFFRE ~o~↓↓")
         RageUI.Button(("%s -> Déplacer"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {
             onSelected = function()
+                _FlashLand.setIsWaitingForServer(true)
                 _FlashLand.toServer("staff:moveCoffreOrganisation", organisationData.jobName)
             end,
         })
         RageUI.Separator("~o~↓↓ ~r~GARAGE ~o~↓↓")
         RageUI.Button(("%s -> Déplacer le menu + spawn véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {
             onSelected = function()
+                _FlashLand.setIsWaitingForServer(true)
                 _FlashLand.toServer("staff:moveSpawnVehicleOrganisation", organisationData.jobName)
             end,
         })
         RageUI.Button(("%s -> Déplacer le rangement véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {
             onSelected = function()
+                _FlashLand.setIsWaitingForServer(true)
                 _FlashLand.toServer("staff:moveDeleteVehicleOrganisation", organisationData.jobName)
             end,
         })
         RageUI.Separator("~o~↓↓ ~r~BLIP ~o~↓↓")
         RageUI.Button(("%s -> Déplacer"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {
             onSelected = function()
+                _FlashLand.setIsWaitingForServer(true)
                 _FlashLand.toServer("staff:moveBlipOrganisation", organisationData.jobName)
             end,
         })

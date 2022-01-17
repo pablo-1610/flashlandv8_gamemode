@@ -17,8 +17,11 @@ end
 _FlashClient_PlayerMenu.drawer[21] = function(player)
     local perm = nil
     if (_FlashLand.countTable(_FlashClient_Staff.getOrganisationList()) <= 0) then
-        RageUI.Separator("~g~Aucun ~s~report actif !")
+        RageUI.Separator("~g~Aucune ~s~organisation créée !")
     else
+        perm = "admin.createOrganisation"
+        RageUI.Button(("%sCréer une organisation"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {}, _FlashClient_PlayerMenu.getMenus()[28])
+        RageUI.Separator("~o~↓↓ ~r~ORGANISATION(S) ~o~↓↓")
         perm = "admin.organisation"
         for key, data in pairs(_FlashClient_Staff.getOrganisationList()) do
             RageUI.Button(("%sOrganisation : ~b~%s"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm))), data.jobLabel), nil, { RightLabel = "→" }, (checkPerm(perm)), {

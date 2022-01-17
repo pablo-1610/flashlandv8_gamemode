@@ -74,4 +74,7 @@ _Static_GenericMessages = {
     ORGANISATION_SELECTED_NOT_EXIST = "L'organisation selectionnée n'existe pas !",
     RANK_SELECTED_NOT_EXIST = "Le rang selectionné n'est pas valide !",
     PERMISSION_SELECTED_NOT_EXIST = "La permission selectionné n'est pas valide !",
+    RANK_SELECTED_EXIST = "Le rang d'attribution existe déjà !",
+    COLOR_SELECTED_NOT_EXIST = "La couleur sélectionné n'est pas valide !",
+    ORGANISATION_EXIST = "Le nom d'attribution de l'organisation existe déjà !",
 }

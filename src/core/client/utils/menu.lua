@@ -13,6 +13,10 @@ _FlashClient_Utils.menu_label_change = function()
     return ("~b~Définir ~s~→")
 end
 
+_FlashClient_Utils.menu_label_define = function()
+    return ("~b~Défini ~s~")
+end
+
 _FlashClient_Utils.menu_label_select = function()
     return ("~o~Choisir ~s~→")
 end
