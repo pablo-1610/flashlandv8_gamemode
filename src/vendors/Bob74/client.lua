@@ -1,4 +1,3 @@
-
 Citizen.CreateThread(function()
     -- ====================================================================
     -- =--------------------- [GTA V: Single player] ---------------------=
@@ -42,10 +41,10 @@ Citizen.CreateThread(function()
     UFO.Hippie.Enable(false)    -- 2490.47729, 3774.84351, 2414.035
     UFO.Chiliad.Enable(false)   -- 501.52880000, 5593.86500000, 796.23250000
     UFO.Zancudo.Enable(false)   -- -2051.99463, 3237.05835, 1456.97021
-    
+
     -- Red Carpet: 300.5927, 199.7589, 104.3776
     RedCarpet.Enable(false)
-    
+
     -- North Yankton: 3217.697, -4834.826, 111.8152
     NorthYankton.Enable(false)
 
@@ -87,7 +86,7 @@ Citizen.CreateThread(function()
     ExecApartment1.LoadDefault()    -- -787.7805 334.9232 215.8384 (EclipseTowers, Penthouse Suite 1)
     ExecApartment2.LoadDefault()    -- -773.2258 322.8252 194.8862 (EclipseTowers, Penthouse Suite 2)
     ExecApartment3.LoadDefault()    -- -787.7805 334.9232 186.1134 (EclipseTowers, Penthouse Suite 3)
-    
+
     -- ====================================================================
     -- =-------------------- [DLC: Finance  & Felony] --------------------=
     -- ====================================================================
@@ -99,7 +98,7 @@ Citizen.CreateThread(function()
     -- ====================================================================
     -- =-------------------------- [DLC: Bikers] -------------------------=
     -- ====================================================================
-    BikerCocaine.LoadDefault()	        -- Cocaine lockup: 1093.6, -3196.6, -38.99841
+    BikerCocaine.LoadDefault()            -- Cocaine lockup: 1093.6, -3196.6, -38.99841
     BikerCounterfeit.LoadDefault()      -- Counterfeit cash factory: 1121.897, -3195.338, -40.4025
     BikerDocumentForgery.LoadDefault()  -- Document forgery: 1165, -3196.6, -39.01306
     BikerMethLab.LoadDefault()          -- Meth lab: 1009.5, -3196.6, -38.99682
@@ -121,7 +120,7 @@ Citizen.CreateThread(function()
     -- ====================================================================
     GunrunningBunker.LoadDefault()  -- 892.6384, -3245.8664, -98.2645
     GunrunningYacht.LoadDefault()   -- -1363.724, 6734.108, 2.44598
-    
+
     -- ====================================================================
     -- =---------------------- [DLC: Smuggler's Run] ---------------------=
     -- ====================================================================

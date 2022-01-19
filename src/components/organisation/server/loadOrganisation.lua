@@ -12,7 +12,8 @@
 _FlashLand.onReceiveWithoutNet("loaded", function()
     _FlashServer_Database.query("SELECT * FROM flash_orga", {}, function(result)
         for row, data in pairs(result) do
-            local orga = _FlashServer_Organisation.createOrganisation(data.name, data.label, json.decode(data.boss), json.decode(data.safe), json.decode(data.spawn_vehicle), json.decode(data.del_vehicle), json.decode(data.blip))
+            local orga = _Orga(data.name, data.label, json.decode(data.boss), json.decode(data.safe), json.decode(data.spawn_vehicle), json.decode(data.del_vehicle), json.decode(data.blip))
+            _FlashServer_Organisation.add(orga)
         end
     end)
     _FlashServer_Organisation.loadGrade()

@@ -125,3 +125,41 @@ function _Orga:updateBlip(newPos)
         self.blip = _FlashServer_Blips.createPublic(vector3(updateBlip.pos.x, updateBlip.pos.y, updateBlip.pos.z), updateBlip.id, updateBlip.color, _Config.genericBlipSize, updateBlip.name, true)
     end)
 end
+
+function _Orga:deleteAllInteractions()
+    for _, _src in pairs(self.bossPos.subscribed) do
+        if (self.bossPos:isSubscribed(_src)) then
+            self.bossPos:unsubscribe(_src, false)
+        end
+    end
+    local bossZoneId = self.bossPos.id
+    _FlashServer_Zones.remove(bossZoneId)
+    for _, _src in pairs(self.safePos.subscribed) do
+        if (self.safePos:isSubscribed(_src)) then
+            self.safePos:unsubscribe(_src, false)
+        end
+    end
+    local safeZoneId = self.safePos.id
+    _FlashServer_Zones.remove(safeZoneId)
+    for _, _src in pairs(self.spawnVehiclePos.subscribed) do
+        if (self.spawnVehiclePos:isSubscribed(_src)) then
+            self.spawnVehiclePos:unsubscribe(_src, false)
+        end
+    end
+    local spawnVehicleZoneId = self.spawnVehiclePos.id
+    _FlashServer_Zones.remove(spawnVehicleZoneId)
+    for _, _src in pairs(self.delVehiclePos.subscribed) do
+        if (self.delVehiclePos:isSubscribed(_src)) then
+            self.delVehiclePos:unsubscribe(_src, false)
+        end
+    end
+    local deleteVehicleZoneId = self.delVehiclePos.id
+    _FlashServer_Zones.remove(deleteVehicleZoneId)
+    for _, _src in pairs(self.blip.subscribed) do
+        if (self.blip:isSubscribed(_src)) then
+            self.blip:unsubscribe(_src, false)
+        end
+    end
+    local blipId = self.blip.id
+    _FlashServer_Blips.remove(blipId)
+end

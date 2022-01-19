@@ -27,7 +27,23 @@ _FlashLand.onReceive("staff:createNewOrganisation", function(organisationData)
         player:serverResponded()
         return
     end
-    _FlashServer_Organisation.createOrganisation(organisationData.name, organisationData.label, organisationData.bossPos, organisationData.safePos, organisationData.spawnVehiclePos, organisationData.delVehiclePos, organisationData.blip)
-    _FlashServer_Staff.updateOrganisationForStaff()
+    _FlashServer_Organisation.createOrganisation(organisationData.name, organisationData.label, organisationData.bossPos, organisationData.safePos, organisationData.spawnVehiclePos, organisationData.delVehiclePos, organisationData.blip.name, organisationData.blip.color, organisationData.blip.id, organisationData.blip.pos, function(statusOrga)
+        if (statusOrga) then
+            player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.SUCCESS, _Static_GenericMessages.ORGANISATION_CREATE)
+            for _, data in pairs(organisationData.grades) do
+                _FlashServer_Organisation.createGrade(organisationData.name, data.gradeId, data.gradeName, data.gradeLabel, function(statusGrade)
+                    if (statusGrade) then
+                        player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.SUCCESS, _Static_GenericMessages.ORGANISATION_GRADES_CREATE)
+                        _FlashServer_Staff.updateOrganisationForStaff()
+                    else
+                        player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.ORGANISATION_GRADES_ERROR)
+                        _FlashServer_Staff.updateOrganisationForStaff()
+                    end
+                end)
+            end
+        else
+            player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.ORGANISATION_ERROR)
+        end
+    end)
     player:serverResponded()
 end)

@@ -24,7 +24,10 @@ _FlashClient_PlayerMenu.drawer[22] = function(player)
         perm = "admin.deleteOrga"
         RageUI.Button(("%s~r~Supprimer l'organisation"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, (checkPerm(perm)), {
             onSelected = function()
-
+                RageUI.GoBack()
+                _FlashLand.setIsWaitingForServer(true)
+                _FlashLand.toServer("staff:deleteOrganisation", organisationData.jobName)
+                _FlashClient_PlayerMenu.var.selectedOrganisation = nil
             end,
         })
         RageUI.Line()

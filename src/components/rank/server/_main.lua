@@ -107,12 +107,3 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
 end)
 
 _FlashLand.loadedComponent("rank")
-
-RageUI.List("→ ~s~Give une Arme", Account, index, "", {}, true, function(h, a, s, i)
-    if s then
-        MFAClient.ShowNotification("Saaa")
-    end
-end, function(Index, Items)
-    Account = Items
-    index = Index
-end)

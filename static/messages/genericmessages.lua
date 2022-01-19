@@ -77,4 +77,10 @@ _Static_GenericMessages = {
     RANK_SELECTED_EXIST = "Le rang d'attribution existe déjà !",
     COLOR_SELECTED_NOT_EXIST = "La couleur sélectionné n'est pas valide !",
     ORGANISATION_EXIST = "Le nom d'attribution de l'organisation existe déjà !",
+    ORGANISATION_CREATE = "Organisation créée avec succès !",
+    ORGANISATION_ERROR = "Une erreur est survenue lors de la création",
+    ORGANISATION_GRADES_CREATE = "Grade(s) créé(s) avec succès !",
+    ORGANISATION_GRADES_ERROR = "Erreur avec le ou les grade(s) !",
+    DELETE_ORGANISATION_SUCCESS = "Suppression de l'organisation effectuée !",
+    DELETE_ORGANISATION_ERROR = "La suppression de l'organisation n'a pas pue ce faire !",
 }

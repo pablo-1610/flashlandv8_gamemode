@@ -82,9 +82,4 @@ _FlashServer_Organisation.loadGrade = function()
     end)
 end
 
-RegisterCommand("op", function()
-    print("vagos", json.encode(list["vagos"].grade))
-    print("ballas", json.encode(list["ballas"].grade))
-end)
-
 _FlashLand.loadedComponent("organisation")
