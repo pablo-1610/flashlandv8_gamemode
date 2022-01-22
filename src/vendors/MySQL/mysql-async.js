@@ -7227,8 +7227,6 @@
             }
 
             var packetPayload = Util.inspect(packet).replace(/^[^{]+/, '');
-
-            console.log('%s%s %s %s\n', direction, threadId, packetName, packetPayload);
         };
 
 
@@ -16143,7 +16141,6 @@
         function writeConsole(msg, options) {
             const levelTag = options.level !== '' ? ` [${options.level}]` : '';
             const tag = colorize(`[${options.tag}]${levelTag}`, options.color);
-            console.log(`${tag} ${msg}`);
         }
 
         /* harmony default export */

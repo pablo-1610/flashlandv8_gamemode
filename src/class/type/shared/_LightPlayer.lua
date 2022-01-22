@@ -26,7 +26,7 @@ _LightPlayer = {}
 _LightPlayer.__index = _LightPlayer
 
 setmetatable(_LightPlayer, {
-    __call = function(_, sId, flashId, identifier, rank, identity, cash, skin, outfits, selectedOutfit, accessories, inventory, loadout, name)
+    __call = function(_, sId, flashId, identifier, rank, identity, cash, skin, outfits, selectedOutfit, accessories, inventory, loadout, name, rpName)
         local self = setmetatable({}, _LightPlayer)
         self.flashId = flashId
         self.identifier = identifier
@@ -41,6 +41,7 @@ setmetatable(_LightPlayer, {
         self.inventory = inventory
         self.loadout = loadout
         self.name = name
+        self.rpName = rpName
         return self
     end
 })

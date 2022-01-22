@@ -24,7 +24,7 @@ repository 'https://github.com/PABLO-1610/flashland'
 
 server_scripts {
     -- MySQL
-    "src/vendors/MySQL/mysql-async.js"
+    "src/vendors/MySQL/mysql-async.js",
 }
 
 client_scripts {
@@ -107,7 +107,22 @@ client_scripts {
     "src/vendors/Bob74/dlc_doomsday/facility.lua",
     "src/vendors/Bob74/dlc_afterhours/nightclubs.lua",
     "src/vendors/Bob74/dlc_casino/casino.lua",
-    "src/vendors/Bob74/dlc_casino/penthouse.lua"
+    "src/vendors/Bob74/dlc_casino/penthouse.lua",
+}
+
+ui_page "src/vendors/Phone/web/index.html"
+
+files {
+    --Phone
+    'src/vendors/Phone/web/*.html',
+    'src/vendors/Phone/web/js/*.js',
+    'src/vendors/Phone/web/img/*.png',
+    'src/vendors/Phone/web/css/*.css',
+    'src/vendors/Phone/web/fonts/*.ttf',
+    'src/vendors/Phone/web/fonts/*.otf',
+    'src/vendors/Phone/web/fonts/*.woff',
+    'src/vendors/Phone/web/img/backgrounds/*.png',
+    'src/vendors/Phone/web/img/apps/*.png',
 }
 
 --[[
@@ -138,6 +153,8 @@ shared_scripts {
     "src/addons/**/shared/*.lua",
     -- Dev
     "src/dev/shared.lua",
+    --Phone
+    "src/vendors/Phone/shared/*.lua",
 }
 
 client_scripts {
@@ -154,6 +171,8 @@ client_scripts {
     "src/addons/**/client/*.lua",
     -- Dev
     "src/dev/client.lua",
+    -- Phone
+    "src/vendors/Phone/client/*.lua",
 }
 
 server_scripts {
@@ -174,4 +193,6 @@ server_scripts {
     "src/addons/**/server/*.lua",
     -- Dev
     "src/dev/server.lua",
+    -- Phone
+    "src/vendors/Phone/server/*.lua",
 }

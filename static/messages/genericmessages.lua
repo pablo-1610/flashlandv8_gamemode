@@ -83,4 +83,5 @@ _Static_GenericMessages = {
     ORGANISATION_GRADES_ERROR = "Erreur avec le ou les grade(s) !",
     DELETE_ORGANISATION_SUCCESS = "Suppression de l'organisation effectuée !",
     DELETE_ORGANISATION_ERROR = "La suppression de l'organisation n'a pas pue ce faire !",
+    PLAYER_NOT_PHONE_ITEM = "Vous n'avez pas de téléphone sur vous !",
 }
