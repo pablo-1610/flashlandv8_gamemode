@@ -168,6 +168,12 @@ _ConfigServer = {
         },
     },
 
+    Ammunation = {
+        list = {
+            { position = vector3(-278.40, 6226.84, 31.75), npcPosition = vector3(-278.40, 6226.84, 31.75), npcHeading = 180.0, npc = nil }
+        },
+    },
+
     RichPresence = {
         appId = "830843275950424125",
     }
