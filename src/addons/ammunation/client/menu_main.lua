@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 11/12/2021 00:36
+  Created at 15/12/2021 15:27
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,6 @@
 --]]
 ---@author Pablo_1610
 
-_FlashEnum_BILLINGSTATICSENDER = {
-    NATIONALBANK = "Flash Bank ® INC.",
-    AMMUNATION = "Ammunation ® INC."
-}
+_FlashClient_Ammunation.drawer[1] = function(player)
+    RageUI.Button("Acheter des armes", nil, { RightLabel = "→" }, true, {}, _FlashClient_Ammunation.getMenus()[2])
+end

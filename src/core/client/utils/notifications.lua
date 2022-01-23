@@ -61,6 +61,12 @@ _FlashLand.onReceive("utils:messenger_system_info", function(message)
     _FlashClient_Utils.notifications_template_info(message)
 end)
 
+_FlashLand.onReceive("utils:messenger_playerPed", function(sourcePed, sender, subject, content, iconType)
+    local otherPed = GetPlayerPed(GetPlayerFromServerId(sourcePed))
+    local mugshot, mugshotStr = _FlashClient_Utils.ped_getMugShot(otherPed)
+    _FlashClient_Utils.notifications_showAdvanced(sender, subject, content, mugshotStr, iconType, false)
+end)
+
 _FlashLand.onReceive("utils:messenger_system_custom", function(title, message)
     _FlashClient_Utils.notifications_showAdvanced("Système", title, message, _FlashEnum_CHARACTERPICTURE.SYSTEM, _FlashEnum_MESSAGEICONTYPE.CHAT)
 end)

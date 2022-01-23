@@ -30,3 +30,13 @@ setmetatable(_LightLoadout, {
 function _LightLoadout:calcWeight()
     -- TODO → Calc loadout
 end
+
+function _LightLoadout:hasWeapon(weapon)
+    weapon = weapon:lower()
+    for _, w in pairs(self.content) do
+        if w:lower() == weapon then
+            return true
+        end
+    end
+    return false
+end

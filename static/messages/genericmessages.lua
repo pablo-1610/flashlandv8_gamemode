@@ -84,4 +84,14 @@ _Static_GenericMessages = {
     DELETE_ORGANISATION_SUCCESS = "Suppression de l'organisation effectuée !",
     DELETE_ORGANISATION_ERROR = "La suppression de l'organisation n'a pas pue ce faire !",
     PLAYER_NOT_PHONE_ITEM = "Vous n'avez pas de téléphone sur vous !",
+    WEAPON_BOUGHT = "Votre arme vous a été donnée par le vendeur",
+    GIVEMONEY = "Don d'argent",
+    RECEIVEMONEY = "Réception d'argent",
+    PLAYER_GIVEMONEY = "Vous avez donné %s",
+    PLAYER_GIVEITEM = "Vous avez donné ~o~%s ~s~[~o~x%s~s~]",
+    PLAYER_RECEIVEMONEY = "Vous avez reçu %s",
+    PLAYER_RECEIVEITEM = "Vous avez reçu ~o~%s ~s~[~o~x%s~s~]",
+    PLAYER_INVENTORY_NO_ENOUGH_ITEM_TYPE = "Vous n'avez pas assez de ~o~%s",
+    INTERACTION = "Interaction",
+    TARGET_NO_ENOUGH_INVENTORY_SPACE = "La cible n'a pas assez de place"
 }

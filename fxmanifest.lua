@@ -131,10 +131,6 @@ files {
 
 loadscreen "src/web/loading/index.html"
 
-files {
-    "src/web/resources/img/flash.png"
-}
-
 shared_scripts {
     -- Static
     "static/**/*.lua",
@@ -162,6 +158,8 @@ client_scripts {
     "config/client.lua",
     -- Objects
     "src/class/type/client/*.lua",
+    -- Web
+    "src/web/core/*.lua",
     -- Init
     "src/core/client/utils/*.lua",
     "src/core/client/main.lua",

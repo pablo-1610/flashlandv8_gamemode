@@ -126,8 +126,13 @@ function _Player:serverResponded()
     _FlashLand.toClient("serverReturnedCb", self.sId)
 end
 
+-- TODO → Send a simple notification, not an advanced one
 function _Player:sendSystemMessage(type, message)
     _FlashLand.toClient(("utils:messenger_system_%s"):format(type:lower()), self.sId, message)
+end
+
+function _Player:sendAdvancedNotificationMugShot(mugShotPed, sender, subject, content, iconType)
+    _FlashLand.toClient("utils:messenger_playerPed", self.sId, mugShotPed, sender, subject, content, iconType)
 end
 
 function _Player:getPed()
@@ -140,6 +145,10 @@ end
 
 function _Player:getServerId()
     return (self.sId)
+end
+
+function _Player:getRpIdentity()
+    return (("%s %s"):format(self.identity.firstname, self.identity.lastname))
 end
 
 ---@param newRank _Rank

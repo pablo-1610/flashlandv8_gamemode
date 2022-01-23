@@ -17,7 +17,7 @@ end
 
 ---@param player _Player
 _FlashClient_PlayerMenu.drawer[3] = function(player, closestData)
-    RageUI.Separator(("Monnaie: %s"):format(_FlashUtils.math_price(player.cash)))
+    RageUI.Separator(("Monnaie: %s"):format(_FlashUtils.math_price_integer(player.cash)))
 
     RageUI.Line()
 

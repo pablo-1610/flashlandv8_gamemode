@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 11/12/2021 00:36
+  Created at 15/12/2021 15:21
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,7 +9,11 @@
 --]]
 ---@author Pablo_1610
 
-_FlashEnum_BILLINGSTATICSENDER = {
-    NATIONALBANK = "Flash Bank ® INC.",
-    AMMUNATION = "Ammunation ® INC."
+---@class _FlashClient_Ammunation
+_FlashClient_Ammunation = {}
+
+_FlashClient_Ammunation.var = {
+    deskNpcId = nil,
+    selectedWeapon = nil,
+    weapons = nil,
 }

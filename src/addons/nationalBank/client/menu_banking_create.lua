@@ -17,7 +17,7 @@ end
 
 _FlashClient_NationalBank.drawer[3] = function()
     RageUI.List("Type:", availableTypes, _FlashClient_NationalBank.var.accountBuilder.type, nil, {}, true, {
-        onListChanged = function(index)
+        onListChange = function(index)
             _FlashClient_NationalBank.var.accountBuilder.type = index
         end
     })
