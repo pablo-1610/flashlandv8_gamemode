@@ -32,7 +32,7 @@ _FlashClient_PlayerMenu.drawer[11] = function(player)
 
     RageUI.Separator(("Rang: %s%s"):format(player.rank.baseColor, player.rank.label))
     RageUI.Line()
-    RageUI.List(("%sSpawn un véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm("admin.vehspawn")))), spawnTypes, spawnIndex, nil, {}, checkPerm("admin.vehspawn"), {
+    RageUI.List(("%sSpawn un véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm("admin.vehspawn")))), spawnTypes, spawnIndex, nil, {}, (checkPerm("admin.vehspawn")), {
         onListChange = function(index)
             spawnIndex = index
         end,
@@ -59,6 +59,32 @@ _FlashClient_PlayerMenu.drawer[11] = function(player)
     if (IsPedInAnyVehicle(PlayerPedId(), false)) then
         myVehicle = GetVehiclePedIsIn(PlayerPedId(), false)
     end
+
+    perm = "admin.vehrepair"
+    RageUI.Button(myVehicle == nil and ("%s%sRéparer le véhicule proche"):format(_FlashClient_Utils.menu_tooFarIndicatorIfTrue(not (canInteractWithClosestVehicle())), _FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))) or ("%sRéparer ~y~mon~s~ véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, checkPerm(perm) and (myVehicle ~= nil and true or canInteractWithClosestVehicle()), {
+        onActive = function()
+            drawClosestVehicleIndicator(myVehicle == nil and closestVehicle or myVehicle)
+        end,
+        onSelected = function()
+            if (not (checkPerm(perm))) then
+                _FlashClient_Utils.notifications_template_error(_Static_GenericMessages.NO_PERM)
+            else
+                if (myVehicle == nil) then
+                    if (not (canInteractWithClosestVehicle())) then
+                        _FlashClient_Utils.notifications_template_error(_Static_GenericMessages.NO_CLOSEST_VEHICLE)
+                    else
+                        SetVehicleFixed(closestVehicle)
+                        SetVehicleDeformationFixed(closestVehicle)
+                        SetVehicleEngineHealth(closestVehicle, 1000.0)
+                    end
+                else
+                    SetVehicleFixed(myVehicle)
+                    SetVehicleDeformationFixed(myVehicle)
+                    SetVehicleEngineHealth(myVehicle, 1000.0)
+                end
+            end
+        end,
+    })
 
     perm = "admin.vehdelete"
     RageUI.Button(myVehicle == nil and ("%s%sSupprimer le véhicule proche"):format(_FlashClient_Utils.menu_tooFarIndicatorIfTrue(not (canInteractWithClosestVehicle())), _FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))) or ("%sSupprimer ~y~mon~s~ véhicule"):format(_FlashClient_Utils.menu_crossIndicatorIfTrue(not (checkPerm(perm)))), nil, {}, checkPerm(perm) and (myVehicle ~= nil and true or canInteractWithClosestVehicle()), {

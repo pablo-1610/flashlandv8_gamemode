@@ -9,29 +9,16 @@
 --]]
 ---@author VibR1cY
 
-_FlashUtils.getTime = function()
+_FlashUtils.setCurrentTime = function()
     return (os.time())
 end
 
-_FlashUtils.decodeTime = function(time)
-    local decodeTime = os.date("*t", time)
-    return (decodeTime)
+_FlashUtils.getCurrentTime = function()
+    local actualTime = os.date("*t")
+    return (("%s/%s/%s %sh%s"):format(actualTime.day, actualTime.month, actualTime.year, actualTime.hour, actualTime.min))
 end
 
-_FlashUtils.setTime = function()
-    local decodeTime = os.date("*t", _FlashUtils.getTime())
-    local hour = ("%s/%s/%s - %sh%s"):format(decodeTime.day, decodeTime.month, decodeTime.year, decodeTime.hour, decodeTime.min)
-    return (hour)
-end
-
-_FlashUtils.setHour = function()
-    local decodeTime = os.date("*t", _FlashUtils.getTime())
-    local hour = ("%sh%s"):format(decodeTime.hour, decodeTime.min)
-    return (hour)
-end
-
-_FlashUtils.setDay = function()
-    local decodeTime = os.date("*t", _FlashUtils.getTime())
-    local day = ("%s/%s/%s"):format(decodeTime.day, decodeTime.month, decodeTime.year)
-    return (day)
+_FlashUtils.decodeTime = function(timeDecode)
+    local actualTime = os.date("*t", timeDecode)
+    return (("%s/%s/%s %sh%s"):format(actualTime.day, actualTime.month, actualTime.year, actualTime.hour, actualTime.min))
 end

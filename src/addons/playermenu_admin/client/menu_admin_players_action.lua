@@ -65,6 +65,23 @@ _FlashClient_PlayerMenu.drawer[15] = function(player)
                     RageUI.GoBack()
                     _FlashLand.setIsWaitingForServer(true)
                     _FlashLand.toServer("staff:kickPlayer", playerData.sId, reason)
+                    _FlashClient_PlayerMenu.var.selectedPlayer = nil
+                end
+            end,
+        })
+        perm = "admin.ban"
+        RageUI.Button("Bannir", nil, {}, (checkPerm(perm)), {
+            onSelected = function()
+                local day = _FlashClient_Utils.input_showBox("Temps de ban en jour:", nil, 15, true)
+                local dayOfBan = tonumber(day)
+                if ((dayOfBan ~= nil) and (dayOfBan > 0)) then
+                    local reason = _FlashClient_Utils.input_showBox("Raison du ban:", nil, 155, false)
+                    if (reason ~= nil) then
+                        RageUI.GoBack()
+                        _FlashLand.setIsWaitingForServer(true)
+                        _FlashLand.toServer("staff:banPlayerConnect", playerData.sId, dayOfBan, reason)
+                        _FlashClient_PlayerMenu.var.selectedPlayer = nil
+                    end
                 end
             end,
         })

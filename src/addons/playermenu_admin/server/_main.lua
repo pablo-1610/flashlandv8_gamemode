@@ -43,7 +43,7 @@ _FlashServer_Staff.removeFromActives = function(_src)
     activeStaff[_src] = nil
 end
 
--- TODO → Update when a player join or left
+-- PLAYERS
 _FlashServer_Staff.updatePlayersForStaff = function()
     for _src, _ in pairs(activeStaff) do
         _FlashLand.toClient("staff:cbPlayerList", _src, _FlashServer_Staff.generateAllLightPlayers())
@@ -58,6 +58,7 @@ _FlashServer_Staff.generateAllLightPlayers = function()
     return (players)
 end
 
+-- REPORTS
 _FlashServer_Staff.updateReportsForStaff = function()
     for _src, _ in pairs(activeStaff) do
         _FlashLand.toClient("staff:cbReportList", _src, _FlashServer_Staff.generateAllReports())
@@ -67,9 +68,39 @@ end
 _FlashServer_Staff.generateAllReports = function()
     local reports = {}
     for reportSource, _ in pairs(_FlashServer_Reports.getAll()) do
-        reports[reportSource] = _FlashServer_Players.getReport(reportSource)
+        reports[reportSource] = _FlashServer_Players.getLightReport(reportSource)
     end
     return (reports)
+end
+
+-- BANS
+_FlashServer_Staff.updateBansForStaff = function()
+    for _src, _ in pairs(activeStaff) do
+        _FlashLand.toClient("staff:cbBanList", _src, _FlashServer_Staff.generateAllLightBans())
+    end
+end
+
+_FlashServer_Staff.generateAllLightBans = function()
+    local bans = {}
+    for identifier, _ in pairs(_FlashServer_Bans.getAll()) do
+        bans[identifier] = _FlashServer_Bans.getLightBan(identifier)
+    end
+    return (bans)
+end
+
+--Organisation
+_FlashServer_Staff.generateAllLightOrganisations = function()
+    local organisation = {}
+    for orgaId, _ in pairs(_FlashServer_Organisation.getAll()) do
+        organisation[orgaId] = _FlashServer_Organisation.getLightOrganisation(orgaId)
+    end
+    return (organisation)
+end
+
+_FlashServer_Staff.updateOrganisationForStaff = function()
+    for _src, _ in pairs(activeStaff) do
+        _FlashLand.toClient("staff:cbOrganisationList", _src, _FlashServer_Staff.generateAllLightOrganisations())
+    end
 end
 
 _FlashServer_Staff.getNotifyAllStaffInService = function(message)

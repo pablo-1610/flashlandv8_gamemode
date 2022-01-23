@@ -29,7 +29,7 @@ _Player = {}
 _Player.__index = _Player
 
 setmetatable(_Player, {
-    __call = function(_, sId, flashId, identifier, rankId, identity, cash, skin, outfits, selectedOutfit, accessories)
+    __call = function(_, sId, flashId, identifier, rankId, identity, cash, skin, outfits, selectedOutfit, accessories, number)
         local self = setmetatable({}, _Player)
         self.flashId = flashId
         self.identifier = identifier
@@ -48,9 +48,14 @@ setmetatable(_Player, {
         self.spawned = false
         self.gameType = _FlashEnum_GAMETYPE.RP
         self.name = GetPlayerName(self.sId)
+        self.number = number
         return self
     end
 })
+
+function _Player:getPlayerCash()
+    return (self.cash)
+end
 
 function _Player:loadInventory(cb)
     _FlashServer_Inventory.playerGetOrCreate(self.sId, function(inv)
@@ -165,4 +170,8 @@ function _Player:setGroupId(newRankId, notify)
     ---@type _Rank
     local rank = _FlashServer_Ranks.get(newRankId)
     self:setGroup(rank, notify)
+end
+
+function _Player:kickPlayer(reason)
+    DropPlayer(self.source, "test")
 end

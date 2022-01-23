@@ -17,7 +17,11 @@ _FlashClient_PlayerMenu.var = {
     selectedWeapon = nil,
     selectedPlayer = nil,
     selectedReport = nil,
-    selectedPlayerAction = nil
+    selectedPlayerAction = nil,
+    selectedBan = nil,
+    selectedOrganisation = nil,
+    selectedGradeOrganisation = nil,
+    selectedPermission = nil
 }
 
 _FlashClient_KeyBind.addKey("f5", "Ouvrir le menu personnel", function()
@@ -25,5 +29,7 @@ _FlashClient_KeyBind.addKey("f5", "Ouvrir le menu personnel", function()
 end)
 
 _FlashClient_KeyBind.addKey("x", "Arreter l'animation en cour", function()
-    ClearPedTasksImmediately(PlayerPedId())
+    if ( not (IsPedInAnyVehicle(PlayerPedId(), false))) then
+        ClearPedTasksImmediately(PlayerPedId())
+    end
 end)

@@ -11,6 +11,7 @@
 ---@class _Rank
 ---@field public id string
 ---@field public label string
+---@field public position number
 ---@field public weight number
 ---@field public permissions table<string>
 ---@field public baseColor string
@@ -18,14 +19,15 @@ _Rank = {}
 _Rank.__index = _Rank
 
 setmetatable(_Rank, {
-    __call = function(_, id, label, weight, permissions, baseColor)
+    __call = function(_, id, label, position, weight, permissions, baseColor)
         local self = setmetatable({}, _Rank)
         self.id = id
         self.label = label
+        self.position = position
         self.weight = weight
         self.permissions = permissions or {}
         self.baseColor = baseColor
-        return self
+        return (self)
     end
 })
 
@@ -43,6 +45,14 @@ function _Rank:hasPermission(query)
     return (self:hasSinglePermission(query))
 end
 
+function _Rank:newPermission(permission)
+    _FlashServer_Database.insert("INSERT INTO flash_ranks_permissions (rankId, permission) VALUES (@rankId, @permission)", {
+        ["rankId"] = self.id,
+        ["permission"] = permission
+    })
+    self:addPermission(permission)
+end
+
 function _Rank:addPermission(permission)
     table.insert(self.permissions, permission)
 end
@@ -58,6 +68,10 @@ function _Rank:deletePermission(query)
         _FlashLand.log(("Permission introuable dans %s: %s"):format(self.label, query))
         return
     end
+    _FlashServer_Database.execute("DELETE permission = @permission FROM flash_ranks_permissions WHERE rankId = @rankId", {
+        ["permission"] = query,
+        ["rankId"] = self.id
+    })
     for index, permission in pairs(self.permissions) do
         if (permission == query) then
             table.remove(self.permissions, index)

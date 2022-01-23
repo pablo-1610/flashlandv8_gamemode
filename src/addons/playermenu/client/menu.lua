@@ -29,26 +29,46 @@ local menu_admin_players_action = RageUI.CreateSubMenu(menu_admin_players, "ADMI
 local menu_admin_players_inventory = RageUI.CreateSubMenu(menu_admin_players_action, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 local menu_admin_give_item = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 local menu_admin_give_weapon = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_bans = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_bans_action = RageUI.CreateSubMenu(menu_admin_bans, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_organisations = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_organisations_action = RageUI.CreateSubMenu(menu_admin_organisations, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_organisations_action_grades = RageUI.CreateSubMenu(menu_admin_organisations_action, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_organisations_action_grade_selected = RageUI.CreateSubMenu(menu_admin_organisations_action_grades, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_manage_permission = RageUI.CreateSubMenu(menu_admin, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_manage_permission_selected = RageUI.CreateSubMenu(menu_admin_manage_permission, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_manage_permission_create = RageUI.CreateSubMenu(menu_admin_manage_permission, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
+local menu_admin_organisation_create = RageUI.CreateSubMenu(menu_admin_organisations, "ADMINISTRATION", adminDesc, nil, nil, "root_cause", "black_red")
 
 local menus = {
-    menu_main,
-    menu_inventory,
-    menu_portefeuille,
-    menu_animations,
-    menu_admin,
-    menu_vehicle,
-    menu_divers,
-    menu_inventory_item,
-    menu_admin_players,
-    menu_admin_self,
-    menu_admin_vehicles,
-    menu_equipment,
-    menu_admin_reports,
-    menu_admin_reports_action,
-    menu_admin_players_action,
-    menu_admin_players_inventory,
-    menu_admin_give_item,
-    menu_admin_give_weapon
+    menu_main, --1
+    menu_inventory, --2
+    menu_portefeuille, --3
+    menu_animations, --4
+    menu_admin, --5
+    menu_vehicle, --6
+    menu_divers, --7
+    menu_inventory_item, --8
+    menu_admin_players, --9
+    menu_admin_self, --10
+    menu_admin_vehicles, --11
+    menu_equipment, --12
+    menu_admin_reports, --13
+    menu_admin_reports_action, --14
+    menu_admin_players_action, --15
+    menu_admin_players_inventory, --16
+    menu_admin_give_item, --17
+    menu_admin_give_weapon, --18
+    menu_admin_bans, --19
+    menu_admin_bans_action, --20
+    menu_admin_organisations, --21
+    menu_admin_organisations_action, --22
+    menu_admin_organisations_action_grades, --23
+    menu_admin_organisations_action_grade_selected, --24
+    menu_admin_manage_permission, --25
+    menu_admin_manage_permission_selected, --26
+    menu_admin_manage_permission_create, --27
+    menu_admin_organisation_create, --28
 }
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()

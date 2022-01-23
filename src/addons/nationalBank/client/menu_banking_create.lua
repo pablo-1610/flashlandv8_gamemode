@@ -48,6 +48,8 @@ _FlashClient_NationalBank.drawer[3] = function()
                         { "Frais de dossier", 100 }
                     },
                     { _FlashEnum_BILLINGPAYMENTMETHOD.CASH, _FlashEnum_BILLINGPAYMENTMETHOD.CARD },
+                    function()
+                    end,
                     { accountInfos = _FlashClient_NationalBank.var.accountBuilder, deskNpcId = _FlashClient_NationalBank.var.deskNpcId },
                     _FlashClient_NationalBank.getMenus()[3],
                     function()

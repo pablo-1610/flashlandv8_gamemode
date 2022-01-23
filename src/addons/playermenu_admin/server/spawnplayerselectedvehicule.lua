@@ -17,7 +17,7 @@ _FlashLand.onReceive("staff:spawnPlayerSelectedVehicule", function(targetSource,
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    if (not (player.rank:hasPermission("admin.giveitem"))) then
+    if (not (player.rank:hasPermission("admin.vehspawn"))) then
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _FlashEnum_GENERICMESSAGE.ACTION_NO_PERMISSION)
         player:serverResponded()
         return

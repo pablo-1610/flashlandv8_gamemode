@@ -25,4 +25,16 @@ _Config = {
             ["noclip"] = "admin.noclip",
         }
     },
+
+    Color = {
+        { name = "Rouge", color = "~r~" },
+        { name = "Bleu", color = "~b~" },
+        { name = "Vert", color = "~g~" },
+        { name = "Jaune", color = "~y~" },
+        { name = "Violet", color = "~p~" },
+        { name = "Gris Clair", color = "~c~" },
+        { name = "Gris Foncé", color = "~m~" },
+        { name = "Noir", color = "~u~" },
+        { name = "Orange", color = "~o~" },
+    },
 }

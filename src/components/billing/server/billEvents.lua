@@ -16,7 +16,6 @@ _FlashServer_Billing.billEventExists = function(billEvent)
 end
 
 _FlashServer_Billing.triggerBillingEvent = function(billEvent, _src, method, total, args)
-    print(json.encode(args))
     if (not (_FlashServer_Players.exists(_src))) then
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.PLAYER_NOT_EXISTS)
         return
