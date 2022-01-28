@@ -1,6 +1,9 @@
 _ConfigPhone = {
     defaultBackground = "",
     phoneItemName = "phone",
+    maxCallRepeat = 10,
+    ringingName = "demo",
+    alertSound = "demo",
 
     applications = {
         ["phone"] = {

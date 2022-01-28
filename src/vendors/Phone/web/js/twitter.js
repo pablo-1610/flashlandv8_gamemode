@@ -247,7 +247,6 @@ $(document).on('click', '.tweet-reply', function (e) {
 $(document).on('click', '.tweet-delete', function (e) {
     e.preventDefault();
     var id = $(this).parent().data('twtid');
-    console.log(id)
     $.post('http://qb-phone_deluxe/DeleteTweet', JSON.stringify({
         id: id,
     }));
@@ -491,7 +490,6 @@ function CopyMentionTag(elem) {
 MI.Phone.Notifications.LoadHashtags = function (hashtags) {
     if (hashtags !== null) {
         $(".twitter-hashtags").html("");
-        console.log(JSON.stringify(hashtags));
         $.each(hashtags, function (i, hashtag) {
             var Elem = '';
             var TweetHandle = "Tweet";

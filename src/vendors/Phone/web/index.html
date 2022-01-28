@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>FlashLand Phone based QBUS PHONE V4</title>
+    <title>Phone</title>
 
     <!-- CSS File's -->
     <link href="./css/main.css" rel="stylesheet">
@@ -39,7 +39,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap -->
 </head>
-<body ;style="background-color: transparent !important">
+<body style="background-color: transparent !important">
 <div class="container">
     <img class="phone-frame" src="./img/samsung-s10.png">
     <div class="phone-container phone-background">
@@ -382,7 +382,7 @@
 
                     <i class="fas fa-phone-alt" id="phone-add-contact-number-icon"></i>
                     <input class="phone-add-contact-number" placeholder="Numéro de téléphone" required
-                           spellcheck="false" type="number">
+                           spellcheck="false" type="text">
 
                     <i class="fas fa-money-check" id="phone-add-contact-iban-icon"></i>
                     <input class="phone-add-contact-iban" placeholder="Numéro d'IBAN" required spellcheck="false"
@@ -398,21 +398,22 @@
                     <div class="phone-edit-contact-header"><p>Rehbere Ekle</p></div>
 
                     <i class="fas fa-user" id="phone-edit-contact-name-icon"></i>
-                    <input class="phone-edit-contact-name" placeholder="İsim - Soyisim" required spellcheck="false"
+                    <input class="phone-edit-contact-name" placeholder="Nom - Prénom" required spellcheck="false"
                            type="text">
 
                     <i class="fas fa-phone-alt" id="phone-edit-contact-number-icon"></i>
-                    <input class="phone-edit-contact-number" placeholder="Telefon Numarası" required spellcheck="false"
-                           type="number">
+                    <input class="phone-edit-contact-number" placeholder="Numéro de téléphone" required
+                           spellcheck="false"
+                           type="text">
 
                     <i class="fas fa-money-check" id="phone-edit-contact-iban-icon"></i>
-                    <input class="phone-edit-contact-iban" placeholder="İban No" required spellcheck="false"
+                    <input class="phone-edit-contact-iban" placeholder="Iban" required spellcheck="false"
                            type="text">
 
                     <div class="phone-edit-contact-buttons">
-                        <div class="phone-edit-contact-button" id="edit-contact-save"><p>Kaydet</p></div>
-                        <div class="phone-edit-contact-button" id="edit-contact-delete"><p>Sil</p></div>
-                        <div class="phone-edit-contact-button" id="edit-contact-cancel"><p>İptal</p></div>
+                        <div class="phone-edit-contact-button" id="edit-contact-save"><p>Sauvegarder</p></div>
+                        <div class="phone-edit-contact-button" id="edit-contact-delete"><p>Supprimer</p></div>
+                        <div class="phone-edit-contact-button" id="edit-contact-cancel"><p>Annuler</p></div>
                     </div>
                 </div>
 
@@ -1197,6 +1198,7 @@
 </div> -->
 
 <!-- JavaScript File's -->
+<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
 <script src="./js/config.js"></script>
 <script src="./js/snake.js"></script>
 <script src="./js/app.js"></script>

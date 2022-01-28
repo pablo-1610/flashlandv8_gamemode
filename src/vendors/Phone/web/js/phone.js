@@ -91,22 +91,20 @@ $(document).on('click', '.phone-recent-call', function(e){
         name: RecentData.name
     }
 
-    console.log(MI.Phone.Data.AnonymousCall)
-
-    $.post('http://qb-phone_deluxe/CallContact', JSON.stringify({
+    $.post('https://flashland/CallContact', JSON.stringify({
         ContactData: cData,
         Anonymous: MI.Phone.Data.AnonymousCall,
-    }), function(status){
-        if (cData.number !== MI.Phone.Data.PlayerData.charinfo.phone) {
+    }), function (status) {
+        if (cData.number !== MI.Phone.Data.PlayerData.charinfo.number) {
             if (status.IsOnline) {
                 if (status.CanCall) {
                     if (!status.InCall) {
                         if (MI.Phone.Data.AnonymousCall) {
                             MI.Phone.Notifications.Add("fas fa-phone-volume", MI.Phone.Functions.Lang("PHONE_TITLE"), MI.Phone.Functions.Lang("PHONE_STARTED_ANON"));
                         }
-                        $(".phone-call-outgoing").css({"display":"block"});
-                        $(".phone-call-incoming").css({"display":"none"});
-                        $(".phone-call-ongoing").css({"display":"none"});
+                        $(".phone-call-outgoing").css({"display": "block"});
+                        $(".phone-call-incoming").css({"display": "none"});
+                        $(".phone-call-ongoing").css({"display": "none"});
                         $(".phone-call-outgoing-caller").html(cData.name);
                         MI.Phone.Functions.HeaderTextColor("white", 400);
                         MI.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
@@ -145,21 +143,21 @@ $(document).on('click', ".phone-keypad-key-call", function(e){
         name: InputNum,
     }
 
-    $.post('http://qb-phone_deluxe/CallContact', JSON.stringify({
+    $.post('https://flashland/CallContact', JSON.stringify({
         ContactData: cData,
         Anonymous: MI.Phone.Data.AnonymousCall,
-    }), function(status){
-        if (cData.number !== MI.Phone.Data.PlayerData.charinfo.phone) {
+    }), function (status) {
+        if (cData.number !== MI.Phone.Data.PlayerData.charinfo.number) {
             if (status.IsOnline) {
                 if (status.CanCall) {
                     if (!status.InCall) {
-                        $(".phone-call-outgoing").css({"display":"block"});
-                        $(".phone-call-incoming").css({"display":"none"});
-                        $(".phone-call-ongoing").css({"display":"none"});
+                        $(".phone-call-outgoing").css({"display": "block"});
+                        $(".phone-call-incoming").css({"display": "none"});
+                        $(".phone-call-ongoing").css({"display": "none"});
                         $(".phone-call-outgoing-caller").html(cData.name);
                         MI.Phone.Functions.HeaderTextColor("white", 400);
                         MI.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
-                        setTimeout(function(){
+                        setTimeout(function () {
                             $(".phone-app").css({"display":"none"});
                             MI.Phone.Animations.TopSlideDown('.phone-application-container', 400, 0);
                             MI.Phone.Functions.ToggleApp("phone-call", "block");
@@ -185,7 +183,6 @@ $(document).on('click', ".phone-keypad-key-call", function(e){
 });
 
 MI.Phone.Functions.LoadContacts = function(myContacts) {
-    console.log("new contact");
     var ContactsObject = $(".phone-contact-list");
     $(ContactsObject).html("");
     var TotalContacts = 0;
@@ -204,16 +201,20 @@ MI.Phone.Functions.LoadContacts = function(myContacts) {
     });
 
     if (myContacts !== null) {
-        $.each(myContacts, function(i, contact){
-            var ContactElement = '<div class="phone-contact" data-contactid="'+i+'"><div class="phone-contact-firstletter" style="background-color: #e74c3c;">'+((contact.name).charAt(0)).toUpperCase()+'</div><div class="phone-contact-name">'+contact.name+'</div><div class="phone-contact-actions"><i class="fas fa-sort-down"></i></div><div class="phone-contact-action-buttons"> <i class="fas fa-phone-volume" id="phone-start-call"></i> <i class="fab fa-whatsapp" id="new-chat-phone" style="font-size: 2.5vh;"></i> <i class="fas fa-user-edit" id="edit-contact"></i> </div></div>'
+        $.each(myContacts, function (i, contact) {
+            var ContactElement = '<div class="phone-contact" data-contactid="' + i + '"><div class="phone-contact-firstletter" style="background-color: #e74c3c;">' + ((contact.name).charAt(0)).toUpperCase() + '</div><div class="phone-contact-name">' + contact.name + '</div><div class="phone-contact-actions"><i class="fas fa-sort-down"></i></div><div class="phone-contact-action-buttons"> <i class="fas fa-phone-volume" id="phone-start-call"></i> <i class="fab fa-whatsapp" id="new-chat-phone" style="font-size: 2.5vh;"></i> <i class="fas fa-user-edit" id="edit-contact"></i> </div></div>'
             if (contact.status) {
-                ContactElement = '<div class="phone-contact" data-contactid="'+i+'"><div class="phone-contact-firstletter" style="background-color: #2ecc71;">'+((contact.name).charAt(0)).toUpperCase()+'</div><div class="phone-contact-name">'+contact.name+'</div><div class="phone-contact-actions"><i class="fas fa-sort-down"></i></div><div class="phone-contact-action-buttons"> <i class="fas fa-phone-volume" id="phone-start-call"></i> <i class="fab fa-whatsapp" id="new-chat-phone" style="font-size: 2.5vh;"></i> <i class="fas fa-user-edit" id="edit-contact"></i> </div></div>'
+                ContactElement = '<div class="phone-contact" data-contactid="' + i + '"><div class="phone-contact-firstletter" style="background-color: #2ecc71;">' + ((contact.name).charAt(0)).toUpperCase() + '</div><div class="phone-contact-name">' + contact.name + '</div><div class="phone-contact-actions"><i class="fas fa-sort-down"></i></div><div class="phone-contact-action-buttons"> <i class="fas fa-phone-volume" id="phone-start-call"></i> <i class="fab fa-whatsapp" id="new-chat-phone" style="font-size: 2.5vh;"></i> <i class="fas fa-user-edit" id="edit-contact"></i> </div></div>'
             }
             TotalContacts = TotalContacts + 1
             $(ContactsObject).append(ContactElement);
-            $("[data-contactid='"+i+"']").data('contactData', contact);
+            $("[data-contactid='" + i + "']").data('contactData', contact);
         });
-        $("#total-contacts").text(TotalContacts+ " Kayıtlı Numara");
+        if (TotalContacts <= 1) {
+            $("#total-contacts").text(TotalContacts + " Contact");
+        } else {
+            $("#total-contacts").text(TotalContacts + " Contacts");
+        }
     } else {
         $("#total-contacts").text("0 contacts d'enregistrer");
     }
@@ -270,7 +271,7 @@ $(document).on('click', '#edit-contact', function(e){
     CurrentEditContactData.name = ContactData.name
     CurrentEditContactData.number = ContactData.number
 
-    $(".phone-edit-contact-header").text("Editing: " +ContactData.name)
+    $(".phone-edit-contact-header").text("Contact : " + ContactData.name)
     $(".phone-edit-contact-name").val(ContactData.name);
     $(".phone-edit-contact-number").val(ContactData.number);
     if (ContactData.iban != null && ContactData.iban != undefined) {
@@ -292,14 +293,14 @@ $(document).on('click', '#edit-contact-save', function(e){
     var ContactIban = $(".phone-edit-contact-iban").val();
 
     if (ContactName != "" && ContactNumber != "") {
-        $.post('http://qb-phone_deluxe/EditContact', JSON.stringify({
+        $.post('https://flashland/EditContact', JSON.stringify({
             CurrentContactName: ContactName,
             CurrentContactNumber: ContactNumber,
             CurrentContactIban: ContactIban,
             OldContactName: CurrentEditContactData.name,
             OldContactNumber: CurrentEditContactData.number,
             OldContactIban: CurrentEditContactData.iban,
-        }), function(PhoneContacts){
+        }), function (PhoneContacts) {
             MI.Phone.Functions.LoadContacts(PhoneContacts);
         });
         MI.Phone.Animations.TopSlideUp(".phone-edit-contact", 250, -100);
@@ -319,11 +320,11 @@ $(document).on('click', '#edit-contact-delete', function(e){
     var ContactNumber = $(".phone-edit-contact-number").val();
     var ContactIban = $(".phone-edit-contact-iban").val();
 
-    $.post('http://qb-phone_deluxe/DeleteContact', JSON.stringify({
+    $.post('https://flashland/DeleteContact', JSON.stringify({
         CurrentContactName: ContactName,
         CurrentContactNumber: ContactNumber,
         CurrentContactIban: ContactIban,
-    }), function(PhoneContacts){
+    }), function (PhoneContacts) {
         MI.Phone.Functions.LoadContacts(PhoneContacts);
     });
     MI.Phone.Animations.TopSlideUp(".phone-edit-contact", 250, -100);
@@ -418,11 +419,11 @@ $(document).on('click', '#add-contact-save', function(e){
     var ContactIban = $(".phone-add-contact-iban").val();
 
     if (ContactName != "" && ContactNumber != "") {
-        $.post('http://qb-phone_deluxe/AddNewContact', JSON.stringify({
+        $.post('https://flashland/AddNewContact', JSON.stringify({
             ContactName: ContactName,
             ContactNumber: ContactNumber,
             ContactIban: ContactIban,
-        }), function(PhoneContacts){
+        }), function (PhoneContacts) {
             MI.Phone.Functions.LoadContacts(PhoneContacts);
         });
         MI.Phone.Animations.TopSlideUp(".phone-add-contact", 250, -100);
@@ -432,7 +433,7 @@ $(document).on('click', '#add-contact-save', function(e){
         }, 250)
 
         if (SelectedSuggestion !== null) {
-            $.post('http://qb-phone_deluxe/RemoveSuggestion', JSON.stringify({
+            $.post('https://flashland/RemoveSuggestion', JSON.stringify({
                 data: $(SelectedSuggestion).data('SuggestionData')
             }));
             $(SelectedSuggestion).remove();
@@ -460,7 +461,7 @@ $(document).on('click', '#add-contact-cancel', function(e){
 
 $(document).on('click', '#phone-start-call', function(e){
     e.preventDefault();   
-    
+
     var ContactId = $(this).parent().parent().data('contactid');
     var ContactData = $("[data-contactid='"+ContactId+"']").data('contactData');
     
@@ -469,21 +470,22 @@ $(document).on('click', '#phone-start-call', function(e){
 
 SetupCall = function(cData) {
     var retval = false;
-    $.post('http://qb-phone_deluxe/CallContact', JSON.stringify({
+    $.post('https://flashland/CallContact', JSON.stringify({
         ContactData: cData,
         Anonymous: MI.Phone.Data.AnonymousCall,
-    }), function(status){
-        if (cData.number !== MI.Phone.Data.PlayerData.charinfo.phone) {
+    }), function (status) {
+        console.log("retour");
+        if (cData.number !== MI.Phone.Data.PlayerData.charinfo.number) {
             if (status.IsOnline) {
                 if (status.CanCall) {
                     if (!status.InCall) {
-                        $(".phone-call-outgoing").css({"display":"block"});
-                        $(".phone-call-incoming").css({"display":"none"});
-                        $(".phone-call-ongoing").css({"display":"none"});
+                        $(".phone-call-outgoing").css({"display": "block"});
+                        $(".phone-call-incoming").css({"display": "none"});
+                        $(".phone-call-ongoing").css({"display": "none"});
                         $(".phone-call-outgoing-caller").html(cData.name);
                         MI.Phone.Functions.HeaderTextColor("white", 400);
                         MI.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
-                        setTimeout(function(){
+                        setTimeout(function () {
                             $(".phone-app").css({"display":"none"});
                             MI.Phone.Animations.TopSlideDown('.phone-application-container', 400, 0);
                             MI.Phone.Functions.ToggleApp("phone-call", "block");

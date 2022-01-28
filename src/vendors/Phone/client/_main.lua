@@ -20,6 +20,8 @@ allInformationPhone = {
     mails = {},
     informations = {},
     suggestedContacts = {},
+    call = {},
+    recentCall = {}
 }
 
 local isOpen = false
