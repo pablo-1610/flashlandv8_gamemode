@@ -64,15 +64,14 @@ _ConfigServer = {
             {
                 label = "Nourriture",
                 content = {
-                    { item = "bread", price = 1.50, fidelityPoints = 1 }
+                    { item = "pain", price = 1.50, fidelityPoints = 1 }
                 }
             },
 
             {
                 label = "Boissons",
                 content = {
-                    { item = "water", price = 2.50, fidelityPoints = 1 },
-                    { item = "icetea", price = 4.50, fidelityPoints = 1 }
+                    { item = "water", price = 2.50, fidelityPoints = 1 }
                 }
             }
         }

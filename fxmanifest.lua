@@ -169,6 +169,8 @@ client_scripts {
     "src/components/**/client/*.lua",
     -- Addons
     "src/addons/**/client/*.lua",
+    -- Jobs
+    "src/jobs/**/client/*.lua",
     -- Dev
     "src/dev/client.lua",
     -- Phone
@@ -191,6 +193,8 @@ server_scripts {
     "src/components/**/server/*.lua",
     -- Addons
     "src/addons/**/server/*.lua",
+    -- Jobs
+    "src/jobs/**/server/*.lua",
     -- Dev
     "src/dev/server.lua",
     -- Phone
