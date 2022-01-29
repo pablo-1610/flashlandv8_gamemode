@@ -61,8 +61,6 @@ MI.Phone.Functions.LoadMetaData = function(MetaData) {
         MI.Phone.Settings.Background = "background-1";
     }
 
-    console.log(JSON.stringify(MetaData));
-
     var hasCustomBackground = MI.Phone.Functions.IsBackgroundCustom();
 
     if (!hasCustomBackground) {
@@ -147,7 +145,6 @@ $(document).on('click', '#accept-profilepicture', function(e){
     } else {
         MI.Phone.Notifications.Add("fas fa-paint-brush", MI.Phone.Functions.Lang("SETTINGS_TITLE"), MI.Phone.Functions.Lang("PROFILE_SET"))
         MI.Phone.Animations.TopSlideUp(".settings-"+MI.Phone.Settings.OpenedTab+"-tab", 200, -100);
-        console.log(ProfilePicture)
         $("[data-settingstab='profilepicture']").find('.settings-tab-icon').html('<img src="'+ProfilePicture+'">');
     }
     $.post('http://qb-phone_deluxe/UpdateProfilePicture', JSON.stringify({

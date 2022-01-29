@@ -110,7 +110,7 @@ client_scripts {
     "src/vendors/Bob74/dlc_casino/penthouse.lua",
 }
 
---ui_page "src/vendors/Phone/web/index.html"
+ui_page "src/vendors/Phone/web/index.html"
 
 files {
     --Phone
@@ -123,6 +123,8 @@ files {
     'src/vendors/Phone/web/fonts/*.woff',
     'src/vendors/Phone/web/img/backgrounds/*.png',
     'src/vendors/Phone/web/img/apps/*.png',
+    --Sound
+    'src/vendors/Phone/web/sounds/*.ogg',
 }
 
 --[[

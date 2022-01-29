@@ -13,6 +13,9 @@ _FlashLand.onReceive("phone:setAllInformationsPhone", function(information)
     local phoneData = {}
     phoneData.MetaData = {}
 
+    if (information.informations.number ~= nil) then
+        allInformationPhone.informations.number = information.informations.number
+    end
     if (information.informations.profilepicture ~= nil) then
         phoneData.MetaData.profilepicture = information.informations.profilepicture
         allInformationPhone.informations.profilepicture = information.informations.profilepicture
@@ -25,8 +28,14 @@ _FlashLand.onReceive("phone:setAllInformationsPhone", function(information)
         allInformationPhone.informations.background = _ConfigPhone.defaultBackground
     end
     if (information.contacts ~= nil) then
-        phoneData.MetaData.Contacts = information.contacts
-        allInformationPhone.contacts = information.contacts
+        for _, contact in pairs(information.contacts) do
+            table.insert(allInformationPhone.contacts, {
+                name = contact.name,
+                number = contact.number,
+                iban = contact.iban
+            })
+        end
+        phoneData.MetaData.Contacts = allInformationPhone.contacts
     end
     if (information.messages ~= nil) then
         local messages = {}

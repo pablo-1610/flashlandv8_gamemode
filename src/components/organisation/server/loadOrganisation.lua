@@ -16,5 +16,6 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
             _FlashServer_Organisation.add(orga)
         end
     end)
+    Wait(150)
     _FlashServer_Organisation.loadGrade()
 end)

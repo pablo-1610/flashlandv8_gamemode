@@ -18,10 +18,11 @@ _FlashLand.onReceiveWithoutNet("phone:loadInformationPhoneForPlayer", function(s
     _FlashServer_Database.query("SELECT * FROM flash_phone_contacts WHERE flashId = @flashId", {
         ["flashId"] = player.flashId
     }, function(result)
-        if (result[1] ~= nil) then
+        if (result ~= nil) then
             for k, data in pairs(result) do
                 data.status = _FlashServer_Phone.getContactIsOnline(data.number)
             end
+
             playerDataPhone.contacts = result
         end
     end)

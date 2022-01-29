@@ -116,7 +116,7 @@ $(document).on('click', '.phone-application', function(e){
                 MI.Phone.Data.currentApplication = PressedApplication;
     
                 if (PressedApplication == "settings") {
-                    $("#myPhoneNumber").text(MI.Phone.Data.PlayerData.charinfocharinfo.number)
+                    $("#myPhoneNumber").text(MI.Phone.Data.PlayerData.charinfo.number)
                 } else if (PressedApplication == "twitter") {
                     $.post('http://qb-phone_deluxe/GetMentionedTweets', JSON.stringify({}), function(MentionedTweets){
                         MI.Phone.Notifications.LoadMentionedTweets(MentionedTweets)
@@ -408,11 +408,10 @@ MI.Phone.Functions.LoadPhoneData = function(data) {
     MI.Phone.Data.PlayerData = data.PlayerData;
     MI.Phone.Data.PlayerJob = data.PlayerJob;
     MI.Phone.Data.MetaData = data.PhoneData.MetaData;
-    
+
     MI.Phone.Functions.LoadMetaData(data.PhoneData.MetaData);
-    MI.Phone.Functions.LoadContacts(data.PhoneData.Contacts);
+    MI.Phone.Functions.LoadContacts(data.PhoneData.MetaData.Contacts);
     MI.Phone.Functions.SetupApplications(data);
-    console.log("Phone succesfully loaded!");
 
     $.post('http://qb-phone_deluxe/GetLangData', JSON.stringify({}), function(langs){
         MI.Phone.LangData = langs.table[langs.current];
@@ -475,10 +474,22 @@ MI.Screen.Notification = function(title, content, icon, timeout, color) {
     });
 }
 
-
 $(document).ready(function(){
-    window.addEventListener('message', function(event) {
-        switch(event.data.action) {
+    window.addEventListener("message", function (event) {
+        switch (event.data.action) {
+            case "playSound":
+                let audioPlayer = null;
+                console.log("sound");
+
+                if (audioPlayer != null) {
+                    audioPlayer.pause();
+                }
+
+                console.log(event.data.transactionFile);
+                audioPlayer = new Audio("./sounds/" + event.data.transactionFile + ".ogg");
+                audioPlayer.volume = event.data.transactionVolume;
+                audioPlayer.play();
+                break;
             case "open":
                 MI.Phone.Functions.Open(event.data);
                 MI.Phone.Functions.SetupAppWarnings(event.data.AppData);
@@ -521,10 +532,8 @@ $(document).ready(function(){
             case "UpdateChat":
                 if (MI.Phone.Data.currentApplication == "whatsapp") {
                     if (OpenedChatData.number !== null && OpenedChatData.number == event.data.chatNumber) {
-                        console.log('Chat reloaded')
                         MI.Phone.Functions.SetupChatMessages(event.data.chatData);
                     } else {
-                        console.log('Chats reloaded')
                         MI.Phone.Functions.LoadWhatsappChats(event.data.Chats);
                     }
                 }

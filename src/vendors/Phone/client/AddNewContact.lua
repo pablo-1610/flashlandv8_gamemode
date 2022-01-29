@@ -10,17 +10,28 @@
 ---@author VibR1cY
 
 RegisterNUICallback("AddNewContact", function(data, cb)
-    print("kn je sace")
     table.insert(allInformationPhone.contacts, {
         name = data.ContactName,
         number = data.ContactNumber,
         iban = data.ContactIban
     })
-    Citizen.Wait(100)
+    Wait(100)
     cb(allInformationPhone.contacts)
-    print(data.ContactName)
+    if (_FlashClient_Phone.phoneIsOpen()) then
+        SendNUIMessage({
+            action = "PhoneNotification",
+            PhoneNotify = {
+                title = "Téléphone",
+                text = "Contact ajouté",
+                icon = "fas fa-phone-volume",
+                color = "#04b543",
+                timeout = 1500,
+            },
+        })
+    end
     if (allInformationPhone.messages[data.ContactNumber] ~= nil) then
         allInformationPhone.messages[data.ContactNumber].name = data.ContactName
     end
-    --TriggerServerEvent('qb-phone:server:AddNewContact', data.ContactName, data.ContactNumber, data.ContactIban)
+    _FlashLand.setIsWaitingForServer(true)
+    _FlashLand.toServer("phone:saveNewContact", data)
 end)

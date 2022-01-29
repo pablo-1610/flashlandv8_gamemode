@@ -23,20 +23,20 @@ $(document).on('click', '.lawyer-list-call', function(e){
         name: LawyerData.name
     }
 
-    $.post('http://qb-phone_deluxe/CallContact', JSON.stringify({
+    $.post('https://flashland/CallContact', JSON.stringify({
         ContactData: cData,
         Anonymous: MI.Phone.Data.AnonymousCall,
-    }), function(status){
-        if (cData.number !== MI.Phone.Data.PlayerData.charinfo.phone) {
+    }), function (status) {
+        if (cData.number !== MI.Phone.Data.PlayerData.charinfo.number) {
             if (status.IsOnline) {
                 if (status.CanCall) {
                     if (!status.InCall) {
                         if (MI.Phone.Data.AnonymousCall) {
                             MI.Phone.Notifications.Add("fas fa-phone", MI.Phone.Functions.Lang("PHONE_TITLE"), MI.Phone.Functions.Lang("PHONE_STARTED_ANON"));
                         }
-                        $(".phone-call-outgoing").css({"display":"block"});
-                        $(".phone-call-incoming").css({"display":"none"});
-                        $(".phone-call-ongoing").css({"display":"none"});
+                        $(".phone-call-outgoing").css({"display": "block"});
+                        $(".phone-call-incoming").css({"display": "none"});
+                        $(".phone-call-ongoing").css({"display": "none"});
                         $(".phone-call-outgoing-caller").html(cData.name);
                         MI.Phone.Functions.HeaderTextColor("white", 400);
                         MI.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
