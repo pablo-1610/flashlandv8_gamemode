@@ -8,3 +8,5 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author Pablo_1610
+
+_FlashServer_Job:registerJob("unemployed", "Sans emploi")

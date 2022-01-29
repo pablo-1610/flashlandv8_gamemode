@@ -11,9 +11,9 @@
 
 _Config = {
     prefix = "[^6FlashLand^7]",
-    environment = "DEV",
+    environment = "PROD",
     enableErrorsLog = true,
-    enableSqlLog = true,
+    enableSqlLog = false,
     startRank = "member",
 
     genericBlipSize = 1.0,

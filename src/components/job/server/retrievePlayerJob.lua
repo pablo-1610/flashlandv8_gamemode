@@ -8,3 +8,7 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author Pablo_1610
+
+function _FlashServer_Job:retrievePlayerJob(flashId)
+    _FlashServer_Database.query("SELECT * FROM ")
+end

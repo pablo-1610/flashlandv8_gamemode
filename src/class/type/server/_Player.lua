@@ -75,6 +75,13 @@ function _Player:loadLoadout(cb)
     end)
 end
 
+function _Player:loadJob(cb)
+    cb()
+    _FlashServer_Job.retrievePlayerJob(self.flashId, function(jobId)
+
+    end)
+end
+
 function _Player:getDbPosition(consumer)
     _FlashServer_Database.query("SELECT position FROM flash_players_positions WHERE flashId = @flashId", {
         ["flashId"] = self.flashId
