@@ -11,7 +11,7 @@
 
 _FlashClient_Job = {}
 
-_FlashClient_KeyBind.addKey("f6", "Ouvrir le menu du job", function()
-
+-- FIXME → This keybind seems to be broken
+_FlashClient_KeyBind.addKey("f6", "Ouvrir le menu de travail", function()
+    _FlashLand.log("WIP")
 end)
-

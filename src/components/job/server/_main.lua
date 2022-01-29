@@ -21,7 +21,7 @@ local baseGrades = {
 local function retrieveGrades(id)
     if (not (_FlashServer_Utils.file_exists(("resources/flashland/src/jobs/%s/grades.json"):format(id)))) then
         CreateThread(function()
-            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/grades.json"):format(id), json.encode(id == _ConfigServer.Start.job and {"civilian", "Sans emploi", 0} or baseGrades))
+            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/grades.json"):format(id), json.encode(id == _ConfigServer.Start.job and {{"civilian", "Sans emploi", 0}} or baseGrades))
         end)
         return baseGrades
     else
@@ -49,4 +49,8 @@ function _FlashServer_Job:registerJob(id, label)
     local job = _Job(id, label, grades)
     list[id] = job
     return job
+end
+
+function _FlashServer_Job:get(id)
+    return (list[id])
 end

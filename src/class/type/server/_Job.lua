@@ -52,3 +52,32 @@ end
 function _Job:getMetadata(key)
     return self.metadata[key]
 end
+
+---getLastGrade
+---@return _JobGrade
+function _Job:getLastGrade()
+    return self.grades[#self.grades]
+end
+
+---getGrade
+---@param id number
+---@return _JobGrade
+function _Job:getGrade(id)
+    for _, grade in ipairs(self.grades) do
+        if grade.id == id then
+            return grade
+        end
+    end
+end
+
+---gradeExists
+---@param id string
+---@return boolean
+function _Job:gradeExists(id)
+    for _, grade in ipairs(self.grades) do
+        if grade.id == id then
+            return true
+        end
+    end
+    return false
+end

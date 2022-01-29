@@ -9,6 +9,14 @@
 --]]
 ---@author Pablo_1610
 
-function _FlashServer_Job:retrievePlayerJob(flashId)
-    _FlashServer_Database.query("SELECT * FROM ")
+function _FlashServer_Job:retrievePlayerJob(flashId, cb)
+    _FlashServer_Database.query("SELECT * FROM flash_players_job WHERE flashId = @flashId", {
+        ["@flashId"] = flashId
+    }, function(result)
+        if (result[1]) then
+            cb(result[1].job, result[1].job_grade)
+        else
+            cb(_ConfigServer.Start.job.default, nil)
+        end
+    end)
 end
