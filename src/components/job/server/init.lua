@@ -29,7 +29,7 @@ end
 ---@param job _Job
 local function initializeJobs(job)
     -- Retrieve and init vehicles
-    retrieveVehicles(job)
+    job.vehicles = retrieveVehicles(job)
 
     -- Initialize job's public blip
     if (job:metadataExists(_FlashEnum_JOBMETADATA.PUBLIC_BLIP)) then
@@ -52,12 +52,12 @@ local function initializeJobs(job)
     -- Initialize job's parkings
     if (job:metadataExists(_FlashEnum_JOBMETADATA.VEHICLES_INFOS)) then
         local vehicleInfos = job:getMetadata(_FlashEnum_JOBMETADATA.VEHICLES_INFOS)
-        for _, v in pairs(vehicleInfos.zones) do
+        for zoneId, zoneData in pairs(vehicleInfos.zones) do
             -- Init garage menu
-            for _, v in pairs(v.garageMenu) do
+            for _, v in pairs(zoneData.garageMenu) do
                 ---@type _Zone
                 local zone = _FlashServer_Zones.createRestricted(v, { 255, 255, 255 }, function(_src, player)
-                    -- TODO → Vehicle garage
+                    _FlashServer_Job:openVehicleMenu(_src, player, job, zoneData.outPossibilities, zoneId)
                 end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le garage", 10.0, 1.0, true)
                 job:addRestrictedZone(zone)
                 ---@type _Blip
@@ -65,7 +65,7 @@ local function initializeJobs(job)
                 job:addRestrictedBlip(blip)
             end
 
-            for _, v in pairs(v.backZones) do
+            for _, v in pairs(zoneData.backZones) do
                 ---@type _Zone
                 local zone = _FlashServer_Zones.createRestricted(v, { 255, 117, 117 }, function(_src, player)
                     -- TODO → Back zones

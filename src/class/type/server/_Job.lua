@@ -29,11 +29,18 @@ setmetatable(_Job, {
         self.restrictedZones = {}
         self.restrictedBlips = {}
 
+        self.vehicles = {}
         self.localData = {}
 
         return self
     end
 })
+
+---getVehicles
+---@return table<table>
+function _Job:getVehicles()
+    return self.vehicles
+end
 
 ---subscribeToRestrictedThings
 ---@param _src number

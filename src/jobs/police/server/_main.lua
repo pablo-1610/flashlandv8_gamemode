@@ -30,7 +30,8 @@ _FlashServer_Job:registerJob("police", "Police")
                 vector3(463.03, -1014.62, 28.06)
             },
             outPossibilities = {
-                vector3(446.24, -1025.54, 28.640)
+                vector3(446.24, -1025.54, 28.640),
+                vector3(434.87, -1026.97, 29.85),
             },
             outHeading = 6.65,
         },
