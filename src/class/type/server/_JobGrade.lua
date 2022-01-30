@@ -12,15 +12,18 @@
 ---@field public id string
 ---@field public label string
 ---@field public salary number
+---@field public permissions table
 _JobGrade = {}
 _JobGrade.__index = _JobGrade
 
 setmetatable(_JobGrade, {
-    __call = function(_, id, label, salary)
+    __call = function(_, id, label, salary, permissions)
         local self = setmetatable({}, _JobGrade)
         self.id = id
         self.label = label
         self.salary = salary
+        self.permissions = permissions
+
         return self
     end
 })

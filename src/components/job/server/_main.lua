@@ -13,15 +13,15 @@ _FlashServer_Job = {}
 local list = {}
 
 local baseGrades = {
-    {"boss", "Boss", 1500},
-    {"asociate", "Ascociate", 1000},
-    {"junior", "Junior", 500},
+    {id = "boss", label = "Boss", salary = 1500, permissions = {}},
+    {id = "manager", label = "Manager", salary = 1000, permissions = {}},
+    {id = "employee", label = "Employee", salary = 500, permissions = {}},
 }
 
 local function retrieveGrades(id)
     if (not (_FlashServer_Utils.file_exists(("resources/flashland/src/jobs/%s/grades.json"):format(id)))) then
         CreateThread(function()
-            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/grades.json"):format(id), json.encode(id == _ConfigServer.Start.job and {{"civilian", "Sans emploi", 0}} or baseGrades))
+            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/grades.json"):format(id), json.encode(id == _ConfigServer.Start.job and {{id = "civilian", label = "Sans emploi", salary = 0, permissions = {}}} or baseGrades))
         end)
         return baseGrades
     else
@@ -44,7 +44,7 @@ function _FlashServer_Job:registerJob(id, label)
     end
     local grades = {}
     for _, data in pairs(retrieveGrades(id)) do
-        table.insert(grades, _JobGrade(data[1], data[2], data[3]))
+        table.insert(grades, _JobGrade(data.id, data.label, data.salary, data.permissions))
     end
     local job = _Job(id, label, grades)
     list[id] = job
