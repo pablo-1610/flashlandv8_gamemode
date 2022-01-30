@@ -22,12 +22,14 @@ setmetatable(_Job, {
         self.label = label
         self.grades = grades
 
-        self.connectedEmployees = {} -- TODO → Connected employees
+        self.connectedEmployees = {}
         self.inventory = {} -- TODO → _Inventory
         self.metadata = {}
 
-        self.restrictedZones = {} -- TODO → Restricted zones
-        self.restrictedBlips = {} -- TODO → Restricted blips
+        self.restrictedZones = {}
+        self.restrictedBlips = {}
+
+        self.localData = {}
 
         return self
     end
@@ -46,7 +48,6 @@ function _Job:subscribeToRestrictedThings(_src)
         blip:addAllow(_src)
     end
 end
-
 
 ---unsubscribeFromRestrictedThings
 ---@param _src number
@@ -120,6 +121,61 @@ end
 function _Job:getMetadata(key)
     return self.metadata[key]
 end
+
+---initializeLocalData
+---@return void
+function _Job:setupLocalData(localDataName, defaultData)
+    localDataName = localDataName:lower()
+    local id = self.id
+    if (not (_FlashServer_Utils.file_exists(("resources/flashland/src/jobs/%s/%s.json"):format(id, localDataName)))) then
+        local data = defaultData or {}
+        CreateThread(function()
+            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/%s.json"):format(id, localDataName), json.encode(data))
+        end)
+        self.localData[localDataName] = data
+    else
+        local data = _FlashServer_Utils.file_read(("resources/flashland/src/jobs/%s/%s.json"):format(id, localDataName))
+        self.localData[localDataName] = json.decode(data)
+    end
+end
+
+---saveLocalData
+---@return void
+function _Job:saveLocalData(localDataName)
+    localDataName = localDataName:lower()
+    local id = self.id
+    local data = self.localData[localDataName]
+    CreateThread(function()
+        _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/%s.json"):format(id, localDataName), json.encode(data))
+    end)
+end
+
+---saveAllLocalData
+---@return void
+function _Job:saveAllLocalData()
+    for localDataName, _ in pairs(self.localData) do
+        self:saveLocalData(localDataName)
+    end
+end
+
+---setLocalData
+---@param localDataName string
+---@param value any
+---@return void
+function _Job:setLocalData(localDataName, value)
+    localDataName = localDataName:lower()
+    self.localData[localDataName] = value
+    self:saveLocalData(localDataName)
+end
+
+---getLocalData
+---@param localDataName string
+---@return any
+function _Job:getLocalData(localDataName)
+    localDataName = localDataName:lower()
+    return self.localData[localDataName]
+end
+
 
 ---getLastGrade
 ---@return _JobGrade

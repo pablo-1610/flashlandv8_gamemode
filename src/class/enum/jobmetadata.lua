@@ -13,4 +13,8 @@ _FlashEnum_JOBMETADATA = {
     VEHICLES_INFOS = "vehinfos",
     CLOAKROOM_INFO = "cloackroominfos",
     PUBLIC_BLIP = "publicblip",
+    EMPLOYEE_BLIP = "employeeblip",
+    STATIC_PED = "staticped",
+    BOSS_INFOS = "bossinfos",
+    LOCAL_DATA = "localdata",
 }
