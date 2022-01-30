@@ -9,7 +9,7 @@
 /src/web/ingame/.pnp
 /src/web/ingame/.pnp.js
 
-/src/jobs/*.json
+/src/jobs/**/*.json
 
 .DS_Store
 .env.local
