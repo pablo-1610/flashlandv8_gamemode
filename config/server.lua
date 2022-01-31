@@ -71,8 +71,7 @@ _ConfigServer = {
             {
                 label = "Boissons",
                 content = {
-                    { item = "water", price = 2.50, fidelityPoints = 1 },
-                    { item = "icetea", price = 4.50, fidelityPoints = 1 }
+                    { item = "water", price = 2.50, fidelityPoints = 1 }
                 }
             }
         }

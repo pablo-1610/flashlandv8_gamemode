@@ -25,6 +25,7 @@
 ---@field public loadout _Loadout
 ---@field public rpName string
 ---@field public name string
+---@field public number string
 _Player = {}
 _Player.__index = _Player
 
