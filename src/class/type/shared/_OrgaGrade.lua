@@ -34,6 +34,7 @@ function _OrgaGrade:hasSinglePermission(query)
 end
 
 function _OrgaGrade:hasPermission(query)
+    -- TODO → Do group splitter, eg: "admin.*" will allows everything in admin
     return (self:hasSinglePermission(query))
 end
 
@@ -58,7 +59,7 @@ end
 
 function _OrgaGrade:deletePermission(query)
     if (not (self:hasPermission(query))) then
-        _FlashLand.log(("Permission introuvable dans %s: %s"):format(self.jobName, query))
+        _FlashLand.log(("Permission introuable dans %s: %s"):format(self.label, query))
         return
     end
     _FlashServer_Database.execute("DELETE permission = @permission FROM flash_orga_grades_permissions WHERE orga_name = @orga_name AND gradeId = @gradeId", {

@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 09/12/2021 20:50
+  Created at 30/01/2022 14:11
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("zone:unsubscribe", function(lightZoneId)
-    _FlashClient_Zone.remove(lightZoneId)
-end)
+_FlashEnum_ZONEFLAG = {
+    INTERACT_ONLY_IF_IS_VEHICLE_DRIVER = 1,
+    INTERACT_ONLY_IF_IS_BOSS = 2,
+}

@@ -22,7 +22,6 @@ _FlashServer_Billing.registerBillEvent("barber_pay", function(_src, method, tota
     local refund = 0
     local playerMoney = player:getPlayerCash()
     if (playerMoney >= _ConfigServer.BarberShop.price) then
-        print("'1")
         _FlashLand.toClient("applySkin", _src, args.skin)
         player.cash = (player.cash - _ConfigServer.BarberShop.price)
         player:saveData()
@@ -33,7 +32,6 @@ _FlashServer_Billing.registerBillEvent("barber_pay", function(_src, method, tota
     end
     --local webhookBuilder = ("[%s] __%s__ (%s) a payé **%s$** à la superette n°**%s**:```lua"):format(player.rank.label, player.name, player.flashId, total, args.shopId)
     if (refund > 0) then
-        print('oui')
         if (method == _FlashEnum_BILLINGPAYMENTMETHOD.CASH) then
             player.cash = (player.cash + refund)
             player:saveData()

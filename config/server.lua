@@ -15,7 +15,8 @@ _ConfigServer = {
         rank = "member",
         cash = (1500),
         bagCapacity = 10.0,
-        loadoutCapacity = 3.0
+        loadoutCapacity = 3.0,
+        job = "unemployed"
     },
 
     Citizens = {
@@ -64,15 +65,14 @@ _ConfigServer = {
             {
                 label = "Nourriture",
                 content = {
-                    { item = "bread", price = 1.50, fidelityPoints = 1 }
+                    { item = "pain", price = 1.50, fidelityPoints = 1 }
                 }
             },
 
             {
                 label = "Boissons",
                 content = {
-                    { item = "water", price = 2.50, fidelityPoints = 1 },
-                    { item = "icetea", price = 4.50, fidelityPoints = 1 }
+                    { item = "water", price = 2.50, fidelityPoints = 1 }
                 }
             }
         }

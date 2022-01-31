@@ -22,4 +22,7 @@ _FlashEnum_WARDENVIOLATION = {
 
     PLAYER_INTERACTION_TOO_FAR = { code = 208, severity = _FlashEnum_WARDENSEVERITY.MED },
     ARGS_OUT_OF_DELIMITATION = { code = 209, severity = _FlashEnum_WARDENSEVERITY.HIGH },
+
+    WRONG_JOB = { code = 210, severity = _FlashEnum_WARDENSEVERITY.HIGH },
+    JOB_NOT_EXISTS = { code = 211, severity = _FlashEnum_WARDENSEVERITY.HIGH },
 }
