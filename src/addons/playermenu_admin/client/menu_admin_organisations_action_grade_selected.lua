@@ -9,8 +9,23 @@
 --]]
 ---@author VibR1cY
 
+local permissionsList = {}
+
 local function checkPerm(permission)
     return (_FlashClient_Staff.hasPermission(permission))
+end
+
+for _, permission in pairs(_Config.OrganisationPermission) do
+    table.insert(permissionsList, permission)
+end
+
+local function getPlayerHasPermission(actualPermissionRank, permissionSelected)
+    for _, rankPermission in pairs(actualPermissionRank) do
+        if (permissionSelected == rankPermission) then
+            return (true)
+        end
+    end
+    return (false)
 end
 
 ---@param player _Player
@@ -24,12 +39,22 @@ _FlashClient_PlayerMenu.drawer[24] = function(player)
         RageUI.Separator(("Grade ID : ~r~%s"):format(gradeData.gradeId))
         RageUI.Separator(("Grade : ~o~%s"):format(gradeData.gradeLabel))
         RageUI.Line()
-        if (_FlashLand.countTable(gradeData.permissions) <= 0) then
-            RageUI.Separator("~r~Aucune ~s~permission à ce rôle !")
-        else
-            RageUI.Separator("↓↓ Grade(s) du rôle ↓↓")
-            for _, permission in pairs(gradeData.permissions) do
-                RageUI.Button(("Perm : ~b~%s"):format(permission), nil, {}, true, {})
+        RageUI.Separator("↓↓ Grade(s) ↓↓")
+        perm = "admin.managePermissionOrganisationGrade"
+        for _, permData in pairs(permissionsList) do
+            if (checkPerm(perm)) then
+                RageUI.Checkbox(("Perm : %s"):format(permData.label), ("~y~Information : ~s~%s"):format(permData.description), (getPlayerHasPermission(gradeData.permissions, permData.perm)), {}, {
+                    onChecked = function()
+                        _FlashLand.setIsWaitingForServer(true)
+                        _FlashLand.toServer("staff:addPermissionForOrganisationGrade", organisationData.jobName, gradeData.gradeId, permData.perm)
+                    end,
+                    onUnChecked = function()
+                        _FlashLand.setIsWaitingForServer(true)
+                        _FlashLand.toServer("staff:removePermissionForOrganisationGrade", organisationData.jobName, gradeData.gradeId, permData.perm)
+                    end
+                })
+            else
+                RageUI.Button(("Perm : %s"):format(permData.label), ("~r~Tu n'as pas la permission pour gérer les grades !\n~y~Information : ~s~%s"):format(permData.description), {}, false, {})
             end
         end
     end

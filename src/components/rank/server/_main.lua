@@ -15,6 +15,10 @@ _FlashServer_Ranks = {}
 local list = {}
 local permissions = {}
 
+for _, permission in pairs(_Config.StaffPermission) do
+    table.insert(permissions, permission)
+end
+
 local function getLowestRank()
     return (_FlashServer_Ranks.get(_ConfigServer.Start.rank))
 end
@@ -43,7 +47,7 @@ end
 
 _FlashServer_Ranks.permissionExist = function(name)
     for _, v in pairs(permissions) do
-        if (v == name) then
+        if (v.perm == name) then
             return (true)
         end
     end
@@ -52,28 +56,6 @@ end
 
 _FlashServer_Ranks.getAllRank = function()
     return (list)
-end
-
-_FlashServer_Ranks.getAllPermissions = function()
-    return (permissions)
-end
-
-_FlashServer_Ranks.addPermission = function(permission)
-    if (_FlashServer_Ranks.permissionExist(permission)) then
-        return
-    end
-    table.insert(permissions, permission)
-end
-
-_FlashServer_Ranks.removePermission = function(permission)
-    if (not (_FlashServer_Ranks.permissionExist(permission))) then
-        return
-    end
-    for index, perm in pairs(permissions) do
-        if (perm == permission) then
-            table.remove(permissions, index)
-        end
-    end
 end
 
 _FlashServer_Ranks.getOrLowest = function(rankId)
@@ -94,14 +76,6 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
                 _FlashLand.log(("Ajout d'un rang: ^2%s"):format(data.label))
                 rank:addPermission(data.permission)
             end
-        end
-    end)
-end)
-
-_FlashLand.onReceiveWithoutNet("loaded", function()
-    _FlashServer_Database.query("SELECT permission FROM flash_ranks_permissions", {}, function(result)
-        for _, data in pairs(result) do
-            _FlashServer_Ranks.addPermission(data.permission)
         end
     end)
 end)

@@ -35,11 +35,7 @@ _FlashLand.onReceive("staff:removePermissionForRank", function(rankId, permissio
     ---@type _Rank
     local rank = _FlashServer_Ranks.get(rankId)
     rank:deletePermission(permission)
-    _FlashServer_Database.insert("INSERT INTO flash_ranks_permissions (rankId, permission) VALUES (@rankId, @permission)", {
-        ["rankId"] = rank.id,
-        ["permission"] = permission
-    })
-    _FlashLand.toClient("staff:cbRankList", _src, _FlashServer_Ranks.getAllRank())
+    _FlashServer_Staff.updateRankForStaff()
     for allPlayersSource, _ in pairs(_FlashServer_Players.getAll()) do
         ---@type _Player
         local target = _FlashServer_Players.get(allPlayersSource)

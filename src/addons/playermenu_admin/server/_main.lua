@@ -103,6 +103,13 @@ _FlashServer_Staff.updateOrganisationForStaff = function()
     end
 end
 
+--Rank
+_FlashServer_Staff.updateRankForStaff = function()
+    for _src, _ in pairs(activeStaff) do
+        _FlashLand.toClient("staff:cbRankList", _src, _FlashServer_Ranks.getAllRank())
+    end
+end
+
 _FlashServer_Staff.getNotifyAllStaffInService = function(message)
     for _src, _ in pairs(activeStaff) do
         ---@type _Player
