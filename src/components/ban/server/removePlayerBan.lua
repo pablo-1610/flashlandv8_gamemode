@@ -23,6 +23,6 @@ end
 
 RegisterCommand("unban", function(source, args)
     _FlashServer_Bans.removePlayerBan(args[1], function(sucess)
-        print(sucess)
+
     end)
 end)

@@ -15,7 +15,8 @@ _ConfigServer = {
         rank = "member",
         cash = (1500),
         bagCapacity = 10.0,
-        loadoutCapacity = 3.0
+        loadoutCapacity = 3.0,
+        job = "unemployed"
     },
 
     Citizens = {
@@ -64,15 +65,14 @@ _ConfigServer = {
             {
                 label = "Nourriture",
                 content = {
-                    { item = "bread", price = 1.50, fidelityPoints = 1 }
+                    { item = "pain", price = 1.50, fidelityPoints = 1 }
                 }
             },
 
             {
                 label = "Boissons",
                 content = {
-                    { item = "water", price = 2.50, fidelityPoints = 1 },
-                    { item = "icetea", price = 4.50, fidelityPoints = 1 }
+                    { item = "water", price = 2.50, fidelityPoints = 1 }
                 }
             }
         }
@@ -165,6 +165,12 @@ _ConfigServer = {
             { position = vector3(-815.11, -182.86, 37.56), npcPosition = vector3(-821.96, -183.12, 37.56), npcHeading = 208.65, npc = nil, seat = {pos = vector3(38.14, -182.94, 38.14), heading = 31.18, status = false}},
             { position = vector3(-1282.08, -1118.30, 7.00), npcPosition = vector3(-1284.03, -1115.62, 6.99), npcHeading = 87.15, npc = nil, seat = {pos = vector3(7.96, -1119.08, 7.96), heading = 175.74, status = false}},
             { position = vector3(138.32, -1708.28, 29.30), npcPosition = vector3(134.79, -1707.86, 29.29), npcHeading = 139.65, npc = nil, seat = {pos = vector3(-279.50, 6226.89, 31.50), heading = 130.39, status = false}},
+        },
+    },
+
+    Ammunation = {
+        list = {
+            { position = vector3(-278.40, 6226.84, 31.75), npcPosition = vector3(-278.40, 6226.84, 31.75), npcHeading = 180.0, npc = nil }
         },
     },
 

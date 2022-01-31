@@ -26,6 +26,7 @@ _FlashClient_KeyBind.addKey = function(defaultKey, desc, action)
     end)
     --]]
     RegisterKeyMapping(("+flashland_%s"):format(defaultKey), desc, "keyboard", defaultKey)
+    print("Test")
 end
 
 _FlashLand.onReceiveWithoutNet("nowPlaying", function()

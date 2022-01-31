@@ -35,7 +35,7 @@ _FlashLand.onReceive("staff:addPermissionForRank", function(rankId, permission)
     ---@type _Rank
     local rank = _FlashServer_Ranks.get(rankId)
     rank:newPermission(permission)
-    _FlashLand.toClient("staff:cbRankList", _src, _FlashServer_Ranks.getAllRank())
+    _FlashServer_Staff.updateRankForStaff()
     for allPlayersSource, _ in pairs(_FlashServer_Players.getAll()) do
         ---@type _Player
         local target = _FlashServer_Players.get(allPlayersSource)

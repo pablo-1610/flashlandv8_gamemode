@@ -34,6 +34,6 @@ _FlashLand.onReceive("staff:newGradeStaffCreate", function(newRole)
     end
     local color = _Config.Color[newRole.color].color
     _FlashServer_Ranks.create(newRole.name, newRole.label, newRole.position, newRole.weight, color, newRole.permissions)
-    _FlashLand.toClient("staff:cbRankList", _src, _FlashServer_Ranks.getAllRank())
+    _FlashServer_Staff.updateRankForStaff()
     player:serverResponded()
 end)

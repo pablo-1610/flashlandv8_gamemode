@@ -13,10 +13,10 @@ local function checkPerm(permission)
     return (_FlashClient_Staff.hasPermission(permission))
 end
 
-local permissionDefinition = {}
+local permissionsList = {}
 
-for _, v in pairs(_ConfigClient.Permission) do
-    table.insert(permissionDefinition, v)
+for _, permission in pairs(_Config.StaffPermission) do
+    table.insert(permissionsList, permission)
 end
 
 local function getPlayerHasPermission(actualPermissionRank, permissionSelected)
@@ -46,21 +46,17 @@ _FlashClient_PlayerMenu.drawer[26] = function(player)
             end,
         })
         RageUI.Line()
-        for i, permission in pairs(_FlashClient_Staff.getPermissionList()) do
-            for _, v in pairs(permissionDefinition) do
-                if (v.perm:lower() == ("%s"):format(permission:lower())) then
-                    RageUI.Checkbox(("Perm : %s"):format(v.label), ("~y~Information : ~s~%s"):format(v.description), (getPlayerHasPermission(rankData.permissions, permission)), {}, {
-                        onChecked = function()
-                            _FlashLand.setIsWaitingForServer(true)
-                            _FlashLand.toServer("staff:addPermissionForRank", rankData.id, permission)
-                        end,
-                        onUnChecked = function()
-                            _FlashLand.setIsWaitingForServer(true)
-                            _FlashLand.toServer("staff:removePermissionForRank", rankData.id, permission)
-                        end
-                    })
+        for _, permData in pairs(permissionsList) do
+            RageUI.Checkbox(("Perm : %s"):format(permData.label), ("~y~Information : ~s~%s"):format(permData.description), (getPlayerHasPermission(rankData.permissions, permData.perm)), {}, {
+                onChecked = function()
+                    _FlashLand.setIsWaitingForServer(true)
+                    _FlashLand.toServer("staff:addPermissionForRank", rankData.id, permData.perm)
+                end,
+                onUnChecked = function()
+                    _FlashLand.setIsWaitingForServer(true)
+                    _FlashLand.toServer("staff:removePermissionForRank", rankData.id, permData.perm)
                 end
-            end
+            })
         end
     end
 end
