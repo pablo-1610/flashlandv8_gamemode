@@ -3,12 +3,11 @@
   Created at 09/12/2021 19:42
   
   Copyright (c) FlashLand - All Rights Reserved
-
+  
   Unauthorized using, copying, modifying and/or distributing of this file,
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author Pablo_1610
-
 ---@class _Zone
 ---@field public id number
 ---@field public location table
@@ -40,25 +39,9 @@ setmetatable(_Zone, {
         self.headingCorrection = headingCorrection
         self.subscribed = {}
         self.allowed = {}
-        self.flags = {}
         return (self)
     end
 })
-
-function _Zone:hasFlag(flag)
-    for _, v in pairs(self.flags) do
-        if v == flag then
-            return true
-        end
-    end
-    return false
-end
-
-function _Zone:addFlag(flag)
-    if (not (self:hasFlag(flag))) then
-        table.insert(self.flags, flag)
-    end
-end
 
 function _Zone:getLightZone()
     return (_LightZone(self.id, self.location, self.color, self.helpText, self.itrDist, self.hideIfAMenuIsOpen, self.headingCorrection))

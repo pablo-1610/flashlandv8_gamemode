@@ -28,6 +28,6 @@ _FlashLand.onReceive("staff:deleteRank", function(rankId)
         return
     end
     _FlashServer_Ranks.delete(rankId)
-    _FlashLand.toClient("staff:cbRankList", _src, _FlashServer_Ranks.getAllRank())
+    _FlashServer_Staff.updateRankForStaff()
     player:serverResponded()
 end)

@@ -13,6 +13,11 @@
 _FlashServer_Organisation = {}
 
 local list = {}
+local permissions = {}
+
+for _, permission in pairs(_Config.OrganisationPermission) do
+    table.insert(permissions, permission)
+end
 
 _FlashServer_Organisation.exist = function(jobName)
     return (list[jobName] ~= nil)
@@ -38,6 +43,15 @@ _FlashServer_Organisation.getGrade = function(jobName, id)
         return
     end
     return (list[jobName].grade[id])
+end
+
+_FlashServer_Organisation.permissionExist = function(name)
+    for _, v in pairs(permissions) do
+        if (v.perm == name) then
+            return (true)
+        end
+    end
+    return (false)
 end
 
 _FlashServer_Organisation.getAllGrades = function(jobName)

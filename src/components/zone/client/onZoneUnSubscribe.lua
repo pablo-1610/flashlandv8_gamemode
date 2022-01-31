@@ -10,5 +10,6 @@
 ---@author Pablo_1610
 
 _FlashLand.onReceive("zone:unsubscribe", function(lightZoneId)
+    print(lightZoneId)
     _FlashClient_Zone.remove(lightZoneId)
 end)

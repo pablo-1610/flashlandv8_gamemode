@@ -19,5 +19,4 @@ _FlashClient_PlayerMenu.drawer[1] = function(player)
     RageUI.Button("Divers", nil, {RightLabel = "→"}, true, { }, _FlashClient_PlayerMenu.getMenus()[7])
     RageUI.Button("Mon véhicule", nil, {RightLabel = "→"}, _FlashClient_Utils.ped_isDriver(PlayerPedId()), { }, _FlashClient_PlayerMenu.getMenus()[6])
     RageUI.Button("Administration", nil, {RightLabel = "→"}, (player.rank:hasPermission("admin.open")), {}, _FlashClient_PlayerMenu.getMenus()[5])
-    RageUI.Separator("~c~FlashLandRP © 2022")
 end

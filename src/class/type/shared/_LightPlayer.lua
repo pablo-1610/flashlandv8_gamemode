@@ -22,12 +22,11 @@
 ---@field public inventory _LightInventory
 ---@field public loadout _LightLoadout
 ---@field public name string
----@field public job table
 _LightPlayer = {}
 _LightPlayer.__index = _LightPlayer
 
 setmetatable(_LightPlayer, {
-    __call = function(_, sId, flashId, identifier, rank, identity, cash, skin, outfits, selectedOutfit, accessories, inventory, loadout, name, rpName, job)
+    __call = function(_, sId, flashId, identifier, rank, identity, cash, skin, outfits, selectedOutfit, accessories, inventory, loadout, name, rpName)
         local self = setmetatable({}, _LightPlayer)
         self.flashId = flashId
         self.identifier = identifier
@@ -43,7 +42,6 @@ setmetatable(_LightPlayer, {
         self.loadout = loadout
         self.name = name
         self.rpName = rpName
-        self.job = job
         return self
     end
 })

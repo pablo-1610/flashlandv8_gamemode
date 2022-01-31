@@ -64,6 +64,7 @@ _FlashLand.onReceive("shop:openMenu", function(shopId, shopType, shopNpcId, cate
                     end)
                 end
             end
+            print("[FlashLand] Shop menu closed")
             FreezeEntityPosition(PlayerPedId(), false)
             _FlashClient_Menu.menuClosed()
         end)

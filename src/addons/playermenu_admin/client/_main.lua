@@ -18,7 +18,6 @@ local selectedPlayer = {}
 local reportList = {}
 local banList = {}
 local organisation = {}
-local permission = {}
 local rank = {}
 
 _FlashClient_Staff.backIfNotActive = function()
@@ -73,10 +72,6 @@ _FlashClient_Staff.getOrganisationList = function()
     return (organisation)
 end
 
-_FlashClient_Staff.getPermissionList = function()
-    return (permission)
-end
-
 _FlashClient_Staff.getRankList = function()
     return (rank)
 end
@@ -99,11 +94,6 @@ end)
 
 _FlashLand.onReceive("staff:cbOrganisationList", function(orgas)
     organisation = orgas
-end)
-
-_FlashLand.onReceive("staff:cbPermissionList", function(perms, ranks)
-    permission = perms
-    rank = ranks
 end)
 
 _FlashLand.onReceive("staff:cbRankList", function(ranks)

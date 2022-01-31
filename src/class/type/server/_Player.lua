@@ -45,7 +45,6 @@ setmetatable(_Player, {
         self.accessories = accessories
         self.sId = sId
         --
-        self.job = {}
         self.spawned = false
         self.gameType = _FlashEnum_GAMETYPE.RP
         self.name = GetPlayerName(self.sId)
@@ -73,29 +72,6 @@ function _Player:loadLoadout(cb)
         if (cb ~= nil) then
             cb()
         end
-    end)
-end
-
-function _Player:loadJob(cb)
-    _FlashServer_Job:retrievePlayerJob(self.flashId, function(job, job_grade)
-        if (not (_FlashServer_Job:exists(job)) or job == nil) then
-            ---@type _Job
-            local _job = _FlashServer_Job:get(_ConfigServer.Start.job)
-            ---@type _JobGrade
-            local _grade = _job:getLastGrade()
-            self.job = { job = _job.id, grade = _grade.id, _job = _job, _grade = _grade}
-        else
-            ---@type _Job
-            local _job = _FlashServer_Job:get(job)
-            local _grade = nil
-            if (not (_job:gradeExists(job_grade)) or job_grade == nil) then
-                _grade = _job:getLastGrade()
-            else
-                _grade = _job:getGrade(job_grade)
-            end
-            self.job = { job = _job.id, grade = _grade.id, _job = _job, _grade = _grade}
-        end
-        cb()
     end)
 end
 

@@ -20,50 +20,24 @@ _FlashServer_Task.doBlipUpdater = function()
         for _, blip in pairs(_FlashServer_Blips.getAll()) do
             local distance = #(playerCoords - blip.position)
             if (blip.restricted) then
-                --[[
-                    Restricted zones
-                --]]
-                if (blip:isAllowed(_src)) then
-                    if (not (blip:isSubscribed(_src)) and blip:isEverywhere()) then
-                        blip:subscribe(_src)
-                        goto continue
-                    end
-
-                    if (not (blip:isSubscribed(_src)) and not (blip:isEverywhere()) and distance <= blip.drawDist) then
-                        blip:subscribe(_src)
-                        goto continue
-                    end
-
-                    if (blip:isSubscribed(_src) and not (blip:isEverywhere()) and distance > blip.drawDist) then
-                        blip:unsubscribe(_src)
-                        goto continue
-                    end
-                else
-                    if (blip:isSubscribed(_src)) then
-                        blip:unsubscribe(_src)
-                        goto continue
-                    end
-                end
+                -- TODO : Restriction
+                goto continue
             end
-
-            --[[
-                Public zones
-            --]]
+            -- Blip is everywhere and player is not subscribed
             if (blip:isEverywhere() and not (blip:isSubscribed(_src))) then
                 blip:subscribe(_src)
                 goto continue
             end
-
+            -- Blip is not everywhere and player is subscribed but not in range
             if (not (blip:isEverywhere()) and blip:isSubscribed(_src) and not (distance <= blip.drawDist)) then
                 blip:unsubscribe(_src)
                 goto continue
             end
-
+            -- Blip is not everywhere and player is not subscribed but in range
             if (not (blip:isEverywhere()) and not (blip:isSubscribed(_src)) and distance <= blip.drawDist) then
                 blip:subscribe(_src)
                 goto continue
             end
-
             :: continue ::
         end
         :: skipPlayer ::

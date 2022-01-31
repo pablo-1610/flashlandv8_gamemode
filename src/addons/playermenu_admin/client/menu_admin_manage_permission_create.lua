@@ -32,10 +32,10 @@ local function text(value)
     return (value ~= nil)
 end
 
-local permissionDefinition = {}
+local permissionsList = {}
 
-for _, v in pairs(_ConfigClient.Permission) do
-    table.insert(permissionDefinition, v)
+for _, permission in pairs(_Config.StaffPermission) do
+    table.insert(permissionsList, permission)
 end
 
 local function getPlayerHasPermission(actualPermissionRank, permissionSelected)
@@ -107,25 +107,19 @@ _FlashClient_PlayerMenu.drawer[27] = function(player)
         end,
     })
     RageUI.Separator("~b~↓↓ ~s~Permissions ~b~↓↓")
-    for i, permission in pairs(_FlashClient_Staff.getPermissionList()) do
-        for _, v in pairs(permissionDefinition) do
-            if (v.perm:lower() == ("%s"):format(permission:lower())) then
-                RageUI.Checkbox(("Perm : %s"):format(v.label), ("~y~Information : ~s~%s"):format(v.description), getPlayerHasPermission(newRole.permissions, permission), {}, {
-                    onChecked = function()
-                        permissionBox = true
-                        table.insert(newRole.permissions, permission)
-                    end,
-                    onUnChecked = function()
-                        permissionBox = false
-                        for index, permSelected in pairs(newRole.permissions) do
-                            if (permSelected == permission) then
-                                table.remove(newRole.permissions, index)
-                            end
-                        end
+    for i, permission in pairs(permissionsList) do
+        RageUI.Checkbox(("Perm : %s"):format(permission.label), ("~y~Information : ~s~%s"):format(permission.description), getPlayerHasPermission(newRole.permissions, permission.perm), {}, {
+            onChecked = function()
+                table.insert(newRole.permissions, permission.perm)
+            end,
+            onUnChecked = function()
+                for index, permSelected in pairs(newRole.permissions) do
+                    if (permSelected == permission.perm) then
+                        table.remove(newRole.permissions, index)
                     end
-                })
+                end
             end
-        end
+        })
     end
     if (not allInformationsDefine()) then
         RageUI.Button("Valider", nil, { Color = { BackgroundColor = { 255, 0, 0 } } }, false, {})
