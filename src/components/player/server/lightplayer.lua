@@ -17,6 +17,6 @@ _FlashServer_Players.getLightPlayer = function(_src)
     local inventory = player.inventory
     ---@type _Loadout
     local loadout = player.loadout
-    return (_LightPlayer(player.sId, player.flashId, player.identifier, player.rank, player.identity, player.cash, player.skin, player.outfits, player.selectedOutfit, player.accessories, _LightInventory(inventory.id, inventory.type, inventory.label, inventory.capacity, inventory.content), _LightLoadout(loadout.id, loadout.type, loadout.capacity, loadout.content), player.name, player.rpName))
+    return (_LightPlayer(player.sId, player.flashId, player.identifier, player.rank, player.identity, player.cash, player.skin, player.outfits, player.selectedOutfit, player.accessories, _LightInventory(inventory.id, inventory.type, inventory.label, inventory.capacity, inventory.content), _LightLoadout(loadout.id, loadout.type, loadout.capacity, loadout.content), player.name, player.rpName, player.job))
 end
 

@@ -105,7 +105,6 @@ local function callContact(callData, anonymousCall)
 end
 
 RegisterNUICallback("CallContact", function(data, cb)
-    print("call")
     _FlashLand.onReceive("phone:playerIsCallInformation", function(isOnline, isCall)
         local status = {
             IsOnline = isOnline,
@@ -117,7 +116,6 @@ RegisterNUICallback("CallContact", function(data, cb)
             callContact(data.ContactData, data.Anonymous)
          end
     end)
-    print("call 2")
     _FlashLand.setIsWaitingForServer(true)
     _FlashLand.toServer("phone:playerStartCall", data.ContactData.number)
 end)

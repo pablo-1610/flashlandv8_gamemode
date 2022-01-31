@@ -36,6 +36,6 @@ end
 
 RegisterCommand("ban", function(source, args)
     _FlashServer_Bans.addPlayerBan(tonumber(args[1]), 3, "Troll", "Dorian", function(succes)
-        print(succes)
+
     end)
 end)

@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 09/12/2021 20:50
+  Created at 29/01/2022 22:27
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,4 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("zone:unsubscribe", function(lightZoneId)
-    _FlashClient_Zone.remove(lightZoneId)
-end)
+_FlashServer_Job:registerJob("unemployed", "Sans emploi")
