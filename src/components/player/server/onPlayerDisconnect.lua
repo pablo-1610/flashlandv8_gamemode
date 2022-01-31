@@ -17,6 +17,7 @@ _FlashLand.onReceiveWithoutNetExposed("playerDropped", function()
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
+    player.job._job:playerLeftJob(_src)
     player:saveData()
     player:savePosition()
     player.inventory:save()

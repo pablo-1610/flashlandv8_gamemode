@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 09/12/2021 20:50
+  Created at 30/01/2022 20:00
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -9,6 +9,7 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("zone:unsubscribe", function(lightZoneId)
-    _FlashClient_Zone.remove(lightZoneId)
+_FlashLand.onReceive("job:outVehicleFromGarage", function(vehicleModel, jobId, selectedOut, zoneId)
+    local _src = source
+    _FlashServer_Job:outVehicleFromGarage(_src, vehicleModel, jobId, selectedOut, zoneId)
 end)
