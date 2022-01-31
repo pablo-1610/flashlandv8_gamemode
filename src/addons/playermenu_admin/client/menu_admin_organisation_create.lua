@@ -32,7 +32,7 @@ gradesInfo[1] = {
     gradeId = 1,
     permissions = {}
 }
-for k, permission in pairs(_ConfigClient.OrganisationPermission) do
+for k, permission in pairs(_Config.OrganisationPermission) do
     table.insert(gradesInfo[1].permissions, permission)
 end
 table.insert(organisationData.grades, gradesInfo[1])
