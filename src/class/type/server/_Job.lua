@@ -30,6 +30,7 @@ setmetatable(_Job, {
         self.restrictedBlips = {}
 
         self.vehicles = {}
+        self.clothes = {}
         self.localData = {}
 
         return self

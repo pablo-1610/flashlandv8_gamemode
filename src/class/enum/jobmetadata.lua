@@ -17,4 +17,5 @@ _FlashEnum_JOBMETADATA = {
     STATIC_PED = "staticped",
     BOSS_INFOS = "bossinfos",
     LOCAL_DATA = "localdata",
+    ARMORY_INFOS = "armorinfos",
 }

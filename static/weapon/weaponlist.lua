@@ -34,6 +34,12 @@ _Static_Weapons = {
         weight = 0.9
     },
 
+    [GetHashKey("WEAPON_PISTOL")] = {
+        name = "WEAPON_PISTOL",
+        label = "Pistolet 9mn",
+        weight = 0.9
+    },
+
     [GetHashKey("WEAPON_HEAVYPISTOL")] = {
         name = "WEAPON_HEAVYPISTOL",
         label = "Pistolet Lourd",

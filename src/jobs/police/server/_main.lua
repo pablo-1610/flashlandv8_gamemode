@@ -48,8 +48,21 @@ _FlashServer_Job:registerJob("police", "Police")
         vector3(450.89, -992.47, 30.68),
     },
     defaultValues = {
-        ["boss"] = {
-            ["helmet_1"] = 45
+        grades = {
+            ["boss"] = {
+                ["helmet_1"] = 45
+            }
+        },
+        additional = {
+            {
+                label = "Tenue d'intervention",
+                outfit = {
+
+                },
+                grades = {
+                    "boss"
+                }
+            }
         }
     }
 })
@@ -60,4 +73,12 @@ _FlashServer_Job:registerJob("police", "Police")
 })
                 :setMetadata(_FlashEnum_JOBMETADATA.LOCAL_DATA, {
     { id = "plaintes" }
+})
+                :setMetadata(_FlashEnum_JOBMETADATA.ARMORY_INFOS, {
+    weapons = {
+        "WEAPON_PISTOL"
+    },
+    zones = {
+        vector3(451.79, -980.13, 30.68)
+    }
 })

@@ -36,6 +36,7 @@ _ConfigClient = {
         camPosition = {coords = vector3(683.78, 570.56, 130.46)},
 
         defaultOutFits = {
+            -- TODO → Add components (eg: helmet, ears (...))
             {
                 label = "Décontracté",
                 values = {

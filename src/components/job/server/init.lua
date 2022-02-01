@@ -26,10 +26,25 @@ local function retrieveVehicles(job)
     end
 end
 
+local function retrieveClothes(job)
+    local id = job.id
+    if (not (_FlashServer_Utils.file_exists(("resources/flashland/src/jobs/%s/clothes.json"):format(id)))) then
+        local clothes = job:metadataExists(_FlashEnum_JOBMETADATA.CLOAKROOM_INFO) and job:getMetadata(_FlashEnum_JOBMETADATA.CLOAKROOM_INFO).defaultValues or {grades = {}, additional = {}}
+        CreateThread(function()
+            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/clothes.json"):format(id), json.encode(clothes))
+        end)
+        return clothes
+    else
+        local clothes = _FlashServer_Utils.file_read(("resources/flashland/src/jobs/%s/clothes.json"):format(id))
+        return json.decode(clothes)
+    end
+end
+
 ---@param job _Job
 local function initializeJobs(job)
     -- Retrieve and init vehicles
     job.vehicles = retrieveVehicles(job)
+    job.clothes = retrieveClothes(job)
 
     -- Initialize job's public blip
     if (job:metadataExists(_FlashEnum_JOBMETADATA.PUBLIC_BLIP)) then
@@ -68,7 +83,6 @@ local function initializeJobs(job)
             for _, v in pairs(zoneData.backZones) do
                 ---@type _Zone
                 local zone = _FlashServer_Zones.createRestricted(v, { 255, 117, 117 }, function(_src, player)
-                    -- TODO → Back zones
                 end, "Appuyez sur ~INPUT_CONTEXT~ pour rentrer un véhicule dans le garage", 10.0, 2.35, true)
                 zone:addFlag(_FlashEnum_ZONEFLAG.INTERACT_ONLY_IF_IS_VEHICLE_DRIVER)
                 job:addRestrictedZone(zone)
@@ -86,7 +100,7 @@ local function initializeJobs(job)
         for _, v in pairs(cloakrooms.zones) do
             ---@type _Zone
             local zone = _FlashServer_Zones.createRestricted(v, { 255, 255, 255 }, function(_src, player)
-                -- TODO → Cloakroom
+                _FlashServer_Job:openCloakroomMenu(_src, player, job)
             end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le vestiaire", 10.0, 1.0, true)
             job:addRestrictedZone(zone)
 
@@ -109,6 +123,22 @@ local function initializeJobs(job)
 
             ---@type _Blip
             local blip = _FlashServer_Blips.createRestricted(v, 171, 17, _Config.genericSubBlipSize, ("%s Gestion"):format(prefix), true)
+            job:addRestrictedBlip(blip)
+        end
+    end
+
+    -- Initialize job's armories
+    if (job:metadataExists(_FlashEnum_JOBMETADATA.ARMORY_INFOS)) then
+        local armories = job:getMetadata(_FlashEnum_JOBMETADATA.ARMORY_INFOS)
+        for _, v in pairs(armories.zones) do
+            ---@type _Zone
+            local zone = _FlashServer_Zones.createRestricted(v, { 255, 255, 255 }, function(_src, player)
+                _FlashServer_Job:openArmoryMenu(_src, player, job)
+            end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir l'armurerie", 10.0, 1.0, true)
+            job:addRestrictedZone(zone)
+
+            ---@type _Blip
+            local blip = _FlashServer_Blips.createRestricted(v, 110, 17, _Config.genericSubBlipSize, ("%s Armurerie"):format(prefix), true)
             job:addRestrictedBlip(blip)
         end
     end
