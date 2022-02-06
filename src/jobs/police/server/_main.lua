@@ -13,8 +13,7 @@ _FlashServer_Job:registerJob("police", "Police")
                 :setMetadata(_FlashEnum_JOBMETADATA.PUBLIC_BLIP, {
     {
         position = vector3(440.74, -982.77, 30.68),
-        name = "Poste de police",
-        color = 29,
+        name = "Poste de police", color = 29,
         sprite = 60,
         shortRange = true,
     }

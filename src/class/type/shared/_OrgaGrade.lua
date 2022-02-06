@@ -70,7 +70,6 @@ function _OrgaGrade:deletePermission(query)
     for index, permission in pairs(self.permissions) do
         if (permission == query) then
             table.remove(self.permissions, index)
-            break
         end
     end
 end

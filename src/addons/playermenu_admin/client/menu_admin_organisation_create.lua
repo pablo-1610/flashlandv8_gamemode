@@ -33,7 +33,7 @@ gradesInfo[1] = {
     permissions = {}
 }
 for k, permission in pairs(_Config.OrganisationPermission) do
-    table.insert(gradesInfo[1].permissions, permission)
+    table.insert(gradesInfo[1].permissions, permission.perm)
 end
 table.insert(organisationData.grades, gradesInfo[1])
 
@@ -161,29 +161,30 @@ _FlashClient_PlayerMenu.drawer[28] = function(player)
     for index, v in pairs(gradesInfo) do
         if (v.gradeName:lower() == "boss") then
             RageUI.Button(("[~o~%s~s~] Nom : ~b~%s"):format(index, returnValue(v.gradeLabel)), ("~r~Vous ne pouvez modifier le grade boss car c'est le role de base !\nNom d'attribution : ~b~%s~s~~n~Nom d'affichage : ~b~%s~s~~n~Id du grade : ~b~%s~s~"):format(returnValue(v.gradeName), returnValue(v.gradeLabel), index), {}, false, {})
-        end
-        RageUI.Button(("[~o~%s~s~] Nom : ~b~%s"):format(index, returnValue(v.gradeLabel)), ("Nom d'attribution : ~b~%s~s~~n~Nom d'affichage : ~b~%s~s~~n~Id du grade : ~b~%s~s~"):format(returnValue(v.gradeName), returnValue(v.gradeLabel), index), {}, (checkPerm(perm)), {
-            onSelected = function()
-                local name = _FlashClient_Utils.input_showBox("Nom d'attribution du grade:", nil, 55, false)
-                if (name ~= nil) then
-                    local label = _FlashClient_Utils.input_showBox("Nom du grade:", nil, 125, false)
-                    if (label ~= nil) then
-                        gradesInfo[index] = {
-                            gradeName = name,
-                            gradeLabel = label,
-                            gradeId = index,
-                            permissions = {}
-                        }
-                        for gradeIndex, data in pairs(organisationData.grades) do
-                            if (index == data.gradeId) then
-                                table.remove(organisationData.grades, gradeIndex)
+        else
+            RageUI.Button(("[~o~%s~s~] Nom : ~b~%s"):format(index, returnValue(v.gradeLabel)), ("Nom d'attribution : ~b~%s~s~~n~Nom d'affichage : ~b~%s~s~~n~Id du grade : ~b~%s~s~"):format(returnValue(v.gradeName), returnValue(v.gradeLabel), index), {}, (checkPerm(perm)), {
+                onSelected = function()
+                    local name = _FlashClient_Utils.input_showBox("Nom d'attribution du grade:", nil, 55, false)
+                    if (name ~= nil) then
+                        local label = _FlashClient_Utils.input_showBox("Nom du grade:", nil, 125, false)
+                        if (label ~= nil) then
+                            gradesInfo[index] = {
+                                gradeName = name,
+                                gradeLabel = label,
+                                gradeId = index,
+                                permissions = {}
+                            }
+                            for gradeIndex, data in pairs(organisationData.grades) do
+                                if (index == data.gradeId) then
+                                    table.remove(organisationData.grades, gradeIndex)
+                                end
                             end
+                            table.insert(organisationData.grades, gradesInfo[index])
                         end
-                        table.insert(organisationData.grades, gradesInfo[index])
                     end
-                end
-            end,
-        })
+                end,
+            })
+        end
     end
     RageUI.Separator("~o~↓↓ ~r~FINAL ~o~↓↓")
     if (not allInformationsDefine()) then

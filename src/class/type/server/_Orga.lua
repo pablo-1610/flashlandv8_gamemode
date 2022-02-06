@@ -10,6 +10,15 @@
 ---@author VibR1cY
 
 ---@class _Orga
+---@field public jobName string
+---@field public jobLabel string
+---@field public grade table
+---@field public bossPos table
+---@field public safePos table
+---@field public spawnVehiclePos table
+---@field public delVehiclePos table
+---@field public blip table
+---@field public allowed table
 _Orga = {}
 _Orga.__index = _Orga
 
@@ -20,16 +29,16 @@ setmetatable(_Orga, {
         self.jobLabel = jobLabel
         self.grade = {}
         self.bossPos = _FlashServer_Zones.createPublic(vector3(bossPos.x, bossPos.y, bossPos.z), { 255, 255, 255 }, function(source, player, zone)
-            -- TODO -> function open boss menu
+            _FlashServer_Organisation.openBossAction(source, player, zone.id, self.jobName)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour gérer votre organisation", 20.0, 1.0, true, 180.0)
         self.safePos = _FlashServer_Zones.createPublic(vector3(safePos.x, safePos.y, safePos.z), { 255, 255, 255 }, function(source, player, zone)
-            -- TODO -> function open boss menu
+            _FlashServer_Organisation.openSafe(source, player, zone.id, self.jobName)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le coffre", 20.0, 1.0, true, 180.0)
         self.spawnVehiclePos = _FlashServer_Zones.createPublic(vector3(spawnVehiclePos.x, spawnVehiclePos.y, spawnVehiclePos.z), { 255, 255, 255 }, function(source, player, zone)
-            -- TODO -> function open boss menu
+            _FlashServer_Organisation.openSpawnVehicleMenu(source, player, zone.id, self.jobName)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le garage", 20.0, 1.0, true, 180.0)
         self.delVehiclePos = _FlashServer_Zones.createPublic(vector3(delVehiclePos.x, delVehiclePos.y, delVehiclePos.z), { 255, 255, 255 }, function(source, player, zone)
-            -- TODO -> function open boss menu
+            _FlashServer_Organisation.rangeVehicle(source, player, zone.id, self.jobName)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ranger le véhicule", 20.0, 1.0, true, 180.0)
         self.blip = _FlashServer_Blips.createPublic(vector3(blip.pos.x, blip.pos.y, blip.pos.z), blip.id, blip.color, _Config.genericBlipSize, blip.name, true)
         self.allowed = allowed or {}
@@ -50,7 +59,7 @@ function _Orga:updateOrgaBossAction(newPos)
         ["name"] = self.jobName
     }, function()
         self.bossPos = _FlashServer_Zones.createPublic(vector3(newPos.x, newPos.y, newPos.z), { 255, 255, 255 }, function(source, player, zone)
-            -- TODO -> function open boss menu
+            _FlashServer_Organisation.openBossAction(source, player, zone.id, self.jobName)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour gérer votre organisation", 20.0, 1.0, true, 180.0)
     end)
 end
@@ -68,7 +77,7 @@ function _Orga:updateCoffreAction(newPos)
         ["name"] = self.jobName
     }, function()
         self.safePos = _FlashServer_Zones.createPublic(vector3(newPos.x, newPos.y, newPos.z), { 255, 255, 255 }, function(source, player, zone)
-            -- TODO -> function open boss menu
+            _FlashServer_Organisation.openSafe(source, player, zone.id, self.jobName)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le coffre", 20.0, 1.0, true, 180.0)
     end)
 end
@@ -86,7 +95,7 @@ function _Orga:updateSpawnVehicleAction(newPos)
         ["name"] = self.jobName
     }, function()
         self.spawnVehiclePos = _FlashServer_Zones.createPublic(vector3(newPos.x, newPos.y, newPos.z), { 255, 255, 255 }, function(source, player, zone)
-            -- TODO -> function open boss menu
+            _FlashServer_Organisation.openSpawnVehicleMenu(source, player, zone.id, self.jobName)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le garage", 20.0, 1.0, true, 180.0)
     end)
 end
@@ -104,7 +113,7 @@ function _Orga:updateDeleteVehicleAction(newPos)
         ["name"] = self.jobName
     }, function()
         self.delVehiclePos = _FlashServer_Zones.createPublic(vector3(newPos.x, newPos.y, newPos.z), { 255, 255, 255 }, function(source, player, zone)
-            -- TODO -> function open boss menu
+            _FlashServer_Organisation.rangeVehicle(source, player, zone.id, self.jobName)
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ranger le véhicule", 20.0, 1.0, true, 180.0)
     end)
 end

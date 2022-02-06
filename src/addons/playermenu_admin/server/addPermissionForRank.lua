@@ -27,6 +27,7 @@ _FlashLand.onReceive("staff:addPermissionForRank", function(rankId, permission)
         player:serverResponded()
         return
     end
+    print(permission)
     if (not (_FlashServer_Ranks.permissionExist(permission))) then
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.PERMISSION_SELECTED_NOT_EXIST)
         player:serverResponded()
@@ -34,6 +35,7 @@ _FlashLand.onReceive("staff:addPermissionForRank", function(rankId, permission)
     end
     ---@type _Rank
     local rank = _FlashServer_Ranks.get(rankId)
+    print(permission)
     rank:newPermission(permission)
     _FlashServer_Staff.updateRankForStaff()
     for allPlayersSource, _ in pairs(_FlashServer_Players.getAll()) do

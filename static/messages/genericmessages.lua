@@ -93,5 +93,7 @@ _Static_GenericMessages = {
     PLAYER_RECEIVEITEM = "Vous avez reçu ~o~%s ~s~[~o~x%s~s~]",
     PLAYER_INVENTORY_NO_ENOUGH_ITEM_TYPE = "Vous n'avez pas assez de ~o~%s",
     INTERACTION = "Interaction",
-    TARGET_NO_ENOUGH_INVENTORY_SPACE = "La cible n'a pas assez de place"
+    TARGET_NO_ENOUGH_INVENTORY_SPACE = "La cible n'a pas assez de place",
+    PLAYER_ORGANISATION_INVALID = "Vous n'êtes pas ~r~%s ~s~pour faire cette action !",
+    PLAYER_ORGANISATION_GRADE_PERMISSION_INVALID_FOR_ACTION = "Vous n'avez pas la permission pour faire cette action !",
 }

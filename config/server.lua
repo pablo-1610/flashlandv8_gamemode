@@ -16,7 +16,8 @@ _ConfigServer = {
         cash = (1500),
         bagCapacity = 10.0,
         loadoutCapacity = 3.0,
-        job = "unemployed"
+        job = "unemployed",
+        organisation = "unemployed",
     },
 
     Citizens = {
