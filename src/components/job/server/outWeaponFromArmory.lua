@@ -9,17 +9,16 @@
 --]]
 ---@author Pablo_1610
 
-_FlashLand.onReceive("job:outWeaponFromArmory", function(_src, jobId, weapon)
+_FlashLand.onReceive("job:outWeaponFromArmory", function(jobId, weapon)
+    local _src = source
     if (not (_FlashServer_Players.exists(_src))) then
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.PLAYER_NOT_EXISTS)
         return
     end
     ---@type _Player
     local player = _FlashServer_Players.get(_src)
-    if (not (_FlashServer_Job.exists(jobId))) then
+    if (not (_FlashServer_Job:exists(jobId))) then
         _FlashServer_Warden.violation(_src, _FlashEnum_WARDENVIOLATION.JOB_NOT_EXISTS)
         return
     end
-    -- TODO → Weapon
-    print(weapon)
 end)
