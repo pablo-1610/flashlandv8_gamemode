@@ -11,3 +11,14 @@
 
 ---@class _FlashClient_Organisation
 _FlashClient_Organisation = {}
+
+_FlashClient_Organisation.hasPermission = function(perm)
+    ---@type _Player
+    local player = _FlashClient_Cache.getPlayer()
+    for _, permission in pairs(player.orga.grade.permission) do
+        if (perm == permission) then
+            return (true)
+        end
+    end
+    return (false)
+end

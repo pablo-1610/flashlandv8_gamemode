@@ -11,10 +11,10 @@
 
 _FlashServer_Organisation.createGrade = function(orgaName, gradeId, gradeName, gradeLabel, callback)
     if (not (_FlashServer_Organisation.exist(orgaName))) then
-        return callback(false)
+        return callback(false, nil)
     end
     if (_FlashServer_Organisation.gradeExist(orgaName, gradeId)) then
-        return callback(false)
+        return callback(false, nil)
     end
     _FlashServer_Database.insert("INSERT INTO flash_orga_grades (orgaId, grade_id, grade_name, grade_label) VALUES (@orgaId, @grade_id, @grade_name, @grade_label)", {
         ["orgaId"] = orgaName,
@@ -24,6 +24,6 @@ _FlashServer_Organisation.createGrade = function(orgaName, gradeId, gradeName, g
     }, function()
         local orgaGrade = _OrgaGrade(orgaName, gradeName, gradeLabel, gradeId)
         _FlashServer_Organisation.addOrgaGrade(orgaGrade.jobName, orgaGrade)
-        callback(true)
+        callback(true, orgaGrade)
     end)
 end

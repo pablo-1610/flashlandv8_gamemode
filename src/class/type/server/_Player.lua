@@ -103,17 +103,17 @@ end
 function _Player:loadOrganisation(cb)
     _FlashServer_Organisation.retrievePlayerOrganisation(self.flashId, function(job, job_grade)
         if (job == _ConfigServer.Start.organisation) then
-            self.organisation = { orga = _ConfigServer.Start.organisation, grade = { name = "citoyen", label = "Citoyen", gradeId = 0 } }
+            self.organisation = { orga = _ConfigServer.Start.organisation, grade = { name = "citoyen", label = "Citoyen", gradeId = 0, permission = {} } }
         else
             if (not (_FlashServer_Organisation.exist(job)) or job == nil) then
-                self.organisation = { orga = _ConfigServer.Start.organisation, grade = { name = "citoyen", label = "Citoyen", gradeId = 0 } }
+                self.organisation = { orga = _ConfigServer.Start.organisation, grade = { name = "citoyen", label = "Citoyen", gradeId = 0, permission = {} } }
             else
                 if (not (_FlashServer_Organisation.gradeExist(job, tonumber(job_grade))) or job_grade == nil) then
-                    self.organisation = { orga = _ConfigServer.Start.organisation, grade = { name = "citoyen", label = "Citoyen", gradeId = 0 } }
+                    self.organisation = { orga = _ConfigServer.Start.organisation, grade = { name = "citoyen", label = "Citoyen", gradeId = 0, permission = {} } }
                 else
                     ---@type _OrgaGrade
                     local grade = _FlashServer_Organisation.getGrade(job, job_grade)
-                    self.organisation = { orga = job, grade = grade }
+                    self.organisation = { orga = job, grade = { name = grade.gradeName, label = grade.gradeLabel, gradeId = grade.gradeId, permission = grade.permissions } }
                 end
             end
         end

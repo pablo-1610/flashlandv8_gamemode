@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 06/02/2022 12:04
+  Created at 19/02/2022 12:18
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -13,42 +13,30 @@ local title, desc = "Action", "Gérer votre organisation"
 local menuOpened = false
 -- Menus
 local menu_main = RageUI.CreateMenu(title, desc, nil, nil, "root_cause", "black_red")
-local menu_grades = RageUI.CreateSubMenu(menu_main, title, desc)
-local menu_grades_selected = RageUI.CreateSubMenu(menu_grades, title, desc)
-local menu_create_grade = RageUI.CreateSubMenu(menu_grades, title, desc)
 
 local menus = {
     menu_main, --1
-    menu_grades, --2
-    menu_grades_selected, --3
-    menu_create_grade, --4
 }
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()
     menuOpened = false
 end)
 
-_FlashClient_Organisation_Boss = {}
+_FlashClient_Organisation_Safe = {}
 
-_FlashClient_Organisation_Boss.drawer = {}
-_FlashClient_Organisation_Boss.panelDrawer = {}
-_FlashClient_Organisation_Boss.intraVars = {
-    name = nil,
-    label = nil,
-    grades = nil,
-    gradesSelected = nil,
+_FlashClient_Organisation_Safe.drawer = {}
+_FlashClient_Organisation_Safe.panelDrawer = {}
+_FlashClient_Organisation_Safe.intraVars = {
+
 }
 
-_FlashClient_Organisation_Boss.getMenus = function()
+_FlashClient_Organisation_Safe.getMenus = function()
     return (menus)
 end
 
-_FlashLand.onReceive("organisation:openBossMenu", function(name, label, grades)
+_FlashLand.onReceive("organisation:openSafeMenu", function()
     _FlashClient_Menu.tryOpenMenu(function()
         menuOpened = true
-        _FlashClient_Organisation_Boss.intraVars.name = name
-        _FlashClient_Organisation_Boss.intraVars.label = label
-        _FlashClient_Organisation_Boss.intraVars.grades = grades
         FreezeEntityPosition(PlayerPedId(), true)
         RageUI.Visible(menus[1], true)
         CreateThread(function()
@@ -57,10 +45,10 @@ _FlashLand.onReceive("organisation:openBossMenu", function(name, label, grades)
                 local closestPlayer, closestDistance = _FlashClient_Utils.proximity_getClosestPlayer()
                 for id, menu in pairs(menus) do
                     RageUI.IsVisible(menu, function()
-                        _FlashClient_Organisation_Boss.drawer[id](_FlashClient_Cache.getPlayer())
+                        _FlashClient_Organisation_Safe.drawer[id](_FlashClient_Cache.getPlayer())
                     end, function()
-                        if (_FlashClient_Organisation_Boss.panelDrawer[id] ~= nil) then
-                            _FlashClient_Organisation_Boss.panelDrawer[id]()
+                        if (_FlashClient_Organisation_Safe.panelDrawer[id] ~= nil) then
+                            _FlashClient_Organisation_Safe.panelDrawer[id]()
                         end
                     end)
                 end
@@ -69,8 +57,4 @@ _FlashLand.onReceive("organisation:openBossMenu", function(name, label, grades)
             _FlashClient_Menu.menuClosed()
         end)
     end)
-end)
-
-_FlashLand.onReceive("orga:updateGrade", function(grades)
-    _FlashClient_Organisation_Boss.intraVars.grades = grades
 end)

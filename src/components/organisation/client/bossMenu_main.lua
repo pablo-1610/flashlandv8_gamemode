@@ -9,7 +9,13 @@
 --]]
 ---@author VibR1cY
 
+local function checkPerm(permission)
+    return (_FlashClient_Organisation.hasPermission(permission))
+end
+
 ---@param player _Player
 _FlashClient_Organisation_Boss.drawer[1] = function(player)
-    RageUI.Separator("Bonjour action patron !")
+    RageUI.Separator(("Organisation : ~r~%s"):format(_FlashClient_Organisation_Boss.intraVars.label))
+    RageUI.Line()
+    RageUI.Button("Grades", nil, { RightLabel = "~r~→→" }, (checkPerm("orga.openBossMenu")), {}, _FlashClient_Organisation_Boss.getMenus()[2])
 end

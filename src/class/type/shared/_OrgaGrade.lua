@@ -8,7 +8,13 @@
   via any medium is strictly prohibited. This code is confidential.
 --]]
 ---@author VibR1cY
+
 ---@class _OrgaGrade
+---@field public jobName string
+---@field public gradeName string
+---@field public gradeLabel string
+---@field public gradeId number
+---@field public permissions table
 _OrgaGrade = {}
 _OrgaGrade.__index = _OrgaGrade
 

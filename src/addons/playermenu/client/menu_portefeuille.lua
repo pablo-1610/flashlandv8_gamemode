@@ -19,6 +19,7 @@ end
 _FlashClient_PlayerMenu.drawer[3] = function(player, closestData)
     RageUI.Separator(("Monnaie: %s"):format(_FlashUtils.math_price_integer(player.cash)))
     RageUI.Separator(("Job: ~g~%s~s~/~g~%s"):format(player.job._job.label, player.job._grade.label))
+    RageUI.Separator(("Organisation: ~g~%s~s~/~g~%s"):format(player.orga.orga, player.orga.grade.label))
     RageUI.Line()
 
     RageUI.Button("Lister mes licences", nil, { RightLabel = "→" }, true, {

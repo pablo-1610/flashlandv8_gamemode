@@ -80,5 +80,7 @@ _Config = {
         ["orga.openBossMenu"] = { label = "Ouvrir l'action patron", description = "Permet d'ouvrir l'action patron de l'organisation !", perm = "orga.openBossMenu" },
         ["orga.bossManageOrganisationGrade"] = { label = "Ouvrir l'action patron", description = "Permet d'ouvrir l'action patron de l'organisation !", perm = "orga.bossManageOrganisationGrade" },
         ["orga.bossMember"] = { label = "Ouvrir l'action patron", description = "Permet d'ouvrir l'action patron de l'organisation !", perm = "orga.bossMember" },
+        ["orga.createGrade"] = { label = "Créer un grade", description = "Permet de créer un grade !", perm = "orga.createGrade" },
+        ["orga.deleteGrade"] = { label = "Supprimer un grade", description = "Permet de supprimer un grade !", perm = "orga.deleteGrade" },
     }
 }

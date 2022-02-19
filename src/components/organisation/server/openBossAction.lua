@@ -26,12 +26,11 @@ _FlashServer_Organisation.openBossAction = function(_src, player, zone, organisa
     end
     ---@type _Orga
     local orgaData = _FlashServer_Organisation.get(organisation)
-    print(player.organisation.orga)
     if (not (player.organisation.orga == orgaData.jobName)) then
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.PLAYER_ORGANISATION_INVALID:format(orgaData.jobLabel))
         return
     end
-    if (not (_FlashServer_Organisation.getGrade(player.organisation.orga, player.organisation.grade.gradeId))) then
+    if (not (_FlashServer_Organisation.gradeExist(player.organisation.orga, player.organisation.grade.gradeId))) then
         return
     end
     ---@type _OrgaGrade
@@ -40,5 +39,5 @@ _FlashServer_Organisation.openBossAction = function(_src, player, zone, organisa
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.PLAYER_ORGANISATION_GRADE_PERMISSION_INVALID_FOR_ACTION)
         return
     end
-    _FlashLand.toClient("organisation:openBossMenu", _src)
+    _FlashLand.toClient("organisation:openBossMenu", _src, orgaData.jobName, orgaData.jobLabel, orgaData.grade)
 end

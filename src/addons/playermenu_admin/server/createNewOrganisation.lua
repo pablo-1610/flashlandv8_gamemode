@@ -31,13 +31,12 @@ _FlashLand.onReceive("staff:createNewOrganisation", function(organisationData)
         if (statusOrga) then
             player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.SUCCESS, _Static_GenericMessages.ORGANISATION_CREATE)
             for _, data in pairs(organisationData.grades) do
-                _FlashServer_Organisation.createGrade(organisationData.name, data.gradeId, data.gradeName, data.gradeLabel, function(statusGrade)
+                ---@param grade _OrgaGrade
+                _FlashServer_Organisation.createGrade(organisationData.name, data.gradeId, data.gradeName, data.gradeLabel, function(statusGrade, grade)
                     if (statusGrade) then
                         if (data.permissions ~= nil) then
-                            ---@type _OrgaGrade
-                            local organisationGrade = _FlashServer_Organisation.getGrade(organisationData.name, data.gradeId)
                             for _, permission in pairs(data.permissions) do
-                                organisationGrade:newPermission(permission)
+                                grade:newPermission(permission)
                             end
                         end
                         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.SUCCESS, _Static_GenericMessages.ORGANISATION_GRADES_CREATE)
