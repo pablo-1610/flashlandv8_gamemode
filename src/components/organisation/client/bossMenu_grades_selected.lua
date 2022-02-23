@@ -34,6 +34,8 @@ _FlashClient_Organisation_Boss.drawer[3] = function(player)
         RageUI.Line()
         RageUI.Button("Supprimer le grade", nil, {}, (checkPerm("orga.deleteGrade")), {
             onSelected = function()
+                RageUI.GoBack()
+                _FlashClient_Organisation_Boss.intraVars.gradesSelected = nil
                 _FlashLand.setIsWaitingForServer(true)
                 _FlashLand.toServer("orga:deleteGrade", _FlashClient_Organisation_Boss.intraVars.name, grade.gradeId)
             end,

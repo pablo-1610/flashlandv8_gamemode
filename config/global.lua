@@ -78,8 +78,9 @@ _Config = {
         ["orga.safeRecoverWeapon"] = { label = "Prendre arme dans le coffre", description = "Permet d'ouvrir le coffre de l'organisation !", perm = "orga.safeRecoverWeapon" },
         ["orga.openSpawnVehicle"] = { label = "Faire spawn un véhicule", description = "Permet de faire spawn un véhicule du garage !", perm = "orga.openSpawnVehicle" },
         ["orga.openBossMenu"] = { label = "Ouvrir l'action patron", description = "Permet d'ouvrir l'action patron de l'organisation !", perm = "orga.openBossMenu" },
-        ["orga.bossManageOrganisationGrade"] = { label = "Ouvrir l'action patron", description = "Permet d'ouvrir l'action patron de l'organisation !", perm = "orga.bossManageOrganisationGrade" },
-        ["orga.bossMember"] = { label = "Ouvrir l'action patron", description = "Permet d'ouvrir l'action patron de l'organisation !", perm = "orga.bossMember" },
+        ["orga.bossManageOrganisationGrade"] = { label = "Gérer les grades", description = "Permet de gérer les grades de l'organisation !", perm = "orga.bossManageOrganisationGrade" },
+        ["orga.bossManageMember"] = { label = "Gérer les membres", description = "Permet de gérer les membres de l'organisation !", perm = "orga.bossManageMember" },
+        ["orga.bossMember"] = { label = "Accéder à la liste des membres", description = "Permet d'accéder à la liste des membres de l'organisation !", perm = "orga.bossMember" },
         ["orga.createGrade"] = { label = "Créer un grade", description = "Permet de créer un grade !", perm = "orga.createGrade" },
         ["orga.deleteGrade"] = { label = "Supprimer un grade", description = "Permet de supprimer un grade !", perm = "orga.deleteGrade" },
     }

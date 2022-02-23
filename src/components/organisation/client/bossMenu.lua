@@ -16,12 +16,16 @@ local menu_main = RageUI.CreateMenu(title, desc, nil, nil, "root_cause", "black_
 local menu_grades = RageUI.CreateSubMenu(menu_main, title, desc)
 local menu_grades_selected = RageUI.CreateSubMenu(menu_grades, title, desc)
 local menu_create_grade = RageUI.CreateSubMenu(menu_grades, title, desc)
+local menu_member_list = RageUI.CreateSubMenu(menu_main, title, desc)
+local menu_member_manage = RageUI.CreateSubMenu(menu_member_list, title, desc)
 
 local menus = {
     menu_main, --1
     menu_grades, --2
     menu_grades_selected, --3
     menu_create_grade, --4
+    menu_member_list, --5
+    menu_member_manage, --5
 }
 
 _FlashClient_Utils.menu_setOnClose(menu_main, function()
@@ -37,18 +41,21 @@ _FlashClient_Organisation_Boss.intraVars = {
     label = nil,
     grades = nil,
     gradesSelected = nil,
+    members = nil,
+    memberSelected = nil,
 }
 
 _FlashClient_Organisation_Boss.getMenus = function()
     return (menus)
 end
 
-_FlashLand.onReceive("organisation:openBossMenu", function(name, label, grades)
+_FlashLand.onReceive("organisation:openBossMenu", function(name, label, grades, members)
     _FlashClient_Menu.tryOpenMenu(function()
         menuOpened = true
         _FlashClient_Organisation_Boss.intraVars.name = name
         _FlashClient_Organisation_Boss.intraVars.label = label
         _FlashClient_Organisation_Boss.intraVars.grades = grades
+        _FlashClient_Organisation_Boss.intraVars.members = members
         FreezeEntityPosition(PlayerPedId(), true)
         RageUI.Visible(menus[1], true)
         CreateThread(function()
@@ -73,4 +80,8 @@ end)
 
 _FlashLand.onReceive("orga:updateGrade", function(grades)
     _FlashClient_Organisation_Boss.intraVars.grades = grades
+end)
+
+_FlashLand.onReceive("orga:updateMembers", function(members)
+    _FlashClient_Organisation_Boss.intraVars.members = members
 end)

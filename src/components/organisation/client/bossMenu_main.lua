@@ -18,4 +18,5 @@ _FlashClient_Organisation_Boss.drawer[1] = function(player)
     RageUI.Separator(("Organisation : ~r~%s"):format(_FlashClient_Organisation_Boss.intraVars.label))
     RageUI.Line()
     RageUI.Button("Grades", nil, { RightLabel = "~r~→→" }, (checkPerm("orga.openBossMenu")), {}, _FlashClient_Organisation_Boss.getMenus()[2])
+    RageUI.Button("Membre", nil, { RightLabel = "~r~→→" }, (checkPerm("orga.bossMember")), {}, _FlashClient_Organisation_Boss.getMenus()[5])
 end

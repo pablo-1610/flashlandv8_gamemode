@@ -39,5 +39,5 @@ _FlashServer_Organisation.openBossAction = function(_src, player, zone, organisa
         player:sendSystemMessage(_FlashEnum_SYSTEMMESSAGE.ERROR, _Static_GenericMessages.PLAYER_ORGANISATION_GRADE_PERMISSION_INVALID_FOR_ACTION)
         return
     end
-    _FlashLand.toClient("organisation:openBossMenu", _src, orgaData.jobName, orgaData.jobLabel, orgaData.grade)
+    _FlashLand.toClient("organisation:openBossMenu", _src, orgaData.jobName, orgaData.jobLabel, orgaData.grade, orgaData.players)
 end

@@ -80,17 +80,39 @@ _FlashServer_Organisation.removeOrgaGrade = function(jobName, id)
 end
 
 _FlashServer_Organisation.loadGrade = function()
-    _FlashServer_Database.query("SELECT flash_orga_grades.orgaId,flash_orga_grades.grade_name,flash_orga_grades.grade_label,flash_orga_grades.grade_id,flash_orga_grades_permissions.permission FROM flash_orga_grades LEFT JOIN flash_orga_grades_permissions ON flash_orga_grades.orgaId = flash_orga_grades_permissions.orga_name WHERE flash_orga_grades.grade_id = flash_orga_grades_permissions.gradeId", {}, function(result)
+    _FlashServer_Database.query("SELECT * FROM flash_orga_grades", {}, function(result)
         for row, data in pairs(result) do
-            if (_FlashServer_Organisation.gradeExist(data.orgaId, data.grade_id)) then
-                ---@type _OrgaGrade
-                local orgaGrade = _FlashServer_Organisation.getGrade(data.orgaId, data.grade_id)
-                orgaGrade:addPermission(data.permission)
-            else
+            if (not (_FlashServer_Organisation.gradeExist(data.orgaId, data.grade_id))) then
                 ---@type _OrgaGrade
                 local orgaGrade = _OrgaGrade(data.orgaId, data.grade_name, data.grade_label, data.grade_id)
                 _FlashServer_Organisation.addOrgaGrade(data.orgaId, orgaGrade)
-                orgaGrade:addPermission(data.permission)
+                _FlashServer_Database.query("SELECT * FROM flash_orga_grades_permissions WHERE orga_name = @orga_name AND gradeId = @gradeId", {
+                    ["orga_name"] = data.orgaId,
+                    ["gradeId"] = data.grade_id
+                }, function(permission)
+                    for _, permData in pairs(permission) do
+                        ---@type _OrgaGrade
+                        local orga = _FlashServer_Organisation.getGrade(permData.orga_name, permData.gradeId)
+                        orga:addPermission(permData.permission)
+                    end
+                end)
+            end
+        end
+    end)
+end
+
+_FlashServer_Organisation.loadPlayers = function()
+    _FlashServer_Database.query("SELECT * FROM flash_players_organisation LEFT JOIN flash_players ON flash_players.flashId = flash_players_organisation.flashId", {}, function(result)
+        for row, data in pairs(result) do
+            if (_FlashServer_Organisation.exist(data.orga)) then
+                if (_FlashServer_Organisation.gradeExist(data.orga, data.orga_grade)) then
+                    ---@type _Orga
+                    local orga = _FlashServer_Organisation.get(data.orga)
+                    local identity = json.decode(data.identity)
+                    local playerData = {}
+                    playerData[data.flashId] = { name = ("%s %s"):format(identity.firstname, identity.lastname), flashId = data.flashId, grade = _FlashServer_Organisation.getGrade(data.orga, data.orga_grade) }
+                    orga:addNewMember(playerData[data.flashId])
+                end
             end
         end
     end)

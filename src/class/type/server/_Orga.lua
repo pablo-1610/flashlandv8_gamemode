@@ -19,6 +19,7 @@
 ---@field public delVehiclePos table
 ---@field public blip table
 ---@field public allowed table
+---@field public players table
 _Orga = {}
 _Orga.__index = _Orga
 
@@ -42,6 +43,7 @@ setmetatable(_Orga, {
         end, "Appuyez sur ~INPUT_CONTEXT~ pour ranger le véhicule", 20.0, 1.0, true, 180.0)
         self.blip = _FlashServer_Blips.createPublic(vector3(blip.pos.x, blip.pos.y, blip.pos.z), blip.id, blip.color, _Config.genericBlipSize, blip.name, true)
         self.allowed = allowed or {}
+        self.players = {}
         return (self)
     end
 })
@@ -171,4 +173,39 @@ function _Orga:deleteAllInteractions()
     end
     local blipId = self.blip.id
     _FlashServer_Blips.remove(blipId)
+end
+
+function _Orga:getMember(flashId)
+    for _, data in pairs(self.players) do
+        if (flashId == data.flashId) then
+            return (true)
+        end
+    end
+    return (false)
+end
+
+function _Orga:addNewMember(data)
+    if (not (self:getMember(data.flashId))) then
+        table.insert(self.players, data)
+    end
+end
+
+function _Orga:removeMember(flashId)
+    if (self:getMember(flashId)) then
+        for index, data in pairs(self.players) do
+            if (flashId == data.flashId) then
+                table.remove(self.players, index)
+            end
+        end
+    end
+end
+
+function _Orga:updatePlayerGrade(flashId, newGrade)
+    if (self:getMember(flashId)) then
+        for _, player in pairs(self.players) do
+            if (player.flashId == flashId) then
+                player.grade = newGrade
+            end
+        end
+    end
 end

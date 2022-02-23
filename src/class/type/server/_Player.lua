@@ -154,7 +154,7 @@ end
 function _Player:saveOrganisationGrade()
     _FlashServer_Database.execute("UPDATE flash_players_organisation SET orga = @orga, orga_grade = @orga_grade WHERE flashId = @flashId", {
         ["orga"] = self.organisation.orga,
-        ["orga_grade"] = self.organisation.grade.name,
+        ["orga_grade"] = self.organisation.grade.gradeId,
         ["flashId"] = self.flashId
     })
 end
