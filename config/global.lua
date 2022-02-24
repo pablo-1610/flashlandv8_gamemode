@@ -67,6 +67,8 @@ _Config = {
         ["admin.accessrankmanagerandmanageRank"] = { label = "Gestion Permission", description = "Permet d'accéder et gérer les permissions des différents rôle en jeux mais pas de son role et des rôles supérieur !", perm = "admin.accessrankmanagerandmanageRank" },
         ["admin.createGroup"] = { label = "Créer un grade d'administration", description = "Permet de ~g~CREER ~s~un grade d'administration et de lui attribuer les perms voulu pour ce grade !", perm = "admin.createGroup" },
         ["admin.deleteRank"] = { label = "Supprimer grade d'administration", description = "Permet de supprimer un grade d'administration !", perm = "admin.deleteRank" },
+        ["admin.changeJob"] = { label = "Changer le job", description = "Permet de changer le job d'un joueur !", perm = "admin.changeJob" },
+        ["admin.changeOrga"] = { label = "Changer l'organisation", description = "Permet de changer l'organisation d'un joueur !", perm = "admin.changeOrga" },
     },
 
     OrganisationPermission = {

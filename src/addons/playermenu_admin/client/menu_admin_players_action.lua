@@ -69,6 +69,12 @@ _FlashClient_PlayerMenu.drawer[15] = function(player)
                 end
             end,
         })
+        perm = "admin.changeOrga"
+        RageUI.Button("Changer l'orga", nil, { RightLabel = "→" }, (checkPerm(perm)), {
+            onSelected = function()
+                _FlashClient_PlayerMenu.var.selectedPlayer = playerData.sId
+            end
+        }, _FlashClient_PlayerMenu.getMenus()[30])
         perm = "admin.ban"
         RageUI.Button("Bannir", nil, {}, (checkPerm(perm)), {
             onSelected = function()

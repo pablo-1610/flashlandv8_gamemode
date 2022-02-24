@@ -77,6 +77,21 @@ _FlashClient_PlayerMenu.drawer[14] = function(player)
                 end
             }, _FlashClient_PlayerMenu.getMenus()[18])
             RageUI.Line()
+            --[[
+            perm = "admin.changeJob"
+            RageUI.Button("Changer le job", nil, { RightLabel = "→" }, (checkPerm(perm)), {
+                onSelected = function()
+                    _FlashClient_PlayerMenu.var.selectedPlayer = reportData.sId
+                end
+            }, _FlashClient_PlayerMenu.getMenus()[29])
+            ]]--
+            perm = "admin.changeOrga"
+            RageUI.Button("Changer l'orga", nil, { RightLabel = "→" }, (checkPerm(perm)), {
+                onSelected = function()
+                    _FlashClient_PlayerMenu.var.selectedPlayer = reportData.sId
+                end
+            }, _FlashClient_PlayerMenu.getMenus()[30])
+            RageUI.Line()
             perm = "admin.kickplayer"
             RageUI.Button("Kick", nil, {}, (checkPerm(perm)), {
                 onSelected = function()

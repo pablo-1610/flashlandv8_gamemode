@@ -20,6 +20,8 @@
 ---@field public blip table
 ---@field public allowed table
 ---@field public players table
+---@field public inventory table
+---@field public weapons table
 _Orga = {}
 _Orga.__index = _Orga
 
@@ -44,9 +46,136 @@ setmetatable(_Orga, {
         self.blip = _FlashServer_Blips.createPublic(vector3(blip.pos.x, blip.pos.y, blip.pos.z), blip.id, blip.color, _Config.genericBlipSize, blip.name, true)
         self.allowed = allowed or {}
         self.players = {}
+        self.inventory = {}
+        self.weapons = {}
         return (self)
     end
 })
+
+function _Orga:loadOrganisationInventory()
+    _FlashServer_Database.query("SELECT * FROM flash_organisation_inventory WHERE orga = @orga", {
+        ["orga"] = self.jobName
+    }, function(result)
+        if (result[1].inventory) then
+            for name, value in pairs(json.decode(result[1].inventory)) do
+                if (not (_FlashServer_Items.exists(name))) then
+                    return
+                end
+                self.inventory[name] = value
+            end
+        else
+            self:createSafeInventory()
+        end
+    end)
+end
+
+function _Orga:createSafeInventory()
+    _FlashServer_Database.insert("INSERT INTO flash_organisation_inventory (orga) VALUES (@orga)", {
+        ["orga"] = self.jobName
+    })
+end
+
+function _Orga:itemExist(name)
+    for item, _ in pairs(self.inventory) do
+        if (item == name) then
+            return (true)
+        end
+    end
+    return (false)
+end
+
+function _Orga:addItem(name, value)
+    if (not (_FlashServer_Items.exists(name))) then
+        return
+    end
+    if (self:itemExist(name)) then
+        self.inventory[name] = (self.inventory[name] + value)
+    else
+        self.inventory[name] = value
+    end
+end
+
+function _Orga:removeItem(name, value)
+    if (not (_FlashServer_Items.exists(name))) then
+        return
+    end
+    if (self:itemExist(name)) then
+        local newAmount = (self.inventory[name] - value)
+        if (newAmount <= 0) then
+            self.inventory[name] = nil
+        else
+            self.inventory[name] = (self.inventory[name] - value)
+        end
+    end
+end
+
+function _Orga:saveSafeInventory()
+    _FlashServer_Database.execute("UPDATE flash_organisation_inventory SET inventory = @inventory WHERE orga = @orga", {
+        ["inventory"] = json.encode(self.inventory),
+        ["orga"] = self.jobName
+    })
+end
+
+function _Orga:loadOrganisationLoadout()
+    _FlashServer_Database.query("SELECT * FROM flash_organisation_loadout WHERE orga = @orga", {
+        ["orga"] = self.jobName
+    }, function(result)
+        if (result[1].loadout) then
+            for name, value in pairs(json.decode(result[1].loadout)) do
+                self.weapons[name] = value
+            end
+        else
+            self:createSafeLoadout()
+        end
+    end)
+end
+
+function _Orga:createSafeLoadout()
+    _FlashServer_Database.insert("INSERT INTO flash_organisation_loadout (orga) VALUES (@orga)", {
+        ["orga"] = self.jobName
+    })
+end
+
+function _Orga:weaponExist(name)
+    for weapon, _ in pairs(self.weapons) do
+        if (weapon == name) then
+            return (true)
+        end
+    end
+    return (false)
+end
+
+function _Orga:addWeapon(name)
+    if (not (_Static_Weapons[GetHashKey(name:lower())])) then
+        return
+    end
+    if (self:weaponExist(name)) then
+        self.weapons[name] = (self.weapons[name] + 1)
+    else
+        self.weapons[name] = 1
+    end
+end
+
+function _Orga:removeWeapon(name)
+    if (not (_Static_Weapons[GetHashKey(name:lower())])) then
+        return
+    end
+    if (self:weaponExist(name)) then
+        local newAmount = (self.weapons[name] - 1)
+        if (newAmount <= 0) then
+            self.weapons[name] = nil
+        else
+            self.weapons[name] = (self.weapons[name] - 1)
+        end
+    end
+end
+
+function _Orga:saveSafeLoadout()
+    _FlashServer_Database.execute("UPDATE flash_organisation_loadout SET loadout = @loadout WHERE orga = @orga", {
+        ["loadout"] = json.encode(self.weapons),
+        ["orga"] = self.jobName
+    })
+end
 
 function _Orga:updateOrgaBossAction(newPos)
     for _, _src in pairs(self.bossPos.subscribed) do

@@ -1,6 +1,6 @@
 --[[
   This file is part of FlashLand.
-  Created at 19/02/2022 12:19
+  Created at 24/02/2022 19:23
   
   Copyright (c) FlashLand - All Rights Reserved
   
@@ -14,9 +14,9 @@ local function checkPerm(permission)
 end
 
 ---@param player _Player
-_FlashClient_Organisation_Safe.drawer[1] = function(player)
+_FlashClient_Organisation_Safe.drawer[3] = function(player)
     RageUI.Separator(("Organisation : ~r~%s"):format(_FlashClient_Organisation_Safe.intraVars.label))
     RageUI.Line()
-    RageUI.Button("Item(s)", nil, { RightLabel = "~r~→→" }, true, {}, _FlashClient_Organisation_Safe.getMenus()[2])
-    RageUI.Button("Arme(s)", nil, { RightLabel = "~r~→→" }, true, {}, _FlashClient_Organisation_Safe.getMenus()[3])
+    RageUI.Button("Prendre arme(s)", nil, { RightLabel = "~r~→→" }, true, {}, _FlashClient_Organisation_Safe.getMenus()[6])
+    RageUI.Button("Déposer arme(s)", nil, { RightLabel = "~r~→→" }, true, {}, _FlashClient_Organisation_Safe.getMenus()[7])
 end

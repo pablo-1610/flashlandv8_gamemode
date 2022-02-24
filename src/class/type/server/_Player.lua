@@ -121,6 +121,10 @@ function _Player:loadOrganisation(cb)
     end)
 end
 
+function _Player:updateOrganisation(orga, gradeName, gradeLabel, gradeId, gradePermission)
+    self.organisation = { orga = orga, grade = { name = gradeName, label = gradeLabel, gradeId = gradeId, permission = gradePermission } }
+end
+
 function _Player:getDbPosition(consumer)
     _FlashServer_Database.query("SELECT position FROM flash_players_positions WHERE flashId = @flashId", {
         ["flashId"] = self.flashId

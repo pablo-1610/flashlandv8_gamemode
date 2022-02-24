@@ -97,4 +97,11 @@ _Static_GenericMessages = {
     TARGET_NO_ENOUGH_INVENTORY_SPACE = "La cible n'a pas assez de place",
     PLAYER_ORGANISATION_INVALID = "Vous n'êtes pas ~r~%s ~s~pour faire cette action !",
     PLAYER_ORGANISATION_GRADE_PERMISSION_INVALID_FOR_ACTION = "Vous n'avez pas la permission pour faire cette action !",
+    ITEM_NOT_EXIST = "~r~Item inexistant !",
+    PLAYER_DEPOSIT_ITEM_SUCCESS = "~g~Le depot de votre item à été fait avec success !",
+    PLAYER_DEPOSIT_ITEM_FAILURE = "~r~Le depot de votre item n'à pas pue être fait avec success !",
+    PLAYER_GIVE_ITEM_SUCCESS = "~g~Le dépot de votre item à été fait avec success !",
+    PLAYER_GIVE_ITEM_FAILURE = "~r~Le rétrait de votre item n'à pas pue être fait avec success !",
+    PLAYER_DEPOSIT_WEAPON_SUCCESS = "~g~Le dépot de votre item à été fait avec success !",
+    PLAYER_RECOVER_WEAPON_SUCCESS = "~g~Le retrait de votre item à été fait avec success !",
 }

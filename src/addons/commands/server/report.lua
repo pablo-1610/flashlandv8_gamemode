@@ -18,4 +18,5 @@ _FlashServer_Commands.registerCommandBasic("report", function(source, player, ar
     ---@type _Report
     local report = _Report(source, player.name, table.concat(args, " "))
     _FlashServer_Reports.add(report)
+    _FlashServer_Staff.updateReportsForStaff()
 end)

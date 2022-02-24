@@ -13,6 +13,8 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
     _FlashServer_Database.query("SELECT * FROM flash_orga", {}, function(result)
         for row, data in pairs(result) do
             local orga = _Orga(data.name, data.label, json.decode(data.boss), json.decode(data.safe), json.decode(data.spawn_vehicle), json.decode(data.del_vehicle), json.decode(data.blip))
+            orga:loadOrganisationInventory()
+            orga:loadOrganisationLoadout()
             _FlashServer_Organisation.add(orga)
         end
     end)
