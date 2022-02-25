@@ -24,11 +24,19 @@ _FlashClient_Organisation_Boss.drawer[2] = function(player)
     if (_FlashClient_Organisation_Boss.intraVars.grades ~= nil) then
         ---@param data _OrgaGrade
         for _, data in pairs(_FlashClient_Organisation_Boss.intraVars.grades) do
-            RageUI.Button(("[~o~%s~s~] - ~b~%s"):format(data.gradeId, data.gradeLabel), nil, { RightLabel = "~r~→→" }, (checkPerm("orga.bossManageOrganisationGrade")), {
-                onSelected = function()
-                    _FlashClient_Organisation_Boss.intraVars.gradesSelected = data.gradeId
-                end
-            }, _FlashClient_Organisation_Boss.getMenus()[3])
+            if (data.gradeName == "boss") then
+                RageUI.Button(("[~o~%s~s~] - ~b~%s"):format(data.gradeId, data.gradeLabel), nil, { RightLabel = "~r~→→" }, false, {
+                    onSelected = function()
+                        _FlashClient_Organisation_Boss.intraVars.gradesSelected = data.gradeId
+                    end
+                }, _FlashClient_Organisation_Boss.getMenus()[3])
+            else
+                RageUI.Button(("[~o~%s~s~] - ~b~%s"):format(data.gradeId, data.gradeLabel), nil, { RightLabel = "~r~→→" }, (checkPerm("orga.bossManageOrganisationGrade")), {
+                    onSelected = function()
+                        _FlashClient_Organisation_Boss.intraVars.gradesSelected = data.gradeId
+                    end
+                }, _FlashClient_Organisation_Boss.getMenus()[3])
+            end
         end
     end
 end

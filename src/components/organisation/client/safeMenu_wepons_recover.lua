@@ -16,7 +16,6 @@ end
 ---@param player _Player
 _FlashClient_Organisation_Safe.drawer[6] = function(player)
     RageUI.Separator(("Organisation : ~r~%s"):format(_FlashClient_Organisation_Safe.intraVars.label))
-    print(json.encode(_FlashClient_Organisation_Safe.intraVars.weapons))
     if (_FlashLand.countTable(_FlashClient_Organisation_Safe.intraVars.weapons) <= 0) then
         RageUI.Line()
         RageUI.Separator("~r~Aucune arme dans le coffre !")

@@ -15,6 +15,7 @@ _FlashLand.onReceiveWithoutNet("loaded", function()
             local orga = _Orga(data.name, data.label, json.decode(data.boss), json.decode(data.safe), json.decode(data.spawn_vehicle), json.decode(data.del_vehicle), json.decode(data.blip))
             orga:loadOrganisationInventory()
             orga:loadOrganisationLoadout()
+            orga:loadVehicle()
             _FlashServer_Organisation.add(orga)
         end
     end)

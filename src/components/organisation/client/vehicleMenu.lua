@@ -27,16 +27,21 @@ _FlashClient_Organisation_Vehicle = {}
 _FlashClient_Organisation_Vehicle.drawer = {}
 _FlashClient_Organisation_Vehicle.panelDrawer = {}
 _FlashClient_Organisation_Vehicle.intraVars = {
-
+    name = nil,
+    label = nil,
+    vehicles = nil
 }
 
 _FlashClient_Organisation_Vehicle.getMenus = function()
     return (menus)
 end
 
-_FlashLand.onReceive("organisation:openVehicleMenu", function()
+_FlashLand.onReceive("organisation:openVehicleMenu", function(name, label, vehicles)
     _FlashClient_Menu.tryOpenMenu(function()
         menuOpened = true
+        _FlashClient_Organisation_Vehicle.intraVars.name = name
+        _FlashClient_Organisation_Vehicle.intraVars.label = label
+        _FlashClient_Organisation_Vehicle.intraVars.vehicles = vehicles
         FreezeEntityPosition(PlayerPedId(), true)
         RageUI.Visible(menus[1], true)
         CreateThread(function()

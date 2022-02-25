@@ -159,7 +159,7 @@ _FlashClient_PlayerMenu.drawer[28] = function(player)
     })
     RageUI.Separator("~o~↓↓ ~r~PERSONALISATION GRADE~o~↓↓")
     for index, v in pairs(gradesInfo) do
-        if (v.gradeName:lower() == "boss") then
+        if ((v.gradeName) and (v.gradeName:lower() == "boss")) then
             RageUI.Button(("[~o~%s~s~] Nom : ~b~%s"):format(index, returnValue(v.gradeLabel)), ("~r~Vous ne pouvez modifier le grade boss car c'est le role de base !\nNom d'attribution : ~b~%s~s~~n~Nom d'affichage : ~b~%s~s~~n~Id du grade : ~b~%s~s~"):format(returnValue(v.gradeName), returnValue(v.gradeLabel), index), {}, false, {})
         else
             RageUI.Button(("[~o~%s~s~] Nom : ~b~%s"):format(index, returnValue(v.gradeLabel)), ("Nom d'attribution : ~b~%s~s~~n~Nom d'affichage : ~b~%s~s~~n~Id du grade : ~b~%s~s~"):format(returnValue(v.gradeName), returnValue(v.gradeLabel), index), {}, (checkPerm(perm)), {

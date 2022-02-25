@@ -43,5 +43,5 @@ _FlashServer_Organisation.openSpawnVehicleMenu = function(_src, player, zone, or
         player:serverResponded()
         return
     end
-    _FlashLand.toClient("organisation:openVehicleMenu", _src)
+    _FlashLand.toClient("organisation:openVehicleMenu", _src, orgaData.jobName, orgaData.jobLabel, orgaData.vehicles)
 end

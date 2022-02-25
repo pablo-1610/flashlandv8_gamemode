@@ -22,6 +22,7 @@
 ---@field public players table
 ---@field public inventory table
 ---@field public weapons table
+---@field public vehicles table
 _Orga = {}
 _Orga.__index = _Orga
 
@@ -48,6 +49,7 @@ setmetatable(_Orga, {
         self.players = {}
         self.inventory = {}
         self.weapons = {}
+        self.vehicles = {}
         return (self)
     end
 })
@@ -57,7 +59,8 @@ function _Orga:loadOrganisationInventory()
         ["orga"] = self.jobName
     }, function(result)
         if (result[1].inventory) then
-            for name, value in pairs(json.decode(result[1].inventory)) do
+            local inventory = json.decode(result[1].inventory)
+            for name, value in pairs(inventory) do
                 if (not (_FlashServer_Items.exists(name))) then
                     return
                 end
@@ -121,7 +124,8 @@ function _Orga:loadOrganisationLoadout()
         ["orga"] = self.jobName
     }, function(result)
         if (result[1].loadout) then
-            for name, value in pairs(json.decode(result[1].loadout)) do
+            local loadout = json.decode(result[1].loadout)
+            for name, value in pairs(loadout) do
                 self.weapons[name] = value
             end
         else
@@ -175,6 +179,12 @@ function _Orga:saveSafeLoadout()
         ["loadout"] = json.encode(self.weapons),
         ["orga"] = self.jobName
     })
+end
+
+function _Orga:loadVehicle()
+    for _, data in pairs(_Static_OrganisationVehicle) do
+        table.insert(self.vehicles, data)
+    end
 end
 
 function _Orga:updateOrgaBossAction(newPos)
