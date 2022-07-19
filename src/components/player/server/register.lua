@@ -11,7 +11,7 @@
 
 _FlashServer_Players.register = function(_src, infos)
     local outfits = { ["Tenue d'arrivée"] = infos.outfit }
-    local license = _FlashServer_Utils.identifiers_get(_src, "license")
+    local license = _FlashServer_Utils.identifiers_get(_src, "steam")
     _FlashServer_Database.insert("INSERT INTO flash_players (identifier, rankId, identity, cash, skin, outfits, selectedOutfit, accessories) VALUES(@identifier, @rankId, @identity, @cash, @skin, @outfits, @selectedOutfit, @accessories)", {
         ["identifier"] = license,
         ["rankId"] = _ConfigServer.Start.rank,

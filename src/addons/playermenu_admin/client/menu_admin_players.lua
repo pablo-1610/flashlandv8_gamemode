@@ -75,10 +75,8 @@ _FlashClient_PlayerMenu.drawer[9] = function(player, closestData, isStaffModeAct
         local isSelf = otherPlayer.flashId == player.flashId
         local isHigher = otherPlayer.rank.weight > player.rank.weight
         perm = "admin.playerList"
-        RageUI.Button(("%s%s"):format(
-                (showRanks and (otherPlayer.rank.id ~= _Config.startRank and ("(%s%s~s~) "):format(otherPlayer.rank.baseColor, otherPlayer.rank.label) or "") or ""),
-                otherPlayer.name
-        ), (isSelf and "~r~Accès refusé~s~: Vous ne pouvez pas intéragir avec vous même." or (isHigher and ("~r~Accès refusé~s~: Ce joueur possède un grade (%s%s~s~) qui est supérieur au votre."):format(otherPlayer.rank.baseColor, otherPlayer.rank.label) or "Appuyez pour intéragir.")),
+        RageUI.Button(("%s%s"):format((showRanks and (otherPlayer.rank.id ~= _Config.startRank and ("(%s%s~s~) "):format(otherPlayer.rank.baseColor, otherPlayer.rank.label) or "") or ""), otherPlayer.name
+), (isSelf and "~r~Accès refusé~s~: Vous ne pouvez pas intéragir avec vous même." or (isHigher and ("~r~Accès refusé~s~: Ce joueur possède un grade (%s%s~s~) qui est supérieur au votre."):format(otherPlayer.rank.baseColor, otherPlayer.rank.label) or "Appuyez pour intéragir.")),
                 { RightLabel = ("~b~%s ~s~%s"):format(otherPlayer.sId, "→") },
                 (player.rank.weight >= otherPlayer.rank.weight and not isSelf and perm),
                 {

@@ -101,7 +101,7 @@ local function initializeJobs(job)
             ---@type _Zone
             local zone = _FlashServer_Zones.createRestricted(v, { 255, 255, 255 }, function(_src, player)
                 _FlashServer_Job:openCloakroomMenu(_src, player, job)
-            end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le vestiaire", 10.0, 1.0, true)
+            end, "Appuyez sur ~INPUT_CONTEXT~ pour ouvrir le vestiaire", 10.0, 1.0, true, 0.0, "police")
             job:addRestrictedZone(zone)
 
             ---@type _Blip

@@ -10,6 +10,9 @@
 ---@author Pablo_1610
 
 _FlashServer_Webhooks.send = function(webhookData, message)
+    if _Environment == nil then
+        return
+    end
     local webhookUrl = webhookData[1]
     -- Fivem discord webhook
     local webhook = {

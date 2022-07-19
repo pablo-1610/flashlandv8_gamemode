@@ -11,7 +11,7 @@
 
 _FlashLand.onReceiveWithoutNetExposed("playerConnecting", function(playerName, setKickReason, deferrals)
     local _src = source
-    local identifier = _FlashServer_Utils.identifiers_get(_src, "license")
+    local identifier = _FlashServer_Utils.identifiers_get(_src, "steam")
     deferrals.update(_FlashEnum_BAN.PLAYER_CHECK_IS_BAN)
     Wait(2500)
     if (_FlashServer_Bans.exist(identifier)) then

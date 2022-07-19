@@ -24,7 +24,7 @@ _FlashServer_Players.exists = function(playerId)
 end
 
 _FlashServer_Players.existsInDb = function(_src)
-    local license = _FlashServer_Utils.identifiers_get(_src, "license")
+    local license = _FlashServer_Utils.identifiers_get(_src, "steam")
     _FlashServer_Database.query("SELECT * FROM flash_players WHERE identifier = @identifier", { ["identifier"] = license }, function(result)
         return (result[1] ~= nil)
     end)
@@ -53,7 +53,7 @@ _FlashServer_Players.remove = function(playerId)
 end
 
 _FlashServer_Players.loadData = function(_src, cb)
-    local identifier = _FlashServer_Utils.identifiers_get(_src, "license")
+    local identifier = _FlashServer_Utils.identifiers_get(_src, "steam")
     _FlashServer_Database.query("SELECT * FROM flash_players WHERE identifier = @identifier", { ["identifier"] = identifier }, function(result)
         cb(result[1])
     end)
