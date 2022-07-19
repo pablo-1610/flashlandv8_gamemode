@@ -11,6 +11,7 @@
 
 _Config = {
     prefix = "[^6FlashLand^7]",
+    version = "Alpha",
     environment = "DEV",
     enableErrorsLog = true,
     enableSqlLog = true,

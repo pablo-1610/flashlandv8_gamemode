@@ -197,5 +197,5 @@ function _Player:setGroupId(newRankId, notify)
 end
 
 function _Player:kickPlayer(reason)
-    DropPlayer(self.source, "test")
+    DropPlayer(self.source, reason)
 end
