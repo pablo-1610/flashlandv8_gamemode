@@ -12,26 +12,10 @@
 ---@class _FlashServer_Versioning
 _FlashServer_Versioning = {}
 
-local versionFile = ("./resources/%s/.git/ORIG_HEAD"):format(GetCurrentResourceName())
-local version = "UKNOWN"
+local version = _Config.version
 
 _FlashServer_Versioning.getCurrentVersion = function()
     return (version)
 end
 
-_FlashServer_Versioning.setVer = function()
-    local file = io.open(versionFile, "r")
-    local ver = nil
-    if file then
-        for line in file:lines() do
-            ver = line
-            break
-        end
-    end
-    file:close();
-    io.close();
-    version = ver
-end
-
-_FlashServer_Versioning.setVer()
 _FlashLand.loadedComponent("versioning")
