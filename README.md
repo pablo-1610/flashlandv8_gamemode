@@ -17,7 +17,7 @@ so with a knowledge base.
 However, neither I nor Vibr1cy are responsible for the use that will be made of this gamemode, and we are also not
 responsible for the problems or difficulties that you could be brought to meet while using it.
 
-### Install
+## Install:
 
 **Put into your cfg file:**
 ```cfg
