@@ -14,28 +14,28 @@ local prefix = "[Métier]"
 ---@param job _Job
 local function retrieveVehicles(job)
     local id = job.id
-    if (not (_FlashServer_Utils.file_exists(("resources/flashland/src/jobs/%s/vehicles.json"):format(id)))) then
+    if (not (_FlashServer_Utils.file_exists(("resources/%s/src/jobs/%s/vehicles.json"):format(GetCurrentResourceName(), id)))) then
         local vehicles = job:metadataExists(_FlashEnum_JOBMETADATA.VEHICLES_INFOS) and job:getMetadata(_FlashEnum_JOBMETADATA.VEHICLES_INFOS).defaultVehicles or {}
         CreateThread(function()
-            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/vehicles.json"):format(id), json.encode(vehicles))
+            _FlashServer_Utils.file_write(("resources/%s/src/jobs/%s/vehicles.json"):format(GetCurrentResourceName(), id), json.encode(vehicles))
         end)
         return vehicles
     else
-        local vehicles = _FlashServer_Utils.file_read(("resources/flashland/src/jobs/%s/vehicles.json"):format(id))
+        local vehicles = _FlashServer_Utils.file_read(("resources/%s/src/jobs/%s/vehicles.json"):format(GetCurrentResourceName(), id))
         return json.decode(vehicles)
     end
 end
 
 local function retrieveClothes(job)
     local id = job.id
-    if (not (_FlashServer_Utils.file_exists(("resources/flashland/src/jobs/%s/clothes.json"):format(id)))) then
+    if (not (_FlashServer_Utils.file_exists(("resources/%s/src/jobs/%s/clothes.json"):format(GetCurrentResourceName(), id)))) then
         local clothes = job:metadataExists(_FlashEnum_JOBMETADATA.CLOAKROOM_INFO) and job:getMetadata(_FlashEnum_JOBMETADATA.CLOAKROOM_INFO).defaultValues or {grades = {}, additional = {}}
         CreateThread(function()
-            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/clothes.json"):format(id), json.encode(clothes))
+            _FlashServer_Utils.file_write(("resources/%s/src/jobs/%s/clothes.json"):format(GetCurrentResourceName(), id), json.encode(clothes))
         end)
         return clothes
     else
-        local clothes = _FlashServer_Utils.file_read(("resources/flashland/src/jobs/%s/clothes.json"):format(id))
+        local clothes = _FlashServer_Utils.file_read(("resources/%s/src/jobs/%s/clothes.json"):format(GetCurrentResourceName(), id))
         return json.decode(clothes)
     end
 end

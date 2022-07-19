@@ -10,7 +10,7 @@
 ---@author Pablo_1610
 
 _FlashLand.onReceiveWithoutNet("errorCatcher:report", function(errorString)
-    local reportFile = ("resources/flashland/error/%s.log"):format(_Environment.serverVer)
+    local reportFile = ("resources/%s/error/%s.log"):format(GetCurrentResourceName(), _Environment.serverVer)
     if (not (_FlashServer_Utils.file_exists(reportFile))) then
         _FlashLand.log("Création du fichier log")
         _FlashServer_Utils.file_write(reportFile, "Création automatique du fichier log pour la version.")
