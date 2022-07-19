@@ -33,7 +33,7 @@ CreateThread(function()
         _FlashLand.log("--------------------------------")
         _FlashLand.log("^1VARIABLES D'ENVIRONNEMENT NON DEFINIES")
         _FlashLand.log("--------------------------------")
-        return
+        --return
     end
     _FlashLand.log(("Initialisation FlashLand version ^0%s"):format(_FlashServer_Versioning.getCurrentVersion()))
     _FlashLand.log("Demarrage du serveur...")

@@ -26,7 +26,7 @@ _Zone = {}
 _Zone.__index = _Zone
 
 setmetatable(_Zone, {
-    __call = function(_, id, location, color, onInteract, helpText, drawDist, itrDist, restricted, hideIfAMenuIsOpen, headingCorrection)
+    __call = function(_, id, location, color, onInteract, helpText, drawDist, itrDist, restricted, hideIfAMenuIsOpen, headingCorrection, jobRequired)
         local self = setmetatable({}, _Zone)
         self.id = id
         self.location = location
@@ -38,6 +38,7 @@ setmetatable(_Zone, {
         self.restricted = restricted
         self.hideIfAMenuIsOpen = hideIfAMenuIsOpen
         self.headingCorrection = headingCorrection
+        self.jobRequired = jobRequired
         self.subscribed = {}
         self.allowed = {}
         self.flags = {}

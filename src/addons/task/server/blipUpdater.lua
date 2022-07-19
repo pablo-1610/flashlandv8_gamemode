@@ -40,7 +40,7 @@ _FlashServer_Task.doBlipUpdater = function()
                     end
                 else
                     if (blip:isSubscribed(_src)) then
-                        blip:unsubscribe(_src)
+                        --blip:unsubscribe(_src)
                         goto continue
                     end
                 end

@@ -24,17 +24,17 @@ _FlashServer_Task.doZoneUpdater = function()
                     Restricted zones
                 --]]
                 if (zone:isAllowed(_src)) then
-                    if (not (zone:isSubscribed(_src)) and distance <= zone.drawDist) then
+                    if (not (zone:isSubscribed(_src)) and distance <= zone.drawDist) and (_FlashServer_Players.get(_src).job.job == zone.jobRequired) then
                         zone:subscribe(_src)
                         goto continue
                     end
 
-                    if (zone:isSubscribed(_src) and distance > zone.drawDist) then
+                    if (zone:isSubscribed(_src) and distance > zone.drawDist) and (_FlashServer_Players.get(_src).job.job == zone.jobRequired) then
                         zone:unsubscribe(_src)
                         goto continue
                     end
                 else
-                    if (zone:isSubscribed(_src)) then
+                    if (zone:isSubscribed(_src)) and distance > zone.drawDist and (_FlashServer_Players.get(_src).job.job == zone.jobRequired) then
                         zone:unsubscribe(_src)
                         goto continue
                     end
@@ -44,17 +44,19 @@ _FlashServer_Task.doZoneUpdater = function()
             --[[
                 Public zones
             --]]
-            if (zone:isSubscribed(_src) and distance > zone.drawDist) then
+
+            if not (zone:isAllowed(_src)) and (zone:isSubscribed(_src) and distance > zone.drawDist) then
                 zone:unsubscribe(_src)
                 goto continue
             end
 
-            if (not (zone:isSubscribed(_src)) and distance <= zone.drawDist) then
+            if not (zone:isAllowed(_src)) and (not (zone:isSubscribed(_src)) and distance <= zone.drawDist) then
                 zone:subscribe(_src)
                 goto continue
             end
 
             :: continue ::
+
         end
         :: skipPlayer ::
     end

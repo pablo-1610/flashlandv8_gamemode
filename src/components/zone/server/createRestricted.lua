@@ -9,9 +9,9 @@
 --]]
 ---@author Pablo_1610
 
-_FlashServer_Zones.createRestricted = function(location, color, onInteract, helpText, drawDist, itrDist, hideIfAMenuIsOpen, headingCorrection)
+_FlashServer_Zones.createRestricted = function(location, color, onInteract, helpText, drawDist, itrDist, hideIfAMenuIsOpen, headingCorrection, jobRequired)
     local id = _FlashServer_Zones.getNextId()
-    local zone = _Zone(id, location, color, onInteract, helpText, drawDist, itrDist, true, hideIfAMenuIsOpen, headingCorrection)
+    local zone = _Zone(id, location, color, onInteract, helpText, drawDist, itrDist, true, hideIfAMenuIsOpen, headingCorrection, jobRequired)
     _FlashServer_Zones.add(zone)
     return (zone)
 end
