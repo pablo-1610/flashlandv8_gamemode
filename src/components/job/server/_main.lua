@@ -19,13 +19,13 @@ local baseGrades = {
 }
 
 local function retrieveGrades(id)
-    if (not (_FlashServer_Utils.file_exists(("resources/flashland/src/jobs/%s/grades.json"):format(id)))) then
+    if (not (_FlashServer_Utils.file_exists(("resources/%s/src/jobs/%s/grades.json"):format(GetCurrentResourceName(), id)))) then
         CreateThread(function()
-            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/grades.json"):format(id), json.encode(id == _ConfigServer.Start.job and { { id = "civilian", label = "Sans emploi", salary = 0, permissions = {} } } or baseGrades))
+            _FlashServer_Utils.file_write(("resources/%s/src/jobs/%s/grades.json"):format(GetCurrentResourceName(), id), json.encode(id == _ConfigServer.Start.job and { { id = "civilian", label = "Sans emploi", salary = 0, permissions = {} } } or baseGrades))
         end)
         return baseGrades
     else
-        local grades = _FlashServer_Utils.file_read(("resources/flashland/src/jobs/%s/grades.json"):format(id))
+        local grades = _FlashServer_Utils.file_read(("resources/%s/src/jobs/%s/grades.json"):format(GetCurrentResourceName(), id))
         return json.decode(grades)
     end
 end

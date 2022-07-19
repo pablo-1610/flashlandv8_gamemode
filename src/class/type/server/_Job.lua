@@ -135,14 +135,14 @@ end
 function _Job:setupLocalData(localDataName, defaultData)
     localDataName = localDataName:lower()
     local id = self.id
-    if (not (_FlashServer_Utils.file_exists(("resources/flashland/src/jobs/%s/%s.json"):format(id, localDataName)))) then
+    if (not (_FlashServer_Utils.file_exists(("resources/%s/src/jobs/%s/%s.json"):format(GetCurrentResourceName(), id, localDataName)))) then
         local data = defaultData or {}
         CreateThread(function()
-            _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/%s.json"):format(id, localDataName), json.encode(data))
+            _FlashServer_Utils.file_write(("resources/%s/src/jobs/%s/%s.json"):format(GetCurrentResourceName(), id, localDataName), json.encode(data))
         end)
         self.localData[localDataName] = data
     else
-        local data = _FlashServer_Utils.file_read(("resources/flashland/src/jobs/%s/%s.json"):format(id, localDataName))
+        local data = _FlashServer_Utils.file_read(("resources/%s/src/jobs/%s/%s.json"):format(GetCurrentResourceName(), id, localDataName))
         self.localData[localDataName] = json.decode(data)
     end
 end
@@ -154,7 +154,7 @@ function _Job:saveLocalData(localDataName)
     local id = self.id
     local data = self.localData[localDataName]
     CreateThread(function()
-        _FlashServer_Utils.file_write(("resources/flashland/src/jobs/%s/%s.json"):format(id, localDataName), json.encode(data))
+        _FlashServer_Utils.file_write(("resources/%s/src/jobs/%s/%s.json"):format(GetCurrentResourceName(), id, localDataName), json.encode(data))
     end)
 end
 

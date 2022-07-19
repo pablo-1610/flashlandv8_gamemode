@@ -17,6 +17,15 @@ so with a knowledge base.
 However, neither I nor Vibr1cy are responsible for the use that will be made of this gamemode, and we are also not
 responsible for the problems or difficulties that you could be brought to meet while using it.
 
+## Install:
+
+**Put into your cfg file:**
+```cfg
+set flashland_db "server=IP_DATABASE;database=NAME_DATABASE;userid=USER_DATABASE;password=PASSWORD_DATABASE"
+
+ensure flashlandv8_gamemode
+```
+
 # Credits
 
 [**Pablo** "Pablo1610" **Zapata**](https://github.com/PABLO-1610) - Lead Dev & Logic<br>
