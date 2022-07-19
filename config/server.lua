@@ -175,6 +175,6 @@ _ConfigServer = {
     },
 
     RichPresence = {
-        appId = "830843275950424125",
+        appId = "0",
     }
 }

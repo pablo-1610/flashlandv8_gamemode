@@ -11,7 +11,7 @@
 
 _ConfigClient = {
     RichPresence = {
-        appId = 907401133717340161,
+        appId = 0,
     },
 
     Npc = {
