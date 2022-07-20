@@ -55,7 +55,6 @@ create TABLE `flash_item`
 
 insert into `flash_item` (`item_id`, `item_label`, `item_description`, `item_weight`)
 VALUES ('pain', 'Pain', 'Du pain xd', 0.2),
-       ('phone', 'Téléphone', 'Téléphone qui sert ', 0.2),
        ('water', 'Eau', 'Eau', 0.2);
 
 CREATE TABLE `flash_loadout`
@@ -94,48 +93,6 @@ CREATE TABLE `flash_orga_grades_permissions`
     `permission` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `flash_phone_contacts`
-(
-    `id`      int(11) NOT NULL,
-    `flashId` tinyint(11) DEFAULT NULL,
-    `name`    varchar(50)          DEFAULT NULL,
-    `number`  varchar(50)          DEFAULT NULL,
-    `iban`    varchar(50) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE `flash_phone_mails`
-(
-    `id`      int(11) NOT NULL,
-    `flashId` tinyint(11) DEFAULT NULL,
-    `sender`  varchar(50) DEFAULT NULL,
-    `subject` varchar(50) DEFAULT NULL,
-    `message` text        DEFAULT NULL,
-    `read`    tinyint(4) DEFAULT 0,
-    `mailid`  int(11) DEFAULT NULL,
-    `date`    timestamp NULL DEFAULT current_timestamp (),
-    `button`  text        DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE `flash_phone_messages`
-(
-    `id`       int(11) NOT NULL,
-    `flashId`  tinyint(11) DEFAULT NULL,
-    `number`   varchar(50) DEFAULT NULL,
-    `messages` text        DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE `flash_phone_tweets`
-(
-    `id`        int(5) NOT NULL,
-    `flashId`   tinyint(11) DEFAULT NULL,
-    `firstName` varchar(50)  DEFAULT NULL,
-    `lastName`  varchar(50)  DEFAULT NULL,
-    `message`   varchar(50)  DEFAULT NULL,
-    `url`       varchar(255) DEFAULT NULL,
-    `time`      varchar(50)  DEFAULT NULL,
-    `picture`   varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 CREATE TABLE `flash_players`
 (
     `flashId`        int(11) NOT NULL,
@@ -146,8 +103,7 @@ CREATE TABLE `flash_players`
     `skin`           text        NOT NULL,
     `outfits`        text        NOT NULL,
     `selectedOutfit` varchar(80) NOT NULL DEFAULT 'default',
-    `accessories`    text        NOT NULL,
-    `number`         varchar(75) NOT NULL
+    `accessories`    text        NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `flash_players_identifiers`
@@ -159,14 +115,6 @@ CREATE TABLE `flash_players_identifiers`
     `xbl`      varchar(150) NOT NULL,
     `discord`  varchar(150) NOT NULL,
     `endpoint` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE `flash_players_phone`
-(
-    `flashId`        tinyint(4) NOT NULL,
-    `number`         varchar(85) NOT NULL,
-    `profilepicture` text        NOT NULL,
-    `background`     text        NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `flash_players_positions`
@@ -252,22 +200,6 @@ ALTER TABLE `flash_orga_grades`
 ALTER TABLE `flash_orga_grades_permissions`
     ADD PRIMARY KEY (`id`);
 
-ALTER TABLE `flash_phone_contacts`
-    ADD PRIMARY KEY (`id`),
-  ADD KEY `flashId` (`flashId`);
-
-ALTER TABLE `flash_phone_mails`
-    ADD PRIMARY KEY (`id`),
-  ADD KEY `flashId` (`flashId`);
-
-ALTER TABLE `flash_phone_messages`
-    ADD PRIMARY KEY (`id`),
-  ADD KEY `flashId` (`flashId`),
-  ADD KEY `number` (`number`);
-
-ALTER TABLE `flash_phone_tweets`
-    ADD PRIMARY KEY (`id`);
-
 ALTER TABLE `flash_players`
     ADD PRIMARY KEY (`flashId`),
   ADD UNIQUE KEY `flashId` (`flashId`);
@@ -275,9 +207,6 @@ ALTER TABLE `flash_players`
 ALTER TABLE `flash_players_identifiers`
     ADD PRIMARY KEY (`flashId`),
   ADD UNIQUE KEY `flashId` (`flashId`);
-
-ALTER TABLE `flash_players_phone`
-    ADD PRIMARY KEY (`flashId`);
 
 ALTER TABLE `flash_players_positions`
     ADD PRIMARY KEY (`flashId`),
@@ -296,18 +225,6 @@ ALTER TABLE `flash_orga_grades`
 
 ALTER TABLE `flash_orga_grades_permissions`
     MODIFY `id` int (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
-ALTER TABLE `flash_phone_contacts`
-    MODIFY `id` int (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12434;
-
-ALTER TABLE `flash_phone_mails`
-    MODIFY `id` int (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67023;
-
-ALTER TABLE `flash_phone_messages`
-    MODIFY `id` int (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6732;
-
-ALTER TABLE `flash_phone_tweets`
-    MODIFY `id` int (5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 ALTER TABLE `flash_players`
     MODIFY `flashId` int (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;

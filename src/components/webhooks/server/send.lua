@@ -16,7 +16,7 @@ _FlashServer_Webhooks.send = function(webhookData, message)
     local webhookUrl = webhookData[1]
     -- Fivem discord webhook
     local webhook = {
-        ["content"] = ("[`%s`] %s"):format(_Environment.serverId, message),
+        ["content"] = ("%s %s"):format(_Config.prefix, message),
         ["username"] = "Système FlashLand",
         ["avatar_url"] = "https://ak.picdn.net/shutterstock/videos/1024557125/thumb/1.jpg",
         ["tts"] = false

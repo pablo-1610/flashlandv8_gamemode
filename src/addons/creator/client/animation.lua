@@ -13,16 +13,19 @@
 
 _FlashLand.onReceiveWithoutNet("creator:playAnimation", function(spawn)
     RenderScriptCams(0,0,0,0,0)
-    -- TODO -> Animation when character is done
     local animation = true
-    _FlashClient_Utils.memory_loadDict("flashland")
+
+    -- TODO -> add sprite _FlashClient_Utils.memory_loadDict("flashland")
+
     SwitchOutPlayer(PlayerPedId(), 0, 1)
     SetTimeout(500, function()
         _FlashClient_Utils.ped_tp(PlayerPedId(), vector3(spawn.coords.x, spawn.coords.y, spawn.coords.z - 1.0), spawn.heading)
     end)
-    _FlashClient_Utils.drawer_spriteWithSmooth(function()
+
+    --[[ TODO -> add sprite _FlashClient_Utils.drawer_spriteWithSmooth(function()
        return (animation)
-    end, "flashland", "logo_transparent", 0.5, 0.38, 0.35, 0.60, 0.0)
+    end, "flashland", "logo_transparent", 0.5, 0.38, 0.35, 0.60, 0.0)]]
+
     _FlashClient_Utils.drawer_textWithSmooth(function()
         return (animation)
     end, 1920/2, (1080/2)+300, "Bienvenue sur ~r~FlashLand", {252, 255, 255}, function()
