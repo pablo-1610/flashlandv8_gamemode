@@ -29,7 +29,7 @@ _Player = {}
 _Player.__index = _Player
 
 setmetatable(_Player, {
-    __call = function(_, sId, flashId, identifier, rankId, identity, cash, skin, outfits, selectedOutfit, accessories, number)
+    __call = function(_, sId, flashId, identifier, rankId, identity, cash, skin, outfits, selectedOutfit, accessories)
         local self = setmetatable({}, _Player)
         self.flashId = flashId
         self.identifier = identifier
@@ -49,7 +49,6 @@ setmetatable(_Player, {
         self.spawned = false
         self.gameType = _FlashEnum_GAMETYPE.RP
         self.name = GetPlayerName(self.sId)
-        self.number = number
         return self
     end
 })
