@@ -45,4 +45,19 @@ _Static_Weapons = {
         label = "Pistolet Lourd",
         weight = 0.9
     },
+    [GetHashKey("WEAPON_COMBATPISTOL")] = {
+        name = "WEAPON_COMBATPISTOL",
+        label = "Pistolet De Combat",
+        weight = 0.9
+    }, 
+    [GetHashKey("WEAPON_APPISTOL")] = {
+        name = "WEAPON_APPISTOL",
+        label = "Pistolet Perforant",
+        weight = 0.9
+    },
+    [GetHashKey("WEAPON_STUNGUN")] = {
+        name = "WEAPON_STUNGUN",
+        label = "Tazer",
+        weight = 0.9
+    },
 }
