@@ -2,6 +2,8 @@
 
 **Warning**: Please read and respect the license of the project, otherwise you could expose yourself to the deletion of your repo or the restriction of your account.
 
+**PLEASE READ**: We (project developers) will no longer respond to requests for assistance in using our code, we have decided to archive the project.
+
 ## Why did you publish it?
 
 This project was initially the revolutionary project for the FlashLand server, it was about creating a brand new version
